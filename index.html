@@ -256,442 +256,1593 @@ the number of connected components.</p>
 </div>
 </div>
 </section>
+<!-- ================= STRATEGY 2 : INVARIANTS ================= -->
 
+<section id="invariants" class="strategy-section" style="display:none;">
 
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+
+<!-- HEADER -->
+<div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);padding:24px 28px;">
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟢 2. Αναλλοίωτα (Invariants)
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟢 2. Invariants
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Τι μένει σταθερό ενώ όλα αλλάζουν
+</p>
+
+</div>
+
+<!-- CONTENT -->
+<div style="padding:30px 28px;">
+
+<!-- ================= GREEK ================= -->
+<div class="lang-el">
+
+<p>
+Πολλά μαθηματικά προβλήματα περιγράφουν
+μια <strong>διαδικασία</strong>:
+σε κάθε βήμα κάτι αλλάζει,
+μετασχηματίζεται ή μετακινείται.
+</p>
+
+<p>
+Η στρατηγική των <strong>Αναλλοίωτων</strong>
+σε καλεί να εντοπίσεις
+μια ποσότητα ή ιδιότητα
+που <strong>δεν αλλάζει</strong>,
+όσο κι αν εξελίσσεται η διαδικασία.
+</p>
+
+<p>
+Το αναλλοίωτο λειτουργεί σαν
+<strong>άγκυρα</strong>:
+περιορίζει τις δυνατές τελικές καταστάσεις
+και συχνά αποδεικνύει ότι
+κάτι είναι αδύνατο ή αναγκαστικά αληθές.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Εντόπισε μια ποσότητα που <em>ίσως</em> παραμένει σταθερή</li>
+<li>Έλεγξε αν διατηρείται σε κάθε επιτρεπτό βήμα</li>
+<li>Σύγκρινε αρχική και τελική κατάσταση</li>
+<li>Χρησιμοποίησε το αναλλοίωτο για συμπέρασμα</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Σε έναν πίνακα βρίσκονται ακέραιοι αριθμοί.
+Σε κάθε βήμα επιλέγουμε δύο αριθμούς
+και τους αντικαθιστούμε με τη διαφορά τους.
+Να εξετάσετε αν είναι δυνατόν
+να προκύψει τελικά μόνο μηδενικά.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Σε έναν κύκλο είναι γραμμένοι ακέραιοι αριθμοί.
+Σε κάθε κίνηση αντικαθιστούμε
+δύο γειτονικούς αριθμούς
+με τη διαφορά τους.
+Να δείξετε ότι αν αρχικά υπάρχει άρτιος αριθμός,
+δεν μπορούν να εξαφανιστούν όλοι.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Υπάρχουν <em>n</em> κουτιά με μπίλιες.
+Επιτρέπεται σε κάθε βήμα
+να μεταφέρουμε μία μπίλια
+από ένα κουτί σε άλλο.
+Να εξετάσετε αν είναι πάντα δυνατό
+όλα τα κουτιά να καταλήξουν
+με ίσο πλήθος μπιλιών.</p>
+
+</div>
+
+<!-- ================= ENGLISH ================= -->
+<div class="lang-en">
+
+<p>
+Many mathematical problems describe
+a <strong>process</strong>:
+at each step, something changes,
+moves, or transforms.
+</p>
+
+<p>
+The <strong>Invariant</strong> strategy asks you
+to identify a quantity or property
+that <strong>remains unchanged</strong>
+throughout the entire process.
+</p>
+
+<p>
+An invariant acts as an
+<strong>anchor</strong>:
+it restricts the possible outcomes
+and often proves that
+a situation is impossible
+or necessarily true.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Identify a quantity that might remain constant</li>
+<li>Check that it is preserved at every step</li>
+<li>Compare the initial and final states</li>
+<li>Use the invariant to reach a conclusion</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+A table contains integers.
+At each step, two numbers are chosen
+and replaced by their difference.
+Investigate whether it is possible
+to end up with only zeros.</p>
+
+<p><strong>Problem 2.</strong>
+Integers are written on a circle.
+At each move, two neighboring numbers
+are replaced by their difference.
+Show that if an even number is present initially,
+they cannot all disappear.</p>
+
+<p><strong>Problem 3.</strong>
+There are <em>n</em> boxes containing balls.
+At each step, one ball may be moved
+from one box to another.
+Determine whether it is always possible
+for all boxes to end with
+the same number of balls.</p>
+
+</div>
+
+</div>
+</div>
+</section>
 <!-- ================= STRATEGY 3 : BACKWARD THINKING ================= -->
 
 <section id="backward" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟣 3. Ανάποδη Σκέψη</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟣 3. Backward Thinking</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Ξεκίνα από τον στόχο
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟣 3. Ανάστροφη Σκέψη (Backward Thinking)
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟣 3. Backward Thinking
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Ξεκίνα από τον στόχο — όχι από τα δεδομένα
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Όταν τα δεδομένα μπερδεύουν,
-ξεκίνα από το τέλος.
+Σε πολλά προβλήματα,
+τα δεδομένα είναι πολλά,
+ανοργάνωτα
+και δεν δείχνουν ξεκάθαρα
+από πού να ξεκινήσεις.
 </p>
 
 <p>
-Ρώτησε:
-<em>«Τι θα αρκούσε για να ισχύει το ζητούμενο;»</em>
+Η στρατηγική της <strong>Ανάστροφης Σκέψης</strong>
+προτείνει να αλλάξεις κατεύθυνση:
+<strong>μην ξεκινήσεις από τα δεδομένα</strong>.
+Ξεκίνα από το <em>τελικό ζητούμενο</em>.
 </p>
+
+<p>
+Αναρωτήσου:
+<em>«Τι θα αρκούσε να ισχύει
+ώστε το ζητούμενο να είναι αληθές;»</em>
+Επανάλαβε την ερώτηση,
+μέχρι να συνδεθείς με όσα δίνονται.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Γράψε καθαρά το τελικό ζητούμενο</li>
+<li>Ρώτησε: «Τι θα ήταν αρκετό για να ισχύει;»</li>
+<li>Μετέτρεψε το ζητούμενο σε απλούστερες συνθήκες</li>
+<li>Σύνδεσε τις συνθήκες με τα δεδομένα</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Να αποδείξετε ότι μια δεδομένη ανισότητα
+ισχύει για όλους τους πραγματικούς αριθμούς.
+Ξεκινήστε από το ζητούμενο
+και αναλύστε το σε ισοδύναμες μορφές.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Δίνεται τρίγωνο με συγκεκριμένες ιδιότητες.
+Να αποδείξετε ότι ένα σημείο
+ικανοποιεί μια γεωμετρική συνθήκη.
+Ξεκινήστε από το ζητούμενο συμπέρασμα.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Να δείξετε ότι μια παράσταση
+παίρνει ακέραιες τιμές
+για όλους τους ακέραιους αριθμούς.
+Ξεκινήστε από την ακέραιη μορφή
+που θα έπρεπε να έχει.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-When the data is confusing,
-start from the conclusion.
+In many problems,
+the given information is abundant
+and does not suggest
+a clear starting point.
+</p>
+
+<p>
+The <strong>Backward Thinking</strong> strategy
+reverses direction:
+<strong>do not start from the data</strong>.
+Start from the <em>final goal</em>.
 </p>
 
 <p>
 Ask:
-<em>“What would be sufficient for this to be true?”</em>
+<em>“What would be sufficient
+for the conclusion to hold?”</em>
+Repeat the question
+until it connects to the given information.
 </p>
+
+<h3>How to Think</h3>
+<ol>
+<li>State the final goal clearly</li>
+<li>Ask what would imply it</li>
+<li>Simplify the required conditions</li>
+<li>Link them to the given data</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+Prove that a given inequality
+holds for all real numbers.
+Start from the conclusion
+and rewrite it into equivalent forms.</p>
+
+<p><strong>Problem 2.</strong>
+A triangle with given properties is provided.
+Show that a point satisfies
+a specific geometric condition.
+Begin from the desired conclusion.</p>
+
+<p><strong>Problem 3.</strong>
+Show that an expression
+takes integer values
+for all integers.
+Start from the form
+it would need to have.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 <!-- ================= STRATEGY 4 : REFORMULATION ================= -->
 
 <section id="reformulation" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟠 4. Αναδιατύπωση</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟠 4. Reformulation</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Πες το ίδιο πρόβλημα αλλιώς
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟠 4. Αναδιατύπωση (Reformulation)
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟠 4. Reformulation
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Πες το ίδιο πρόβλημα με άλλα λόγια
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Πολλά προβλήματα είναι δύσκολα
-επειδή είναι κακοδιατυπωμένα.
+Πολλά μαθηματικά προβλήματα
+δεν είναι δύσκολα επειδή είναι βαθιά,
+αλλά επειδή είναι <strong>κακοδιατυπωμένα</strong>.
+Η ουσία υπάρχει,
+αλλά είναι κρυμμένη
+μέσα σε περιττές λεπτομέρειες,
+σύμβολα ή αφηρημένη γλώσσα.
 </p>
 
 <p>
-Ξαναπές το πρόβλημα —
-και συχνά η λύση εμφανίζεται μόνη της.
+Η στρατηγική της <strong>Αναδιατύπωσης</strong>
+σε καλεί να μην επιτεθείς άμεσα στο πρόβλημα.
+Αντίθετα:
+<strong>ξαναπές το πρόβλημα</strong>
+με διαφορετική μορφή,
+χωρίς να αλλάξεις το νόημά του.
 </p>
+
+<p>
+Μια σωστή αναδιατύπωση
+μπορεί να μετατρέψει
+ένα «δύσκολο» πρόβλημα
+σε προφανές.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Ρώτησε: «Τι λέει πραγματικά αυτό το πρόβλημα;»</li>
+<li>Αφαίρεσε λέξεις ή δεδομένα που δεν επηρεάζουν το ζητούμενο</li>
+<li>Αντικατάστησε έννοιες με ισοδύναμες (π.χ. αριθμούς με ιδιότητες)</li>
+<li>Ξαναγράψε το πρόβλημα σε απλούστερη μορφή</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Δίνεται ένα πρόβλημα με πολύπλοκη εκφώνηση
+που περιλαμβάνει πολλές σχέσεις.
+Να αναδιατυπώσετε το πρόβλημα
+ώστε να εκφράζεται μόνο
+με μία βασική ιδιότητα.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Ένα γεωμετρικό πρόβλημα
+περιγράφεται με πολλές γωνίες και ευθείες.
+Να το αναδιατυπώσετε
+χρησιμοποιώντας μόνο αποστάσεις.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Ένα πρόβλημα θεωρίας αριθμών
+αναφέρεται σε διαιρετότητες.
+Να το αναδιατυπώσετε
+ως πρόβλημα ισοτιμίας modulo.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-Many problems feel hard
-because they are poorly phrased.
+Many mathematical problems
+are not difficult because they are deep,
+but because they are <strong>poorly phrased</strong>.
+The core idea exists,
+but it is hidden
+behind unnecessary details,
+symbols, or abstraction.
 </p>
 
 <p>
-Rewriting them often reveals the solution.
+The <strong>Reformulation</strong> strategy
+suggests not attacking the problem directly.
+Instead:
+<strong>restate the problem</strong>
+without changing its meaning.
 </p>
+
+<p>
+A good reformulation
+can turn a difficult problem
+into an obvious one.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Ask: “What is this problem really saying?”</li>
+<li>Remove details that do not affect the goal</li>
+<li>Replace concepts with equivalent ones</li>
+<li>Rewrite the problem in a simpler form</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+A problem is given with a long and complex statement.
+Reformulate it so that it depends
+on a single core property.</p>
+
+<p><strong>Problem 2.</strong>
+A geometric problem is described
+using many angles and constructions.
+Reformulate it using distances only.</p>
+
+<p><strong>Problem 3.</strong>
+A number theory problem involves divisibility.
+Reformulate it as a modular arithmetic problem.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 <!-- ================= STRATEGY 5 : MEANINGFUL CASES ================= -->
 
 <section id="cases" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#ecfeff,#cffafe);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟦 5. Ουσιαστικές Περιπτώσεις</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟦 5. Meaningful Cases</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Διάσπαση — αλλά μόνο όταν αλλάζει η φύση του προβλήματος
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟦 5. Ουσιαστικές Περιπτώσεις (Meaningful Cases)
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟦 5. Meaningful Cases
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Διάσπαση σε περιπτώσεις — αλλά μόνο τις σωστές
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Η διάσπαση σε περιπτώσεις είναι επικίνδυνη
-αν γίνει χωρίς σκέψη.
+Η διάσπαση σε περιπτώσεις
+είναι από τις πιο συχνές στρατηγικές στη μαθηματική σκέψη —
+και ταυτόχρονα από τις πιο <strong>επικίνδυνες</strong>.
+Αν χωρίσεις αυθαίρετα,
+το πρόβλημα γίνεται γρήγορα χαοτικό.
 </p>
 
 <p>
-Δεν χωρίζουμε σε <em>όλες</em> τις περιπτώσεις,
-αλλά μόνο σε εκείνες
-που αλλάζουν ουσιαστικά το πρόβλημα.
+Η στρατηγική των <strong>Ουσιαστικών Περιπτώσεων</strong>
+δεν λέει
+«χώρισε σε όλες τις δυνατές περιπτώσεις»,
+αλλά:
+<strong>χώρισε μόνο όταν αλλάζει η φύση του προβλήματος</strong>.
 </p>
+
+<p>
+Οι σωστές περιπτώσεις
+είναι λίγες,
+καθαρές
+και αμοιβαία αποκλειόμενες.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Ρώτησε: «Πότε αλλάζει ουσιαστικά το πρόβλημα;»</li>
+<li>Εντόπισε μία ή δύο κρίσιμες ιδιότητες</li>
+<li>Δημιούργησε περιπτώσεις βασισμένες σε αυτές</li>
+<li>Βεβαιώσου ότι οι περιπτώσεις δεν επικαλύπτονται</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Να λυθεί εξίσωση που περιέχει απόλυτες τιμές,
+χωρίζοντας το πρόβλημα σε περιπτώσεις
+ανάλογα με το πρόσημο των εκφράσεων.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Δίνεται σημείο στο επίπεδο
+και κύκλος.
+Να μελετηθεί μια ιδιότητα
+ανάλογα με το αν το σημείο βρίσκεται
+εντός, επί ή εκτός του κύκλου.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Δίνεται ακέραιος αριθμός \(n\).
+Να εξεταστεί μια ιδιότητα του \(n\)
+χωρίζοντας σε περιπτώσεις
+ανάλογα με το αν είναι άρτιος ή περιττός.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-Case splitting is dangerous if done blindly.
+Case analysis is one of the most common strategies
+in mathematical reasoning —
+and also one of the most dangerous.
+If cases are chosen arbitrarily,
+the problem quickly becomes chaotic.
 </p>
 
 <p>
-Split only when the nature of the problem truly changes.
+The <strong>Meaningful Cases</strong> strategy does not say
+“split into all possible cases”,
+but:
+<strong>split only when the nature of the problem changes</strong>.
 </p>
+
+<p>
+Good cases are few,
+clean,
+and mutually exclusive.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Ask: “When does the problem truly change?”</li>
+<li>Identify one or two critical properties</li>
+<li>Build cases based on those properties</li>
+<li>Ensure cases do not overlap</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+Solve an equation involving absolute values
+by splitting into cases
+according to the sign of expressions.</p>
+
+<p><strong>Problem 2.</strong>
+A point and a circle are given.
+Study a property depending on whether the point lies
+inside, on, or outside the circle.</p>
+
+<p><strong>Problem 3.</strong>
+An integer \(n\) is given.
+Study a property of \(n\)
+by splitting into cases
+depending on whether it is even or odd.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
-<!-- ================= STRATEGY 6 : SYMMETRY ================= -->
+<!-- ================= STRATEGY 6 : SYMMETRY / ANTISYMMETRY ================= -->
 
 <section id="symmetry" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟠 6. Συμμετρία / Αντισυμμετρία</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟠 6. Symmetry / Antisymmetry</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Όταν κανένα στοιχείο δεν ξεχωρίζει
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟠 6. Συμμετρία – Αντισυμμετρία
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟠 6. Symmetry – Antisymmetry
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Όταν το πρόβλημα δεν ξεχωρίζει κανένα στοιχείο
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Όταν όλα τα αντικείμενα είναι ισότιμα,
-κάθε «επιλογή» είναι αυθαίρετη.
+Υπάρχουν προβλήματα στα οποία
+όλα τα αντικείμενα παίζουν <strong>ακριβώς τον ίδιο ρόλο</strong>.
+Κανένα δεν ξεχωρίζει,
+κανένα δεν φαίνεται «πιο σημαντικό».
 </p>
 
 <p>
-Η συμμετρία είναι πληροφορία:
-σου λέει τι <strong>δεν μπορεί</strong> να διαφέρει.
+Σε τέτοιες περιπτώσεις,
+κάθε προσπάθεια να διαλέξεις
+ένα συγκεκριμένο στοιχείο
+είναι αυθαίρετη και συχνά αποτυγχάνει.
+Η σωστή κίνηση είναι να
+<strong>σεβαστείς τη συμμετρία</strong> του προβλήματος.
 </p>
+
+<p>
+Η συμμετρία δεν είναι διακοσμητικό στοιχείο —
+είναι <strong>πληροφορία</strong>.
+Σου λέει τι <em>δεν μπορεί</em> να διαφέρει
+και ποιες ποσότητες
+αναγκαστικά πρέπει να είναι ίσες.
+</p>
+
+<p>
+Η <strong>αντισυμμετρία</strong> χρησιμοποιείται
+όταν υποθέτεις ότι κάτι διαφέρει
+και οδηγείσαι σε αντίφαση.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Εντόπισε ποια αντικείμενα είναι ισοδύναμα</li>
+<li>Ρώτησε: «Τι αλλάζει αν τα ανταλλάξω;»</li>
+<li>Συμπέρανε ότι ορισμένα μεγέθη πρέπει να είναι ίσα</li>
+<li>Αν χρειάζεται, υπόθεσε ανισότητα και αναζήτησε άτοπο</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Δίνονται θετικοί αριθμοί \(a,b,c\)
+με συμμετρικές συνθήκες.
+Να εξεταστεί πότε μια συμμετρική έκφραση
+παίρνει ακραία τιμή.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Σε κανονικό πολύγωνο,
+να αποδειχθεί ότι ορισμένες αποστάσεις
+ή γωνίες είναι ίσες
+χωρίς χρήση υπολογισμών.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Δίνεται κατανομή αντικειμένων
+με πλήρη συμμετρία ως προς τις θέσεις.
+Να δείξετε ότι δεν μπορεί να υπάρξει
+«προνομιακό» αντικείμενο.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-When all objects play the same role,
-choosing one is arbitrary.
+Some problems treat all objects
+in exactly the same way.
+No element stands out as special.
 </p>
 
 <p>
-Symmetry tells you what cannot differ.
+In such situations,
+choosing a specific object is arbitrary
+and often leads nowhere.
+The correct move is to
+<strong>respect the symmetry</strong> of the problem.
 </p>
+
+<p>
+Symmetry is not decoration —
+it is <strong>information</strong>.
+It tells you what cannot differ
+and which quantities must be equal.
+</p>
+
+<p>
+<strong>Antisymmetry</strong> is used
+by assuming inequality
+and reaching a contradiction.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Identify which objects are equivalent</li>
+<li>Ask: “What changes if I swap them?”</li>
+<li>Conclude that certain quantities must be equal</li>
+<li>If needed, assume inequality and seek contradiction</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+Positive numbers \(a,b,c\) satisfy symmetric conditions.
+Study when a symmetric expression
+attains an extreme value.</p>
+
+<p><strong>Problem 2.</strong>
+In a regular polygon,
+prove that certain distances or angles are equal
+without performing computations.</p>
+
+<p><strong>Problem 3.</strong>
+An object distribution is completely symmetric.
+Show that no object can have a privileged role.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 <!-- ================= STRATEGY 7 : BOUNDARY VALUES ================= -->
 
 <section id="boundary" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#ecfeff,#cffafe);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🔷 7. Οριακές Τιμές</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🔷 7. Boundary Values</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Τι συμβαίνει στα άκρα
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🔷 7. Οριακές Τιμές
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🔷 7. Boundary Values
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Τι συμβαίνει στα άκρα — όχι στη «μέση»
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Τα άκρα αποκαλύπτουν συχνά
-εκεί όπου «σπάει» μια υπόθεση.
+Πολλά μαθηματικά προβλήματα φαίνονται δύσκολα
+επειδή προσπαθούμε να τα κατανοήσουμε
+στην πιο γενική τους μορφή.
 </p>
 
 <p>
-Αν κάτι αποτυγχάνει στα άκρα,
-δεν μπορεί να ισχύει γενικά.
+Η στρατηγική των <strong>Οριακών Τιμών</strong>
+προτείνει μια διαφορετική οπτική:
+<strong>μην ξεκινάς από το γενικό</strong>.
+Ξεκίνα από τα <em>άκρα</em>.
 </p>
+
+<p>
+Τι συμβαίνει όταν μια μεταβλητή
+γίνεται πολύ μικρή,
+πολύ μεγάλη,
+ή όταν μια κατανομή γίνεται ακραία;
+Συχνά, εκεί αποκαλύπτεται
+τι <strong>δεν μπορεί</strong> να ισχύει γενικά.
+</p>
+
+<p>
+Αν μια πρόταση αποτυγχάνει
+στις οριακές περιπτώσεις,
+δεν μπορεί να είναι αληθής
+σε όλες.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Εντόπισε ποια μεγέθη μπορούν να μεταβληθούν</li>
+<li>Δοκίμασε ακραίες τιμές ή καταστάσεις</li>
+<li>Παρατήρησε τι αλλάζει και τι παραμένει</li>
+<li>Χρησιμοποίησε το άκρο ως έλεγχο ή άτοπο</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Δίνονται θετικοί πραγματικοί αριθμοί
+με σταθερό άθροισμα.
+Να εξεταστεί πότε μια δοσμένη έκφραση
+παίρνει μέγιστη ή ελάχιστη τιμή.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Δίνεται κατανομή αντικειμένων σε κουτιά.
+Να διερευνηθεί ποια κατανομή
+οδηγεί σε ακραία τιμή
+ενός μεγεθούς.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Σε οικογένεια γεωμετρικών σχημάτων
+με σταθερή περίμετρο,
+να εξεταστεί ποιο σχήμα
+οδηγεί σε ακραίο εμβαδό.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-Extremes reveal where assumptions break.
+Many problems seem difficult
+because we try to understand them
+in full generality.
 </p>
 
 <p>
-If it fails at the boundary,
-it cannot hold in general.
+The <strong>Boundary Values</strong> strategy
+suggests the opposite approach:
+do not start with the general case.
+Start with the <em>extremes</em>.
 </p>
+
+<p>
+What happens when a variable
+becomes very small,
+very large,
+or when a distribution becomes extreme?
+Boundaries often reveal
+what cannot hold in general.
+</p>
+
+<p>
+If a statement fails at the boundary,
+it cannot be universally true.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Identify quantities that can vary</li>
+<li>Test extreme values or configurations</li>
+<li>Observe what changes and what remains</li>
+<li>Use the boundary as a test or contradiction</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+Positive real numbers have a fixed sum.
+Investigate when a given expression
+attains a maximum or minimum.</p>
+
+<p><strong>Problem 2.</strong>
+Objects are distributed among boxes.
+Study which distribution
+produces an extreme value
+of a quantity.</p>
+
+<p><strong>Problem 3.</strong>
+In a family of geometric figures
+with fixed perimeter,
+determine which shape
+leads to an extreme area.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 <!-- ================= STRATEGY 8 : PARAMETER METHOD ================= -->
 
 <section id="parameter" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟠 8. Μέθοδος Παραμέτρου</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟠 8. Parameter Method</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Κάνε το πρόβλημα να «κινείται»
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟠 8. Μέθοδος Παραμέτρου
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟠 8. Parameter Method
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Κάνε το πρόβλημα να «κινείται»
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Η εισαγωγή παραμέτρου
-αποκαλύπτει πότε αλλάζει η συμπεριφορά.
+Ορισμένα προβλήματα δεν είναι δύσκολα
+επειδή είναι πολύπλοκα,
+αλλά επειδή είναι <strong>στατικά</strong>.
+Όλα μοιάζουν παγωμένα
+και δεν αποκαλύπτεται καμία δομή.
 </p>
 
 <p>
-Οι κρίσιμες τιμές είναι συχνά το κλειδί.
+Η <strong>Μέθοδος Παραμέτρου</strong>
+εισάγει κίνηση.
+Προσθέτεις μια μεταβλητή —
+μια <em>παράμετρο</em> —
+και αφήνεις το πρόβλημα να μεταβληθεί.
 </p>
+
+<p>
+Καθώς η παράμετρος αλλάζει,
+παρατηρείς πότε μια ιδιότητα
+εμφανίζεται,
+πότε εξαφανίζεται
+και πότε αλλάζει χαρακτήρα.
+Αυτές οι μεταβάσεις
+είναι συχνά το κλειδί της λύσης.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Εισήγαγε μια φυσική παράμετρο</li>
+<li>Μελέτησε το πρόβλημα καθώς η παράμετρος μεταβάλλεται</li>
+<li>Εντόπισε κρίσιμες τιμές ή κατώφλια</li>
+<li>Χρησιμοποίησε τη μετάβαση για συμπέρασμα ή άτοπο</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Δίνεται ανισότητα που εξαρτάται
+από πραγματική παράμετρο \(t\).
+Να μελετηθεί για ποιες τιμές του \(t\)
+ισχύει για όλους τους πραγματικούς αριθμούς.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Ένα σημείο κινείται πάνω σε ευθεία.
+Να εξεταστεί για ποιες θέσεις του σημείου
+ισχύει μια δοσμένη γεωμετρική ιδιότητα.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Θεωρούμε σύνολο με \(n\) στοιχεία,
+όπου \(n\) μεταβάλλεται.
+Να μελετηθεί πότε μια κατασκευή
+παύει να είναι δυνατή.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-Introducing a parameter lets the problem evolve.
+Some problems are not difficult
+because they are complicated,
+but because they are <strong>static</strong>.
+Nothing moves, and structure remains hidden.
 </p>
 
 <p>
-Critical values unlock the solution.
+The <strong>Parameter Method</strong>
+introduces motion.
+You add a variable —
+a <em>parameter</em> —
+and let the problem evolve.
 </p>
+
+<p>
+As the parameter changes,
+properties may appear,
+disappear,
+or change behavior.
+These transition points
+often unlock the solution.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Introduce a natural parameter</li>
+<li>Study how the problem changes</li>
+<li>Identify critical values or thresholds</li>
+<li>Use transitions to conclude or contradict</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+An inequality depends on a real parameter \(t\).
+Determine for which values of \(t\)
+it holds for all real numbers.</p>
+
+<p><strong>Problem 2.</strong>
+A point moves along a line.
+Investigate for which positions
+a given geometric property holds.</p>
+
+<p><strong>Problem 3.</strong>
+A construction depends on an integer \(n\).
+Study for which values of \(n\)
+the construction is possible.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
-  
 <!-- ================= STRATEGY 9 : ALGEBRA → GEOMETRY ================= -->
 
-<section id="alggeo" class="strategy-section" style="display:none;">
+<section id="alg-geo" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fefce8,#fef9c3);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟡 9. Άλγεβρα → Γεωμετρία</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟡 9. Algebra → Geometry</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Μετέφρασε σύμβολα σε σχήματα
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟡 9. Άλγεβρα → Γεωμετρία
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟡 9. Algebra → Geometry
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Μετάφρασε τους αριθμούς σε σχήμα
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Όταν οι υπολογισμοί γίνονται χαοτικοί,
-είναι σημάδι ότι το πρόβλημα
-θέλει γεωμετρική ερμηνεία.
+Πολλά αλγεβρικά προβλήματα
+φαίνονται δυσπρόσιτα
+επειδή περιλαμβάνουν
+πολλές εξισώσεις,
+ανισότητες
+ή συμβολικές εκφράσεις
+χωρίς σαφή εικόνα.
 </p>
 
 <p>
-Ανισότητες γίνονται αποστάσεις,
-εξισώσεις γίνονται ευθείες ή κύκλοι.
+Η στρατηγική <strong>Άλγεβρα → Γεωμετρία</strong>
+προτείνει μια ριζική αλλαγή οπτικής:
+<strong>δώσε γεωμετρικό νόημα στους αριθμούς</strong>.
 </p>
+
+<p>
+Όταν μια ανισότητα γίνει απόσταση,
+μια εξίσωση γίνει τόπος σημείων
+και μια παράσταση γίνει μήκος,
+το πρόβλημα συχνά
+απλοποιείται δραματικά.
+Η γεωμετρία
+αποκαλύπτει δομή
+που η άλγεβρα κρύβει.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Ερμήνευσε μεταβλητές ως σημεία ή αποστάσεις</li>
+<li>Μετέτρεψε εξισώσεις σε γεωμετρικούς τόπους</li>
+<li>Χρησιμοποίησε σχήμα, συμμετρία ή ανισότητες αποστάσεων</li>
+<li>Μετάφρασε το συμπέρασμα ξανά σε αλγεβρική μορφή</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Δίνεται ανισότητα με απόλυτες τιμές.
+Να αποδειχθεί
+χρησιμοποιώντας γεωμετρική ερμηνεία
+αποστάσεων στον άξονα.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Δίνεται εξίσωση με δύο μεταβλητές.
+Να περιγραφεί γεωμετρικά
+το σύνολο των λύσεών της
+και να εξαχθεί συμπέρασμα.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Να βρεθεί το ελάχιστο
+μιας αλγεβρικής παράστασης
+μεταφράζοντάς την
+σε πρόβλημα αποστάσεων στο επίπεδο.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-When algebra becomes messy,
-geometry often clarifies structure.
+Many algebraic problems
+feel inaccessible
+because they involve
+symbolic expressions
+without a clear picture.
 </p>
 
 <p>
-Inequalities become distances,
-equations become geometric objects.
+The <strong>Algebra → Geometry</strong> strategy
+changes perspective:
+<strong>give geometric meaning to numbers</strong>.
 </p>
+
+<p>
+When an inequality becomes a distance,
+an equation becomes a locus,
+and an expression becomes a length,
+the problem often simplifies dramatically.
+Geometry reveals structure
+hidden by algebra.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Interpret variables as points or distances</li>
+<li>Translate equations into geometric loci</li>
+<li>Use geometry, symmetry, or distance inequalities</li>
+<li>Translate conclusions back into algebra</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+An inequality with absolute values is given.
+Prove it using a geometric interpretation
+on the number line.</p>
+
+<p><strong>Problem 2.</strong>
+An equation in two variables is given.
+Describe geometrically
+the set of its solutions
+and draw conclusions.</p>
+
+<p><strong>Problem 3.</strong>
+Find the minimum of an algebraic expression
+by translating it into
+a distance problem in the plane.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 <!-- ================= STRATEGY 10 : GEOMETRY → ALGEBRA ================= -->
 
-<section id="geoalg" class="strategy-section" style="display:none;">
+<section id="geo-alg" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#eef2ff,#e0e7ff);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🔷 10. Γεωμετρία → Άλγεβρα</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🔷 10. Geometry → Algebra</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Κάνε το σχήμα εξισώσεις
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🔷 10. Γεωμετρία → Άλγεβρα
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🔷 10. Geometry → Algebra
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Δώσε εξισώσεις στο σχήμα
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Όταν η καθαρή γεωμετρία «κολλάει»,
-η άλγεβρα δίνει έλεγχο.
+Πολλά γεωμετρικά προβλήματα
+μοιάζουν καθαρά οπτικά:
+σχήματα,
+γωνίες,
+αποστάσεις,
+κύκλοι.
+Όμως η καθαρή γεωμετρία
+δεν οδηγεί πάντα σε λύση.
 </p>
 
 <p>
-Συντεταγμένες, διανύσματα
-και εξισώσεις αποκαλύπτουν σχέσεις.
+Η στρατηγική <strong>Γεωμετρία → Άλγεβρα</strong>
+προτείνει να κάνεις το αντίστροφο βήμα:
+<strong>μετάφρασε το σχήμα σε εξισώσεις</strong>.
 </p>
+
+<p>
+Συντεταγμένες,
+εξισώσεις ευθειών,
+κύκλων,
+διανύσματα,
+αλγεβρικές σχέσεις
+μετατρέπουν το πρόβλημα
+σε κάτι που μπορείς
+να χειριστείς με ακρίβεια.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Επέλεξε κατάλληλο σύστημα συντεταγμένων</li>
+<li>Μετέφρασε σημεία, αποστάσεις και γωνίες αλγεβρικά</li>
+<li>Χρησιμοποίησε εξισώσεις και ανισότητες</li>
+<li>Ερμήνευσε το αποτέλεσμα ξανά γεωμετρικά</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Δίνεται τρίγωνο στο επίπεδο.
+Να αποδειχθεί μια σχέση αποστάσεων
+χρησιμοποιώντας συντεταγμένες.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Δίνονται σημεία με γεωμετρική ιδιότητα.
+Να μεταφραστεί η συνθήκη
+σε αλγεβρική εξίσωση
+και να εξαχθεί συμπέρασμα.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Να αποδειχθεί ότι τρία σημεία
+είναι συνευθειακά
+χρησιμοποιώντας διανύσματα
+ή εξισώσεις ευθειών.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-When geometry stalls,
-algebra gives precision.
+Many geometric problems
+appear purely visual:
+figures,
+angles,
+distances.
+Yet pure geometry
+does not always lead to a solution.
 </p>
 
 <p>
-Coordinates and equations expose structure.
+The <strong>Geometry → Algebra</strong> strategy
+takes the opposite route:
+<strong>translate the figure into equations</strong>.
 </p>
+
+<p>
+Coordinates,
+line and circle equations,
+vectors,
+and algebraic relations
+turn geometry into
+a precise, manageable system.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Choose a convenient coordinate system</li>
+<li>Translate points, distances, and angles algebraically</li>
+<li>Use equations and inequalities</li>
+<li>Interpret the result geometrically</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+A triangle is given in the plane.
+Prove a distance relation
+using coordinates.</p>
+
+<p><strong>Problem 2.</strong>
+Points satisfy a geometric condition.
+Translate it into an algebraic equation
+and draw conclusions.</p>
+
+<p><strong>Problem 3.</strong>
+Prove that three points are collinear
+using vectors or line equations.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 <!-- ================= STRATEGY 11 : REVERSE QUESTION ================= -->
 
 <section id="reverse" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fff1f2,#ffe4e6);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🔴 11. Αντιστροφή Ερωτήματος</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🔴 11. Reverse Question</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Ρώτα πότε αποτυγχάνει
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🔴 11. Αντιστροφή Ερωτήματος
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🔴 11. Reverse Question
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Ρώτησε το αντίθετο από αυτό που σου ζητούν
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Αν δεν ξέρεις γιατί κάτι ισχύει,
-ρώτησε πότε δεν θα ίσχυε.
+Υπάρχουν προβλήματα που «κολλάνε»
+όχι επειδή είναι δύσκολα,
+αλλά επειδή το ερώτημα
+είναι διατυπωμένο με τρόπο
+που μπλοκάρει τη σκέψη.
 </p>
 
 <p>
-Το αντίθετο ερώτημα
-είναι συχνά πολύ πιο εύκολο.
+Η στρατηγική της <strong>Αντιστροφής Ερωτήματος</strong>
+προτείνει ένα αποφασιστικό βήμα:
+<strong>μην απαντήσεις αυτό που σε ρωτούν</strong>.
+Ρώτησε:
+<em>«Πότε ΔΕΝ θα ίσχυε αυτό;»</em>
 </p>
+
+<p>
+Συχνά, το αντίθετο ερώτημα
+είναι πολύ πιο εύκολο.
+Αποκαλύπτει τις αναγκαίες συνθήκες
+και ξεκαθαρίζει
+τι πραγματικά παίζει ρόλο.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Γράψε καθαρά το αρχικό ζητούμενο</li>
+<li>Διατύπωσε το αντίθετο ή την άρνησή του</li>
+<li>Μελέτησε πότε αυτή η άρνηση είναι δυνατή</li>
+<li>Εντόπισε τις αναγκαίες συνθήκες</li>
+<li>Επέστρεψε στο αρχικό ερώτημα</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Να αποδειχθεί ότι μια ιδιότητα
+ισχύει για όλους τους φυσικούς αριθμούς.
+Μελετήστε πρώτα
+πότε δεν θα μπορούσε να ισχύει.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Να δείξετε ότι μια γεωμετρική κατασκευή
+είναι μοναδική.
+Εξετάστε πότε
+θα μπορούσαν να υπάρχουν δύο διαφορετικές.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Να αποδειχθεί ότι μια εξίσωση
+έχει ακριβώς μία λύση.
+Ξεκινήστε με το ερώτημα
+πότε θα είχε περισσότερες.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-If you cannot see why something is true,
-ask when it would fail.
+Some problems feel impossible
+not because they are difficult,
+but because the question itself
+blocks intuition.
 </p>
 
 <p>
-The reverse question is often simpler.
+The <strong>Reverse Question</strong> strategy
+suggests a bold move:
+<strong>do not answer the question directly</strong>.
+Instead ask:
+<em>“When would this NOT be true?”</em>
 </p>
+
+<p>
+The opposite question
+is often simpler.
+It reveals necessary conditions
+and clarifies what truly matters.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>State the original question clearly</li>
+<li>Formulate its negation</li>
+<li>Analyze when the negation can occur</li>
+<li>Extract necessary conditions</li>
+<li>Return to the original problem</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+Prove that a property
+holds for all natural numbers.
+First analyze
+when it would fail.</p>
+
+<p><strong>Problem 2.</strong>
+Show that a geometric construction
+is unique.
+Investigate when
+two different constructions could exist.</p>
+
+<p><strong>Problem 3.</strong>
+Prove that an equation
+has exactly one solution.
+Begin by asking
+when it could have more than one.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 <!-- ================= STRATEGY 12 : AUXILIARY OBJECT ================= -->
 
 <section id="auxiliary" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟢 12. Βοηθητικό Αντικείμενο</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟢 12. Auxiliary Object</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Πρόσθεσε αυτό που λείπει
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🟢 12. Εισαγωγή Βοηθητικού Αντικειμένου
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🟢 12. Auxiliary Object
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Πρόσθεσε κάτι που δεν σου δίνεται — αλλά χρειάζεται
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Όταν όλα δείχνουν σωστά
-αλλά τίποτα δεν προχωρά,
-λείπει κάτι.
+Υπάρχουν προβλήματα που δεν λύνονται
+όσο κι αν προσπαθείς
+να κινηθείς <strong>αυστηρά μέσα στα δεδομένα</strong>.
+Όλα φαίνονται σωστά,
+αλλά κάτι λείπει.
 </p>
 
 <p>
-Ένα βοηθητικό σημείο,
-μια γραμμή ή μεταβλητή
-αποκαλύπτει τη δομή.
+Η στρατηγική της <strong>Εισαγωγής Βοηθητικού Αντικειμένου</strong>
+σου επιτρέπει να κάνεις ένα τολμηρό βήμα:
+<strong>να προσθέσεις κάτι που δεν υπάρχει στην εκφώνηση</strong>.
 </p>
+
+<p>
+Αυτό μπορεί να είναι
+ένα σημείο,
+μια ευθεία,
+ένας κύκλος,
+μια νέα μεταβλητή,
+ένα σύνολο
+ή ακόμη και μια «τεχνητή» κατασκευή.
+Το βοηθητικό αντικείμενο
+δεν είναι ο στόχος —
+είναι το εργαλείο
+που αποκαλύπτει τη δομή.
+</p>
+
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Αναγνώρισε ότι κάτι λείπει</li>
+<li>Ρώτησε: «Τι θα με βοηθούσε να υπήρχε;»</li>
+<li>Εισήγαγε το αντικείμενο χωρίς φόβο</li>
+<li>Μελέτησε τις νέες σχέσεις που προκύπτουν</li>
+<li>Χρησιμοποίησε το συμπέρασμα — όχι το αντικείμενο</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Δίνεται τρίγωνο με ιδιότητα που δεν φαίνεται άμεσα.
+Να εισαχθεί κατάλληλο βοηθητικό σημείο
+ώστε να αποκαλυφθεί συμμετρία.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Σε συνδυαστικό πρόβλημα καταμέτρησης,
+προσθέστε ένα «φανταστικό» στοιχείο
+ώστε να απλοποιηθεί η δομή.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Δίνεται αριθμητική σχέση που δεν οδηγεί σε συμπέρασμα.
+Εισάγετε νέα μεταβλητή
+ώστε να εμφανιστεί κρυφή διαιρετότητα.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-When progress stalls,
-something is missing.
+Some problems cannot be solved
+as long as you stay
+strictly within the given data.
+Everything seems correct,
+yet something is missing.
 </p>
 
 <p>
-An auxiliary object reveals hidden structure.
+The <strong>Auxiliary Object</strong> strategy
+allows a bold move:
+<strong>add something that is not given</strong>.
 </p>
+
+<p>
+This could be
+a point,
+a line,
+a circle,
+a new variable,
+a set,
+or even an artificial construction.
+The auxiliary object
+is not the goal —
+it is the tool
+that reveals hidden structure.
+</p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Recognize that something is missing</li>
+<li>Ask: “What would help if it existed?”</li>
+<li>Add the object freely</li>
+<li>Study the new relationships</li>
+<li>Keep the conclusion — discard the object</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+Given a triangle with a hidden property,
+introduce an auxiliary point
+to reveal symmetry.</p>
+
+<p><strong>Problem 2.</strong>
+In a counting problem,
+add a “phantom” element
+to simplify the structure.</p>
+
+<p><strong>Problem 3.</strong>
+Given a numerical relation,
+introduce a new variable
+to expose hidden divisibility.</p>
+
 </div>
 
 </div>
 </div>
 </section>
-
 
 <footer>
 EisatoponAI — Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων<br>
