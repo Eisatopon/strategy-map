@@ -173,126 +173,160 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 <div class="map-card" onclick="openStrategy('induction')">15. Mathematical Induction</div>
 </div>
 <!-- ================= STRATEGY 1 : EXTREMAL ELEMENT ================= -->
+
 <section id="extremal" class="strategy-section" style="display:none;">
+
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
-  <h2 class="lang-el">🔵 1. Extremal Στοιχείο</h2>
-  <h2 class="lang-en">🔵 1. Extremal Element</h2>
+
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">
+    🔵 1. Extremal Element (Ακραίο Στοιχείο)
+  </h2>
+
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">
+    🔵 1. Extremal Element
+  </h2>
+
+  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+    Ξεκίνα από το πιο περιορισμένο στοιχείο
+  </p>
 </div>
 
-<div style="padding:24px 28px;">
-  <div class="lang-el">
-    <h3>Πώς σκέφτεσαι</h3>
-    <ol>
-      <li>Εντόπισε ένα αντικείμενο με ακραία ιδιότητα (ελάχιστο, μέγιστο, πρώτο, τελευταίο).</li>
-      <li>Εξέτασε ποιες κινήσεις ή σχέσεις του απαγορεύονται.</li>
-      <li>Χρησιμοποίησε τους περιορισμούς για συμπέρασμα ή άτοπο.</li>
-    </ol>
-  </div>
-  <div class="lang-en">
-    <h3>How to Think</h3>
-    <ol>
-      <li>Find an object with an extreme property (smallest, largest, first, last).</li>
-      <li>Analyse which actions or relations are impossible for it.</li>
-      <li>Use these restrictions to conclude or derive a contradiction.</li>
-    </ol>
-  </div>
+<!-- CONTENT -->
+<div style="padding:30px 28px;">
+
+<!-- ================= GREEK ================= -->
+<div class="lang-el">
+
+<p>
+Σε πολλά προβλήματα, το κρίσιμο βήμα δεν είναι οι πράξεις,
+αλλά το <strong>από πού θα ξεκινήσεις</strong>.
+Η στρατηγική του <strong>Extremal Element</strong>
+σου λέει να ξεκινήσεις από το στοιχείο
+με τους περισσότερους περιορισμούς:
+το μικρότερο, το μεγαλύτερο,
+το πρώτο ή το τελευταίο.
+</p>
+
+<p>
+Ακριβώς επειδή έχει τις λιγότερες επιλογές,
+αποκαλύπτει γρήγορα
+τι <strong>δεν μπορεί</strong> να συμβεί —
+και αυτό συχνά οδηγεί σε άτοπο ή λύση.
+</p>
+
+<!-- STEPS -->
+<div style="background:#eef2ff;border-radius:14px;padding:22px;margin:30px 0;">
+<strong>Πώς σκέφτεσαι (βήματα):</strong>
+<ol>
+<li>Εντόπισε το ελάχιστο ή μέγιστο στοιχείο</li>
+<li>Κατέγραψε τι <em>δεν</em> μπορεί να κάνει</li>
+<li>Δες πώς επηρεάζει τα υπόλοιπα</li>
+<li>Χρησιμοποίησε τον περιορισμό για συμπέρασμα</li>
+</ol>
 </div>
 
-<div style="padding:0 28px 24px;">
-  <div class="level-tabs">
-    <button onclick="openLevel('ext-easy')">Εύκολο</button>
-    <button onclick="openLevel('ext-med')">Μέτριο</button>
-    <button onclick="openLevel('ext-hard')">Δύσκολο</button>
-  </div>
+<!-- PROBLEMS -->
+<div style="background:#f9fafb;padding:24px;border-radius:14px;">
+<strong>Προβλήματα (χωρίς λύσεις):</strong>
 
-  <div id="ext-easy" class="level-content">
-    <div class="lang-el">
-      <p><strong>Π1.</strong> Σε 10 κουτιά υπάρχουν μπίλιες. Δείξε ότι υπάρχει κουτί με τον ελάχιστο αριθμό μπιλιών.</p>
-      <button onclick="toggleHint('ext-e1')">Hint</button>
-      <div id="ext-e1" class="hint-box">Τι ιδιότητα έχει το ελάχιστο κουτί που κανένα άλλο δεν έχει;</div>
+<p data-tags="IMO,Combinatorics,Extremal" data-level="easy">
+<strong>Π1.</strong>  
+Δίνεται πεπερασμένο σύνολο θετικών ακεραίων
+με την ιδιότητα ότι το άθροισμα
+οποιωνδήποτε δύο διαφορετικών στοιχείων
+είναι διαφορετικό από κάθε άλλο τέτοιο άθροισμα.
+Να δείξετε ότι το σύνολο περιέχει
+<strong>το πολύ έναν άρτιο αριθμό</strong>.
+</p>
 
-      <p><strong>Π2.</strong> Σε μια σειρά θετικών ακεραίων το άθροισμα οποιωνδήποτε δύο διαφορετικών είναι διαφορετικό. Δείξε ότι υπάρχει στοιχείο μεγαλύτερο από το άθροισμα όλων των υπολοίπων.</p>
-      <button onclick="toggleHint('ext-e2')">Hint</button>
-      <div id="ext-e2" class="hint-box">Ξεκίνα από το <strong>μεγαλύτερο</strong> στοιχείο. Τι συμβαίνει με το άθροισμα των υπολοίπων;</div>
+<p data-tags="Geometry,Extremal,Olympiad" data-level="medium">
+<strong>Π2.</strong>  
+Δίνονται \(n\) σημεία στο επίπεδο.
+Να αποδείξετε ότι υπάρχει σημείο τέτοιο ώστε,
+αν αφαιρεθεί,
+η ελάχιστη απόσταση μεταξύ των υπολοίπων σημείων
+δεν μειώνεται.
+</p>
 
-      <p><strong>Π3.</strong> Σε γράφημα με πεπερασμένες κορυφές κάθε κορυφή έχει βαθμό ≥ 2. Δείξε ότι υπάρχει κορυφή η αφαίρεση της οποίας δεν αυξάνει τις συνεκτικές συνιστώσες.</p>
-      <button onclick="toggleHint('ext-e3')">Hint</button>
-      <div id="ext-e3" class="hint-box">Θεώρησε την κορυφή με <strong>μεγαλύτερο</strong> βαθμό. Τι της συμβαίνει όταν τη διαγράψεις;</div>
-    </div>
-    <div class="lang-en">
-      <p><strong>P1.</strong> 10 boxes contain balls. Show there is a box with the minimum number of balls.</p>
-      <button onclick="toggleHint('ext-en1')">Hint</button>
-      <div id="ext-en1" class="hint-box">What property does the minimum box have that no other has?</div>
+<p data-tags="GraphTheory,Extremal" data-level="medium">
+<strong>Π3.</strong>  
+Σε συνεκτικό γράφημα,
+να αποδείξετε ότι υπάρχει κορυφή
+της οποίας η αφαίρεση
+δεν αυξάνει τον αριθμό
+των συνιστωσών συνοχής.
+</p>
+</div>
 
-      <p><strong>P2.</strong> In a set of positive integers the sum of any two distinct elements is different. Prove there is an element larger than the sum of all the others.</p>
-      <button onclick="toggleHint('ext-en2')">Hint</button>
-      <div id="ext-en2" class="hint-box">Start with the <strong>largest</strong> element. What about the sum of the rest?</div>
+<!-- QUIZ -->
+<div style="margin-top:30px;background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;">
+<p><strong>Mini Quiz:</strong> Ποια στρατηγική εφαρμόζεται;</p>
 
-      <p><strong>P3.</strong> In a finite graph every vertex has degree ≥ 2. Show there is a vertex whose removal does not increase the number of connected components.</p>
-      <button onclick="toggleHint('ext-en3')">Hint</button>
-      <div id="ext-en3" class="hint-box">Consider the vertex with <strong>largest</strong> degree. What happens when you delete it?</div>
-    </div>
-  </div>
+<button onclick="checkQuiz(this,false)">Invariant</button>
+<button onclick="checkQuiz(this,true)">Extremal Element</button>
+<button onclick="checkQuiz(this,false)">Symmetry</button>
 
-  <div id="ext-med" class="level-content" style="display:none;">
-    <div class="lang-el">
-      <p><strong>Π1.</strong> Δίνονται 2025 διανύσματα στο επίπεδο, κανένα μηδέν. Δείξε ότι υπάρχει ζεύγος με γωνία ≤ 1°.</p>
-      <button onclick="toggleHint('ext-m1')">Hint</button>
-      <div id="ext-m1" class="hint-box">Τι συμβαίνει με το ζεύγος που έχει την <strong>μεγαλύτερη</strong> γωνία;</div>
+<div class="quiz-result" style="margin-top:10px;"></div>
+</div>
 
-      <p><strong>Π2.</strong> Σε κύκλο γράφουμε n ακέραιους. Δείξε ότι υπάρχουν δύο γειτονικοί με διαφορά ≥ μέσου όρου των διαφορών.</p>
-      <button onclick="toggleHint('ext-m2')">Hint</button>
-      <div id="ext-m2" class="hint-box">Θεώρησε το ζεύγος με τη <strong>μεγαλύτερη</strong> διαφορά.</div>
+</div>
 
-      <p><strong>Π3.</strong> Σε σύνολο θετικών ακεραίων το άθροισμα οποιωνδήποτε δύο διαφορετικών είναι διαφορετικό. Δείξε ότι υπάρχει στοιχείο μεγαλύτερο από το άθροισμα όλων των υπολοίπων.</p>
-      <button onclick="toggleHint('ext-m3')">Hint</button>
-      <div id="ext-m3" class="hint-box">Ξεκίνα από το <strong>μεγαλύτερο</strong> στοιχείο.</div>
-    </div>
-    <div class="lang-en">
-      <p><strong>P1.</strong> Given 2025 non-zero vectors in the plane, show there is a pair whose angle is ≤ 1°.</p>
-      <button onclick="toggleHint('ext-m1en')">Hint</button>
-      <div id="ext-m1en" class="hint-box">What happens with the pair that has the <strong>largest</strong> angle?</div>
+<!-- ================= ENGLISH ================= -->
+<div class="lang-en">
 
-      <p><strong>P2.</strong> Integers are written on a circle. Show there are two neighbours whose difference is ≥ the average of all differences.</p>
-      <button onclick="toggleHint('ext-m2en')">Hint</button>
-      <div id="ext-m2en" class="hint-box">Consider the pair with the <strong>largest</strong> difference.</div>
+<p>
+The hardest part of many problems
+is deciding <strong>where to start</strong>.
+The <strong>Extremal Element</strong> strategy
+suggests starting from the most constrained object:
+the smallest, largest, first, or last.
+</p>
 
-      <p><strong>P3.</strong> Same as Greek P3 above.</p>
-    </div>
-  </div>
+<p>
+Because this element has fewer options,
+its limitations often expose contradictions
+or force the structure of the solution.
+</p>
 
-  <div id="ext-hard" class="level-content" style="display:none;">
-    <div class="lang-el">
-      <p><strong>Π1.</strong> Σύνολο \(S\subset\mathbb{N}\) τέτοιο ώστε για κάθε \(n\) το \(\{s\in S:s\le n\}\) έχει μέγεθος \(\le \log_2 n\). Δείξε ότι υπάρχουν δύο στοιχεία του \(S\) με απόσταση <strong>ακριβώς</strong> 10.</p>
-      <button onclick="toggleHint('ext-h1')">Hint</button>
-      <div id="ext-h1" class="hint-box">Χτίσε τον <strong>μεγαλύτερο</strong> δυνατό \(S\) που αποφεύγει τη διαφορά 10. Τι πάει στραβά;</div>
+<div style="background:#eef2ff;border-radius:14px;padding:22px;margin:30px 0;">
+<strong>Thinking steps:</strong>
+<ol>
+<li>Identify an extremal element</li>
+<li>List its restrictions</li>
+<li>Analyze its interaction with others</li>
+<li>Use the restriction to conclude</li>
+</ol>
+</div>
 
-      <p><strong>Π2.</strong> Δίνονται \(n\) σημεία στο επίπεδο, όχι όλα συνευθειακά. Δείξε ότι υπάρχει σημείο του οποίου η ελάχιστη απόσταση από τα υπόλοιπα είναι μοναδική.</p>
-      <button onclick="toggleHint('ext-h2')">Hint</button>
-      <div id="ext-h2" class="hint-box">Θεώρησε το <strong>ζεύγος με την ελάχιστη απόσταση</strong>· τι συμβαίνει αν υπάρχουν δύο τέτοια;</div>
+<div style="background:#f9fafb;padding:24px;border-radius:14px;">
+<strong>Problems (no solutions):</strong>
 
-      <p><strong>Π3.</strong> Σε γράφημα με πεπερασμένες κορυφές, κάθε κορυφή έχει βαθμό ≥ 2. Δείξε ότι υπάρχει κύκλος.</p>
-      <button onclick="toggleHint('ext-h3')">Hint</button>
-      <div id="ext-h3" class="hint-box">Ξεκίνα από την <strong>μεγαλύτερη</strong> μονοπάτι· τι συμβαίνει στο τέλος της;</div>
-    </div>
-    <div class="lang-en">
-      <p><strong>P1.</strong> Set \(S\subset\mathbb{N}\) such that for every \(n\) the set \(\{s\in S:s\le n\}\) has size \(\le \log_2 n\). Prove there are two elements of \(S\) at distance exactly 10.</p>
-      <button onclick="toggleHint('ext-h1en')">Hint</button>
-      <div id="ext-h1en" class="hint-box">Build the <strong>largest</strong> possible \(S\) avoiding difference 10. What goes wrong?</div>
+<p><strong>P1.</strong>  
+A finite set of positive integers has all pairwise sums distinct.
+Show that the set contains at most one even number.</p>
 
-      <p><strong>P2.</strong> Given \(n\) points in the plane, not all collinear, prove there is a point whose minimum distance to the others is unique.</p>
-      <button onclick="toggleHint('ext-h2en')">Hint</button>
-      <div id="ext-h2en" class="hint-box">Consider the <strong>pair with minimum distance</strong>; what if two such pairs exist?</div>
+<p><strong>P2.</strong>  
+Given \(n\) points in the plane,
+show that one can be removed
+without decreasing the minimum distance
+among the remaining points.</p>
 
-      <p><strong>P3.</strong> In a finite graph every vertex has degree ≥ 2. Prove there is a cycle.</p>
-      <button onclick="toggleHint('ext-h3en')">Hint</button>
-      <div id="ext-h3en" class="hint-box">Start from the <strong>longest</strong> path; what happens at its endpoint?</div>
-    </div>
-  </div>
+<p><strong>P3.</strong>  
+In a connected graph,
+prove that there exists a vertex
+whose removal does not increase
+the number of connected components.</p>
+</div>
+
+</div>
+
 </div>
 </div>
 </section>
+
 <!-- ================= STRATEGY 2 : MEANINGFUL CASES ================= -->
 <section id="cases" class="strategy-section" style="display:none;">
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
