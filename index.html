@@ -1554,6 +1554,15 @@ function openStrategy(id){
   }
 }
 </script>
-
+<script>
+function openLevel(id){
+  document.querySelectorAll('.level-content').forEach(div=>div.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+function toggleHint(id){
+  const box=document.getElementById(id);
+  box.style.display=box.style.display==='block'?'none':'block';
+}
+</script>
 </body>
 </html>
