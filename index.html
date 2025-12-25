@@ -65,6 +65,7 @@ body{
   box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 .lang-en{display:none}
+.lang-el{display:block}
 footer{
   text-align:center;
   color:#667;
@@ -141,9 +142,13 @@ function openStrategy(id){
   if(target){
     target.style.display='block';
     target.scrollIntoView({behavior:'smooth'});
-    // Activate first tab
+    // Show Greek level by default
+    const currentLang = document.querySelector('.lang-el').style.display !== 'none' ? 'el' : 'en';
+    const levelId = currentLang === 'el' ? 'level-basic' : 'level-basic-en';
     const firstTab = target.querySelector('.level-tabs button');
-    if(firstTab) firstTab.click();
+    if(firstTab) {
+      firstTab.click();
+    }
   }
 }
 function openLevel(sectionId, levelId, button){
@@ -531,18 +536,6 @@ often enough to solve the problem.
 </div>
 </div>
 </section>
-
-<footer>
-<p class="lang-el">Χάρτης Στρατηγικών © 2025 — Μάθε πώς να σκέφτεσαι, όχι μόνο πώς να λύνεις</p>
-<p class="lang-en">Strategy Map © 2025 — Learn to think, not just to solve</p>
-</footer>
-
-</div>
-
-</body>
-</html>
-
-
 <!-- ================= STRATEGY 2 : MEANINGFUL CASES ================= -->
 <section id="cases" class="strategy-section" style="display:none;">
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
