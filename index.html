@@ -108,8 +108,14 @@ navigate, and complete challenging mathematical problems.
 
 <!-- STRATEGY MAP -->
 <div class="strategy-grid">
-<div class="map-card">1. Extremal Element</div>
-<div class="map-card">2. Invariants</div>
+<div class="map-card" onclick="openStrategy('extremal')">
+  1. Extremal Element
+</div>
+
+<div class="map-card" onclick="openStrategy('invariants')">
+  2. Invariants
+</div>
+
 <div class="map-card">3. Backward Thinking</div>
 <div class="map-card">4. Reformulation</div>
 <div class="map-card">5. Meaningful Cases</div>
@@ -329,6 +335,19 @@ Learning how to think, not what to memorize.
 </footer>
 
 </div>
+<script>
+function openStrategy(id){
+  document.querySelectorAll('.strategy-section').forEach(sec=>{
+    sec.style.display = 'none';
+  });
+
+  const target = document.getElementById(id);
+  if(target){
+    target.style.display = 'block';
+    target.scrollIntoView({behavior:'smooth'});
+  }
+}
+</script>
 
 </body>
 </html>
