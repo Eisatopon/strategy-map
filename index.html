@@ -37,7 +37,7 @@ body{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:16px;
-  margin:30px 0;
+  margin:30px 0 50px;
 }
 .map-card{
   background:#ffffff;
@@ -54,44 +54,6 @@ body{
   transform:translateY(-4px);
   box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
-details.strategy{
-  margin-bottom:25px;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid #e0e0e0;
-  background:#fff;
-}
-details.strategy summary{
-  cursor:pointer;
-  padding:18px;
-  font-size:1.4em;
-  font-weight:bold;
-  background:#f5f7fa;
-  list-style:none;
-}
-details.strategy[open] summary{
-  background:#e8f0fe;
-}
-.section-body{
-  padding:22px;
-}
-.box{
-  background:#f9fafb;
-  border-left:5px solid #42a5f5;
-  border-radius:10px;
-  padding:16px 20px;
-  margin-bottom:20px;
-}
-.box.green{border-color:#66bb6a}
-.box.orange{border-color:#ffa726}
-.problems{
-  background:#fdfdfd;
-  border-radius:12px;
-  padding:18px;
-}
-.problem{
-  margin-bottom:14px;
-}
 .lang-en{display:none}
 footer{
   text-align:center;
@@ -105,16 +67,6 @@ function setLang(lang){
   document.querySelectorAll('.lang-el').forEach(e=>e.style.display=lang==='el'?'block':'none');
   document.querySelectorAll('.lang-en').forEach(e=>e.style.display=lang==='en'?'block':'none');
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  const all=document.querySelectorAll('details.strategy');
-  all.forEach(d=>{
-    d.addEventListener('toggle',()=>{
-      if(d.open){
-        all.forEach(o=>{if(o!==d)o.open=false;});
-      }
-    });
-  });
-});
 </script>
 </head>
 
@@ -123,7 +75,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <div class="container">
 
 <!-- LANGUAGE SWITCH -->
-<div id="lang-switcher" style="display:flex;gap:.5rem;margin-bottom:1rem;">
+<div style="display:flex;gap:.5rem;margin-bottom:1rem;">
 <button onclick="setLang('el')" style="background:#1e88e5;color:white;border:none;padding:6px 10px;border-radius:4px;cursor:pointer;">
 <img src="https://flagcdn.com/w20/gr.png" style="width:20px;height:14px"> Ελληνικά
 </button>
@@ -135,11 +87,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 <!-- HERO -->
 <div class="hero">
 <div class="lang-el">
-<h2>Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων</h2>
+<h1>Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων</h1>
 <p>
 Δεν είναι συλλογή λύσεων.  
 Είναι ένας <strong>χάρτης σκέψης</strong> που δείχνει πώς ξεκινά,
-πώς κατευθύνεται και πώς ολοκληρώνεται η λύση ενός δύσκολου προβλήματος.
+πώς κατευθύνεται και πώς ολοκληρώνεται η λύση
+ενός απαιτητικού μαθηματικού προβλήματος.
 </p>
 </div>
 
@@ -147,13 +100,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 <h1>Strategy Map for Mathematical Problem Solving</h1>
 <p>
 Not a list of solutions.  
-A <strong>thinking map</strong> showing how expert solvers approach,
-navigate, and complete challenging problems.
+A <strong>thinking map</strong> showing how expert solvers start,
+navigate, and complete challenging mathematical problems.
 </p>
 </div>
 </div>
 
-<!-- MAP -->
+<!-- STRATEGY MAP -->
 <div class="strategy-grid">
 <div class="map-card">1. Extremal Element</div>
 <div class="map-card">2. Invariants</div>
@@ -169,46 +122,82 @@ navigate, and complete challenging problems.
 <div class="map-card">12. Auxiliary Object</div>
 </div>
 
-<!-- STRATEGY 1 -->
-<details class="strategy">
-<summary>🔵 1. Extremal Element</summary>
-<div class="section-body">
+<!-- ================= STRATEGY 1 : EXTREMAL ================= -->
+
+<section id="extremal" style="margin-top:40px;">
+
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+
+<div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
+  <h2 style="margin:0;font-size:1.8em;">🔵 1. Extremal Element</h2>
+  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+    Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
+  </p>
+</div>
+
+<div style="padding:30px 28px;">
 
 <div class="lang-el">
-<div class="box">
-Ξεκίνα από το πιο περιορισμένο αντικείμενο: το μικρότερο, το μεγαλύτερο,
-το πρώτο ή το τελευταίο.
+<p>
+Η στρατηγική του <strong>Extremal στοιχείου</strong> σου λέει να μη ξεκινήσεις αυθαίρετα.
+Ξεκίνα από το αντικείμενο με τους περισσότερους περιορισμούς:
+το μικρότερο, το μεγαλύτερο, το πρώτο ή το τελευταίο.
+</p>
+
+<p>
+Ακριβώς επειδή αυτό το στοιχείο έχει λιγότερες επιλογές,
+αποκαλύπτει γρηγορότερα τι <strong>δεν μπορεί</strong> να συμβεί —
+και αυτό συχνά οδηγεί στη λύση.
+</p>
+
+<div style="background:#f8fafc;border-left:5px solid #2563eb;padding:18px 20px;border-radius:12px;margin:25px 0;">
+<strong>Πότε να τη διαλέξεις:</strong>
+<ul>
+<li>«το πολύ», «τουλάχιστον»</li>
+<li>ελάχιστο / μέγιστο</li>
+<li>μοναδικό ή ακραίο στοιχείο</li>
+</ul>
 </div>
 
-<div class="box orange">
-<strong>Πότε:</strong> ελάχιστο / μέγιστο, «το πολύ», «τουλάχιστον»
+<div style="background:#eef2ff;border-radius:14px;padding:22px;margin-bottom:30px;">
+<strong>Πώς σκέφτεσαι:</strong>
+<ol>
+<li>Διάλεξε το extremal στοιχείο</li>
+<li>Δες τι δεν μπορεί να κάνει</li>
+<li>Χρησιμοποίησε τον περιορισμό για συμπέρασμα ή άτοπο</li>
+</ol>
 </div>
 
-<div class="problems">
-<div class="problem"><strong>Combinatorics:</strong> Σύνολο ακεραίων με μοναδικά αθροίσματα ζευγών.</div>
-<div class="problem"><strong>Geometry:</strong> n σημεία στο επίπεδο και ελάχιστη απόσταση.</div>
-<div class="problem"><strong>Graph Theory:</strong> Κορυφή που η αφαίρεσή της δεν αυξάνει συνιστώσες.</div>
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
+<strong>Προβλήματα:</strong>
+<p><strong>Συνδυαστική:</strong> Σύνολο με μοναδικά αθροίσματα ζευγών.</p>
+<p><strong>Γεωμετρία:</strong> n σημεία και ελάχιστη απόσταση.</p>
+<p><strong>Θεωρία Γραφημάτων:</strong> Αφαίρεση κορυφής χωρίς αύξηση συνιστωσών.</p>
 </div>
 </div>
 
 <div class="lang-en">
-<div class="box">
-Start from the most constrained object: smallest, largest, first or last.
+<p>
+The Extremal Element strategy tells you where to start:
+from the most constrained object — the smallest, largest, first, or last.
+</p>
+
+<p>
+Because this object has fewer possibilities,
+its limitations reveal structure and often lead directly to a solution.
+</p>
+
+<strong>When to use:</strong>
+<ul>
+<li>at most / at least</li>
+<li>minimum / maximum</li>
+<li>uniqueness conditions</li>
+</ul>
 </div>
 
-<div class="box orange">
-<strong>When:</strong> minimum / maximum, “at most”, “at least”
-</div>
-
-<div class="problems">
-<div class="problem"><strong>Combinatorics:</strong> Integer set with unique pairwise sums.</div>
-<div class="problem"><strong>Geometry:</strong> n points and minimal distance.</div>
-<div class="problem"><strong>Graph Theory:</strong> Vertex whose removal preserves connectivity.</div>
 </div>
 </div>
-
-</div>
-</details>
+</section>
 
 <footer>
 EisatoponAI — Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων<br>
@@ -216,156 +205,6 @@ Learning how to think, not what to memorize.
 </footer>
 
 </div>
- <!-- ================= STRATEGY 1 : EXTREMAL ================= -->
 
-<section id="extremal" style="margin-top:60px;">
-
-<!-- ===== STRATEGY CARD ===== -->
-<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
-
-<!-- ===== HEADER ===== -->
-<div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">
-    🔵 1. Extremal Element
-  </h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
-  </p>
-</div>
-
-<!-- ===== CONTENT ===== -->
-<div style="padding:30px 28px;">
-
-<!-- ========== GREEK BLOCK ========== -->
-<div class="lang-el">
-
-<!-- Narrative -->
-<div style="margin-bottom:30px;">
-  <p>
-    Σε πολλά μαθηματικά προβλήματα, το μεγαλύτερο εμπόδιο δεν είναι οι πράξεις,
-    αλλά το <strong>από πού να ξεκινήσεις</strong>.
-    Αν επιλέξεις λάθος σημείο εκκίνησης, ακόμα και μια σωστή ιδέα μπορεί να οδηγήσει σε αδιέξοδο.
-  </p>
-  <p>
-    Η στρατηγική του <strong>Extremal στοιχείου</strong> βασίζεται σε μια απλή αλλά ισχυρή αρχή:
-    <em>ξεκίνα από εκεί όπου οι επιλογές είναι λιγότερες</em>.
-    Το μικρότερο, το μεγαλύτερο, το πρώτο ή το τελευταίο στοιχείο ενός συνόλου
-    είναι πιο «δεσμευμένο» από τα υπόλοιπα — και ακριβώς γι’ αυτό
-    αποκαλύπτει γρηγορότερα τι <strong>δεν μπορεί</strong> να συμβεί.
-  </p>
-  <p>
-    Αν κατανοήσεις τους περιορισμούς του extremal στοιχείου,
-    συχνά οδηγείσαι είτε άμεσα στη λύση,
-    είτε σε άτοπο που αποδεικνύει το ζητούμενο.
-  </p>
-</div>
-
-<!-- When to use -->
-<div style="background:#f8fafc;border-left:5px solid #2563eb;padding:18px 20px;border-radius:12px;margin-bottom:30px;">
-  <strong>Πότε να τη διαλέξεις:</strong>
-  <ul style="margin-top:10px;">
-    <li>Όταν εμφανίζονται εκφράσεις όπως <strong>«το πολύ», «τουλάχιστον»</strong></li>
-    <li>Όταν γίνεται λόγος για <strong>ελάχιστο ή μέγιστο</strong></li>
-    <li>Όταν ένα στοιχείο φαίνεται να «ξεχωρίζει»</li>
-    <li>Όταν ζητείται μοναδικότητα ή αποκλεισμός περιπτώσεων</li>
-  </ul>
-</div>
-
-<!-- Steps -->
-<div style="background:#eef2ff;border-radius:14px;padding:22px;margin-bottom:35px;">
-  <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
-  <ol style="margin-top:15px;">
-    <li>
-      <strong>Εντόπισε το extremal στοιχείο</strong><br>
-      (μικρότερο, μεγαλύτερο, πρώτο, τελευταίο).
-    </li>
-    <li>
-      <strong>Κατάγραψε τι περιορισμούς έχει</strong><br>
-      — ποιες ενέργειες δεν μπορεί να κάνει.
-    </li>
-    <li>
-      <strong>Δες πώς επηρεάζει τα υπόλοιπα</strong><br>
-      μέσω των δοσμένων συνθηκών.
-    </li>
-    <li>
-      <strong>Χρησιμοποίησε τον περιορισμό</strong><br>
-      για να καταλήξεις σε συμπέρασμα ή άτοπο.
-    </li>
-  </ol>
-</div>
-
-<!-- Problems -->
-<div style="background:#f9fafb;padding:24px;border-radius:14px;">
-  <h3 style="margin-top:0;">📚 Προβλήματα</h3>
-
-  <p><strong>1. Συνδυαστική (Ενεργοποίηση)</strong><br>
-  Δίνεται πεπερασμένο σύνολο θετικών ακεραίων με την ιδιότητα ότι
-  το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων
-  είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.
-  Να αποδείξετε ότι το σύνολο περιέχει <strong>το πολύ έναν άρτιο αριθμό</strong>.
-  </p>
-
-  <p><strong>2. Γεωμετρία (Εμβάθυνση)</strong><br>
-  Δίνονται \(n\) σημεία στο επίπεδο.
-  Να αποδείξετε ότι υπάρχει σημείο τέτοιο ώστε,
-  αν αφαιρεθεί, η ελάχιστη απόσταση μεταξύ των υπολοίπων
-  σημείων δεν μειώνεται.
-  </p>
-
-  <p><strong>3. Θεωρία Γραφημάτων (Μετασχηματισμός)</strong><br>
-  Σε συνεκτικό γράφημα, να αποδείξετε ότι υπάρχει κορυφή
-  της οποίας η αφαίρεση δεν αυξάνει τον αριθμό των συνιστωσών συνοχής.
-  </p>
-</div>
-
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
-<div class="lang-en" style="display:none;">
-
-<p>
-The hardest part of many mathematical problems is not computation,
-but deciding <strong>where to start</strong>.
-Choosing the wrong starting point can hide even the correct idea.
-</p>
-
-<p>
-The <strong>Extremal Element strategy</strong> is based on a simple principle:
-start where the freedom is smallest.
-The smallest, largest, first, or last element is the most constrained —
-and constraints reveal structure.
-</p>
-
-<p>
-Understanding what an extremal element <em>cannot</em> do
-often leads directly to a contradiction or to the desired conclusion.
-</p>
-
-<h4>When to use it</h4>
-<ul>
-  <li>Statements involving “at most”, “at least”</li>
-  <li>Minimum / maximum conditions</li>
-  <li>Uniqueness or exclusion arguments</li>
-</ul>
-
-<h4>Thinking steps</h4>
-<ol>
-  <li>Identify the extremal element</li>
-  <li>List its constraints</li>
-  <li>Analyze how it interacts with others</li>
-  <li>Use the restriction to conclude</li>
-</ol>
-
-<h4>Problems</h4>
-<p><strong>Combinatorics</strong>: Unique pairwise sums → at most one even number.</p>
-<p><strong>Geometry</strong>: Removing a point without decreasing minimal distance.</p>
-<p><strong>Graph Theory</strong>: Vertex whose removal preserves connectivity.</p>
-
-</div>
-
-</div>
-</div>
-</section>
- 
 </body>
 </html>
