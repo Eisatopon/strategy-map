@@ -1284,7 +1284,226 @@ In a finite graph every vertex has degree ≥ 2. Prove there is a cycle.</p>
     <div class="lang-en">
       <p><strong>P1.</strong> Prove four points are concyclic using equations.</p>
       <button onclick="toggleHint('ga-m1en')">Hint
-<footer>
+<!-- ================= STRATEGY 11 : REVERSE QUESTION ================= -->
+<section id="reverse" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#fff1f2,#ffe4e6);padding:24px 28px;">
+  <h2 class="lang-el">🔴 11. Αντιστροφή Ερωτήματος</h2>
+  <h2 class="lang-en">🔴 11. Reverse Question</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Γράψε καθαρά το αρχικό ζητούμενο.</li>
+      <li>Διατύπωσε το αντίθετο ή την άρνησή του.</li>
+      <li>Μελέτησε πότε αυτή η άρνηση είναι δυνατή.</li>
+      <li>Επέστρεψε στο αρχικό ερώτημα.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>State the original question clearly.</li>
+      <li>Formulate its negation.</li>
+      <li>Analyse when the negation can occur.</li>
+      <li>Return to the original problem.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('rev-easy')">Εύκολο</button>
+    <button onclick="openLevel('rev-med')">Μέτριο</button>
+    <button onclick="openLevel('rev-hard')">Δύσκολο</button>
+  </div>
+  <div id="rev-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ότι μια ιδιότητα ισχύει για όλους τους φυσικούς ξεκινώντας από το «πότε θα απέτυχε».</p>
+      <button onclick="toggleHint('rev-e1')">Hint</button>
+      <div id="rev-e1" class="hint-box">Βρες τον μικρότερο φυσικό που την παραβιάζει.</div>
+      <p><strong>Π2.</strong> Να δείξεις ότι μια γεωμετρική κατασκευή είναι μοναδική ξεκινώντας από το «πότε θα υπήρχαν δύο».</p>
+      <button onclick="toggleHint('rev-e2')">Hint</button>
+      <div id="rev-e2" class="hint-box">Υπόθεσε δύο διαφορετικές και δες που συγκρούονται.</div>
+      <p><strong>Π3.</strong> Να αποδείξεις ότι μια εξίσωση έχει ακριβώς μία λύση ξεκινώντας από το «πότε θα είχε περισσότερες».</p>
+      <button onclick="toggleHint('rev-e3')">Hint</button>
+      <div id="rev-e3" class="hint-box">Υπόθεσε δύο λύσεις και δες τι εξαναγκάζεται.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove a property holds for all naturals by starting from “when would it fail?”</p>
+      <button onclick="toggleHint('rev-e1en')">Hint</button>
+      <div id="rev-e1en" class="hint-box">Find the smallest natural that violates it.</div>
+      <p><strong>P2.</strong> Show a geometric construction is unique by starting from “when could two exist?”</p>
+      <button onclick="toggleHint('rev-e2en')">Hint</button>
+      <div id="rev-e2en" class="hint-box">Assume two different ones and watch them clash.</div>
+      <p><strong>P3.</strong> Prove an equation has exactly one solution by starting from “when would it have more?”</p>
+      <button onclick="toggleHint('rev-e3en')">Hint</button>
+      <div id="rev-e3en" class="hint-box">Assume two solutions and see what is forced.</div>
+    </div>
+  </div>
+  <div id="rev-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να δείξεις ότι μια ανισότητα ισχύει για όλους τους πραγματικούς ξεκινώντας από το «πότε θα ήταν ψευδής».</p>
+      <button onclick="toggleHint('rev-m1')">Hint</button>
+      <div id="rev-m1" class="hint-box">Υπόθεσε ότι ισχύει το αντίθετο και δες τι συμβαίνει.</div>
+      <p><strong>Π2.</strong> Να αποδείξεις ότι ένα σημείο ικανοποιεί μια συνθήκη ξεκινώντας από το «τι θα συνέβαινε αν δεν την ικανοποιούσε».</p>
+      <button onclick="toggleHint('rev-m2')">Hint</button>
+      <div id="rev-m2" class="hint-box">Μελέτησε το συμπλήρωμα της συνθήκης.</div>
+      <p><strong>Π3.</strong> Να δείξεις ότι μια παράσταση παίρνει ακέραιες τιμές ξεκινώντας από το «πότε θα ήταν δεκαδική».</p>
+      <button onclick="toggleHint('rev-m3')">Hint</button>
+      <div id="rev-m3" class="hint-box">Υπόθεσε δεκαδικό μέρος και δες που οδηγεί.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove an inequality for all reals by starting from “when would it be false?”</p>
+      <button onclick="toggleHint('rev-m1en')">Hint</button>
+      <div id="rev-m1en" class="hint-box">Assume the opposite and see what happens.</div>
+      <p><strong>P2.</strong> Prove a point satisfies a condition by starting from “what if it didn’t?”</p>
+      <button onclick="toggleHint('rev-m2en')">Hint</button>
+      <div id="rev-m2en" class="hint-box">Study the complement of the condition.</div>
+      <p><strong>P3.</strong> Show an expression takes integer values by starting from “when would it be fractional?”</p>
+      <button onclick="toggleHint('rev-m3en')">Hint</button>
+      <div id="rev-m3en" class="hint-box">Assume a fractional part and see where it leads.</div>
+    </div>
+  </div>
+  <div id="rev-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να δείξεις ότι μια πρόταση ισχύει για κάθε n ξεκινώντας από το «πότε θα απέτυχε για n+1».</p>
+      <button onclick="toggleHint('rev-h1')">Hint</button>
+      <div id="rev-h1" class="hint-box">Χρησιμοποίησε επαγωγή και το αντίθετο.</div>
+      <p><strong>Π2.</strong> Να αποδείξεις μοναδικότητα λύσης ξεκινώντας από το «τι θα συνέβαινε αν υπήρχαν δύο» και οδηγώντας σε αντίφαση.</p>
+      <button onclick="toggleHint('rev-h2')">Hint</button>
+      <div id="rev-h2" class="hint-box">Υπόθεσε δύο λύσεις και δες που διαφέρουν.</div>
+      <p><strong>Π3.</strong> Να δείξεις ότι μια κατασκευή είναι αδύνατη ξεκινώντας από το «τι θα συνέβαινε αν ήταν δυνατή» και οδηγώντας σε παράλογο.</p>
+      <button onclick="toggleHint('rev-h3')">Hint</button>
+      <div id="rev-h3" class="hint-box">Υπόθεσε ότι είναι δυνατή και δες το παράλογο.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove a statement holds for every n by starting from “when would it fail for n+1?”</p>
+      <button onclick="toggleHint('rev-h1en')">Hint</button>
+      <div id="rev-h1en" class="hint-box">Use induction and the opposite.</div>
+      <p><strong>P2.</strong> Prove uniqueness by starting from “what if two existed?” and deriving a contradiction.</p>
+      <button onclick="toggleHint('rev-h2en')">Hint</button>
+      <div id="rev-h2en" class="hint-box">Assume two solutions and see where they differ.</div>
+      <p><strong>P3.</strong> Show a construction is impossible by starting from “what if it were possible?” and reaching absurdity.</p>
+      <button onclick="toggleHint('rev-h3en')">Hint</button>
+      <div id="rev-h3en" class="hint-box">Assume it is possible and watch the absurdity.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 12 : AUXILIARY OBJECT ================= -->
+<section id="auxiliary" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1);padding:24px 28px;">
+  <h2 class="lang-el">🟢 12. Εισαγωγή Βοηθητικού Αντικειμένου</h2>
+  <h2 class="lang-en">🟢 12. Auxiliary Object</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Αναγνώρισε ότι κάτι λείπει.</li>
+      <li>Ρώτησε: «Τι θα με βοηθούσε να υπήρχε;»</li>
+      <li>Εισήγαγε το αντικείμενο χωρίς φόβο.</li>
+      <li>Μελέτησε τις νέες σχέσεις που προκύπτουν.</li>
+      <li>Κράτα το συμπέρασμα – όχι το αντικείμενο.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Recognise that something is missing.</li>
+      <li>Ask: “What would help if it existed?”</li>
+      <li>Add the object freely.</li>
+      <li>Study the new relationships.</li>
+      <li>Keep the conclusion – discard the object.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('aux-easy')">Εύκολο</button>
+    <button onclick="openLevel('aux-med')">Μέτριο</button>
+    <button onclick="openLevel('aux-hard')">Δύσκολο</button>
+  </div>
+  <div id="aux-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να προσθέσεις ένα σημείο για να αποκαλυφθεί συμμετρία σε τρίγωνο.</p>
+      <button onclick="toggleHint('aux-e1')">Hint</button>
+      <div id="aux-e1" class="hint-box">Βάλε το κέντρο του περιγεγραμμένου κύκλου.</div>
+      <p><strong>Π2.</strong> Να προσθέσεις μια «φανταστική» μπίλια για να απλοποιηθεί καταμέτρηση.</p>
+      <button onclick="toggleHint('aux-e2')">Hint</button>
+      <div id="aux-e2" class="hint-box">Κάνε το σύνολο συμμετρικό.</div>
+      <p><strong>Π3.</strong> Να προσθέσεις μεταβλητή για να εμφανιστεί διαιρετότητα.</p>
+      <button onclick="toggleHint('aux-e3')">Hint</button>
+      <div id="aux-e3" class="hint-box">Κάνε την έκφραση πολυώνυμο.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Add a point to reveal symmetry in a triangle.</p>
+      <button onclick="toggleHint('aux-e1en')">Hint</button>
+      <div id="aux-e1en" class="hint-box">Use the circumcentre.</div>
+      <p><strong>P2.</strong> Add a “phantom” ball to simplify counting.</p>
+      <button onclick="toggleHint('aux-e2en')">Hint</button>
+      <div id="aux-e2en" class="hint-box">Make the set symmetric.</div>
+      <p><strong>P3.</strong> Add a variable to expose divisibility.</p>
+      <button onclick="toggleHint('aux-e3en')">Hint</button>
+      <div id="aux-e3en" class="hint-box">Turn the expression into a polynomial.</div>
+    </div>
+  </div>
+  <div id="aux-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να προσθέσεις ευθεία για να αποκαλυφθεί παράλληλη σχέση.</p>
+      <button onclick="toggleHint('aux-m1')">Hint</button>
+      <div id="aux-m1" class="hint-box">Χρησιμοποίησε παράλληλη που περνά από σημείο.</div>
+      <p><strong>Π2.</strong> Να προσθέσεις κύκλο για να χρησιμοποιήσεις γωνιακές σχέσεις.</p>
+      <button onclick="toggleHint('aux-m2')">Hint</button>
+      <div id="aux-m2" class="hint-box">Χρησιμοποίησε περιφερειακές γωνίες.</div>
+      <p><strong>Π3.</strong> Να προσθέσεις «τεχνητό» στοιχείο για να ισοσκελίσεις καταμέτρηση.</p>
+      <button onclick="toggleHint('aux-m3')">Hint</button>
+      <div id="aux-m3" class="hint-box">Κάνε δύο σύνολα ίσα σε μέγεθος.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Add a line to reveal a parallel relationship.</p>
+      <button onclick="toggleHint('aux-m1en')">Hint</button>
+      <div id="aux-m1en" class="hint-box">Use a parallel through a point.</div>
+      <p><strong>P2.</strong> Add a circle to use angle relations.</p>
+      <button onclick="toggleHint('aux-m2en')">Hint</button>
+      <div id="aux-m2en" class="hint-box">Use inscribed angles.</div>
+      <p><strong>P3.</strong> Add an “artificial” element to balance counting.</p>
+      <button onclick="toggleHint('aux-m3en')">Hint</button>
+      <div id="aux-m3en" class="hint-box">Make two sets equal in size.</div>
+    </div>
+  </div>
+  <div id="aux-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να προσθέσεις κορυφή σε γράφημα για να αναδειχθεί ιδιότητα.</p>
+      <button onclick="toggleHint('aux-h1')">Hint</button>
+      <div id="aux-h1" class="hint-box">Χρησιμοποίησε τη νέα κορυφή ως γέφυρα.</div>
+      <p><strong>Π2.</strong> Να προσθέσεις «φανταστική» μεταβλητή για να εμφανιστεί κρυφή διαιρετότητα.</p>
+      <button onclick="toggleHint('aux-h2')">Hint</button>
+      <div id="aux-h2" class="hint-box">Κάνε την έκφραση πολυώνυμο ως προς τη νέα μεταβλητή.</div>
+      <p><strong>Π3.</strong> Να προσθέσεις βοηθητικό σύνολο για να ισοσκελίσεις συνδυαστική ισότητα.</p>
+      <button onclick="toggleHint('aux-h3')">Hint</button>
+      <div id="aux-h3" class="hint-box">Κάνε δύο οικογένειες ίσες.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Add a vertex to a graph to reveal a property.</p>
+      <button onclick="toggleHint('aux-h1en')">Hint</button>
+      <div id="aux-h1en" class="hint-box">Use the new vertex as a bridge.</div>
+      <p><strong>P2.</strong> Add a “phantom” variable to expose hidden divisibility.</p>
+      <button onclick="toggleHint('aux-h2en')">Hint</button>
+      <div id="aux-h2en" class="hint-box">Make the expression polynomial in the new variable.</div>
+      <p><strong>P3.</strong> Add an auxiliary set to balance a combinatorial identity.</p>
+      <button onclick="toggleHint('aux-h3en')">Hint</button>
+      <div id="aux-h3en" class="hint-box">Make two families equal.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+        <footer>
 EisatoponAI — Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων<br>
 Learning how to think, not what to memorize.
 </footer>
