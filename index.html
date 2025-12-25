@@ -558,7 +558,732 @@ In a finite graph every vertex has degree ≥ 2. Prove there is a cycle.</p>
 </div>
 </div>
 </section>
+<!-- ================= STRATEGY 4 : REFORMULATION ================= -->
+<section id="reformulation" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
+  <h2 class="lang-el">🟠 4. Αναδιατύπωση</h2>
+  <h2 class="lang-en">🟠 4. Reformulation</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Ρώτησε: «Τι λέει πραγματικά αυτό το πρόβλημα;»</li>
+      <li>Αφαίρεσε λέξεις ή δεδομένα που δεν επηρεάζουν το ζητούμενο.</li>
+      <li>Αντικατέστησε έννοιες με ισοδύναμες.</li>
+      <li>Ξαναγράψε το πρόβλημα στην απλούστερη μορφή.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Ask: “What is this problem really saying?”</li>
+      <li>Remove details that do not affect the goal.</li>
+      <li>Replace concepts with equivalent ones.</li>
+      <li>Rewrite the problem in its simplest form.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('ref-easy')">Εύκολο</button>
+    <button onclick="openLevel('ref-med')">Μέτριο</button>
+    <button onclick="openLevel('ref-hard')">Δύσκολο</button>
+  </div>
+  <div id="ref-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αναδιατυπώσεις πρόβλημα με πολλές σχέσεις ώστε να εξαρτάται από μία βασική ιδιότητα.</p>
+      <button onclick="toggleHint('ref-e1')">Hint</button>
+      <div id="ref-e1" class="hint-box">Βρες ποια σχέση είναι η μόνη που μετράει.</div>
+      <p><strong>Π2.</strong> Να αναδιατυπώσεις γεωμετρικό πρόβλημα με πολλές γωνίες χρησιμοποιώντας μόνο αποστάσεις.</p>
+      <button onclick="toggleHint('ref-e2')">Hint</button>
+      <div id="ref-e2" class="hint-box">Μετέτρεψε γωνίες σε αποστάσεις.</div>
+      <p><strong>Π3.</strong> Να αναδιατυπώσεις πρόβλημα θεωρίας αριθμών ως πρόβλημα ισοτιμίας modulo.</p>
+      <button onclick="toggleHint('ref-e3')">Hint</button>
+      <div id="ref-e3" class="hint-box">Μετέτρεψε διαιρετότητα σε ισοτιμία.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Reformulate a problem with many relations so it depends on a single core property.</p>
+      <button onclick="toggleHint('ref-e1en')">Hint</button>
+      <div id="ref-e1en" class="hint-box">Find the only relation that matters.</div>
+      <p><strong>P2.</strong> Reformulate a geometry problem with many angles using only distances.</p>
+      <button onclick="toggleHint('ref-e2en')">Hint</button>
+      <div id="ref-e2en" class="hint-box">Turn angles into distances.</div>
+      <p><strong>P3.</strong> Reformulate a number-theory divisibility problem as a modular-arithmetic problem.</p>
+      <button onclick="toggleHint('ref-e3en')">Hint</button>
+      <div id="ref-e3en" class="hint-box">Turn divisibility into congruence.</div>
+    </div>
+  </div>
+  <div id="ref-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αναδιατυπώσεις ανισότητα με απόλυτες τιμές ως πρόβλημα αποστάσεων.</p>
+      <button onclick="toggleHint('ref-m1')">Hint</button>
+      <div id="ref-m1" class="hint-box">|x-a| = απόσταση στον άξονα.</div>
+      <p><strong>Π2.</strong> Να αναδιατυπώσεις εξίσωση δύο μεταβλητών ως γεωμετρικός τόπος.</p>
+      <button onclick="toggleHint('ref-m2')">Hint</button>
+      <div id="ref-m2" class="hint-box">Μετέτρεψε την εξίσωση σε σημεία του επιπέδου.</div>
+      <p><strong>Π3.</strong> Να αναδιατυπώσεις πρόβλημα μεγίστου ως πρόβλημα συμμετρίας.</p>
+      <button onclick="toggleHint('ref-m3')">Hint</button>
+      <div id="ref-m3" class="hint-box">Βρες συμμετρία και μείωσε τις παραμέτρους.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Reformulate an absolute-value inequality as a distance problem.</p>
+      <button onclick="toggleHint('ref-m1en')">Hint</button>
+      <div id="ref-m1en" class="hint-box">|x-a| = distance on the line.</div>
+      <p><strong>P2.</strong> Reformulate a two-variable equation as a locus.</p>
+      <button onclick="toggleHint('ref-m2en')">Hint</button>
+      <div id="ref-m2en" class="hint-box">Turn the equation into points in the plane.</div>
+      <p><strong>P3.</strong> Reformulate a maximisation problem as a symmetry problem.</p>
+      <button onclick="toggleHint('ref-m3en')">Hint</button>
+      <div id="ref-m3en" class="hint-box">Find symmetry and reduce parameters.</div>
+    </div>
+  </div>
+  <div id="ref-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αναδιατυπώσεις πρόβλημα με πολλές συνθήκες ως πρόβλημα βέλτιστης επιλογής.</p>
+      <button onclick="toggleHint('ref-h1')">Hint</button>
+      <div id="ref-h1" class="hint-box">Αντικατέστησε όλες τις συνθήκες με μία βέλτιστη.</div>
+      <p><strong>Π2.</strong> Να αναδιατυπώσεις πρόβλημα αριθμών ως πρόβλημα συνδυαστικής.</p>
+      <button onclick="toggleHint('ref-h2')">Hint</button>
+      <div id="ref-h2" class="hint-box">Μετέτρεψε αριθμούς σε αντικείμενα και μέτρα.</div>
+      <p><strong>Π3.</strong> Να αναδιατυπώσεις πρόβλημα γραφημάτων ως πρόβλημα χρωματισμού.</p>
+      <button onclick="toggleHint('ref-h3')">Hint</button>
+      <div id="ref-h3" class="hint-box">Μετέτρεψε κορυφές και ακμές σε χρώματα.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Reformulate a many-condition problem as an optimal-choice problem.</p>
+      <button onclick="toggleHint('ref-h1en')">Hint</button>
+      <div id="ref-h1en" class="hint-box">Replace all conditions with one optimal.</div>
+      <p><strong>P2.</strong> Reformulate a number problem as a combinatorial problem.</p>
+      <button onclick="toggleHint('ref-h2en')">Hint</button>
+      <div id="ref-h2en" class="hint-box">Turn numbers into objects and counts.</div>
+      <p><strong>P3.</strong> Reformulate a graph problem as a colouring problem.</p>
+      <button onclick="toggleHint('ref-h3en')">Hint</button>
+      <div id="ref-h3en" class="hint-box">Turn vertices and edges into colours.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
 
+<!-- ================= STRATEGY 5 : MEANINGFUL CASES ================= -->
+<section id="cases" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#ecfeff,#cffafe);padding:24px 28px;">
+  <h2 class="lang-el">🟦 5. Ουσιαστικές Περιπτώσεις</h2>
+  <h2 class="lang-en">🟦 5. Meaningful Cases</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Ρώτησε: «Πότε αλλάζει ουσιαστικά το πρόβλημα;»</li>
+      <li>Εντόπισε μία ή δύο κρίσιμες ιδιότητες.</li>
+      <li>Χώρισε βάσει αυτών.</li>
+      <li>Βεβαιώσου ότι οι περιπτώσεις δεν επικαλύπτονται.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Ask: “When does the problem truly change?”</li>
+      <li>Identify one or two critical properties.</li>
+      <li>Split based on these.</li>
+      <li>Ensure cases do not overlap.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('cas-easy')">Εύκολο</button>
+    <button onclick="openLevel('cas-med')">Μέτριο</button>
+    <button onclick="openLevel('cas-hard')">Δύσκολο</button>
+  </div>
+  <div id="cas-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να λυθεί εξίσωση με απόλυτες τιμές χωρίζοντας ως προς πρόσημο.</p>
+      <button onclick="toggleHint('cas-e1')">Hint</button>
+      <div id="cas-e1" class="hint-box">Διάσπαση ανάλογα με το πρόσημο των εκφράσεων.</div>
+      <p><strong>Π2.</strong> Να εξετάσεις θέση σημείου ως προς κύκλο (μέσα/έξω/πάνω).</p>
+      <button onclick="toggleHint('cas-e2')">Hint</button>
+      <div id="cas-e2" class="hint-box">Τρεις περιπτώσεις: εσωτερικό, όριο, εξωτερικό.</div>
+      <p><strong>Π3.</strong> Να χωρίσεις ακέραιο \(n\) σε άρτιο/περιττό.</p>
+      <button onclick="toggleHint('cas-e3')">Hint</button>
+      <div id="cas-e3" class="hint-box">Δύο περιπτώσεις: \(n\bmod 2\).</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Solve an equation with absolute values by splitting on sign.</p>
+      <button onclick="toggleHint('cas-e1en')">Hint</button>
+      <div id="cas-e1en" class="hint-box">Split according to the sign of expressions.</div>
+      <p><strong>P2.</strong> Study a point’s position relative to a circle (inside/on/outside).</p>
+      <button onclick="toggleHint('cas-e2en')">Hint</button>
+      <div id="cas-e2en" class="hint-box">Three cases: interior, boundary, exterior.</div>
+      <p><strong>P3.</strong> Split integer \(n\) into even/odd.</p>
+      <button onclick="toggleHint('cas-e3en')">Hint</button>
+      <div id="cas-e3en" class="hint-box">Two cases: \(n\bmod 2\).</div>
+    </div>
+  </div>
+  <div id="cas-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να χωρίσεις πρόβλημα μέγιστου σε περιπτώσεις ανάλογα με το αν μεταβλητή είναι άρτια ή περιττή.</p>
+      <button onclick="toggleHint('cas-m1')">Hint</button>
+      <div id="cas-m1" class="hint-box">Άρτιο/περιττό → διαφορετική συμπεριφορά.</div>
+      <p><strong>Π2.</strong> Να χωρίσεις γεωμετρικό πρόβλημα ανάλογα με το αν σημείο βρίσκεται εντός ή εκτός κύκλου.</p>
+      <button onclick="toggleHint('cas-m2')">Hint</button>
+      <div id="cas-m2" class="hint-box">Χρησιμοποίησε τη σχέση απόστασης από κέντρο.</div>
+      <p><strong>Π3.</strong> Να χωρίσεις πρόβλημα κατανομής σε περιπτώσεις ανάλογα με το μέγιστο στοιχείο.</p>
+      <button onclick="toggleHint('cas-m3')">Hint</button>
+      <div id="cas-m3" class="hint-box">Θεώρησε το μέγιστο ξεχωριστά.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Split a maximisation problem into cases based on parity of a variable.</p>
+      <button onclick="toggleHint('cas-m1en')">Hint</button>
+      <div id="cas-m1en" class="hint-box">Even/odd → different behaviour.</div>
+      <p><strong>P2.</strong> Split a geometry problem based on whether a point lies inside or outside a circle.</p>
+      <button onclick="toggleHint('cas-m2en')">Hint</button>
+      <div id="cas-m2en" class="hint-box">Use distance from centre.</div>
+      <p><strong>P3.</strong> Split a distribution problem based on the largest element.</p>
+      <button onclick="toggleHint('cas-m3en')">Hint</button>
+      <div id="cas-m3en" class="hint-box">Consider the maximum separately.</div>
+    </div>
+  </div>
+  <div id="cas-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να χωρίσεις πρόβλημα συνδυαστικής ανάλογα με το μέγεθος του συνόλου.</p>
+      <button onclick="toggleHint('cas-h1')">Hint</button>
+      <div id="cas-h1" class="hint-box">Μικρό/μεσαίο/μεγάλο σύνολο → διαφορετική τακτική.</div>
+      <p><strong>Π2.</strong> Να χωρίσεις πρόβλημα γραφημάτων ανάλογα με τον βαθμό της κορυφής.</p>
+      <button onclick="toggleHint('cas-h2')">Hint</button>
+      <div id="cas-h2" class="hint-box">Βαθμός 0,1,≥2 → διαφορετική συμπεριφορά.</div>
+      <p><strong>Π3.</strong> Να χωρίσεις πρόβλημα αριθμών σε περιπτώσεις modulo πρώτου.</p>
+      <button onclick="toggleHint('cas-h3')">Hint</button>
+      <div id="cas-h3" class="hint-box">Χρησιμοποίησε ισοτιμίες mod p.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Split a combinatorial problem by size of the set.</p>
+      <button onclick="toggleHint('cas-h1en')">Hint</button>
+      <div id="cas-h1en" class="hint-box">Small/medium/large set → different tactic.</div>
+      <p><strong>P2.</strong> Split a graph problem by vertex degree.</p>
+      <button onclick="toggleHint('cas-h2en')">Hint</button>
+      <div id="cas-h2en" class="hint-box">Degree 0,1,≥2 → different behaviour.</div>
+      <p><strong>P3.</strong> Split a number problem into cases modulo a prime.</p>
+      <button onclick="toggleHint('cas-h3en')">Hint</button>
+      <div id="cas-h3en" class="hint-box">Use congruences mod p.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 6 : SYMMETRY – ANTISYMMETRY ================= -->
+<section id="symmetry" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
+  <h2 class="lang-el">🟠 6. Συμμετρία – Αντισυμμετρία</h2>
+  <h2 class="lang-en">🟠 6. Symmetry – Antisymmetry</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Εντόπισε ποια αντικείμενα είναι ισοδύναμα.</li>
+      <li>Ρώτησε: «Τι αλλάζει αν τα ανταλλάξω;»</li>
+      <li>Συμπέρανε ότι ορισμένα μεγέθη πρέπει να είναι ίσα.</li>
+      <li>Αν χρειάζεται, υπόθεσε ανισότητα και αναζήτησε άτοπο.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Identify which objects are equivalent.</li>
+      <li>Ask: “What changes if I swap them?”</li>
+      <li>Conclude that certain quantities must be equal.</li>
+      <li>If needed, assume inequality and seek contradiction.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('sym-easy')">Εύκολο</button>
+    <button onclick="openLevel('sym-med')">Μέτριο</button>
+    <button onclick="openLevel('sym-hard')">Δύσκολο</button>
+  </div>
+  <div id="sym-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Δίνονται θετικοί αριθμοί \(a,b,c\) με συμμετρικές συνθήκες. Να εξεταστεί πότε μια συμμετρική έκφραση παίρνει ακραία τιμή.</p>
+      <button onclick="toggleHint('sym-e1')">Hint</button>
+      <div id="sym-e1" class="hint-box">Λόγω συμμετρίας αρκεί \(a=b=c\).</div>
+      <p><strong>Π2.</strong> Σε κανονικό πολύγωνο να αποδειχθεί ότι ορισμένες αποστάσεις είναι ίσες χωρίς υπολογισμούς.</p>
+      <button onclick="toggleHint('sym-e2')">Hint</button>
+      <div id="sym-e2" class="hint-box">Χρησιμοποίησε περιστροφική συμμετρία.</div>
+      <p><strong>Π3.</strong> Δίνεται κατανομή αντικειμένων με πλήρη συμμετρία ως προς τις θέσεις. Να δείξετε ότι δεν μπορεί να υπάρξει «προνομιακό» αντικείμενο.</p>
+      <button onclick="toggleHint('sym-e3')">Hint</button>
+      <div id="sym-e3" class="hint-box">Όλα τα αντικείμενα παίζουν τον ίδιο ρόλο.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Positive numbers \(a,b,c\) satisfy symmetric conditions; study when a symmetric expression attains an extreme value.</p>
+      <button onclick="toggleHint('sym-e1en')">Hint</button>
+      <div id="sym-e1en" class="hint-box">By symmetry check \(a=b=c\).</div>
+      <p><strong>P2.</strong> In a regular polygon prove some distances are equal without computation.</p>
+      <button onclick="toggleHint('sym-e2en')">Hint</button>
+      <div id="sym-e2en" class="hint-box">Use rotational symmetry.</div>
+      <p><strong>P3.</strong> An object distribution is fully symmetric; show no object can be privileged.</p>
+      <button onclick="toggleHint('sym-e3en')">Hint</button>
+      <div id="sym-e3en" class="hint-box">All objects play the same role.</div>
+    </div>
+  </div>
+  <div id="sym-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να δείξεις ότι σε σύνολο με συμμετρική σχέση τα μέγιστα επιτυγχάνονται όταν όλες οι μεταβλητές είναι ίσες.</p>
+      <button onclick="toggleHint('sym-m1')">Hint</button>
+      <div id="sym-m1" class="hint-box">Χρησιμοποίησε αντισυμμετρία για άτοπο.</div>
+      <p><strong>Π2.</strong> Να αποδείξεις ισότητα γωνιών χωρίς υπολογισμούς χρησιμοποιώντας συμμετρία.</p>
+      <button onclick="toggleHint('sym-m2')">Hint</button>
+      <div id="sym-m2" class="hint-box">Αρκεί να δείξεις ότι ανταλλαγή δεν αλλάζει τη γωνία.</div>
+      <p><strong>Π3.</strong> Να δείξεις ότι σε συμμετρικό πίνακα δύο γραμμές έχουν ίσα άθροισμα.</p>
+      <button onclick="toggleHint('sym-m3')">Hint</button>
+      <div id="sym-m3" class="hint-box">Λόγω συμμετρίας οι γραμμές είναι ισοδύναμες.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Show that in a set with symmetric relation maxima occur when all variables are equal.</p>
+      <button onclick="toggleHint('sym-m1en')">Hint</button>
+      <div id="sym-m1en" class="hint-box">Use antisymmetry for contradiction.</div>
+      <p><strong>P2.</strong> Prove angle equality without computation using symmetry.</p>
+      <button onclick="toggleHint('sym-m2en')">Hint</button>
+      <div id="sym-m2en" class="hint-box">Swapping does not change the angle.</div>
+      <p><strong>P3.</strong> Show that in a symmetric matrix two rows have equal sum.</p>
+      <button onclick="toggleHint('sym-m3en')">Hint</button>
+      <div id="sym-m3en" class="hint-box">Symmetry makes rows equivalent.</div>
+    </div>
+  </div>
+  <div id="sym-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να δείξεις ότι σε συμμετρικό διαγωνισμό όλοι οι παίκτες έχουν την ίδια πιθανότητα νίκης.</p>
+      <button onclick="toggleHint('sym-h1')">Hint</button>
+      <div id="sym-h1" class="hint-box">Η συμμετρία επιβάλλει ίση πιθανότητα.</div>
+      <p><strong>Π2.</strong> Να αποδείξεις ότι σε συμμετρικό γράφημα δύο κορυφές έχουν τον ίδιο βαθμό.</p>
+      <button onclick="toggleHint('sym-h2')">Hint</button>
+      <div id="sym-h2" class="hint-box">Χρησιμοποίησε αυτομορφισμό.</div>
+      <p><strong>Π3.</strong> Να δείξεις ότι συμμετρική κατανομή πόρων οδηγεί σε ίσα μερίδια.</p>
+      <button onclick="toggleHint('sym-h3')">Hint</button>
+      <div id="sym-h3" class="hint-box">Κάθε ανταλλαγή διατηρεί τη συμμετρία.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Show that in a symmetric tournament every player has the same winning probability.</p>
+      <button onclick="toggleHint('sym-h1en')">Hint</button>
+      <div id="sym-h1en" class="hint-box">Symmetry enforces equal probability.</div>
+      <p><strong>P2.</strong> Prove that in a symmetric graph two vertices have the same degree.</p>
+      <button onclick="toggleHint('sym-h2en')">Hint</button>
+      <div id="sym-h2en" class="hint-box">Use automorphism.</div>
+      <p><strong>P3.</strong> Show that symmetric resource allocation leads to equal shares.</p>
+      <button onclick="toggleHint('sym-h3en')">Hint</button>
+      <div id="sym-h3en" class="hint-box">Every swap preserves symmetry.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 7 : BOUNDARY VALUES ================= -->
+<section id="boundary" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#ecfeff,#cffafe);padding:24px 28px;">
+  <h2 class="lang-el">🔷 7. Οριακές Τιμές</h2>
+  <h2 class="lang-en">🔷 7. Boundary Values</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Εντόπισε ποια μεγέθη μπορούν να μεταβληθούν.</li>
+      <li>Δοκίμασε ακραίες τιμές ή διατάξεις.</li>
+      <li>Παρατήρησε τι αλλάζει και τι μένει.</li>
+      <li>Χρησιμοποίησε το άκρο ως έλεγχο ή άτοπο.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Identify quantities that can vary.</li>
+      <li>Test extreme values or configurations.</li>
+      <li>Observe what changes and what remains.</li>
+      <li>Use the boundary as a test or contradiction.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('bnd-easy')">Εύκολο</button>
+    <button onclick="openLevel('bnd-med')">Μέτριο</button>
+    <button onclick="openLevel('bnd-hard')">Δύσκολο</button>
+  </div>
+  <div id="bnd-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Θετικοί πραγματικοί με σταθερό άθροισμα. Να εξεταστεί πότε μια έκφραση παίρνει μέγιστο ή ελάχιστο.</p>
+      <button onclick="toggleHint('bnd-e1')">Hint</button>
+      <div id="bnd-e1" class="hint-box">Δοκίμασε ένα να γίνει πολύ μικρό.</div>
+      <p><strong>Π2.</strong> Κατανομή αντικειμένων σε κουτιά. Να διερευνηθεί ποια κατανομή οδηγεί σε ακραία τιμή.</p>
+      <button onclick="toggleHint('bnd-e2')">Hint</button>
+      <div id="bnd-e2" class="hint-box">Βάλε όλα σε ένα κουτί.</div>
+      <p><strong>Π3.</strong> Οικογένεια σχημάτων με σταθερή περίμετρο. Να εξεταστεί ποιο σχήμα οδηγεί σε ακραίο εμβαδόν.</p>
+      <button onclick="toggleHint('bnd-e3')">Hint</button>
+      <div id="bnd-e3" class="hint-box">Δοκίμασε «εκφυλισμένο» σχήμα.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Positive reals with fixed sum; find when an expression attains max or min.</p>
+      <button onclick="toggleHint('bnd-e1en')">Hint</button>
+      <div id="bnd-e1en" class="hint-box">Try one becoming very small.</div>
+      <p><strong>P2.</strong> Distribute objects into boxes; investigate which distribution gives an extreme value.</p>
+      <button onclick="toggleHint('bnd-e2en')">Hint</button>
+      <div id="bnd-e2en" class="hint-box">Put everything in one box.</div>
+      <p><strong>P3.</strong> Family of figures with fixed perimeter; determine which attains extreme area.</p>
+      <button onclick="toggleHint('bnd-e3en')">Hint</button>
+      <div id="bnd-e3en" class="hint-box">Try a degenerate figure.</div>
+    </div>
+  </div>
+  <div id="bnd-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να εξετάσεις πότε μια ανισότητα ισχύει εξετάζοντας τα άκρα των μεταβλητών.</p>
+      <button onclick="toggleHint('bnd-m1')">Hint</button>
+      <div id="bnd-m1" class="hint-box">Άκρα: 0 ή μέγιστο επιτρεπτό.</div>
+      <p><strong>Π2.</strong> Να δείξεις ότι μια κατασκευή δεν είναι δυνατή για μεγάλο n.</p>
+      <button onclick="toggleHint('bnd-m2')">Hint</button>
+      <div id="bnd-m2" class="hint-box">Δοκίμασε n → ∞.</div>
+      <p><strong>Π3.</strong> Να βρεις το ελάχιστο μιας παράστασης εξετάζοντας το άκρο του ορισμού.</p>
+      <button onclick="toggleHint('bnd-m3')">Hint</button>
+      <div id="bnd-m3" class="hint-box">Όριο στο άκρο του τομέα.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Investigate when an inequality holds by checking variable extremes.</p>
+      <button onclick="toggleHint('bnd-m1en')">Hint</button>
+      <div id="bnd-m1en" class="hint-box">Extremes: 0 or maximum allowed.</div>
+      <p><strong>P2.</strong> Show that a construction is impossible for large n.</p>
+      <button onclick="toggleHint('bnd-m2en')">Hint</button>
+      <div id="bnd-m2en" class="hint-box">Try n → ∞.</div>
+      <p><strong>P3.</strong> Find the minimum of an expression by checking the boundary of its domain.</p>
+      <button onclick="toggleHint('bnd-m3en')">Hint</button>
+      <div id="bnd-m3en" class="hint-box">Limit at the edge of the domain.</div>
+    </div>
+  </div>
+  <div id="bnd-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να δείξεις ότι μια πρόταση αποτυγχάνει στα άκρα.</p>
+      <button onclick="toggleHint('bnd-h1')">Hint</button>
+      <div id="bnd-h1" class="hint-box">Βρες ακραία διαμόρφωση που παραβιάζει την πρόταση.</div>
+      <p><strong>Π2.</strong> Να εξετάσεις τη συμπεριφορά μιας συνάρτησης στο άπειρο.</p>
+      <button onclick="toggleHint('bnd-h2')">Hint</button>
+      <div id="bnd-h2" class="hint-box">Δοκίμασε x → ∞.</div>
+      <p><strong>Π3.</strong> Να χρησιμοποιήσεις οριακή κατανομή για να βρεις ακραία τιμή.</p>
+      <button onclick="toggleHint('bnd-h3')">Hint</button>
+      <div id="bnd-h3" class="hint-box">Όλα σε ένα σημείο.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Show that a statement fails at the boundary.</p>
+      <button onclick="toggleHint('bnd-h1en')">Hint</button>
+      <div id="bnd-h1en" class="hint-box">Find an extreme configuration violating the statement.</div>
+      <p><strong>P2.</strong> Investigate a function’s behaviour at infinity.</p>
+      <button onclick="toggleHint('bnd-h2en')">Hint</button>
+      <div id="bnd-h2en" class="hint-box">Try x → ∞.</div>
+      <p><strong>P3.</strong> Use boundary distribution to find an extreme value.</p>
+      <button onclick="toggleHint('bnd-h3en')">Hint</button>
+      <div id="bnd-h3en" class="hint-box">Everything at one point.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 8 : PARAMETER METHOD ================= -->
+<section id="parameter" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
+  <h2 class="lang-el">🟠 8. Μέθοδος Παραμέτρου</h2>
+  <h2 class="lang-en">🟠 8. Parameter Method</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Εισήγαγε μια φυσική παράμετρο.</li>
+      <li>Μελέτησε το πρόβλημα καθώς η παράμετρος μεταβάλλεται.</li>
+      <li>Εντόπισε κρίσιμες τιμές ή κατώφλια.</li>
+      <li>Χρησιμοποίησε τη μετάβαση για συμπέρασμα ή άτοπο.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Introduce a natural parameter.</li>
+      <li>Study how the problem changes.</li>
+      <li>Identify critical values or thresholds.</li>
+      <li>Use the transition to conclude or contradict.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('par-easy')">Εύκολο</button>
+    <button onclick="openLevel('par-med')">Μέτριο</button>
+    <button onclick="openLevel('par-hard')">Δύσκολο</button>
+  </div>
+  <div id="par-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να μελετήσεις ανισότητα που εξαρτάται από παράμετρο \(t\) για ποιες τιμές του \(t\) ισχύει.</p>
+      <button onclick="toggleHint('par-e1')">Hint</button>
+      <div id="par-e1" class="hint-box">Δοκίμασε \(t=0\) και \(t\to\infty\).</div>
+      <p><strong>Π2.</strong> Να εξετάσεις πότε μια κατασκευή είναι δυνατή ανάλογα με το \(n\).</p>
+      <button onclick="toggleHint('par-e2')">Hint</button>
+      <div id="par-e2" class="hint-box">Μελέτησε μικρό και μεγάλο \(n\).</div>
+      <p><strong>Π3.</strong> Να βρεις το ελάχιστο μιας παράστασης που εξαρτάται από παράμετρο.</p>
+      <button onclick="toggleHint('par-e3')">Hint</button>
+      <div id="par-e3" class="hint-box">Θεώρησε την παράμετρο ως μεταβλητή.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Study an inequality depending on parameter \(t\); find for which \(t\) it holds.</p>
+      <button onclick="toggleHint('par-e1en')">Hint</button>
+      <div id="par-e1en" class="hint-box">Try \(t=0\) and \(t\to\infty\).</div>
+      <p><strong>P2.</strong> Investigate when a construction is possible depending on \(n\).</p>
+      <button onclick="toggleHint('par-e2en')">Hint</button>
+      <div id="par-e2en" class="hint-box">Study small and large \(n\).</div>
+      <p><strong>P3.</strong> Find the minimum of an expression that depends on a parameter.</p>
+      <button onclick="toggleHint('par-e3en')">Hint</button>
+      <div id="par-e3en" class="hint-box">Treat the parameter as a variable.</div>
+    </div>
+  </div>
+  <div id="par-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να μελετήσεις πότε μια ανισότητα ισχύει για όλους τους πραγματικούς αριθμούς ανάλογα με παράμετρο.</p>
+      <button onclick="toggleHint('par-m1')">Hint</button>
+      <div id="par-m1" class="hint-box">Κρίσιμο κατώφλι για τον παράμετρο.</div>
+      <p><strong>Π2.</strong> Να εξετάσεις πότε μια γεωμετρική ιδιότητα ισχύει ανάλογα με τη θέση ενός σημείου.</p>
+      <button onclick="toggleHint('par-m2')">Hint</button>
+      <div id="par-m2" class="hint-box">Μετακίνησε το σημείο και δες μετάβαση.</div>
+      <p><strong>Π3.</strong> Να βρεις πότε μια κατασκευή παύει να είναι δυνατή αυξάνοντας τον παράμετρο.</p>
+      <button onclick="toggleHint('par-m3')">Hint</button>
+      <div id="par-m3" class="hint-box">Βρες το κατώφλι αδυναμίας.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Study when an inequality holds for all reals depending on a parameter.</p>
+      <button onclick="toggleHint('par-m1en')">Hint</button>
+      <div id="par-m1en" class="hint-box">Critical threshold for the parameter.</div>
+      <p><strong>P2.</strong> Investigate when a geometric property holds depending on a point’s position.</p>
+      <button onclick="toggleHint('par-m2en')">Hint</button>
+      <div id="par-m2en" class="hint-box">Move the point and watch the transition.</div>
+      <p><strong>P3.</strong> Find when a construction stops being possible by increasing the parameter.</p>
+      <button onclick="toggleHint('par-m3en')">Hint</button>
+      <div id="par-m3en" class="hint-box">Find the failure threshold.</div>
+    </div>
+  </div>
+  <div id="par-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να χρησιμοποιήσεις παράμετρο για να δείξεις ότι μια πρόταση ισχύει μόνο για πεπερασμένα n.</p>
+      <button onclick="toggleHint('par-h1')">Hint</button>
+      <div id="par-h1" class="hint-box">Βρες όριο n μετά το οποίο χαλάει.</div>
+      <p><strong>Π2.</strong> Να δείξεις ότι μια κατασκευή είναι δυνατή για κάθε n με παράμετρο.</p>
+      <button onclick="toggleHint('par-h2')">Hint</button>
+      <div id="par-h2" class="hint-box">Κατασκευή που εξαρτάται ομαλά από n.</div>
+      <p><strong>Π3.</strong> Να εισάγεις παράμετρο και να δείξεις ότι η ιδιότητα μεταβάλλεται σε κρίσιμο σημείο.</p>
+      <button onclick="toggleHint('par-h3')">Hint</button>
+      <div id="par-h3" class="hint-box">Μελέτησε τη ρίζα της μετάβασης.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Use a parameter to show a statement holds only for finite n.</p>
+      <button onclick="toggleHint('par-h1en')">Hint</button>
+      <div id="par-h1en" class="hint-box">Find the limit beyond which it fails.</div>
+      <p><strong>P2.</strong> Show a construction is possible for every n via parameter.</p>
+      <button onclick="toggleHint('par-h2en')">Hint</button>
+      <div id="par-h2en" class="hint-box">Construction that scales smoothly with n.</div>
+      <p><strong>P3.</strong> Introduce a parameter and show the property changes at a critical point.</p>
+      <button onclick="toggleHint('par-h3en')">Hint</button>
+      <div id="par-h3en" class="hint-box">Study the root of the transition.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 9 : ALGEBRA → GEOMETRY ================= -->
+<section id="alg-geo" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#fefce8,#fef9c3);padding:24px 28px;">
+  <h2 class="lang-el">🟡 9. Άλγεβρα → Γεωμετρία</h2>
+  <h2 class="lang-en">🟡 9. Algebra → Geometry</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Ερμήνευσε μεταβλητές ως σημεία ή αποστάσεις.</li>
+      <li>Μετέτρεψε εξισώσεις σε γεωμετρικούς τόπους.</li>
+      <li>Χρησιμοποίησε σχήμα, συμμετρία ή ανισότητες αποστάσεων.</li>
+      <li>Μετάφρασε το συμπέρασμα ξανά σε αλγεβρική μορφή.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Interpret variables as points or distances.</li>
+      <li>Translate equations into geometric loci.</li>
+      <li>Use geometry, symmetry, or distance inequalities.</li>
+      <li>Translate conclusions back into algebra.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('ag-easy')">Εύκολο</button>
+    <button onclick="openLevel('ag-med')">Μέτριο</button>
+    <button onclick="openLevel('ag-hard')">Δύσκολο</button>
+  </div>
+  <div id="ag-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ανισότητα με απόλυτες τιμές χρησιμοποιώντας αποστάσεις στον άξονα.</p>
+      <button onclick="toggleHint('ag-e1')">Hint</button>
+      <div id="ag-e1" class="hint-box">|x-a| = απόσταση.</div>
+      <p><strong>Π2.</strong> Να περιγράψεις γεωμετρικά το σύνολο λύσεων μιας εξίσωσης δύο μεταβλητών.</p>
+      <button onclick="toggleHint('ag-e2')">Hint</button>
+      <div id="ag-e2" class="hint-box">Μετέτρεψε την εξίσωση σε σημεία.</div>
+      <p><strong>Π3.</strong> Να βρεις το ελάχιστο μιας παράστασης μεταφράζοντάς την σε απόσταση.</p>
+      <button onclick="toggleHint('ag-e3')">Hint</button>
+      <div id="ag-e3" class="hint-box">Γράψε την ως απόσταση στο επίπεδο.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove an absolute-value inequality using distances on the line.</p>
+      <button onclick="toggleHint('ag-e1en')">Hint</button>
+      <div id="ag-e1en" class="hint-box">|x-a| = distance.</div>
+      <p><strong>P2.</strong> Describe geometrically the solution set of a two-variable equation.</p>
+      <button onclick="toggleHint('ag-e2en')">Hint</button>
+      <div id="ag-e2en" class="hint-box">Turn the equation into points.</div>
+      <p><strong>P3.</strong> Find the minimum of an expression by translating it into a distance.</p>
+      <button onclick="toggleHint('ag-e3en')">Hint</button>
+      <div id="ag-e3en" class="hint-box">Write it as a distance in the plane.</div>
+    </div>
+  </div>
+  <div id="ag-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ανισότητα χρησιμοποιώντας τριγωνική ανισότητα.</p>
+      <button onclick="toggleHint('ag-m1')">Hint</button>
+      <div id="ag-m1" class="hint-box">Γράψε την ως άθροισμα αποστάσεων.</div>
+      <p><strong>Π2.</strong> Να μεταφράσεις γεωμετρική συνθήκη σε αλγεβρική εξίσωση.</p>
+      <button onclick="toggleHint('ag-m2')">Hint</button>
+      <div id="ag-m2" class="hint-box">Χρησιμοποίησε συντεταγμένες.</div>
+      <p><strong>Π3.</strong> Να βρεις το ελάχιστο μιας παράστασης χρησιμοποιώντας γεωμετρική ερμηνεία.</p>
+      <button onclick="toggleHint('ag-m3')">Hint</button>
+      <div id="ag-m3" class="hint-box">Γράψε την ως μήκος διανύσματος.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove an inequality using the triangle inequality.</p>
+      <button onclick="toggleHint('ag-m1en')">Hint</button>
+      <div id="ag-m1en" class="hint-box">Write it as a sum of distances.</div>
+      <p><strong>P2.</strong> Translate a geometric condition into an algebraic equation.</p>
+      <button onclick="toggleHint('ag-m2en')">Hint</button>
+      <div id="ag-m2en" class="hint-box">Use coordinates.</div>
+      <p><strong>P3.</strong> Find the minimum of an expression using a geometric interpretation.</p>
+      <button onclick="toggleHint('ag-m3en')">Hint</button>
+      <div id="ag-m3en" class="hint-box">Write it as vector length.</div>
+    </div>
+  </div>
+  <div id="ag-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ανισότητα μεγάλου αριθμού όρων χρησιμοποιώντας γεωμετρικό σχήμα.</p>
+      <button onclick="toggleHint('ag-h1')">Hint</button>
+      <div id="ag-h1" class="hint-box">Χρησιμοποίησε πολύεδρο ή σφαίρα.</div>
+      <p><strong>Π2.</strong> Να μεταφράσεις πρόβλημα βέλτιστης τιμής σε γεωμετρική απόσταση.</p>
+      <button onclick="toggleHint('ag-h2')">Hint</button>
+      <div id="ag-h2" class="hint-box">Ελάχιστη απόσταση από υποχώρο.</div>
+      <p><strong>Π3.</strong> Να χρησιμοποιήσεις γεωμετρική δομή για να απλοποιήσεις αλγεβρική απόδειξη.</p>
+      <button onclick="toggleHint('ag-h3')">Hint</button>
+      <div id="ag-h3" class="hint-box">Αναγωγή σε γεωμετρικό θεώρημα.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove a many-term inequality using a geometric figure.</p>
+      <button onclick="toggleHint('ag-h1en')">Hint</button>
+      <div id="ag-h1en" class="hint-box">Use polytope or sphere.</div>
+      <p><strong>P2.</strong> Translate an optimisation problem into a geometric distance.</p>
+      <button onclick="toggleHint('ag-h2en')">Hint</button>
+      <div id="ag-h2en" class="hint-box">Minimum distance from subspace.</div>
+      <p><strong>P3.</strong> Use geometric structure to simplify an algebraic proof.</p>
+      <button onclick="toggleHint('ag-h3en')">Hint</button>
+      <div id="ag-h3en" class="hint-box">Reduce to a geometric theorem.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 10 : GEOMETRY → ALGEBRA ================= -->
+<section id="geo-alg" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#eef2ff,#e0e7ff);padding:24px 28px;">
+  <h2 class="lang-el">🔷 10. Γεωμετρία → Άλγεβρα</h2>
+  <h2 class="lang-en">🔷 10. Geometry → Algebra</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Επέλεξε κατάλληλο σύστημα συντεταγμένων.</li>
+      <li>Μετέφρασε σημεία, αποστάσεις και γωνίες αλγεβρικά.</li>
+      <li>Χρησιμοποίησε εξισώσεις και ανισότητες.</li>
+      <li>Ερμήνευσε το αποτέλεσμα ξανά γεωμετρικά.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Choose a convenient coordinate system.</li>
+      <li>Translate points, distances, angles algebraically.</li>
+      <li>Use equations and inequalities.</li>
+      <li>Interpret the result back geometrically.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('ga-easy')">Εύκολο</button>
+    <button onclick="openLevel('ga-med')">Μέτριο</button>
+    <button onclick="openLevel('ga-hard')">Δύσκολο</button>
+  </div>
+  <div id="ga-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις σχέση αποστάσεων σε τρίγωνο χρησιμοποιώντας συντεταγμένες.</p>
+      <button onclick="toggleHint('ga-e1')">Hint</button>
+      <div id="ga-e1" class="hint-box">Βάλε το τρίγωνο σε σύστημα συντεταγμένων.</div>
+      <p><strong>Π2.</strong> Να μεταφράσεις γεωμετρική συνθήκη σε αλγεβρική εξίσωση.</p>
+      <button onclick="toggleHint('ga-e2')">Hint</button>
+      <div id="ga-e2" class="hint-box">Χρησιμοποίησε συντεταγμένες.</div>
+      <p><strong>Π3.</strong> Να αποδείξεις ότι τρία σημεία είναι συνευθειακά χρησιμοποιώντας διανύσματα.</p>
+      <button onclick="toggleHint('ga-e3')">Hint</button>
+      <div id="ga-e3" class="hint-box">Διανυσματικό γινόμενο.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove a distance relation in a triangle using coordinates.</p>
+      <button onclick="toggleHint('ga-e1en')">Hint</button>
+      <div id="ga-e1en" class="hint-box">Place the triangle in a coordinate system.</div>
+      <p><strong>P2.</strong> Translate a geometric condition into an algebraic equation.</p>
+      <button onclick="toggleHint('ga-e2en')">Hint</button>
+      <div id="ga-e2en" class="hint-box">Use coordinates.</div>
+      <p><strong>P3.</strong> Prove three points are collinear using vectors.</p>
+      <button onclick="toggleHint('ga-e3en')">Hint</button>
+      <div id="ga-e3en" class="hint-box">Vector cross-product.</div>
+    </div>
+  </div>
+  <div id="ga-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ότι τέσσερα σημεία είναι ομοκυκλικά χρησιμοποιώντας εξισώσεις.</p>
+      <button onclick="toggleHint('ga-m1')">Hint</button>
+      <div id="ga-m1" class="hint-box">Ισότητα αποστάσεων από κοινό κέντρο.</div>
+      <p><strong>Π2.</strong> Να μεταφράσεις γεωμετρική συνθήκη σε συστήματα εξισώσεων.</p>
+      <button onclick="toggleHint('ga-m2')">Hint</button>
+      <div id="ga-m2" class="hint-box">Χρησιμοποίησε συντεταγμένες και περιορισμούς.</div>
+      <p><strong>Π3.</strong> Να χρησιμοποιήσεις διανυσματικά γινόμενα για να βρεις γωνίες.</p>
+      <button onclick="toggleHint('ga-m3')">Hint</button>
+      <div id="ga-m3" class="hint-box">Συσχέτιση γινομένου με γωνία.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove four points are concyclic using equations.</p>
+      <button onclick="toggleHint('ga-m1en')">Hint
 <footer>
 EisatoponAI — Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων<br>
 Learning how to think, not what to memorize.
