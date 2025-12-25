@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων</title>
 <meta name="description" content="Strategy Map for Mathematical Problem Solving. Learn how to think, not just how to solve.">
 
@@ -60,7 +59,8 @@ footer{
   color:#666;
   margin:60px 0 20px;
 }
-/* ====== νέα βοηθητικά για levels & hints ====== */
+
+/* Νέα βοηθητικά για levels & hints */
 .level-tabs button{
   margin-right:6px;
   padding:6px 12px;
@@ -84,13 +84,30 @@ footer{
   font-size:0.95em;
   color:#374151;
 }
-/* ============================================= */  
 </style>
 
 <script>
 function setLang(lang){
   document.querySelectorAll('.lang-el').forEach(e=>e.style.display=lang==='el'?'block':'none');
   document.querySelectorAll('.lang-en').forEach(e=>e.style.display=lang==='en'?'block':'none');
+}
+function openStrategy(id){
+  document.querySelectorAll('.strategy-section').forEach(sec=>{
+    sec.style.display='none';
+  });
+  const target = document.getElementById(id);
+  if(target){
+    target.style.display='block';
+    target.scrollIntoView({behavior:'smooth'});
+  }
+}
+function openLevel(id){
+  document.querySelectorAll('.level-content').forEach(div=>div.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+function toggleHint(id){
+  const box=document.getElementById(id);
+  box.style.display=box.style.display==='block'?'none':'block';
 }
 </script>
 </head>
@@ -114,19 +131,16 @@ function setLang(lang){
 <div class="lang-el">
 <h1>Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων</h1>
 <p>
-Δεν είναι συλλογή λύσεων.  
-Είναι ένας <strong>χάρτης σκέψης</strong> που δείχνει πώς ξεκινά,
-πώς κατευθύνεται και πώς ολοκληρώνεται η λύση
-ενός απαιτητικού μαθηματικού προβλήματος.
+Δεν είναι συλλογή λύσεων.<br>
+Είναι ένας <strong>χάρτης σκέψης</strong> που δείχνει πώς ξεκινά, πώς κατευθύνεται και πώς ολοκληρώνεται η λύση ενός απαιτητικού μαθηματικού προβλήματος.
 </p>
 </div>
 
 <div class="lang-en">
 <h1>Strategy Map for Mathematical Problem Solving</h1>
 <p>
-Not a list of solutions.  
-A <strong>thinking map</strong> showing how expert solvers start,
-navigate, and complete challenging mathematical problems.
+Not a list of solutions.<br>
+A <strong>thinking map</strong> showing how expert solvers start, navigate, and complete challenging mathematical problems.
 </p>
 </div>
 </div>
@@ -145,9 +159,10 @@ navigate, and complete challenging mathematical problems.
 <div class="map-card" onclick="openStrategy('reverse')">11. Reverse Question</div>
 <div class="map-card" onclick="openStrategy('auxiliary')">12. Auxiliary Object</div>
 </div>
+
+<!-- ================= STRATEGY 1 : EXTREMAL ELEMENT ================= -->
 <section id="extremal" class="strategy-section" style="display:none;">
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
   <h2 class="lang-el">🔵 1. Extremal Στοιχείο</h2>
   <h2 class="lang-en">🔵 1. Extremal Element</h2>
@@ -196,7 +211,6 @@ navigate, and complete challenging mathematical problems.
       <button onclick="toggleHint('ext-e3')">Hint</button>
       <div id="ext-e3" class="hint-box">Θεώρησε την κορυφή με <strong>μεγαλύτερο</strong> βαθμό. Τι της συμβαίνει όταν τη διαγράψεις;</div>
     </div>
-
     <div class="lang-en">
       <p><strong>P1.</strong> 10 boxes contain balls. Show there is a box with the minimum number of balls.</p>
       <button onclick="toggleHint('ext-en1')">Hint</button>
@@ -218,9 +232,11 @@ navigate, and complete challenging mathematical problems.
       <p><strong>Π1.</strong> Δίνονται 2025 διανύσματα στο επίπεδο, κανένα μηδέν. Δείξε ότι υπάρχει ζεύγος με γωνία ≤ 1°.</p>
       <button onclick="toggleHint('ext-m1')">Hint</button>
       <div id="ext-m1" class="hint-box">Τι συμβαίνει με το ζεύγος που έχει την <strong>μεγαλύτερη</strong> γωνία;</div>
+
       <p><strong>Π2.</strong> Σε κύκλο γράφουμε n ακέραιους. Δείξε ότι υπάρχουν δύο γειτονικοί με διαφορά ≥ μέσου όρου των διαφορών.</p>
       <button onclick="toggleHint('ext-m2')">Hint</button>
       <div id="ext-m2" class="hint-box">Θεώρησε το ζεύγος με τη <strong>μεγαλύτερη</strong> διαφορά.</div>
+
       <p><strong>Π3.</strong> Σε σύνολο θετικών ακεραίων το άθροισμα οποιωνδήποτε δύο διαφορετικών είναι διαφορετικό. Δείξε ότι υπάρχει στοιχείο μεγαλύτερο από το άθροισμα όλων των υπολοίπων.</p>
       <button onclick="toggleHint('ext-m3')">Hint</button>
       <div id="ext-m3" class="hint-box">Ξεκίνα από το <strong>μεγαλύτερο</strong> στοιχείο.</div>
@@ -229,9 +245,11 @@ navigate, and complete challenging mathematical problems.
       <p><strong>P1.</strong> Given 2025 non-zero vectors in the plane, show there is a pair whose angle is ≤ 1°.</p>
       <button onclick="toggleHint('ext-m1en')">Hint</button>
       <div id="ext-m1en" class="hint-box">What happens with the pair that has the <strong>largest</strong> angle?</div>
+
       <p><strong>P2.</strong> Integers are written on a circle. Show there are two neighbours whose difference is ≥ the average of all differences.</p>
       <button onclick="toggleHint('ext-m2en')">Hint</button>
       <div id="ext-m2en" class="hint-box">Consider the pair with the <strong>largest</strong> difference.</div>
+
       <p><strong>P3.</strong> Same as Greek P3 above.</p>
     </div>
   </div>
@@ -239,12 +257,14 @@ navigate, and complete challenging mathematical problems.
   <!-- ΔΥΣΚΟΛΟ -->
   <div id="ext-hard" class="level-content" style="display:none;">
     <div class="lang-el">
-      <p><strong>Π1.</strong> Σύνολο \(S\subset\mathbb N\) τέτοιο ώστε για κάθε \(n\) το \(\{s\in S: s\le n\}\) έχει μέγεθος ≤ \( \log_2n \). Δείξε ότι υπάρχούν δύο στοιχεία του \(S\) με απόσταση **ακριβώς** 10.</p>
+      <p><strong>Π1.</strong> Σύνολο \(S\subset\mathbb N\) τέτοιο ώστε για κάθε \(n\) το \(\{s\in S: s\le n\}\) έχει μέγεθος ≤ \( \log_2n \). Δείξε ότι υπάρχουν δύο στοιχεία του \(S\) με απόσταση **ακριβώς** 10.</p>
       <button onclick="toggleHint('ext-h1')">Hint</button>
       <div id="ext-h1" class="hint-box">Χτίσε τον <strong>μεγαλύτερο</strong> δυνατό \(S\) που αποφεύγει τη διαφορά 10. Τι πάει στραβά;</div>
+
       <p><strong>Π2.</strong> Δίνονται n σημεία στο επίπεδο, όχι όλα συνευθειακά. Δείξε ότι υπάρχει σημείο του οποίου η ελάχιστη απόσταση από τα υπόλοιπα είναι μοναδική.</p>
       <button onclick="toggleHint('ext-h2')">Hint</button>
       <div id="ext-h2" class="hint-box">Θεώρησε το <strong>ζεύγος με την ελάχιστη απόσταση</strong>· τι συμβαίνει αν υπάρχουν δύο τέτοια;</div>
+
       <p><strong>Π3.</strong> Σε γράφημα με πεπερασμένες κορυφές κάθε κορυφή έχει βαθμό ≥ 2. Δείξε ότι υπάρχει κύκλος.</p>
       <button onclick="toggleHint('ext-h3')">Hint</button>
       <div id="ext-h3" class="hint-box">Ξεκίνα από την <strong>μεγαλύτερη</strong> μονοπάτι· τι συμβαίνει στο τέλος της;</div>
@@ -253,9 +273,11 @@ navigate, and complete challenging mathematical problems.
       <p><strong>P1.</strong> Set \(S\subset\mathbb N\) such that for every \(n\) the set \(\{s\in S: s\le n\}\) has size ≤ \( \log_2n \). Prove there are two elements of \(S\) at distance exactly 10.</p>
       <button onclick="toggleHint('ext-h1en')">Hint</button>
       <div id="ext-h1en" class="hint-box">Build the <strong>largest</strong> possible \(S\) avoiding difference 10. What goes wrong?</div>
+
       <p><strong>P2.</strong> Given n points in the plane, not all collinear, prove there is a point whose minimum distance to the others is unique.</p>
       <button onclick="toggleHint('ext-h2en')">Hint</button>
       <div id="ext-h2en" class="hint-box">Consider the <strong>pair with minimum distance</strong>; what if two such pairs exist?</div>
+
       <p><strong>P3.</strong> In a finite graph every vertex has degree ≥ 2. Prove there is a cycle.</p>
       <button onclick="toggleHint('ext-h3en')">Hint</button>
       <div id="ext-h3en" class="hint-box">Start from the <strong>longest</strong> path; what happens at its endpoint?</div>
@@ -265,6 +287,267 @@ navigate, and complete challenging mathematical problems.
 </div>
 </section>
 
+<!-- ================= STRATEGY 2 : INVARIANTS ================= -->
+<section id="invariants" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);padding:24px 28px;">
+  <h2 class="lang-el">🟢 2. Αναλλοίωτα</h2>
+  <h2 class="lang-en">🟢 2. Invariants</h2>
+</div>
+
+<!-- ΒΗΜΑΤΑ ΣΚΕΨΗΣ -->
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Εντόπισε μια ποσότητα που ίσως παραμένει σταθερή.</li>
+      <li>Έλεγξε ότι διατηρείται σε κάθε επιτρεπτό βήμα.</li>
+      <li>Σύγκρινε αρχική και τελική κατάσταση.</li>
+      <li>Χρησιμοποίησε το αναλλοίωτο για συμπέρασμα.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Identify a quantity that might stay constant.</li>
+      <li>Check it is preserved at every allowed step.</li>
+      <li>Compare initial and final states.</li>
+      <li>Use the invariant to conclude.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ΠΡΟΒΛΗΜΑΤΑ -->
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('inv-easy')">Εύκολο</button>
+    <button onclick="openLevel('inv-med')">Μέτριο</button>
+    <button onclick="openLevel('inv-hard')">Δύσκολο</button>
+  </div>
+
+  <!-- ΕΥΚΟΛΟ -->
+  <div id="inv-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε κύκλο γράφουμε 1,2,…,n. Επιτρέπεται να αντικαταστήσεις δύο γειτονικούς με το άθροισμά τους. Μπορείς να φτάσεις όλους ίσους;</p>
+      <button onclick="toggleHint('inv-e1')">Hint</button>
+      <div id="inv-e1" class="hint-box">Τι μένει αναλλοίωτο mod 2;</div>
+
+      <p><strong>Π2.</strong> Σε πίνακα 3×3 γράφουμε 0 ή 1. Επιτρέπεται να αλλάζεις πρόσημο σε ολόκληρη γραμμή/στήλη. Μπορείς να φτάσεις σε πίνακα με μόνο 0;</p>
+      <button onclick="toggleHint('inv-e2')">Hint</button>
+      <div id="inv-e2" class="hint-box">Θεώρησε το άθροισμα όλων των στοιχείων mod 2.</div>
+
+      <p><strong>Π3.</strong> Υπάρχουν n κουτιά με μπίλιες. Επιτρέπεται να μεταφέρεις μία μπίλια από κουτί σε κουτί. Μπορείς να καταλήξεις σε κατάσταση όπου όλα τα κουτιά έχουν ίσες μπίλιες;</p>
+      <button onclick="toggleHint('inv-e3')">Hint</button>
+      <div id="inv-e3" class="hint-box">Τι μένει αναλλοίωτο mod n;</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Integers 1,2,…,n are written on a circle. You may replace two neighbours with their sum. Can you reach all numbers equal?</p>
+      <button onclick="toggleHint('inv-e1en')">Hint</button>
+      <div id="inv-e1en" class="hint-box">What is invariant mod 2?</div>
+
+      <p><strong>P2.</strong> 3×3 table filled with 0/1. You may flip the sign of an entire row or column. Can you reach all zeros?</p>
+      <button onclick="toggleHint('inv-e2en')">Hint</button>
+      <div id="inv-e2en" class="hint-box">Consider the sum of all entries mod 2.</div>
+
+      <p><strong>P3.</strong> n boxes contain balls. You may move one ball from box to box. Can you reach equal balls in every box?</p>
+      <button onclick="toggleHint('inv-e3en')">Hint</button>
+      <div id="inv-e3en" class="hint-box">What is invariant mod n?</div>
+    </div>
+  </div>
+
+  <!-- ΜΕΤΡΙΟ -->
+  <div id="inv-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε κύκλο γράφουμε ακεραίους. Επιτρέπεται να αντικαταστήσεις δύο γειτονικούς με τη διαφορά τους. Αν αρχικά υπάρχει άρτιος, δεν μπορούν να εξαφανιστούν όλοι.</p>
+      <button onclick="toggleHint('inv-m1')">Hint</button>
+      <div id="inv-m1" class="hint-box">Τι μένει αναλλοίωτο mod 2;</div>
+
+      <p><strong>Π2.</strong> 3 κουτιά με μπίλιες. Επιτρέπεται να διπλασιάζεις ένα κουτί παίρνοντας από τα άλλα δύο. Μπορείς να φτάσεις ίσες μπίλιες σε όλα;</p>
+      <button onclick="toggleHint('inv-m2')">Hint</button>
+      <div id="inv-m2" class="hint-box">Άθροισμα mod 3.</div>
+
+      <p><strong>Π3.</strong> Σε πίνακα 4×4 γράφουμε 0 ή 1. Επιτρέπεται να αλλάζεις πρόσημο ολόκληρης γραμμής/στήλης. Μπορείς να φτάσεις σε πίνακα με μόνο 0;</p>
+      <button onclick="toggleHint('inv-m3')">Hint</button>
+      <div id="inv-m3" class="hint-box">Θεώρησε το διάνυσμα γραμμών στο \(\mathbb F_2^4\).</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Integers on a circle; replace two neighbours with their difference. If an even number exists initially, they cannot all disappear.</p>
+      <button onclick="toggleHint('inv-m1en')">Hint</button>
+      <div id="inv-m1en" class="hint-box">What is invariant mod 2?</div>
+
+      <p><strong>P2.</strong> 3 boxes with balls; you may double one box by taking from the other two. Can you reach equal balls in all?</p>
+      <button onclick="toggleHint('inv-m2en')">Hint</button>
+      <div id="inv-m2en" class="hint-box">Sum mod 3.</div>
+
+      <p><strong>P3.</strong> 4×4 table of 0/1; flip entire row or column. Can you reach all zeros?</p>
+      <button onclick="toggleHint('inv-m3en')">Hint</button>
+      <div id="inv-m3en" class="hint-box">Consider the row vector in \(\mathbb F_2^4\).</div>
+    </div>
+  </div>
+
+  <!-- ΔΥΣΚΟΛΟ -->
+  <div id="inv-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε πίνακα 5×5 όλα 0 εκτός από ένα 1. Επιτρέπεται να αλλάζεις πρόσημο ολόκληρης γραμμής/στήλης. Μπορείς να φτάσεις σε πίνακα με μόνο 0;</p>
+      <button onclick="toggleHint('inv-h1')">Hint</button>
+      <div id="inv-h1" class="hint-box">Άθροισμα γραμμών στο \(\mathbb F_2^5\).</div>
+
+      <p><strong>Π2.</strong> Υπάρχουν n κουτιά με μπίλιες. Επιτρέπεται σε κάθε βήμα να μεταφέρεις μία μπίλια από ένα κουτί σε άλλο. Μπορείς πάντα να καταλήξεις σε ίσες μπίλιες;</p>
+      <button onclick="toggleHint('inv-h2')">Hint</button>
+      <div id="inv-h2" class="hint-box">Άθροισμα μπιλιών mod n.</div>
+
+      <p><strong>Π3.</strong> Σε κύκλο γράφουμε ακεραίους. Επιτρέπεται να αντικαταστήσεις δύο γειτονικούς με τη διαφορά τους. Δείξε ότι αν αρχικά υπάρχει άρτιος, δεν μπορούν να εξαφανιστούν όλοι.</p>
+      <button onclick="toggleHint('inv-h3')">Hint</button>
+      <div id="inv-h3" class="hint-box">Άθροισμα mod 2.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> 5×5 table, all 0 except one 1. You may flip entire row or column. Can you reach all zeros?</p>
+      <button onclick="toggleHint('inv-h1en')">Hint</button>
+      <div id="inv-h1en" class="hint-box">Row sum in \(\mathbb F_2^5\).</div>
+
+      <p><strong>P2.</strong> n boxes with balls; you may move one ball between boxes. Can you always reach equal balls?</p>
+      <button onclick="toggleHint('inv-h2en')">Hint</button>
+      <div id="inv-h2en" class="hint-box">Total balls mod n.</div>
+
+      <p><strong>P3.</strong> Integers on a circle; replace two neighbours with their difference. Show that if an even number exists initially, they cannot all disappear.</p>
+      <button onclick="toggleHint('inv-h3en')">Hint</button>
+      <div id="inv-h3en" class="hint-box">Sum mod 2.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 3 : BACKWARD THINKING ================= -->
+<section id="backward" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);padding:24px 28px;">
+  <h2 class="lang-el">🟣 3. Ανάστροφη Σκέψη</h2>
+  <h2 class="lang-en">🟣 3. Backward Thinking</h2>
+</div>
+
+<!-- ΒΗΜΑΤΑ ΣΚΕΨΗΣ -->
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Γράψε καθαρά το τελικό ζητούμενο.</li>
+      <li>Ρώτησε: «Τι θα ήταν αρκετό για να ισχύει;»</li>
+      <li>Μετέτρεψε το ζητούμενο σε ισοδύναμες απλούστερες συνθήκες.</li>
+      <li>Σύνδεσε τις συνθήκες με τα δεδομένα.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>State the final goal clearly.</li>
+      <li>Ask what would be sufficient for it to hold.</li>
+      <li>Rewrite the goal into equivalent simpler conditions.</li>
+      <li>Link them to the given data.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ΠΡΟΒΛΗΜΑΤΑ -->
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('back-easy')">Εύκολο</button>
+    <button onclick="openLevel('back-med')">Μέτριο</button>
+    <button onclick="openLevel('back-hard')">Δύσκολο</button>
+  </div>
+
+  <!-- ΕΥΚΟΛΟ -->
+  <div id="back-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ότι για κάθε \(x,y>0\) ισχύει \( \frac{x}{y}+\frac{y}{x}\ge 2 \).</p>
+      <button onclick="toggleHint('back-e1')">Hint</button>
+      <div id="back-e1" class="hint-box">Ξεκίνα από το ζητούμενο και κάνε το ισοδύναμο· ποια ανισότητα δεν έχει κλάσματα;</div>
+
+      <p><strong>Π2.</strong> Να αποδείξεις ότι \(a^2+b^2\ge 2ab\) για κάθε πραγματικούς \(a,b\).</p>
+      <button onclick="toggleHint('back-e2')">Hint</button>
+      <div id="back-e2" class="hint-box">Μετέτρεψε το ζητούμενο σε τετράγωνο.</div>
+
+      <p><strong>Π3.</strong> Να αποδείξεις ότι η εξίσωση \(x^2+y^2=0\) έχει μοναδική λύση στον \(\mathbb R^2\).</p>
+      <button onclick="toggleHint('back-e3')">Hint</button>
+      <div id="back-e3" class="hint-box">Τι σημαίνει άθροισμα μη αρνητικών όρων ίσο με 0;</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove that for all \(x,y>0\) we have \( \frac{x}{y}+\frac{y}{x}\ge 2 \).</p>
+      <button onclick="toggleHint('back-e1en')">Hint</button>
+      <div id="back-e1en" class="hint-box">Start from the desired inequality and clear denominators.</div>
+
+      <p><strong>P2.</strong> Prove \(a^2+b^2\ge 2ab\) for all real \(a,b\).</p>
+      <button onclick="toggleHint('back-e2en')">Hint</button>
+      <div id="back-e2en" class="hint-box">Rearrange into a square.</div>
+
+      <p><strong>P3.</strong> Prove \(x^2+y^2=0\) has a unique solution in \(\mathbb R^2\).</p>
+      <button onclick="toggleHint('back-e3en')">Hint</button>
+      <div id="back-e3en" class="hint-box">Sum of non-negative terms equals zero.</div>
+    </div>
+  </div>
+
+  <!-- ΜΕΤΡΙΟ -->
+  <div id="back-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Δίνεται τρίγωνο ABC. Να κατασκευάσεις σημείο P μέσα του τριγώνου ώστε το άθροισμα αποστάσεων από τις πλευρές να είναι σταθερό.</p>
+      <button onclick="toggleHint('back-m1')">Hint</button>
+      <div id="back-m1" class="hint-box">Ξεκίνα από το επιθυμητό άθροισμα· τι σημαίνει «σταθερό» για το βαρύκεντρο;</div>
+
+      <p><strong>Π2.</strong> Να δείξεις ότι μια παράσταση παίρνει ακέραιες τιμές για όλους τους ακεραίους αριθμούς.</p>
+      <button onclick="toggleHint('back-m2')">Hint</button>
+      <div id="back-m2" class="hint-box">Μετέτρεψε την παράσταση σε μορφή που πρέπει να είναι ακέραια.</div>
+
+      <p><strong>Π3.</strong> Να αποδείξεις ότι η εξίσωση \(x^3+y^3+z^3=3xyz\) έχει μόνο τετριμμένες λύσεις όταν \(x+y+z=0\).</p>
+      <button onclick="toggleHint('back-m3')">Hint</button>
+      <div id="back-m3" class="hint-box">Ξεκίνα από την ταυτότητα: \(x^3+y^3+z^3-3xyz=(x+y+z)(\dots)\).</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Given triangle ABC, construct point P inside it such that the sum of distances to the sides is constant.</p>
+      <button onclick="toggleHint('back-m1en')">Hint</button>
+      <div id="back-m1en" class="hint-box">Start from the desired sum; what does “constant” mean for the centroid?</div>
+
+      <p><strong>P2.</strong> Show that an expression takes integer values for all integers.</p>
+      <button onclick="toggleHint('back-m2en')">Hint</button>
+      <div id="back-m2en" class="hint-box">Rewrite the expression into a form that must be integer.</div>
+
+      <p><strong>P3.</strong> Prove \(x^3+y^3+z^3=3xyz\) has only trivial solutions when \(x+y+z=0\).</p>
+      <button onclick="toggleHint('back-m3en')">Hint</button>
+      <div id="back-m3en" class="hint-box">Use identity: \(x^3+y^3+z^3-3xyz=(x+y+z)(\dots)\).</div>
+    </div>
+  </div>
+
+  <!-- ΔΥΣΚΟΛΟ -->
+  <div id="back-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να δείξεις ότι μια ανισότητα ισχύει για όλους τους πραγματικούς αριθμούς ξεκινώντας από το ζητούμενο.</p>
+      <button onclick="toggleHint('back-h1')">Hint</button>
+      <div id="back-h1" class="hint-box">Μετέτρεψε το ζητούμενο σε ισοδύναμη μορφή χωρίς κλάσματα.</div>
+
+      <p><strong>Π2.</strong> Να αποδείξεις ότι ένα σημείο ικανοποιεί μια γεωμετρική συνθήκα ξεκινώντας από το συμπέρασμα.</p>
+      <button onclick="toggleHint('back-h2')">Hint</button>
+      <div id="back-h2" class="hint-box">Μετέτρεψε τη συνθήκη σε εξίσωση και δες τι απαιτείται.</div>
+
+      <p><strong>Π3.</strong> Να δείξεις ότι μια παράσταση παίρνει ακέραιες τιμές για όλους τους ακέραιους ξεκινώντας από την ακέραια μορφή που πρέπει να έχει.</p>
+      <button onclick="toggleHint('back-h3')">Hint</button>
+      <div id="back-h3" class="hint-box">Ξεκίνα από την απαίτηση ακεραίου και δες τι πρέπει να ισχύει.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove an inequality for all reals by starting from the desired conclusion.</p>
+      <button onclick="toggleHint('back-h1en')">Hint</button>
+      <div id="back-h1en" class="hint-box">Clear denominators and rearrange.</div>
+
+      <p><strong>P2.</strong> Prove a point satisfies a geometric condition by starting from the conclusion.</p>
+      <button onclick="toggleHint('back-h2en')">Hint</button>
+      <div id="back-h2en" class="hint-box">Turn the condition into an equation and see what is required.</div>
+
+      <p><strong>P3.</strong> Show an expression takes integer values for all integers by starting from the integer form it must have.</p>
+      <button onclick="toggleHint('back-h3en')">Hint</button>
+      <div id="back-h3en" class="hint-box">Start from integer requirement and back-track.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
 
 <footer>
 EisatoponAI — Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων<br>
@@ -272,28 +555,6 @@ Learning how to think, not what to memorize.
 </footer>
 
 </div>
-<script>
-function openStrategy(id){
-  document.querySelectorAll('.strategy-section').forEach(sec=>{
-    sec.style.display = 'none';
-  });
 
-  const target = document.getElementById(id);
-  if(target){
-    target.style.display = 'block';
-    target.scrollIntoView({behavior:'smooth'});
-  }
-}
-</script>
-<script>
-function openLevel(id){
-  document.querySelectorAll('.level-content').forEach(div=>div.style.display='none');
-  document.getElementById(id).style.display='block';
-}
-function toggleHint(id){
-  const box=document.getElementById(id);
-  box.style.display=box.style.display==='block'?'none':'block';
-}
-</script>
 </body>
 </html>
