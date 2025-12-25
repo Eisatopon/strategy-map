@@ -1503,6 +1503,334 @@ In a finite graph every vertex has degree ≥ 2. Prove there is a cycle.</p>
 </div>
 </div>
 </section>
+ <!-- ================= STRATEGY 13 : PIGEONHOLE PRINCIPLE ================= -->
+<section id="pigeonhole" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#fde68a,#fbbf24);padding:24px 28px;">
+  <h2 class="lang-el">🟡 13. Αρχή του Ντερβίσιου</h2>
+  <h2 class="lang-en">🟡 13. Pigeonhole Principle</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Εντόπισε τι είναι «περιστέρια» και τι «κουτιά».</li>
+      <li>Μέτρησε πόσα είναι τα καθένα.</li>
+      <li>Αν τα περιστέρια είναι περισσότερα από τα κουτιά, κάποιο κουτί έχει ≥ 2.</li>
+      <li>Χρησιμοποίησε αυτό το «κάποιο» για να βρεις δομή.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Identify what are the “pigeons” and what are the “holes”.</li>
+      <li>Count how many of each you have.</li>
+      <li>If pigeons outnumber holes, some hole contains ≥ 2.</li>
+      <li>Use that “some” to extract structure.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('pig-easy')">Εύκολο</button>
+    <button onclick="openLevel('pig-med')">Μέτριο</button>
+    <button onclick="openLevel('pig-hard')">Δύσκολο</button>
+  </div>
+  <div id="pig-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε 13 άτομα υπάρχουν τουλάχιστον 2 που γεννήθηκαν τον ίδιο μήνα.</p>
+      <button onclick="toggleHint('pig-e1')">Hint</button>
+      <div id="pig-e1" class="hint-box">12 μήνες → 13 άτομα.</div>
+      <p><strong>Π2.</strong> Σε 32 μαθητές υπάρχουν τουλάχιστον 2 με βαθμό πολλαπλάσιο του 10.</p>
+      <button onclick="toggleHint('pig-e2')">Hint</button>
+      <div id="pig-e2" class="hint-box">Δυνατοί βαθμοί: 0,10,…,100 → 11 «κουτιά».</div>
+      <p><strong>Π3.</strong> Σε 6 ζευγάρια παπουτσιών (δεξί-αριστερό) διαλέγεις 7 παπούτσια· δείξε ότι υπάρχει τουλάχιστον ένα ζευγάρι.</p>
+      <button onclick="toggleHint('pig-e3')">Hint</button>
+      <div id="pig-e3" class="hint-box">6 ζευγάρια = 6 κουτιά· 7 παπούτσια = περιστέρια.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Among 13 people at least two were born in the same month.</p>
+      <button onclick="toggleHint('pig-e1en')">Hint</button>
+      <div id="pig-e1en" class="hint-box">12 months vs 13 people.</div>
+      <p><strong>P2.</strong> Among 32 pupils at least two have a mark divisible by 10.</p>
+      <button onclick="toggleHint('pig-e2en')">Hint</button>
+      <div id="pig-e2en" class="hint-box">Possible marks: 0,10,…,100 → 11 holes.</div>
+      <p><strong>P3.</strong> From 6 pairs of shoes (left-right) you pick 7 shoes; show some pair is complete.</p>
+      <button onclick="toggleHint('pig-e3en')">Hint</button>
+      <div id="pig-e3en" class="hint-box">6 pairs = 6 holes; 7 shoes = pigeons.</div>
+    </div>
+  </div>
+  <div id="pig-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε 10 ζευγάρια ματιών (δεξί-αριστερό) επιλέγεις 11 γυαλιά· δείξε ότι υπάρχουν τουλάχιστον 2 πλήρη ζευγάρια.</p>
+      <button onclick="toggleHint('pig-m1')">Hint</button>
+      <div id="pig-m1" class="hint-box">10 ζευγάρια = 10 κουτιά· 11 γυαλιά → κάποιο κουτί έχει 2.</div>
+      <p><strong>Π2.</strong> Σε 52 τράπουλες (26 κόκκινες, 26 μαύρες) τραβάς 27 φύλλα· δείξε ότι υπάρχουν τουλάχιστον 2 κόκκινες.</p>
+      <button onclick="toggleHint('pig-m2')">Hint</button>
+      <div id="pig-m2" class="hint-box">Χρώμα = κουτί· 27 > 26.</div>
+      <p><strong>Π3.</strong> Σε 100 ακέραιους του \([1,200]\) δείξε ότι υπάρχουν δύο με διαφορά 10.</p>
+      <button onclick="toggleHint('pig-m3')">Hint</button>
+      <div id="pig-m3" class="hint-box">Κουτιά: αριθμοί mod 10.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> From 10 pairs of eyeglasses (left-right) you pick 11 lenses; show at least 2 complete pairs exist.</p>
+      <button onclick="toggleHint('pig-m1en')">Hint</button>
+      <div id="pig-m1en" class="hint-box">10 pairs = 10 holes; 11 lenses → some hole has 2.</div>
+      <p><strong>P2.</strong> From 52 cards (26 red, 26 black) you draw 27; show at least 2 are red.</p>
+      <button onclick="toggleHint('pig-m2en')">Hint</button>
+      <div id="pig-m2en" class="hint-box">Colour = hole; 27 > 26.</div>
+      <p><strong>P3.</strong> Among 100 integers in \([1,200]\) show two differ by 10.</p>
+      <button onclick="toggleHint('pig-m3en')">Hint</button>
+      <div id="pig-m3en" class="hint-box">Holes: numbers mod 10.</div>
+    </div>
+  </div>
+  <div id="pig-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε σύνολο 101 ακεραίων του \([1,200]\) δείξε ότι υπάρχουν δύο του οποίου το άθροισμα είναι 201.</p>
+      <button onclick="toggleHint('pig-h1')">Hint</button>
+      <div id="pig-h1" class="hint-box">Κουτιά: ζεύγη \((k,201-k)\).</div>
+      <p><strong>Π2.</strong> Σε κάθε τετράγωνο του πίνακα \(8\times8\) γράφουμε 1 ή –1. Δείξε ότι υπάρχουν δύο γραμμές με ίδιο άθροισμα.</p>
+      <button onclick="toggleHint('pig-h2')">Hint</button>
+      <div id="pig-h2" class="hint-box">Δυνατά αθροίσματα: –8…8 → 17 τιμές.</div>
+      <p><strong>Π3.</strong> Σε 102 άτομα κάθε ζεύγος είναι φίλοι ή εχθροί. Δείξε ότι υπάρχουν 2 άτομα με τους ίδιους φίλους.</p>
+      <button onclick="toggleHint('pig-h3')">Hint</button>
+      <div id="pig-h3" class="hint-box">Κουτιά: δυνατά σύνολα φίλων.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Among 101 integers in \([1,200]\) show two sum to 201.</p>
+      <button onclick="toggleHint('pig-h1en')">Hint</button>
+      <div id="pig-h1en" class="hint-box">Holes: pairs \((k,201-k)\).</div>
+      <p><strong>P2.</strong> In each square of an \(8\times8\) board write 1 or –1. Show two rows have the same sum.</p>
+      <button onclick="toggleHint('pig-h2en')">Hint</button>
+      <div id="pig-h2en" class="hint-box">Possible sums: –8…8 → 17 values.</div>
+      <p><strong>P3.</strong> Among 102 people every pair is friends or enemies. Show two people have identical friend-sets.</p>
+      <button onclick="toggleHint('pig-h3en')">Hint</button>
+      <div id="pig-h3en" class="hint-box">Holes: possible friend-sets.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 14 : INDUCTION ================= -->
+<section id="induction" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#ddd6fe,#c4b5fd);padding:24px 28px;">
+  <h2 class="lang-el">🟣 14. Μαθηματική Επαγωγή</h2>
+  <h2 class="lang-en">🟣 14. Induction</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Δείξε ότι ισχύει για την αρχική τιμή (βάση).</li>
+      <li>Υπόθεσε ότι ισχύει για n (υπόθεση επαγωγής).</li>
+      <li>Δείξε ότι ισχύει για n+1 (βήμα επαγωγής).</li>
+      <li>Ολοκλήρωσε την απόδειξη.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Prove it for the initial value (base case).</li>
+      <li>Assume it holds for n (induction hypothesis).</li>
+      <li>Prove it for n+1 (induction step).</li>
+      <li>Conclude the proof.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('ind-easy')">Εύκολο</button>
+    <button onclick="openLevel('ind-med')">Μέτριο</button>
+    <button onclick="openLevel('ind-hard')">Δύσκολο</button>
+  </div>
+  <div id="ind-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ότι για κάθε φυσικό \(n\) ισχύει \(1+2+\dots+n=\frac{n(n+1)}{2}\).</p>
+      <button onclick="toggleHint('ind-e1')">Hint</button>
+      <div id="ind-e1" class="hint-box">Βάση: n=1. Βήμα: πρόσθεσε n+1.</div>
+      <p><strong>Π2.</strong> Να αποδείξεις ότι \(n^2-n\) είναι άρτιος για κάθε φυσικό \(n\).</p>
+      <button onclick="toggleHint('ind-e2')">Hint</button>
+      <div id="ind-e2" class="hint-box">Βάση: n=1. Βήμα: δες (n+1)^2-(n+1).</div>
+      <p><strong>Π3.</strong> Να αποδείξεις ότι \(7^n-1\) διαιρείται με 6 για κάθε φυσικό \(n\).</p>
+      <button onclick="toggleHint('ind-e3')">Hint</button>
+      <div id="ind-e3" class="hint-box">Βήμα: 7^(n+1)-1 = 7(7^n-1)+6.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove that for every natural n we have \(1+2+\dots+n=\frac{n(n+1)}{2}\).</p>
+      <button onclick="toggleHint('ind-e1en')">Hint</button>
+      <div id="ind-e1en" class="hint-box">Base: n=1. Step: add n+1.</div>
+      <p><strong>P2.</strong> Prove that \(n^2-n\) is even for every natural n.</p>
+      <button onclick="toggleHint('ind-e2en')">Hint</button>
+      <div id="ind-e2en" class="hint-box">Base: n=1. Step: check (n+1)^2-(n+1).</div>
+      <p><strong>P3.</strong> Prove that \(7^n-1\) is divisible by 6 for every natural n.</p>
+      <button onclick="toggleHint('ind-e3en')">Hint</button>
+      <div id="ind-e3en" class="hint-box">Step: 7^(n+1)-1 = 7(7^n-1)+6.</div>
+    </div>
+  </div>
+  <div id="ind-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ότι κάθε τετράγωνο είναι άθροισμα τριγώνων αριθμών.</p>
+      <button onclick="toggleHint('ind-m1')">Hint</button>
+      <div id="ind-m1" class="hint-box">Χρησιμοποίησε ταυτότητα: (n+1)^2 = n^2 + (2n+1).</div>
+      <p><strong>Π2.</strong> Να αποδείξεις ότι μια αναδρομική ακολουθία ορίζεται μονοσήμαντα.</p>
+      <button onclick="toggleHint('ind-m2')">Hint</button>
+      <div id="ind-m2" class="hint-box">Βάση: αρχική τιμή. Βήμα: αναδρομικός κανόνας.</div>
+      <p><strong>Π3.</strong> Να αποδείξεις ότι κάθε δυαδικό δέντρο με n φύλλα έχει ύψος ≥ log₂n.</p>
+      <button onclick="toggleHint('ind-m3')">Hint</button>
+      <div id="ind-m3" class="hint-box">Βήμα: προσθήκη φύλλου αυξάνει βάθος.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove every square is a sum of triangle numbers.</p>
+      <button onclick="toggleHint('ind-m1en')">Hint</button>
+      <div id="ind-m1en" class="hint-box">Use identity: (n+1)^2 = n^2 + (2n+1).</div>
+      <p><strong>P2.</strong> Prove a recursively defined sequence is well-defined.</p>
+      <button onclick="toggleHint('ind-m2en')">Hint</button>
+      <div id="ind-m2en" class="hint-box">Base: initial value. Step: recursive rule.</div>
+      <p><strong>P3.</strong> Prove every binary tree with n leaves has height ≥ log₂n.</p>
+      <button onclick="toggleHint('ind-m3en')">Hint</button>
+      <div id="ind-m3en" class="hint-box">Step: adding a leaf increases depth.</div>
+    </div>
+  </div>
+  <div id="ind-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Να αποδείξεις ότι κάθε ακέραιος > 1 γράφεται ως γινόμενο πρώτων.</p>
+      <button onclick="toggleHint('ind-h1')">Hint</button>
+      <div id="ind-h1" class="hint-box">Βήμα: αν ο n+1 δεν είναι πρώτος, σπάσε τον.</div>
+      <p><strong>Π2.</strong> Να αποδείξεις ότι κάθε γράφημα με n κορυφές και n ακμές περιέχει κύκλο.</p>
+      <button onclick="toggleHint('ind-h2')">Hint</button>
+      <div id="ind-h2" class="hint-box">Βήμα: αφαίρεση φύλλου διατηρεί την ιδιότητα.</div>
+      <p><strong>Π3.</strong> Να αποδείξεις ότι κάθε πολυώνυμο βαθού n έχει το πολύ n πραγματικές ρίζες.</p>
+      <button onclick="toggleHint('ind-h3')">Hint</button>
+      <div id="ind-h3" class="hint-box">Βήμα: αν P έχει ρίζα α, τότε P(x)=(x-α)Q(x).</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> Prove every integer > 1 is a product of primes.</p>
+      <button onclick="toggleHint('ind-h1en')">Hint</button>
+      <div id="ind-h1en" class="hint-box">Step: if n+1 is not prime, break it.</div>
+      <p><strong>P2.</strong> Prove every graph with n vertices and n edges contains a cycle.</p>
+      <button onclick="toggleHint('ind-h2en')">Hint</button>
+      <div id="ind-h2en" class="hint-box">Step: removing a leaf preserves the property.</div>
+      <p><strong>P3.</strong> Prove every degree-n polynomial has at most n real roots.</p>
+      <button onclick="toggleHint('ind-h3en')">Hint</button>
+      <div id="ind-h3en" class="hint-box">Step: if P has root α, then P(x)=(x-α)Q(x).</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRATEGY 15 : COLORING / PARITY ================= -->
+<section id="coloring" class="strategy-section" style="display:none;">
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+<div style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe);padding:24px 28px;">
+  <h2 class="lang-el">🔵 15. Χρωματισμός – Ζυγό-Περιττό</h2>
+  <h2 class="lang-en">🔵 15. Coloring / Parity</h2>
+</div>
+<div style="padding:24px 28px;">
+  <div class="lang-el">
+    <h3>Πώς σκέφτεσαι</h3>
+    <ol>
+      <li>Χρωμάτισε το πρόβλημα (συνήθως διχρωμία).</li>
+      <li>Μετάτρεψε κάθε κίνηση σε αλλαγή χρώματος ή σε άθροισμα mod 2.</li>
+      <li>Παρατήρησε τι μένει αναλλοίωτο (π.χ. άθροισμα mod 2).</li>
+      <li>Χρησιμοποίησε το για να δείξεις αδυνατότητα ή άτοπο.</li>
+    </ol>
+  </div>
+  <div class="lang-en">
+    <h3>How to Think</h3>
+    <ol>
+      <li>Colour the problem (usually 2-colour).</li>
+      <li>Turn every move into a colour change or sum mod 2.</li>
+      <li>Notice what stays invariant (e.g. sum mod 2).</li>
+      <li>Use it to prove impossibility or contradiction.</li>
+    </ol>
+  </div>
+</div>
+<div style="padding:0 28px 24px;">
+  <div class="level-tabs">
+    <button onclick="openLevel('col-easy')">Εύκολο</button>
+    <button onclick="openLevel('col-med')">Μέτριο</button>
+    <button onclick="openLevel('col-hard')">Δύσκολο</button>
+  </div>
+  <div id="col-easy" class="level-content">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε ταμπλό \(2\times2\) κινείς ένα πιόνι σε γειτονικό τετράγωνο. Να δείξεις ότι δεν μπορείς να επιστρέψεις στην αρχική θέση μετά από περιττό αριθμό βημάτων.</p>
+      <button onclick="toggleHint('col-e1')">Hint</button>
+      <div id="col-e1" class="hint-box">Χρωμάτισε σαν σκακιέρα· κάθε βήμα αλλάζει χρώμα.</div>
+      <p><strong>Π2.</strong> Σε κύκλο με 5 θέσεις τοποθετείς νομίσματα 0 ή 1. Να δείξεις ότι το άθροισμα όλων δεν μπορεί να γίνει 0 μετά από κινήσεις που αλλάζουν γειτονικά ζεύγη κατά ±1.</p>
+      <button onclick="toggleHint('col-e2')">Hint</button>
+      <div id="col-e2" class="hint-box">Άθροισμα mod 2 παραμένει ίδιο.</div>
+      <p><strong>Π3.</strong> Σε πίνακα \(3\times3\) γράφεις 0 ή 1. Να δείξεις ότι αν αρχικά το άθροισμα είναι περιττό, δεν μπορείς να το κάνεις άρτιο αλλάζοντας πρόσημο γραμμής/στήλης.</p>
+      <button onclick="toggleHint('col-e3')">Hint</button>
+      <div id="col-e3" class="hint-box">Άθροισμα γραμμών mod 2 αναλλοίωτο.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> On a \(2\times2\) board you move a piece to an adjacent square. Show you cannot return to the start after an odd number of moves.</p>
+      <button onclick="toggleHint('col-e1en')">Hint</button>
+      <div id="col-e1en" class="hint-box">Chessboard colouring; each move changes colour.</div>
+      <p><strong>P2.</strong> On a 5-cycle you place coins 0 or 1. Show the total cannot become 0 after moves that change neighbouring pairs by ±1.</p>
+      <button onclick="toggleHint('col-e2en')">Hint</button>
+      <div id="col-e2en" class="hint-box">Total mod 2 stays the same.</div>
+      <p><strong>P3.</strong> In a \(3\times3\) board filled with 0/1, show if the initial sum is odd you cannot make it even by flipping entire rows/columns.</p>
+      <button onclick="toggleHint('col-e3en')">Hint</button>
+      <div id="col-e3en" class="hint-box">Row-sum mod 2 is invariant.</div>
+    </div>
+  </div>
+  <div id="col-med" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε πίνακα \(4\times4\) κινείσαι σε γειτονικά τετράγωνα. Να δείξεις ότι δεν μπορείς να πας από τη μία γωνία στην αντίθετη με περιττό αριθμό βημάτων.</p>
+      <button onclick="toggleHint('col-m1')">Hint</button>
+      <div id="col-m1" class="hint-box">Χρωματισμός σκακιέρας· αρχική και τελική γωνία έχουν ίδιο χρώμα.</div>
+      <p><strong>Π2.</strong> Σε κύκλο με 2n θέσεις τοποθετείς ±1. Να δείξεις ότι δεν μπορείς να κάνεις το άθροισμα 0 αν αρχικά είναι περιττό.</p>
+      <button onclick="toggleHint('col-m2')">Hint</button>
+      <div id="col-m2" class="hint-box">Άθροισμα mod 2 αναλλοίωτο.</div>
+      <p><strong>Π3.</strong> Σε πίνακα \(5\times5\) γράφεις ακέραιους. Να δείξεις ότι αν αρχικά το άθροισμα είναι περιττό, δεν μπορείς να το κάνεις άρτιο αλλάζοντας πρόσημο γραμμής/στήλης.</p>
+      <button onclick="toggleHint('col-m3')">Hint</button>
+      <div id="col-m3" class="hint-box">Διάνυσμα γραμμών στο \(\mathbb F_2^5\).</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> On a \(4\times4\) board you move to adjacent squares. Show you cannot go from one corner to the opposite in an odd number of moves.</p>
+      <button onclick="toggleHint('col-m1en')">Hint</button>
+      <div id="col-m1en" class="hint-box">Chessboard colouring; start and end corners have same colour.</div>
+      <p><strong>P2.</strong> On a 2n-cycle you place ±1. Show you cannot make the total 0 if it starts odd.</p>
+      <button onclick="toggleHint('col-m2en')">Hint</button>
+      <div id="col-m2en" class="hint-box">Total mod 2 invariant.</div>
+      <p><strong>P3.</strong> In a \(5\times5\) board filled with integers, show if the initial sum is odd you cannot make it even by flipping entire rows/columns.</p>
+      <button onclick="toggleHint('col-m3en')">Hint</button>
+      <div id="col-m3en" class="hint-box">Row vector in \(\mathbb F_2^5\).</div>
+    </div>
+  </div>
+  <div id="col-hard" class="level-content" style="display:none;">
+    <div class="lang-el">
+      <p><strong>Π1.</strong> Σε πίνακα \(8\times8\) γράφουμε 0 ή 1. Δείξε ότι υπάρχουν δύο γραμμές με ίδιο άθροισμα.</p>
+      <button onclick="toggleHint('col-h1')">Hint</button>
+      <div id="col-h1" class="hint-box">Δυνατά αθροίσματα: –8…8 → 17 τιμές.</div>
+      <p><strong>Π2.</strong> Σε γράφημα με n κορυφές κάθε ακμή είναι κόκκινη ή μπλε. Δείξε ότι υπάρχουν δύο κορυφές με τους ίδιους «χρωματισμένους» γείτονες.</p>
+      <button onclick="toggleHint('col-h2')">Hint</button>
+      <div id="col-h2" class="hint-box">Κάθε κορυφή έχει χρωματισμένο γειτονικό σύνολο· 2^n δυνατά.</div>
+      <p><strong>Π3.</strong> Σε τουρνουά ν κορυφών κάθε ακμή έχει νικητή. Δείξε ότι υπάρχουν δύο κορυφές με ίδιο συνολικό αριθμό νικών.</p>
+      <button onclick="toggleHint('col-h3')">Hint</button>
+      <div id="col-h3" class="hint-box">Νίκες: 0…n-1 → n τιμές.</div>
+    </div>
+    <div class="lang-en">
+      <p><strong>P1.</strong> In an \(8\times8\) board filled with 0/1 show two rows have the same sum.</p>
+      <button onclick="toggleHint('col-h1en')">Hint</button>
+      <div id="col-h1en" class="hint-box">Possible sums: –8…8 → 17 values.</div>
+      <p><strong>P2.</strong> In a graph with n vertices each edge is red or blue. Show two vertices have identical “coloured” neighbourhoods.</p>
+      <button onclick="toggleHint('col-h2en')">Hint</button>
+      <div id="col-h2en" class="hint-box">Each vertex has a coloured neighbour-set; 2^n possibilities.</div>
+      <p><strong>P3.</strong> In a tournament on n vertices each edge has a winner. Show two vertices have the same total number of wins.</p>
+      <button onclick="toggleHint('col-h3en')">Hint</button>
+      <div id="col-h3en" class="hint-box">Wins: 0…n-1 → n values.</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>     
+        
+        
         <footer>
 EisatoponAI — Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων<br>
 Learning how to think, not what to memorize.
