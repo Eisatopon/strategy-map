@@ -2102,6 +2102,42 @@ window.addEventListener('load', function() {
   }
 });
 </script>
+<script>
+/* ================= STRATEGY TOGGLE ================= */
+function openStrategy(id){
+  document.querySelectorAll('.strategy-section').forEach(sec=>{
+    sec.style.display = 'none';
+  });
+  const target = document.getElementById(id);
+  if(target){
+    target.style.display = 'block';
+    target.scrollIntoView({behavior:'smooth'});
+  }
+}
+
+/* ================= HINT TOGGLE ================= */
+function toggleHint(btn){
+  const hint = btn.nextElementSibling;
+  if(!hint) return;
+  hint.style.display = (hint.style.display === 'block') ? 'none' : 'block';
+}
+
+/* ================= QUIZ CHECK ================= */
+function checkQuiz(btn, correct){
+  const result = btn.parentElement.querySelector('.quiz-result');
+  if(!result) return;
+  result.innerHTML = correct
+    ? "✅ Correct"
+    : "❌ Try again";
+}
+
+/* ================= MATHJAX ================= */
+window.addEventListener('load', function() {
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+});
+</script>
 
 </body>
 </html>
