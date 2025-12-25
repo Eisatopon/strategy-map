@@ -306,259 +306,84 @@ Rewriting them often reveals the solution.
 
 <!-- ================= STRATEGY 5 : MEANINGFUL CASES ================= -->
 
-<section id="cases" class="strategy-section" style="margin-top:60px; display:none;">
+<section id="cases" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#ecfeff,#cffafe);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">🟦 5. Meaningful Cases</h2>
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟦 5. Ουσιαστικές Περιπτώσεις</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟦 5. Meaningful Cases</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Διάσπαση σε περιπτώσεις — αλλά μόνο τις σωστές
+    Διάσπαση — αλλά μόνο όταν αλλάζει η φύση του προβλήματος
   </p>
 </div>
 
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ========== GREEK BLOCK ========== -->
 <div class="lang-el">
-
 <p>
-Η διάσπαση σε περιπτώσεις είναι μια από τις πιο συχνές στρατηγικές —
-και ταυτόχρονα μία από τις πιο <strong>επικίνδυνες</strong>.
-Πολύ συχνά οδηγεί σε χάος, επαναλήψεις και ατελείωτους υπολογισμούς.
+Η διάσπαση σε περιπτώσεις είναι επικίνδυνη
+αν γίνει χωρίς σκέψη.
 </p>
 
 <p>
-Η στρατηγική των <strong>Meaningful Cases</strong> δεν λέει
-«χώρισε σε όλες τις δυνατές περιπτώσεις»,
-αλλά:
-<em>χώρισε μόνο σε περιπτώσεις που αλλάζουν ουσιαστικά τη φύση του προβλήματος</em>.
-</p>
-
-<p>
-Οι σωστές περιπτώσεις δεν είναι πολλές —
-είναι λίγες, καθαρές και αμοιβαία αποκλειόμενες.
-</p>
-
-<div style="background:#ecfeff;border-left:5px solid #06b6d4;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
-<ul>
-<li>Όταν μια ιδιότητα μπορεί να ισχύει ή να μην ισχύει</li>
-<li>Όταν η συμπεριφορά αλλάζει δραστικά σε διαφορετικά καθεστώτα</li>
-<li>Όταν ένα όριο ή μια κρίσιμη τιμή διαχωρίζει καταστάσεις</li>
-<li>Όταν το «γενικό» δεν δουλεύει</li>
-</ul>
-</div>
-
-<div style="background:#cffafe;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
-<ol>
-<li>Ρώτησε: «Πότε αλλάζει πραγματικά το πρόβλημα;»</li>
-<li>Εντόπισε 1–2 κρίσιμες ιδιότητες</li>
-<li>Χώρισε σε περιπτώσεις με βάση αυτές — όχι αυθαίρετα</li>
-<li>Λύσε κάθε περίπτωση με κοινή λογική</li>
-<li>Έλεγξε ότι καλύπτονται όλες και δεν επικαλύπτονται</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-
-<p>
-<strong>Άλγεβρα:</strong><br>
-Να λυθεί μια εξίσωση με απόλυτες τιμές
-χωρίζοντας σε περιπτώσεις ανάλογα με το πρόσημο.
-</p>
-
-<p>
-<strong>Γεωμετρία:</strong><br>
-Δίνεται σημείο σε σχέση με κύκλο.
-Εξέτασε αν βρίσκεται εντός, επί ή εκτός του κύκλου.
-</p>
-
-<p>
-<strong>Θεωρία Αριθμών:</strong><br>
-Μελέτη μιας ιδιότητας αριθμού
-ανάλογα με το αν είναι άρτιος ή περιττός.
+Δεν χωρίζουμε σε <em>όλες</em> τις περιπτώσεις,
+αλλά μόνο σε εκείνες
+που αλλάζουν ουσιαστικά το πρόβλημα.
 </p>
 </div>
 
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
 <div class="lang-en">
-
 <p>
-Case analysis is one of the most common strategies —
-and also one of the most dangerous.
-Blind case-splitting often leads to chaos.
+Case splitting is dangerous if done blindly.
 </p>
 
 <p>
-The <strong>Meaningful Cases</strong> strategy says:
-do not split into all possible cases —
-split only when the nature of the problem truly changes.
+Split only when the nature of the problem truly changes.
 </p>
-
-<p>
-Good cases are few, clean, and mutually exclusive.
-</p>
-
-<strong>When to use:</strong>
-<ul>
-<li>A property may or may not hold</li>
-<li>Behavior changes across regimes</li>
-<li>Critical values separate situations</li>
-</ul>
-
-<strong>Thinking steps:</strong>
-<ol>
-<li>Ask: “When does the problem truly change?”</li>
-<li>Identify critical properties</li>
-<li>Split only along those lines</li>
-<li>Solve each case cleanly</li>
-<li>Verify completeness</li>
-</ol>
-
-<strong>Problems:</strong>
-<p><strong>Algebra:</strong> Absolute value equations.</p>
-<p><strong>Geometry:</strong> Point position relative to a circle.</p>
-<p><strong>Number Theory:</strong> Even vs odd behavior.</p>
-
 </div>
 
 </div>
 </div>
 </section>
+
 <!-- ================= STRATEGY 6 : SYMMETRY ================= -->
 
-<section id="symmetry" class="strategy-section" style="margin-top:60px; display:none;">
+<section id="symmetry" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">🟠 6. Συμμετρία / Αντισυμμετρία</h2>
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟠 6. Συμμετρία / Αντισυμμετρία</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟠 6. Symmetry / Antisymmetry</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Όταν το πρόβλημα δεν ξεχωρίζει κανένα στοιχείο
+    Όταν κανένα στοιχείο δεν ξεχωρίζει
   </p>
 </div>
 
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ========== GREEK BLOCK ========== -->
 <div class="lang-el">
-
 <p>
-Υπάρχουν προβλήματα όπου όλα τα αντικείμενα
-φαίνονται <strong>ισότιμα</strong>:
-κανένα δεν ξεχωρίζει,
-κανένα δεν έχει ιδιαίτερο ρόλο.
+Όταν όλα τα αντικείμενα είναι ισότιμα,
+κάθε «επιλογή» είναι αυθαίρετη.
 </p>
 
 <p>
-Σε τέτοιες περιπτώσεις,
-κάθε προσπάθεια να «διαλέξεις ένα στοιχείο»
-είναι αυθαίρετη και συνήθως αποτυγχάνει.
-Η σωστή στρατηγική είναι να
-<strong>σεβαστείς τη συμμετρία</strong> του προβλήματος.
-</p>
-
-<p>
-Η συμμετρία δεν είναι διακόσμηση —
-είναι <strong>πληροφορία</strong>.
-Σου λέει τι <em>δεν μπορεί</em> να διαφέρει
-και τι πρέπει να ισχύει εξίσου για όλα.
-</p>
-
-<div style="background:#fff7ed;border-left:5px solid #f97316;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
-<ul>
-<li>Όταν όλα τα στοιχεία παίζουν τον ίδιο ρόλο</li>
-<li>Όταν το πρόβλημα «δεν προτιμά» κανένα αντικείμενο</li>
-<li>Όταν οι υποθέσεις είναι συμμετρικές</li>
-<li>Όταν οι πράξεις φαίνονται άσκοπες ή χαοτικές</li>
-</ul>
-</div>
-
-<div style="background:#ffedd5;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
-<ol>
-<li>Εντόπισε ποια αντικείμενα είναι ισότιμα</li>
-<li>Ρώτησε: «τι θα άλλαζε αν τα αντάλλαζα;»</li>
-<li>Συμπέρανε ότι κάποια μεγέθη πρέπει να είναι ίσα</li>
-<li>Αν χρειάζεται, εισήγαγε <strong>αντισυμμετρία</strong> για άτοπο</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-
-<p>
-<strong>Άλγεβρα:</strong><br>
-Να αποδείξετε ότι μια συμμετρική έκφραση
-παίρνει ελάχιστη τιμή όταν όλοι οι μεταβλητοί είναι ίσοι.
-</p>
-
-<p>
-<strong>Γεωμετρία:</strong><br>
-Σε κανονικό πολύγωνο,
-να αποδείξετε ότι συγκεκριμένες αποστάσεις ή γωνίες είναι ίσες,
-χωρίς υπολογισμούς.
-</p>
-
-<p>
-<strong>Συνδυαστική:</strong><br>
-Δίνεται συμμετρική κατανομή αντικειμένων.
-Να δείξετε ότι δεν μπορεί να υπάρξει «προνομιακό» στοιχείο.
+Η συμμετρία είναι πληροφορία:
+σου λέει τι <strong>δεν μπορεί</strong> να διαφέρει.
 </p>
 </div>
 
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
 <div class="lang-en">
-
 <p>
-Some problems treat all objects equally.
-No element stands out.
+When all objects play the same role,
+choosing one is arbitrary.
 </p>
 
 <p>
-In such cases, choosing a specific object is arbitrary.
-The correct approach is to respect the
-<strong>symmetry of the problem</strong>.
+Symmetry tells you what cannot differ.
 </p>
-
-<p>
-Symmetry is not decoration —
-it is information.
-It tells you what cannot differ.
-</p>
-
-<strong>When to use:</strong>
-<ul>
-<li>All objects play the same role</li>
-<li>No preferred element exists</li>
-<li>The assumptions are symmetric</li>
-</ul>
-
-<strong>Thinking steps:</strong>
-<ol>
-<li>Identify equivalent objects</li>
-<li>Ask what changes if they are swapped</li>
-<li>Conclude certain quantities must be equal</li>
-<li>Use antisymmetry if needed for contradiction</li>
-</ol>
-
-<strong>Problems:</strong>
-<p><strong>Algebra:</strong> Symmetric expressions minimized at equality.</p>
-<p><strong>Geometry:</strong> Equal elements in regular figures.</p>
-<p><strong>Combinatorics:</strong> No privileged object in symmetric settings.</p>
-
 </div>
 
 </div>
@@ -567,132 +392,41 @@ It tells you what cannot differ.
 
 <!-- ================= STRATEGY 7 : BOUNDARY VALUES ================= -->
 
-<section id="boundary" class="strategy-section" style="margin-top:60px; display:none;">
+<section id="boundary" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#ecfeff,#cffafe);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">🔷 7. Οριακές Τιμές (Boundary Values)</h2>
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🔷 7. Οριακές Τιμές</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🔷 7. Boundary Values</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Τι συμβαίνει στα άκρα — όχι στο «μέσο»
+    Τι συμβαίνει στα άκρα
   </p>
 </div>
 
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ========== GREEK BLOCK ========== -->
 <div class="lang-el">
-
 <p>
-Πολλά προβλήματα φαίνονται πολύπλοκα επειδή
-προσπαθούμε να τα κατανοήσουμε
-στην πιο γενική τους μορφή.
+Τα άκρα αποκαλύπτουν συχνά
+εκεί όπου «σπάει» μια υπόθεση.
 </p>
 
 <p>
-Η στρατηγική των <strong>Οριακών Τιμών</strong> προτείνει κάτι διαφορετικό:
-<strong>μην κοιτάς πρώτα το γενικό</strong>.
-Κοίτα τι συμβαίνει στα <em>άκρα</em>:
-όταν μια μεταβλητή είναι πολύ μικρή,
-πολύ μεγάλη,
-ή όταν μια κατανομή γίνεται ακραία.
-</p>
-
-<p>
-Συχνά, τα άκρα αποκαλύπτουν
-τι <strong>δεν μπορεί</strong> να συμβεί
-ή πού «σπάει» μια υπόθεση.
 Αν κάτι αποτυγχάνει στα άκρα,
 δεν μπορεί να ισχύει γενικά.
 </p>
-
-<div style="background:#ecfeff;border-left:5px solid #06b6d4;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
-<ul>
-<li>Όταν υπάρχει παράμετρος ή μεταβλητό πλήθος</li>
-<li>Όταν το πρόβλημα αφορά ανισότητες ή κατανομές</li>
-<li>Όταν υποψιάζεσαι ότι «το χειρότερο» συμβαίνει στα άκρα</li>
-<li>Όταν η γενική περίπτωση φαίνεται αδιαπέραστη</li>
-</ul>
 </div>
 
-<div style="background:#cffafe;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
-<ol>
-<li>Εντόπισε ποια μεγέθη μπορούν να «μεγαλώσουν» ή να «μικρύνουν»</li>
-<li>Δοκίμασε ακραίες καταστάσεις (όλα ίσα, όλα άνισα, συγκέντρωση)</li>
-<li>Παρατήρησε τι αλλάζει και τι παραμένει</li>
-<li>Χρησιμοποίησε το άκρο ως όριο ή ως άτοπο</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-
-<p>
-<strong>Ανάλυση / Ανισότητες:</strong><br>
-Να αποδείξετε ότι μια ανισότητα ισχύει για όλους τους θετικούς αριθμούς.
-Δοκιμάστε τι συμβαίνει όταν ένας τείνει στο 0 ή στο άπειρο.
-</p>
-
-<p>
-<strong>Συνδυαστική:</strong><br>
-Δίνεται κατανομή αντικειμένων σε κουτιά.
-Ποια κατανομή μεγιστοποιεί ή ελαχιστοποιεί ένα μέγεθος;
-</p>
-
-<p>
-<strong>Γεωμετρία:</strong><br>
-Σε οικογένεια σχημάτων με σταθερό μέγεθος,
-ποιο σχήμα δίνει ακραία τιμή σε μήκος ή εμβαδό;
-</p>
-</div>
-
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
 <div class="lang-en">
-
 <p>
-Many problems seem hard because we try to understand them
-in full generality.
+Extremes reveal where assumptions break.
 </p>
 
 <p>
-The <strong>Boundary Values</strong> strategy suggests the opposite:
-look at what happens at the extremes —
-very small, very large, or highly uneven cases.
-</p>
-
-<p>
-Extremes often reveal contradictions
-or show where assumptions break.
-If something fails at the boundary,
+If it fails at the boundary,
 it cannot hold in general.
 </p>
-
-<strong>When to use:</strong>
-<ul>
-<li>Presence of parameters</li>
-<li>Inequalities or distributions</li>
-<li>Suspicion that extremes control the behavior</li>
-</ul>
-
-<strong>Thinking steps:</strong>
-<ol>
-<li>Identify quantities that vary</li>
-<li>Test extreme configurations</li>
-<li>Observe what breaks or stabilizes</li>
-<li>Use the boundary as limit or contradiction</li>
-</ol>
-
-<strong>Problems:</strong>
-<p><strong>Analysis:</strong> Inequalities via limits.</p>
-<p><strong>Combinatorics:</strong> Extreme distributions.</p>
-<p><strong>Geometry:</strong> Shapes with extremal properties.</p>
-
 </div>
 
 </div>
@@ -701,136 +435,45 @@ it cannot hold in general.
 
 <!-- ================= STRATEGY 8 : PARAMETER METHOD ================= -->
 
-<section id="parameter" class="strategy-section" style="margin-top:60px; display:none;">
+<section id="parameter" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">🟠 8. Μέθοδος Παραμέτρου</h2>
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟠 8. Μέθοδος Παραμέτρου</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟠 8. Parameter Method</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
     Κάνε το πρόβλημα να «κινείται»
   </p>
 </div>
 
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ========== GREEK BLOCK ========== -->
 <div class="lang-el">
-
 <p>
-Κάποια προβλήματα είναι δύσκολα όχι επειδή είναι περίπλοκα,
-αλλά επειδή είναι <strong>στατικά</strong>:
-μοιάζουν «παγωμένα» και δεν αποκαλύπτουν τη δομή τους.
+Η εισαγωγή παραμέτρου
+αποκαλύπτει πότε αλλάζει η συμπεριφορά.
 </p>
 
 <p>
-Η <strong>Μέθοδος Παραμέτρου</strong> σπάει αυτή τη στασιμότητα.
-Εισάγεις μια μεταβλητή — μια παράμετρο —
-και αφήνεις το πρόβλημα να <em>μεταβληθεί</em>.
-</p>
-
-<p>
-Καθώς η παράμετρος αλλάζει,
-παρατηρείς πότε κάτι εμφανίζεται,
-πότε εξαφανίζεται
-και πού αλλάζει συμπεριφορά.
-Αυτές οι «στιγμές αλλαγής»
-είναι συνήθως το κλειδί της λύσης.
-</p>
-
-<div style="background:#fff7ed;border-left:5px solid #f97316;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
-<ul>
-<li>Όταν υπάρχει φυσική ποσότητα που μπορεί να μεταβάλλεται</li>
-<li>Όταν μια ανισότητα ή ιδιότητα εξαρτάται από μέγεθος</li>
-<li>Όταν υποψιάζεσαι ότι κάτι ισχύει «μέχρι ένα σημείο»</li>
-<li>Όταν θέλεις να συγκρίνεις καταστάσεις</li>
-</ul>
-</div>
-
-<div style="background:#ffedd5;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
-<ol>
-<li>Εισήγαγε μια παράμετρο (μήκος, πλήθος, πραγματικός αριθμός)</li>
-<li>Δες πώς αλλάζει το πρόβλημα καθώς η παράμετρος μεταβάλλεται</li>
-<li>Εντόπισε κρίσιμες τιμές όπου αλλάζει η συμπεριφορά</li>
-<li>Χρησιμοποίησε τη μετάβαση για συμπέρασμα ή άτοπο</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-
-<p>
-<strong>Άλγεβρα / Ανισότητες:</strong><br>
-Δίνεται ανισότητα με παράμετρο \(t\).
-Να βρεθούν οι τιμές του \(t\)
-για τις οποίες ισχύει για όλους τους πραγματικούς αριθμούς.
-</p>
-
-<p>
-<strong>Γεωμετρία:</strong><br>
-Μετακίνησε ένα σημείο πάνω σε ευθεία
-και μελέτησε πότε μια γεωμετρική ιδιότητα
-εμφανίζεται ή χάνεται.
-</p>
-
-<p>
-<strong>Συνδυαστική:</strong><br>
-Θεώρησε ότι αυξάνεται σταδιακά
-ο αριθμός αντικειμένων.
-Πότε μια κατασκευή παύει να είναι δυνατή;
+Οι κρίσιμες τιμές είναι συχνά το κλειδί.
 </p>
 </div>
 
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
 <div class="lang-en">
-
 <p>
-Some problems feel difficult because they are static.
-Nothing seems to change, so structure remains hidden.
+Introducing a parameter lets the problem evolve.
 </p>
 
 <p>
-The <strong>Parameter Method</strong> introduces movement:
-add a variable and let the problem evolve.
+Critical values unlock the solution.
 </p>
-
-<p>
-As the parameter varies,
-watch when properties appear or disappear.
-Critical values often unlock the solution.
-</p>
-
-<strong>When to use:</strong>
-<ul>
-<li>Quantities that can vary naturally</li>
-<li>Conditions depending on size or magnitude</li>
-<li>Suspected threshold behavior</li>
-</ul>
-
-<strong>Thinking steps:</strong>
-<ol>
-<li>Introduce a parameter</li>
-<li>Track how the problem changes</li>
-<li>Find critical transitions</li>
-<li>Use them to conclude</li>
-</ol>
-
-<strong>Problems:</strong>
-<p><strong>Algebra:</strong> Inequalities with parameters.</p>
-<p><strong>Geometry:</strong> Moving points.</p>
-<p><strong>Combinatorics:</strong> Growth and feasibility.</p>
-
 </div>
 
 </div>
 </div>
 </section>
+
   
 <!-- ================= STRATEGY 9 : ALGEBRA → GEOMETRY ================= -->
 
