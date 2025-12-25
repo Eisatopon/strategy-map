@@ -121,101 +121,142 @@ navigate, and complete challenging mathematical problems.
 <div class="map-card" onclick="openStrategy('auxiliary')">12. Auxiliary Object</div>
 </div>
 
-<!-- ================= STRATEGY 1 : EXTREMAL ================= -->
+<!-- ================= STRATEGY 1 : EXTREMAL ELEMENT ================= -->
 
 <section id="extremal" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
+<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🔵 1. Extremal Στοιχείο</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🔵 1. Extremal Element</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
-  </p>
+
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">
+🔵 1. Extremal Στοιχείο
+</h2>
+
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">
+🔵 1. Extremal Element
+</h2>
+
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
+</p>
+
 </div>
 
+<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
+<!-- ================= GREEK ================= -->
 <div class="lang-el">
+
 <p>
-Η στρατηγική του <strong>Extremal στοιχείου</strong> λέει:
-μην ξεκινήσεις αυθαίρετα.
-Ξεκίνα από το στοιχείο με τους περισσότερους περιορισμούς.
+Η στρατηγική του <strong>Extremal στοιχείου</strong>
+σε προτρέπει να μη ξεκινήσεις αυθαίρετα.
+Ξεκίνα από το στοιχείο που βρίσκεται σε
+<strong>ακραία θέση</strong>:
+το μικρότερο, το μεγαλύτερο,
+το πρώτο ή το τελευταίο.
 </p>
 
 <p>
-Το μικρότερο, το μεγαλύτερο, το πρώτο ή το τελευταίο
-αποκαλύπτει γρηγορότερα τι <strong>δεν μπορεί</strong> να συμβεί.
+Το extremal στοιχείο έχει
+<strong>λιγότερες ελευθερίες</strong>
+από όλα τα υπόλοιπα.
+Ακριβώς γι’ αυτό,
+οι περιορισμοί του αποκαλύπτουν γρήγορα
+τι είναι δυνατό και τι αδύνατο.
 </p>
 
-<div style="background:#f8fafc;border-left:5px solid #2563eb;padding:18px;border-radius:12px;margin:25px 0;">
-<strong>Πότε τη διαλέγεις:</strong>
-<ul>
-<li>«το πολύ», «τουλάχιστον»</li>
-<li>ελάχιστο / μέγιστο</li>
-<li>μοναδικό στοιχείο</li>
-</ul>
-</div>
+<h3>Πώς σκέφτεσαι</h3>
+<ol>
+<li>Εντόπισε ένα στοιχείο με ακραία ιδιότητα</li>
+<li>Εξέτασε ποιες κινήσεις ή σχέσεις του απαγορεύονται</li>
+<li>Χρησιμοποίησε τους περιορισμούς για συμπέρασμα ή άτοπο</li>
+</ol>
+
+<h3>Προβλήματα</h3>
+
+<p><strong>Πρόβλημα 1.</strong>
+Σε ένα σύνολο θετικών ακεραίων,
+το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων
+είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.
+Να αποδείξετε ότι υπάρχει στοιχείο
+μεγαλύτερο από το άθροισμα όλων των υπολοίπων.</p>
+
+<p><strong>Πρόβλημα 2.</strong>
+Δίνονται <em>n</em> σημεία στο επίπεδο,
+όχι όλα συνευθειακά.
+Να δείξετε ότι υπάρχει σημείο
+του οποίου η ελάχιστη απόσταση
+από τα υπόλοιπα σημεία
+είναι μοναδική.</p>
+
+<p><strong>Πρόβλημα 3.</strong>
+Σε γράφημα με πεπερασμένο πλήθος κορυφών,
+κάθε κορυφή έχει βαθμό τουλάχιστον 2.
+Να αποδείξετε ότι υπάρχει κορυφή
+η αφαίρεση της οποίας
+δεν αυξάνει τον αριθμό των συνεκτικών συνιστωσών.</p>
+
 </div>
 
+<!-- ================= ENGLISH ================= -->
 <div class="lang-en">
+
 <p>
-The <strong>Extremal Element</strong> strategy tells you where to start:
-from the most constrained object.
+The <strong>Extremal Element</strong> strategy tells you
+not to start arbitrarily.
+Instead, begin with an object
+in an <strong>extreme position</strong>:
+the smallest, the largest,
+the first, or the last.
 </p>
 
 <p>
-The smallest or largest element often reveals impossibilities.
+An extremal object has
+<strong>fewer possible behaviors</strong>
+than all others.
+These restrictions often reveal
+the structure of the problem immediately.
 </p>
+
+<h3>How to Think</h3>
+<ol>
+<li>Identify an object with an extreme property</li>
+<li>Analyze which actions or relations are impossible for it</li>
+<li>Use these restrictions to derive a conclusion or contradiction</li>
+</ol>
+
+<h3>Problems</h3>
+
+<p><strong>Problem 1.</strong>
+In a set of positive integers,
+the sum of any two distinct elements
+is different from the sum of any other two.
+Prove that there exists an element
+greater than the sum of all the others.</p>
+
+<p><strong>Problem 2.</strong>
+Given <em>n</em> points in the plane,
+not all collinear,
+prove that there exists a point
+whose minimum distance to the other points
+is unique.</p>
+
+<p><strong>Problem 3.</strong>
+In a finite graph,
+every vertex has degree at least 2.
+Prove that there exists a vertex
+whose removal does not increase
+the number of connected components.</p>
+
 </div>
 
 </div>
 </div>
 </section>
 
-<!-- ================= STRATEGY 2 : INVARIANTS ================= -->
-
-<section id="invariants" class="strategy-section" style="display:none;">
-
-<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
-
-<div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟢 2. Αναλλοίωτο</h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟢 2. Invariants</h2>
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Τι μένει σταθερό ενώ όλα αλλάζουν
-  </p>
-</div>
-
-<div style="padding:30px 28px;">
-
-<div class="lang-el">
-<p>
-Όταν υπάρχει διαδικασία, κάτι αλλάζει — αλλά κάτι
-<strong>πρέπει</strong> να μένει σταθερό.
-</p>
-
-<p>
-Αυτό το αναλλοίωτο περιορίζει δραστικά
-τι είναι δυνατόν να συμβεί.
-</p>
-</div>
-
-<div class="lang-en">
-<p>
-In problems with repeated operations,
-something changes — but something stays fixed.
-</p>
-
-<p>
-That invariant controls all outcomes.
-</p>
-</div>
-
-</div>
-</div>
-</section>
 
 <!-- ================= STRATEGY 3 : BACKWARD THINKING ================= -->
 
