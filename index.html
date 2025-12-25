@@ -2086,23 +2086,6 @@ Learning how to think, not what to memorize.
 </div>
 
 <script>
-/* ================= QUIZ LOGIC ================= */
-function checkQuiz(btn, correct){
-  const box = btn.parentElement.querySelector('.quiz-result');
-  if(!box) return;
-  box.innerHTML = correct
-    ? "✅ Correct!"
-    : "❌ Try again.";
-}
-
-/* ================= MATHJAX ================= */
-window.addEventListener('load', function() {
-  if (window.MathJax) {
-    MathJax.typesetPromise();
-  }
-});
-</script>
-<script>
 /* ================= STRATEGY TOGGLE ================= */
 function openStrategy(id){
   document.querySelectorAll('.strategy-section').forEach(sec=>{
@@ -2118,13 +2101,13 @@ function openStrategy(id){
 /* ================= LEVEL TOGGLE ================= */
 function openLevel(id){
   document.querySelectorAll('.level-content').forEach(div=>{
-    div.style.display='none';
+    div.style.display = 'none';
   });
   const el = document.getElementById(id);
-  if(el) el.style.display='block';
+  if(el) el.style.display = 'block';
 }
 
-/* ================= HINT TOGGLE (ID-BASED — ΣΩΣΤΟ) ================= */
+/* ================= HINT TOGGLE (ID-BASED) ================= */
 function toggleHint(id){
   const box = document.getElementById(id);
   if(!box) return;
@@ -2141,12 +2124,13 @@ function checkQuiz(btn, correct){
 }
 
 /* ================= MATHJAX ================= */
-window.addEventListener('load', function() {
-  if (window.MathJax) {
+window.addEventListener('load', function(){
+  if(window.MathJax){
     MathJax.typesetPromise();
   }
 });
 </script>
+
 
 
 </body>
