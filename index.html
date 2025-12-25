@@ -204,142 +204,37 @@ navigate, and complete challenging mathematical problems.
 </div>
 </section>
 <!-- ================= STRATEGY 3 : BACKWARD THINKING ================= -->
-
 <section id="backward" class="strategy-section" style="display:none;">
-
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
-
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);padding:24px 28px;">
-
-<h2 class="lang-el" style="margin:0;font-size:1.8em;">
-🟣 3. Ανάστροφη Σκέψη (Backward Thinking)
-</h2>
-
-<h2 class="lang-en" style="margin:0;font-size:1.8em;">
-🟣 3. Backward Thinking
-</h2>
-
-<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-Ξεκίνα από τον στόχο — όχι από τα δεδομένα
-</p>
-
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">🟣 3. Ανάστροφη Σκέψη</h2>
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">🟣 3. Backward Thinking</h2>
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">Ξεκίνα από τον στόχο — όχι από τα δεδομένα</p>
 </div>
-
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ================= GREEK ================= -->
-<div class="lang-el">
-
-<p>
-Σε πολλά προβλήματα,
-τα δεδομένα είναι πολλά,
-ανοργάνωτα
-και δεν δείχνουν ξεκάθαρα
-από πού να ξεκινήσεις.
-</p>
-
-<p>
-Η στρατηγική της <strong>Ανάστροφης Σκέψης</strong>
-προτείνει να αλλάξεις κατεύθυνση:
-<strong>μην ξεκινήσεις από τα δεδομένα</strong>.
-Ξεκίνα από το <em>τελικό ζητούμενο</em>.
-</p>
-
-<p>
-Αναρωτήσου:
-<em>«Τι θα αρκούσε να ισχύει
-ώστε το ζητούμενο να είναι αληθές;»</em>
-Επανάλαβε την ερώτηση,
-μέχρι να συνδεθείς με όσα δίνονται.
-</p>
-
-<h3>Πώς σκέφτεσαι</h3>
-<ol>
-<li>Γράψε καθαρά το τελικό ζητούμενο</li>
-<li>Ρώτησε: «Τι θα ήταν αρκετό για να ισχύει;»</li>
-<li>Μετέτρεψε το ζητούμενο σε απλούστερες συνθήκες</li>
-<li>Σύνδεσε τις συνθήκες με τα δεδομένα</li>
-</ol>
-
-<h3>Προβλήματα</h3>
-
-<p><strong>Πρόβλημα 1.</strong>
-Να αποδείξετε ότι μια δεδομένη ανισότητα
-ισχύει για όλους τους πραγματικούς αριθμούς.
-Ξεκινήστε από το ζητούμενο
-και αναλύστε το σε ισοδύναμες μορφές.</p>
-
-<p><strong>Πρόβλημα 2.</strong>
-Δίνεται τρίγωνο με συγκεκριμένες ιδιότητες.
-Να αποδείξετε ότι ένα σημείο
-ικανοποιεί μια γεωμετρική συνθήκη.
-Ξεκινήστε από το ζητούμενο συμπέρασμα.</p>
-
-<p><strong>Πρόβλημα 3.</strong>
-Να δείξετε ότι μια παράσταση
-παίρνει ακέραιες τιμές
-για όλους τους ακέραιους αριθμούς.
-Ξεκινήστε από την ακέραιη μορφή
-που θα έπρεπε να έχει.</p>
-
+<div class="level-tabs">
+<button onclick="openLevel('back-easy')">Εύκολο</button>
+<button onclick="openLevel('back-med')">Μέτριο</button>
+<button onclick="openLevel('back-hard')">Δύσκολο</button>
 </div>
 
-<!-- ================= ENGLISH ================= -->
-<div class="lang-en">
+<div id="back-easy" class="level-content">
+<p><strong>Πρόβλημα:</strong> Να αποδείξεις ότι για κάθε \(x,y>0\) ισχύει \( \frac{x}{y}+\frac{y}{x}\ge 2 \).</p>
+<button onclick="toggleHint('back-easy-hint')">Σκέψου</button>
+<div id="back-easy-hint" class="hint-box">Ξεκίνα από το ζητούμενο και κάνε το <strong>ισοδύναμο</strong>: ποια ανισότητα δεν έχει κλάσματα;</div>
+</div>
 
-<p>
-In many problems,
-the given information is abundant
-and does not suggest
-a clear starting point.
-</p>
+<div id="back-med" class="level-content" style="display:none;">
+<p><strong>Πρόβλημα:</strong> Στο τρίγωνο \(ABC\) βρες σημείο \(P\) ώστε το <strong>άθροισμα αποστάσεων</strong> από τις πλευρές να είναι **σταθερό**.</p>
+<button onclick="toggleHint('back-med-hint')">Σκέψου</button>
+<div id="back-med-hint" class="hint-box">Ξεκίνα από το **επιθυμητό άθροισμα**. Τι σημαίνει «σταθερό» για το **βαρύκεντρο**;</div>
+</div>
 
-<p>
-The <strong>Backward Thinking</strong> strategy
-reverses direction:
-<strong>do not start from the data</strong>.
-Start from the <em>final goal</em>.
-</p>
-
-<p>
-Ask:
-<em>“What would be sufficient
-for the conclusion to hold?”</em>
-Repeat the question
-until it connects to the given information.
-</p>
-
-<h3>How to Think</h3>
-<ol>
-<li>State the final goal clearly</li>
-<li>Ask what would imply it</li>
-<li>Simplify the required conditions</li>
-<li>Link them to the given data</li>
-</ol>
-
-<h3>Problems</h3>
-
-<p><strong>Problem 1.</strong>
-Prove that a given inequality
-holds for all real numbers.
-Start from the conclusion
-and rewrite it into equivalent forms.</p>
-
-<p><strong>Problem 2.</strong>
-A triangle with given properties is provided.
-Show that a point satisfies
-a specific geometric condition.
-Begin from the desired conclusion.</p>
-
-<p><strong>Problem 3.</strong>
-Show that an expression
-takes integer values
-for all integers.
-Start from the form
-it would need to have.</p>
-
+<div id="back-hard" class="level-content" style="display:none;">
+<p><strong>Πρόβλημα:</strong> Να δείξεις ότι \(x^3+y^3+z^3=3xyz\) έχει **μόνο τετριμμένες** λύσεις όταν \(x+y+z=0\).</p>
+<button onclick="toggleHint('back-hard-hint')">Σκέψου</button>
+<div id="back-hard-hint" class="hint-box">Ξεκίνα από την **τάυτοτητα**: \(x^3+y^3+z^3-3xyz=(x+y+z)(\dots)\). Τι μένει όταν \(x+y+z=0\);</div>
 </div>
 
 </div>
