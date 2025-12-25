@@ -128,7 +128,8 @@ navigate, and complete challenging mathematical problems.
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
 <div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">🔵 1. Extremal Element</h2>
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🔵 1. Extremal Στοιχείο</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🔵 1. Extremal Element</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
     Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
   </p>
@@ -138,449 +139,171 @@ navigate, and complete challenging mathematical problems.
 
 <div class="lang-el">
 <p>
-Η στρατηγική του <strong>Extremal στοιχείου</strong> σου λέει να μη ξεκινήσεις αυθαίρετα.
-Ξεκίνα από το αντικείμενο με τους περισσότερους περιορισμούς:
-το μικρότερο, το μεγαλύτερο, το πρώτο ή το τελευταίο.
+Η στρατηγική του <strong>Extremal στοιχείου</strong> λέει:
+μην ξεκινήσεις αυθαίρετα.
+Ξεκίνα από το στοιχείο με τους περισσότερους περιορισμούς.
 </p>
 
 <p>
-Ακριβώς επειδή αυτό το στοιχείο έχει λιγότερες επιλογές,
-αποκαλύπτει γρηγορότερα τι <strong>δεν μπορεί</strong> να συμβεί —
-και αυτό συχνά οδηγεί στη λύση.
+Το μικρότερο, το μεγαλύτερο, το πρώτο ή το τελευταίο
+αποκαλύπτει γρηγορότερα τι <strong>δεν μπορεί</strong> να συμβεί.
 </p>
 
-<div style="background:#f8fafc;border-left:5px solid #2563eb;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
+<div style="background:#f8fafc;border-left:5px solid #2563eb;padding:18px;border-radius:12px;margin:25px 0;">
+<strong>Πότε τη διαλέγεις:</strong>
 <ul>
 <li>«το πολύ», «τουλάχιστον»</li>
 <li>ελάχιστο / μέγιστο</li>
-<li>μοναδικό ή ακραίο στοιχείο</li>
+<li>μοναδικό στοιχείο</li>
 </ul>
-</div>
-
-<div style="background:#eef2ff;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι:</strong>
-<ol>
-<li>Διάλεξε το extremal στοιχείο</li>
-<li>Δες τι δεν μπορεί να κάνει</li>
-<li>Χρησιμοποίησε τον περιορισμό για συμπέρασμα ή άτοπο</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-<p><strong>Συνδυαστική:</strong> Σύνολο με μοναδικά αθροίσματα ζευγών.</p>
-<p><strong>Γεωμετρία:</strong> n σημεία και ελάχιστη απόσταση.</p>
-<p><strong>Θεωρία Γραφημάτων:</strong> Αφαίρεση κορυφής χωρίς αύξηση συνιστωσών.</p>
 </div>
 </div>
 
 <div class="lang-en">
 <p>
-The Extremal Element strategy tells you where to start:
-from the most constrained object — the smallest, largest, first, or last.
+The <strong>Extremal Element</strong> strategy tells you where to start:
+from the most constrained object.
 </p>
 
 <p>
-Because this object has fewer possibilities,
-its limitations reveal structure and often lead directly to a solution.
+The smallest or largest element often reveals impossibilities.
 </p>
-
-<strong>When to use:</strong>
-<ul>
-<li>at most / at least</li>
-<li>minimum / maximum</li>
-<li>uniqueness conditions</li>
-</ul>
 </div>
 
 </div>
 </div>
 </section>
+
 <!-- ================= STRATEGY 2 : INVARIANTS ================= -->
 
 <section id="invariants" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);padding:24px 28px;">
-<h2 class="lang-el" style="margin:0;font-size:1.8em;">
-🟢 2. Αναζήτηση Αναλλοίωτου
-</h2>
-
-<h2 class="lang-en" style="margin:0;font-size:1.8em;">
-🟢 2. Invariants
-</h2>
-
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟢 2. Αναλλοίωτο</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟢 2. Invariants</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
     Τι μένει σταθερό ενώ όλα αλλάζουν
   </p>
 </div>
 
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ========== GREEK BLOCK ========== -->
 <div class="lang-el">
-
 <p>
-Σε πολλά προβλήματα εμφανίζεται μια διαδικασία:
-κάθε βήμα αλλάζει την κατάσταση και δημιουργεί την ψευδαίσθηση
-ότι «όλα κινούνται».
+Όταν υπάρχει διαδικασία, κάτι αλλάζει — αλλά κάτι
+<strong>πρέπει</strong> να μένει σταθερό.
 </p>
 
 <p>
-Η στρατηγική του <strong>Αναλλοίωτου</strong> σε καλεί να αναζητήσεις
-κάτι που <em>δεν αλλάζει</em>:
-ένα άθροισμα, μια ισοτιμία, μια δομική ιδιότητα.
-Αυτό το σταθερό στοιχείο λειτουργεί σαν άγκυρα
-που περιορίζει δραστικά το τι είναι δυνατόν να συμβεί.
+Αυτό το αναλλοίωτο περιορίζει δραστικά
+τι είναι δυνατόν να συμβεί.
 </p>
-
-<div style="background:#f0fdf4;border-left:5px solid #16a34a;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
-<ul>
-<li>Όταν υπάρχει διαδικασία ή επαναληπτικός μετασχηματισμός</li>
-<li>Όταν εμφανίζονται εκφράσεις τύπου «σε κάθε βήμα»</li>
-<li>Όταν κάτι φαίνεται να διατηρείται ή να επανέρχεται</li>
-</ul>
 </div>
 
-<div style="background:#ecfdf5;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι:</strong>
-<ol>
-<li>Εντόπισε μια ποσότητα που <em>ίσως</em> παραμένει σταθερή</li>
-<li>Έλεγξε αν διατηρείται σε κάθε επιτρεπτό βήμα</li>
-<li>Σύγκρινε αρχική και τελική κατάσταση</li>
-<li>Χρησιμοποίησε την ασυμβατότητα ή ισότητα για συμπέρασμα</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-
-<p>
-<strong>Συνδυαστική:</strong><br>
-Σε κάθε βήμα επιλέγουμε δύο αριθμούς και τους αντικαθιστούμε
-με τη διαφορά τους.
-Να δείξετε ότι η δυνατότητα να προκύψει μηδέν
-εξαρτάται μόνο από την αρχική διάταξη.
-</p>
-
-<p>
-<strong>Θεωρία Αριθμών:</strong><br>
-Σε κύκλο βρίσκονται ακέραιοι.
-Σε κάθε βήμα αντικαθιστούμε δύο γειτονικούς
-με τη διαφορά τους.
-Δείξτε ότι αν αρχικά υπάρχει άρτιος,
-δεν μπορούν να εξαφανιστούν όλοι.
-</p>
-
-<p>
-<strong>Διαδικασίες / Games:</strong><br>
-Υπάρχουν n κουτιά με αντικείμενα.
-Επιτρέπονται μεταφορές ενός αντικειμένου από κουτί σε κουτί.
-Να δείξετε ότι δεν είναι πάντα δυνατό
-όλα τα κουτιά να καταλήξουν με ίσο πλήθος.
-</p>
-
-</div>
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
 <div class="lang-en">
-
 <p>
-Many problems involve a process:
-each step changes the configuration,
-creating the illusion that everything moves freely.
+In problems with repeated operations,
+something changes — but something stays fixed.
 </p>
 
 <p>
-The <strong>Invariant strategy</strong> looks for something that does not change:
-a sum, parity, modular value, or structural property.
-This fixed quantity restricts what outcomes are possible.
+That invariant controls all outcomes.
 </p>
-
-<strong>When to use:</strong>
-<ul>
-<li>Repeated operations or transformations</li>
-<li>Step-by-step procedures</li>
-<li>Situations suggesting conservation</li>
-</ul>
-
-<strong>Thinking steps:</strong>
-<ol>
-<li>Guess a potential invariant</li>
-<li>Verify it is preserved</li>
-<li>Compare initial and final states</li>
-<li>Use the constraint to conclude</li>
-</ol>
-
-<strong>Problems:</strong>
-<p><strong>Combinatorics:</strong> Replacing numbers by differences.</p>
-<p><strong>Number Theory:</strong> Parity in circular difference processes.</p>
-<p><strong>Games:</strong> Object transfers between boxes.</p>
-
 </div>
 
 </div>
 </div>
 </section>
+
 <!-- ================= STRATEGY 3 : BACKWARD THINKING ================= -->
 
-<section id="backward" class="strategy-section" style="margin-top:60px; display:none;">
+<section id="backward" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">🟣 3. Backward Thinking</h2>
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟣 3. Ανάποδη Σκέψη</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟣 3. Backward Thinking</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Ξεκίνα από τον στόχο — όχι από τα δεδομένα
+    Ξεκίνα από τον στόχο
   </p>
 </div>
 
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ========== GREEK BLOCK ========== -->
 <div class="lang-el">
-
 <p>
-Σε πολλά προβλήματα, τα δεδομένα είναι πολλά
-και δεν είναι καθόλου σαφές πώς να τα χρησιμοποιήσεις.
-Αν ξεκινήσεις «μπροστά», είναι εύκολο να χαθείς.
+Όταν τα δεδομένα μπερδεύουν,
+ξεκίνα από το τέλος.
 </p>
 
 <p>
-Η στρατηγική του <strong>Backward Thinking</strong> προτείνει το αντίθετο:
-<strong>ξεκίνα από το τέλος</strong>.
 Ρώτησε:
-<em>«Τι θα αρκούσε να δείξω για να τελειώσει το πρόβλημα;»</em>
-</p>
-
-<p>
-Συχνά το τελικό ζητούμενο είναι πολύ ισχυρό.
-Αν το αποδομήσεις σε μικρότερα,
-πιο απλά ενδιάμεσα βήματα,
-ο δρόμος προς τα δεδομένα αποκαλύπτεται.
-</p>
-
-<div style="background:#f5f3ff;border-left:5px solid #7c3aed;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
-<ul>
-<li>Όταν το ζητούμενο είναι σαφές αλλά τα δεδομένα «μπερδεμένα»</li>
-<li>Όταν πρέπει να αποδείξεις ισότητα, κατασκευή ή ύπαρξη</li>
-<li>Όταν το τελικό αποτέλεσμα έχει έντονη δομή</li>
-</ul>
-</div>
-
-<div style="background:#ede9fe;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
-<ol>
-<li>Γράψε καθαρά το τελικό ζητούμενο</li>
-<li>Ρώτησε: «Τι θα ήταν αρκετό για να ισχύει αυτό;»</li>
-<li>Επανάλαβε το ερώτημα 1–2 φορές</li>
-<li>Σύνδεσε το τελευταίο βήμα με τα δοσμένα</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-
-<p>
-<strong>Άλγεβρα:</strong><br>
-Να αποδείξετε ότι για όλους τους πραγματικούς αριθμούς
-ισχύει μια δεδομένη ανισότητα.
-Ξεκινήστε από το ζητούμενο και αναλύστε το σε ισοδύναμες μορφές.
-</p>
-
-<p>
-<strong>Γεωμετρία:</strong><br>
-Δίνεται τρίγωνο.
-Να αποδείξετε ότι ένα σημείο έχει συγκεκριμένη ιδιότητα.
-Ξεκινήστε από το ζητούμενο συμπέρασμα και δείτε τι απαιτεί.
-</p>
-
-<p>
-<strong>Θεωρία Αριθμών:</strong><br>
-Να δείξετε ότι ένας αριθμός είναι ακέραιος.
-Ξεκινήστε από την ακέραιότητα και δείτε πώς θα προέκυπτε.
+<em>«Τι θα αρκούσε για να ισχύει το ζητούμενο;»</em>
 </p>
 </div>
 
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
 <div class="lang-en">
-
 <p>
-When data feels overwhelming, forward thinking can lead nowhere.
-Backward Thinking suggests the opposite approach:
-<strong>start from the goal</strong>.
+When the data is confusing,
+start from the conclusion.
 </p>
 
 <p>
 Ask:
-<em>“What would be sufficient for the conclusion to hold?”</em>
-Then repeat the question until the steps connect to the given data.
+<em>“What would be sufficient for this to be true?”</em>
 </p>
-
-<strong>When to use:</strong>
-<ul>
-<li>Clear goal, unclear path</li>
-<li>Equality, construction, or existence problems</li>
-<li>Highly structured conclusions</li>
-</ul>
-
-<strong>Thinking steps:</strong>
-<ol>
-<li>Write the final goal clearly</li>
-<li>Ask what would imply it</li>
-<li>Repeat once or twice</li>
-<li>Connect to the given information</li>
-</ol>
-
-<strong>Problems:</strong>
-<p><strong>Algebra:</strong> Proving inequalities by reverse expansion.</p>
-<p><strong>Geometry:</strong> Deducing required properties from the conclusion.</p>
-<p><strong>Number Theory:</strong> Showing integrality via reverse reasoning.</p>
-
 </div>
 
 </div>
 </div>
 </section>
+
 <!-- ================= STRATEGY 4 : REFORMULATION ================= -->
 
-<section id="reformulation" class="strategy-section" style="margin-top:60px; display:none;">
+<section id="reformulation" class="strategy-section" style="display:none;">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);padding:24px 28px;">
-  <h2 style="margin:0;font-size:1.8em;">🟠 4. Reformulation</h2>
+  <h2 class="lang-el" style="margin:0;font-size:1.8em;">🟠 4. Αναδιατύπωση</h2>
+  <h2 class="lang-en" style="margin:0;font-size:1.8em;">🟠 4. Reformulation</h2>
   <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Πες το ίδιο πρόβλημα με άλλα λόγια
+    Πες το ίδιο πρόβλημα αλλιώς
   </p>
 </div>
 
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ========== GREEK BLOCK ========== -->
 <div class="lang-el">
-
 <p>
-Πολλά προβλήματα φαίνονται δύσκολα όχι επειδή είναι βαθιά,
-αλλά επειδή είναι <strong>κακοδιατυπωμένα</strong>.
-Η πληροφορία υπάρχει, αλλά είναι «κρυμμένη» σε μια άβολη μορφή.
+Πολλά προβλήματα είναι δύσκολα
+επειδή είναι κακοδιατυπωμένα.
 </p>
 
 <p>
-Η στρατηγική της <strong>Αναδιατύπωσης (Reformulation)</strong>
-σου λέει:
-<em>μην προσπαθείς να λύσεις το πρόβλημα όπως δίνεται —
-προσπάθησε πρώτα να το ξαναπείς</em>.
-</p>
-
-<p>
-Μια σωστή αναδιατύπωση μπορεί να μετατρέψει
-ένα δύσκολο πρόβλημα σε προφανές.
-</p>
-
-<div style="background:#fff7ed;border-left:5px solid #f97316;padding:18px 20px;border-radius:12px;margin:25px 0;">
-<strong>Πότε να τη διαλέξεις:</strong>
-<ul>
-<li>Όταν η εκφώνηση είναι περίπλοκη ή «φορτωμένη»</li>
-<li>Όταν υπάρχουν πολλές λέξεις αλλά λίγη ουσία</li>
-<li>Όταν νιώθεις ότι «κάτι απλό κρύβεται από πίσω»</li>
-<li>Όταν ένα πρόβλημα αντιστέκεται σε όλες τις τεχνικές</li>
-</ul>
-</div>
-
-<div style="background:#ffedd5;border-radius:14px;padding:22px;margin-bottom:30px;">
-<strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
-<ol>
-<li>Ρώτησε: «Τι πραγματικά λέει αυτό το πρόβλημα;»</li>
-<li>Αφαίρεσε λεπτομέρειες που δεν επηρεάζουν το ζητούμενο</li>
-<li>Αντικατάστησε έννοιες με ισοδύναμες</li>
-<li>Ξαναγράψε το πρόβλημα σε 1–2 προτάσεις</li>
-</ol>
-</div>
-
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα:</strong>
-
-<p>
-<strong>Συνδυαστική:</strong><br>
-Δίνεται ένα παιχνίδι με κανόνες.
-Αντί να αναλύσεις τους κανόνες,
-ξαναδιατύπωσε το παιχνίδι ως πρόβλημα καταμέτρησης καταστάσεων.
-</p>
-
-<p>
-<strong>Γεωμετρία:</strong><br>
-Δίνεται ένα σχήμα με πολλές σχέσεις.
-Ξαναδιατύπωσε το πρόβλημα μόνο με γωνίες ή μόνο με αποστάσεις.
-</p>
-
-<p>
-<strong>Θεωρία Αριθμών:</strong><br>
-Ένα πρόβλημα διαιρετότητας
-αναδιατυπώνεται ως πρόβλημα ισοτιμίας modulo.
+Ξαναπές το πρόβλημα —
+και συχνά η λύση εμφανίζεται μόνη της.
 </p>
 </div>
 
-</div>
-
-<!-- ========== ENGLISH BLOCK ========== -->
 <div class="lang-en">
-
 <p>
-Many problems feel hard not because they are deep,
-but because they are poorly phrased.
-The information is there — just hidden.
+Many problems feel hard
+because they are poorly phrased.
 </p>
 
 <p>
-The <strong>Reformulation strategy</strong> says:
-do not try to solve the problem as stated —
-first, rewrite it.
+Rewriting them often reveals the solution.
 </p>
-
-<p>
-A good reformulation can turn a difficult problem
-into an obvious one.
-</p>
-
-<strong>When to use:</strong>
-<ul>
-<li>Verbose or confusing statements</li>
-<li>Problems resisting all techniques</li>
-<li>Situations where structure feels hidden</li>
-</ul>
-
-<strong>Thinking steps:</strong>
-<ol>
-<li>Ask: “What is this really saying?”</li>
-<li>Remove irrelevant details</li>
-<li>Replace concepts with equivalent ones</li>
-<li>Rewrite the problem concisely</li>
-</ol>
-
-<strong>Problems:</strong>
-<p><strong>Combinatorics:</strong> Reformulate games as state-counting.</p>
-<p><strong>Geometry:</strong> Express everything via angles or distances.</p>
-<p><strong>Number Theory:</strong> Replace divisibility with modular statements.</p>
-
 </div>
 
 </div>
 </div>
 </section>
+
 <!-- ================= STRATEGY 5 : MEANINGFUL CASES ================= -->
 
 <section id="cases" class="strategy-section" style="margin-top:60px; display:none;">
