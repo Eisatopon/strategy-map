@@ -198,6 +198,130 @@ its limitations reveal structure and often lead directly to a solution.
 </div>
 </div>
 </section>
+<!-- ================= STRATEGY 2 : INVARIANTS ================= -->
+
+<section id="invariants" style="margin-top:60px;">
+
+<div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
+
+<!-- HEADER -->
+<div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);padding:24px 28px;">
+  <h2 style="margin:0;font-size:1.8em;">🟢 2. Αναζήτηση Αναλλοίωτου</h2>
+  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+    Τι μένει σταθερό ενώ όλα αλλάζουν
+  </p>
+</div>
+
+<!-- CONTENT -->
+<div style="padding:30px 28px;">
+
+<!-- ========== GREEK BLOCK ========== -->
+<div class="lang-el">
+
+<p>
+Σε πολλά προβλήματα εμφανίζεται μια διαδικασία:
+κάθε βήμα αλλάζει την κατάσταση και δημιουργεί την ψευδαίσθηση
+ότι «όλα κινούνται».
+</p>
+
+<p>
+Η στρατηγική του <strong>Αναλλοίωτου</strong> σε καλεί να αναζητήσεις
+κάτι που <em>δεν αλλάζει</em>:
+ένα άθροισμα, μια ισοτιμία, μια δομική ιδιότητα.
+Αυτό το σταθερό στοιχείο λειτουργεί σαν άγκυρα
+που περιορίζει δραστικά το τι είναι δυνατόν να συμβεί.
+</p>
+
+<div style="background:#f0fdf4;border-left:5px solid #16a34a;padding:18px 20px;border-radius:12px;margin:25px 0;">
+<strong>Πότε να τη διαλέξεις:</strong>
+<ul>
+<li>Όταν υπάρχει διαδικασία ή επαναληπτικός μετασχηματισμός</li>
+<li>Όταν εμφανίζονται εκφράσεις τύπου «σε κάθε βήμα»</li>
+<li>Όταν κάτι φαίνεται να διατηρείται ή να επανέρχεται</li>
+</ul>
+</div>
+
+<div style="background:#ecfdf5;border-radius:14px;padding:22px;margin-bottom:30px;">
+<strong>Πώς σκέφτεσαι:</strong>
+<ol>
+<li>Εντόπισε μια ποσότητα που <em>ίσως</em> παραμένει σταθερή</li>
+<li>Έλεγξε αν διατηρείται σε κάθε επιτρεπτό βήμα</li>
+<li>Σύγκρινε αρχική και τελική κατάσταση</li>
+<li>Χρησιμοποίησε την ασυμβατότητα ή ισότητα για συμπέρασμα</li>
+</ol>
+</div>
+
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
+<strong>Προβλήματα:</strong>
+
+<p>
+<strong>Συνδυαστική:</strong><br>
+Σε κάθε βήμα επιλέγουμε δύο αριθμούς και τους αντικαθιστούμε
+με τη διαφορά τους.
+Να δείξετε ότι η δυνατότητα να προκύψει μηδέν
+εξαρτάται μόνο από την αρχική διάταξη.
+</p>
+
+<p>
+<strong>Θεωρία Αριθμών:</strong><br>
+Σε κύκλο βρίσκονται ακέραιοι.
+Σε κάθε βήμα αντικαθιστούμε δύο γειτονικούς
+με τη διαφορά τους.
+Δείξτε ότι αν αρχικά υπάρχει άρτιος,
+δεν μπορούν να εξαφανιστούν όλοι.
+</p>
+
+<p>
+<strong>Διαδικασίες / Games:</strong><br>
+Υπάρχουν n κουτιά με αντικείμενα.
+Επιτρέπονται μεταφορές ενός αντικειμένου από κουτί σε κουτί.
+Να δείξετε ότι δεν είναι πάντα δυνατό
+όλα τα κουτιά να καταλήξουν με ίσο πλήθος.
+</p>
+
+</div>
+</div>
+
+<!-- ========== ENGLISH BLOCK ========== -->
+<div class="lang-en">
+
+<p>
+Many problems involve a process:
+each step changes the configuration,
+creating the illusion that everything moves freely.
+</p>
+
+<p>
+The <strong>Invariant strategy</strong> looks for something that does not change:
+a sum, parity, modular value, or structural property.
+This fixed quantity restricts what outcomes are possible.
+</p>
+
+<strong>When to use:</strong>
+<ul>
+<li>Repeated operations or transformations</li>
+<li>Step-by-step procedures</li>
+<li>Situations suggesting conservation</li>
+</ul>
+
+<strong>Thinking steps:</strong>
+<ol>
+<li>Guess a potential invariant</li>
+<li>Verify it is preserved</li>
+<li>Compare initial and final states</li>
+<li>Use the constraint to conclude</li>
+</ol>
+
+<strong>Problems:</strong>
+<p><strong>Combinatorics:</strong> Replacing numbers by differences.</p>
+<p><strong>Number Theory:</strong> Parity in circular difference processes.</p>
+<p><strong>Games:</strong> Object transfers between boxes.</p>
+
+</div>
+
+</div>
+</div>
+</section>
 
 <footer>
 EisatoponAI — Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων<br>
