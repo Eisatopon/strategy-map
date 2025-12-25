@@ -72,29 +72,59 @@ footer{
 }
 .level-tabs button{
   margin-right:6px;
-  padding:6px 12px;
+  padding:8px 16px;
   border:none;
   background:#e5e7eb;
   border-radius:6px;
   cursor:pointer;
+  font-weight:500;
+  transition:background .2s;
 }
 .level-tabs button:hover{
   background:#d1d5db;
 }
+.level-tabs button.active{
+  background:#3b82f6;
+  color:white;
+}
 .level-content{
-  margin-top:12px;
+  display:none;
+  margin-top:16px;
 }
 .hint-box{
   display:none;
-  margin-top:8px;
-  padding:8px 12px;
-  background:#f3f4f6;
-  border-left:4px solid #3b82f6;
+  margin-top:12px;
+  padding:12px 16px;
+  background:#fef3c7;
+  border-left:4px solid #f59e0b;
+  border-radius:8px;
   font-size:0.95em;
   color:#374151;
 }
 .strategy-section{
   margin-bottom:40px;
+}
+.quiz-button{
+  margin:8px 8px 8px 0;
+  padding:10px 18px;
+  border:2px solid #e5e7eb;
+  background:white;
+  border-radius:8px;
+  cursor:pointer;
+  transition:all .2s;
+  font-size:1em;
+}
+.quiz-button:hover{
+  border-color:#3b82f6;
+  background:#eff6ff;
+}
+.quiz-button.correct{
+  border-color:#10b981;
+  background:#d1fae5;
+}
+.quiz-button.incorrect{
+  border-color:#ef4444;
+  background:#fee2e2;
 }
 </style>
 
@@ -111,15 +141,41 @@ function openStrategy(id){
   if(target){
     target.style.display='block';
     target.scrollIntoView({behavior:'smooth'});
+    // Activate first tab
+    const firstTab = target.querySelector('.level-tabs button');
+    if(firstTab) firstTab.click();
   }
 }
-function openLevel(id){
-  document.querySelectorAll('.level-content').forEach(div=>div.style.display='none');
-  document.getElementById(id).style.display='block';
+function openLevel(sectionId, levelId, button){
+  const section = document.getElementById(sectionId);
+  section.querySelectorAll('.level-content').forEach(div=>div.style.display='none');
+  section.querySelectorAll('.level-tabs button').forEach(btn=>btn.classList.remove('active'));
+  document.getElementById(levelId).style.display='block';
+  button.classList.add('active');
 }
 function toggleHint(id){
   const box=document.getElementById(id);
   box.style.display=box.style.display==='block'?'none':'block';
+}
+function checkQuiz(button, isCorrect){
+  const container = button.parentElement;
+  const buttons = container.querySelectorAll('.quiz-button');
+  const result = container.querySelector('.quiz-result');
+  
+  buttons.forEach(btn => {
+    btn.disabled = true;
+    btn.classList.remove('correct', 'incorrect');
+  });
+  
+  if(isCorrect){
+    button.classList.add('correct');
+    result.textContent = '✅ Σωστά! Το extremal στοιχείο είναι πάντα το πιο περιορισμένο.';
+    result.style.color = '#10b981';
+  } else {
+    button.classList.add('incorrect');
+    result.textContent = '❌ Όχι ακριβώς. Πάντα ξεκινάμε από το πιο περιορισμένο στοιχείο.';
+    result.style.color = '#ef4444';
+  }
 }
 </script>
 </head>
@@ -172,6 +228,7 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 <div class="map-card" onclick="openStrategy('reverse')">14. Reverse Question</div>
 <div class="map-card" onclick="openStrategy('induction')">15. Mathematical Induction</div>
 </div>
+
 <!-- ================= STRATEGY 1 : EXTREMAL ELEMENT ================= -->
 
 <section id="extremal" class="strategy-section" style="display:none;">
@@ -217,7 +274,7 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 </p>
 
 <p>
-Ακριβώς γι’ αυτό,
+Ακριβώς γι' αυτό,
 το extremal στοιχείο αποκαλύπτει γρηγορότερα
 τι <strong>δεν μπορεί</strong> να συμβεί —
 και συχνά αυτό αρκεί για να οδηγηθείς
@@ -244,33 +301,91 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 </ol>
 </div>
 
-<div style="background:#f9fafb;padding:22px;border-radius:14px;">
-<strong>Προβλήματα (χωρίς λύσεις):</strong>
+<!-- LEVEL TABS -->
+<div class="level-tabs">
+<button onclick="openLevel('extremal','level-basic',this)" class="active">Βασικό</button>
+<button onclick="openLevel('extremal','level-intermediate',this)">Ενδιάμεσο</button>
+<button onclick="openLevel('extremal','level-advanced',this)">Προχωρημένο</button>
+</div>
+
+<!-- LEVEL: BASIC -->
+<div id="level-basic" class="level-content" style="display:block;">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+
+<p><strong>📘 Πρόβλημα Βασικού Επιπέδου:</strong></p>
 
 <p>
-<strong>Συνδυαστική:</strong><br>
 Δίνεται πεπερασμένο σύνολο θετικών ακεραίων
 με την ιδιότητα ότι το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων
 είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.
 Να αποδείξετε ότι το σύνολο περιέχει <strong>το πολύ έναν άρτιο αριθμό</strong>.
 </p>
 
+<button onclick="toggleHint('hint-basic')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+💡 Δείξε μου hint
+</button>
+
+<div id="hint-basic" class="hint-box">
+<strong>Hint:</strong> Τι συμβαίνει αν υπάρχουν δύο άρτιοι αριθμοί στο σύνολο; 
+Σκέψου το extremal στοιχείο: τον <em>μικρότερο</em> άρτιο αριθμό. 
+Μπορείς να βρεις δύο ζεύγη με το ίδιο άθροισμα;
+</div>
+
+</div>
+</div>
+
+<!-- LEVEL: INTERMEDIATE -->
+<div id="level-intermediate" class="level-content">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+
+<p><strong>📙 Πρόβλημα Ενδιάμεσου Επιπέδου:</strong></p>
+
 <p>
-<strong>Γεωμετρία:</strong><br>
-Δίνονται \(n\) σημεία στο επίπεδο.
+Δίνονται \(n\) σημεία στο επίπεδο, όχι όλα συνευθειακά.
 Να αποδείξετε ότι υπάρχει σημείο τέτοιο ώστε,
 αν αφαιρεθεί,
 η ελάχιστη απόσταση μεταξύ των υπολοίπων σημείων
 δεν μειώνεται.
 </p>
 
+<button onclick="toggleHint('hint-intermediate')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+💡 Δείξε μου hint
+</button>
+
+<div id="hint-intermediate" class="hint-box">
+<strong>Hint:</strong> Ποια είναι η ελάχιστη απόσταση μεταξύ όλων των σημείων; 
+Υπάρχει ένα ζεύγος σημείων που την πετυχαίνει. 
+Τι συμβαίνει αν αφαιρέσεις ένα σημείο που <em>δεν</em> ανήκει σε αυτό το ζεύγος;
+</div>
+
+</div>
+</div>
+
+<!-- LEVEL: ADVANCED -->
+<div id="level-advanced" class="level-content">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+
+<p><strong>📕 Πρόβλημα Προχωρημένου Επιπέδου:</strong></p>
+
 <p>
-<strong>Θεωρία Γραφημάτων:</strong><br>
-Σε συνεκτικό γράφημα,
+Σε συνεκτικό γράφημα με \(n\) κορυφές,
 να αποδείξετε ότι υπάρχει κορυφή
-της οποίας η αφαίρεση
-δεν αυξάνει τον αριθμό των συνιστωσών.
+της οποίας η αφαίρεση (μαζί με τις ακμές της)
+δεν αυξάνει τον αριθμό των συνιστωσών συνοχής
+περισσότερο από 1.
 </p>
+
+<button onclick="toggleHint('hint-advanced')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+💡 Δείξε μου hint
+</button>
+
+<div id="hint-advanced" class="hint-box">
+<strong>Hint:</strong> Σκέψου ένα δένδρο επικάλυψης (spanning tree) του γράφου. 
+Ποια κορυφή στο δένδρο είναι το extremal στοιχείο; 
+(Υπόδειξη: ένα <em>φύλλο</em> έχει μόνο μία ακμή!)
+</div>
+
+</div>
 </div>
 
 </div>
@@ -299,13 +414,17 @@ what <em>cannot</em> happen —
 often enough to solve the problem.
 </p>
 
+<div style="background:#f8fafc;border-left:5px solid #2563eb;padding:18px 20px;border-radius:12px;margin:25px 0;">
 <strong>When to use:</strong>
 <ul>
-<li>“At most” / “at least” statements</li>
+<li>"At most" / "at least" statements</li>
 <li>Minimum or maximum conditions</li>
 <li>Uniqueness arguments</li>
+<li>One element stands out</li>
 </ul>
+</div>
 
+<div style="background:#eef2ff;border-radius:14px;padding:22px;margin-bottom:30px;">
 <strong>Thinking steps:</strong>
 <ol>
 <li>Identify the extremal element</li>
@@ -313,45 +432,115 @@ often enough to solve the problem.
 <li>Analyze its interaction with others</li>
 <li>Use restrictions to conclude</li>
 </ol>
+</div>
 
-<strong>Problems (no solutions):</strong>
-<p><strong>Combinatorics:</strong> Unique pairwise sums → at most one even.</p>
-<p><strong>Geometry:</strong> Removing a point without decreasing minimal distance.</p>
-<p><strong>Graph Theory:</strong> Vertex whose removal preserves connectivity.</p>
+<!-- LEVEL TABS -->
+<div class="level-tabs">
+<button onclick="openLevel('extremal','level-basic-en',this)" class="active">Basic</button>
+<button onclick="openLevel('extremal','level-intermediate-en',this)">Intermediate</button>
+<button onclick="openLevel('extremal','level-advanced-en',this)">Advanced</button>
+</div>
+
+<!-- LEVEL: BASIC EN -->
+<div id="level-basic-en" class="level-content" style="display:block;">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+
+<p><strong>📘 Basic Problem:</strong></p>
+<p>Given a finite set of positive integers where all pairwise sums are distinct, prove it contains at most one even number.</p>
+
+<button onclick="toggleHint('hint-basic-en')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+💡 Show hint
+</button>
+
+<div id="hint-basic-en" class="hint-box">
+<strong>Hint:</strong> What happens if there are two even numbers? Consider the smallest even number.
+</div>
+
+</div>
+</div>
+
+<!-- LEVEL: INTERMEDIATE EN -->
+<div id="level-intermediate-en" class="level-content">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+
+<p><strong>📙 Intermediate Problem:</strong></p>
+<p>Given n points in the plane, prove there exists a point whose removal doesn't decrease the minimal distance.</p>
+
+<button onclick="toggleHint('hint-intermediate-en')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+💡 Show hint
+</button>
+
+<div id="hint-intermediate-en" class="hint-box">
+<strong>Hint:</strong> Consider the pair achieving minimal distance. Remove a point NOT in this pair.
+</div>
+
+</div>
+</div>
+
+<!-- LEVEL: ADVANCED EN -->
+<div id="level-advanced-en" class="level-content">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+
+<p><strong>📕 Advanced Problem:</strong></p>
+<p>In a connected graph, prove there's a vertex whose removal doesn't increase components by more than 1.</p>
+
+<button onclick="toggleHint('hint-advanced-en')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+💡 Show hint
+</button>
+
+<div id="hint-advanced-en" class="hint-box">
+<strong>Hint:</strong> Consider a spanning tree. Which vertex is most constrained? (A leaf!)
+</div>
+
+</div>
+</div>
 
 </div>
 
 <!-- ================= QUIZ ================= -->
 
-<div style="margin-top:40px;padding:22px;border-radius:14px;background:#f8fafc;border:1px solid #e5e7eb;">
+<div style="margin-top:40px;padding:22px;border-radius:14px;background:#f0f9ff;border:2px solid #bae6fd;">
 
-<h3 class="lang-el">🧠 Μικρό Quiz</h3>
-<h3 class="lang-en">🧠 Quick Quiz</h3>
+<h3 class="lang-el" style="margin-top:0;">🧠 Μικρό Quiz</h3>
+<h3 class="lang-en" style="margin-top:0;">🧠 Quick Quiz</h3>
 
-<p class="lang-el">
-<strong>Ερώτηση:</strong><br>
-Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης
-στη στρατηγική του Extremal Element;
+<p class="lang-el" style="margin-bottom:16px;">
+<strong>Ερώτηση:</strong> Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης στη στρατηγική του Extremal Element;
 </p>
 
-<p class="lang-en">
-<strong>Question:</strong><br>
-Which element is usually the correct starting point
-in the Extremal Element strategy?
+<p class="lang-en" style="margin-bottom:16px;">
+<strong>Question:</strong> Which element is usually the correct starting point in the Extremal Element strategy?
 </p>
 
-<button onclick="checkQuiz(this,true)">Το πιο περιορισμένο στοιχείο</button>
-<button onclick="checkQuiz(this,false)">Ένα τυχαίο στοιχείο</button>
-<button onclick="checkQuiz(this,true)">The most constrained element</button>
-<button onclick="checkQuiz(this,false)">Any random element</button>
+<div class="lang-el">
+<button class="quiz-button" onclick="checkQuiz(this,true)">Το πιο περιορισμένο στοιχείο</button>
+<button class="quiz-button" onclick="checkQuiz(this,false)">Ένα τυχαίο στοιχείο</button>
+<button class="quiz-button" onclick="checkQuiz(this,false)">Το μεσαίο στοιχείο</button>
+</div>
 
-<div class="quiz-result" style="margin-top:12px;font-weight:bold;"></div>
+<div class="lang-en">
+<button class="quiz-button" onclick="checkQuiz(this,true)">The most constrained element</button>
+<button class="quiz-button" onclick="checkQuiz(this,false)">Any random element</button>
+<button class="quiz-button" onclick="checkQuiz(this,false)">The middle element</button>
+</div>
+
+<div class="quiz-result" style="margin-top:16px;font-weight:bold;"></div>
 
 </div>
 
 </div>
 </div>
 </section>
+
+<footer>
+<p class="lang-el">Χάρτης Στρατηγικών © 2025 — Μάθε πώς να σκέφτεσαι, όχι μόνο πώς να λύνεις</p>
+<p class="lang-en">Strategy Map © 2025 — Learn to think, not just to solve</p>
+</footer>
+
+</div>
+
+</body>
+</html>
 
 
 <!-- ================= STRATEGY 2 : MEANINGFUL CASES ================= -->
