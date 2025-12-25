@@ -2086,6 +2086,16 @@ Learning how to think, not what to memorize.
 </div>
 
 <script>
+/* ================= QUIZ LOGIC ================= */
+function checkQuiz(btn, correct){
+  const box = btn.parentElement.querySelector('.quiz-result');
+  if(!box) return;
+  box.innerHTML = correct
+    ? "✅ Correct!"
+    : "❌ Try again.";
+}
+
+/* ================= MATHJAX ================= */
 window.addEventListener('load', function() {
   if (window.MathJax) {
     MathJax.typesetPromise();
@@ -2094,4 +2104,4 @@ window.addEventListener('load', function() {
 </script>
 
 </body>
-</html>  
+</html>
