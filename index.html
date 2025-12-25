@@ -2115,20 +2115,29 @@ function openStrategy(id){
   }
 }
 
-/* ================= HINT TOGGLE ================= */
-function toggleHint(btn){
-  const hint = btn.nextElementSibling;
-  if(!hint) return;
-  hint.style.display = (hint.style.display === 'block') ? 'none' : 'block';
+/* ================= LEVEL TOGGLE ================= */
+function openLevel(id){
+  document.querySelectorAll('.level-content').forEach(div=>{
+    div.style.display='none';
+  });
+  const el = document.getElementById(id);
+  if(el) el.style.display='block';
 }
 
-/* ================= QUIZ CHECK ================= */
+/* ================= HINT TOGGLE (ID-BASED — ΣΩΣΤΟ) ================= */
+function toggleHint(id){
+  const box = document.getElementById(id);
+  if(!box) return;
+  box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+}
+
+/* ================= QUIZ ================= */
 function checkQuiz(btn, correct){
   const result = btn.parentElement.querySelector('.quiz-result');
   if(!result) return;
   result.innerHTML = correct
-    ? "✅ Correct"
-    : "❌ Try again";
+    ? "✅ Correct!"
+    : "❌ Try again.";
 }
 
 /* ================= MATHJAX ================= */
@@ -2138,6 +2147,7 @@ window.addEventListener('load', function() {
   }
 });
 </script>
+
 
 </body>
 </html>
