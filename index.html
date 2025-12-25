@@ -180,70 +180,83 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 
 <!-- HEADER -->
 <div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
-
   <h2 class="lang-el" style="margin:0;font-size:1.8em;">
-    🔵 1. Extremal Element (Ακραίο Στοιχείο)
+    🔵 1. Extremal Element
   </h2>
-
   <h2 class="lang-en" style="margin:0;font-size:1.8em;">
     🔵 1. Extremal Element
   </h2>
 
-  <p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-    Ξεκίνα από το πιο περιορισμένο στοιχείο
+  <p class="lang-el" style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+    Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
+  </p>
+  <p class="lang-en" style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+    Where to start — the most constrained object
   </p>
 </div>
 
 <!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ================= GREEK ================= -->
+<!-- ========== GREEK ========== -->
 <div class="lang-el">
 
 <p>
-Σε πολλά προβλήματα, το κρίσιμο βήμα δεν είναι οι πράξεις,
-αλλά το <strong>από πού θα ξεκινήσεις</strong>.
-Η στρατηγική του <strong>Extremal Element</strong>
-σου λέει να ξεκινήσεις από το στοιχείο
-με τους περισσότερους περιορισμούς:
-το μικρότερο, το μεγαλύτερο,
-το πρώτο ή το τελευταίο.
+Σε πολλά μαθηματικά προβλήματα,
+το βασικό εμπόδιο δεν είναι οι πράξεις,
+αλλά το <strong>από πού να ξεκινήσεις</strong>.
+Αν διαλέξεις λάθος σημείο εκκίνησης,
+ακόμη και μια σωστή ιδέα μπορεί να οδηγήσει σε αδιέξοδο.
 </p>
 
 <p>
-Ακριβώς επειδή έχει τις λιγότερες επιλογές,
-αποκαλύπτει γρήγορα
-τι <strong>δεν μπορεί</strong> να συμβεί —
-και αυτό συχνά οδηγεί σε άτοπο ή λύση.
+Η στρατηγική του <strong>Extremal στοιχείου</strong> βασίζεται σε μια απλή αλλά ισχυρή αρχή:
+<em>ξεκίνα από εκεί όπου οι επιλογές είναι λιγότερες</em>.
+Το μικρότερο, το μεγαλύτερο, το πρώτο ή το τελευταίο στοιχείο
+είναι πιο «δεσμευμένο» από τα υπόλοιπα.
 </p>
 
-<!-- STEPS -->
-<div style="background:#eef2ff;border-radius:14px;padding:22px;margin:30px 0;">
-<strong>Πώς σκέφτεσαι (βήματα):</strong>
+<p>
+Ακριβώς γι’ αυτό,
+το extremal στοιχείο αποκαλύπτει γρηγορότερα
+τι <strong>δεν μπορεί</strong> να συμβεί —
+και συχνά αυτό αρκεί για να οδηγηθείς
+είτε στη λύση είτε σε άτοπο.
+</p>
+
+<div style="background:#f8fafc;border-left:5px solid #2563eb;padding:18px 20px;border-radius:12px;margin:25px 0;">
+<strong>Πότε να τη διαλέξεις:</strong>
+<ul>
+<li>Όταν εμφανίζονται εκφράσεις όπως «το πολύ», «τουλάχιστον»</li>
+<li>Όταν υπάρχει ελάχιστο ή μέγιστο</li>
+<li>Όταν ένα στοιχείο φαίνεται να ξεχωρίζει</li>
+<li>Όταν ζητείται μοναδικότητα ή αποκλεισμός περιπτώσεων</li>
+</ul>
+</div>
+
+<div style="background:#eef2ff;border-radius:14px;padding:22px;margin-bottom:30px;">
+<strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
 <ol>
-<li>Εντόπισε το ελάχιστο ή μέγιστο στοιχείο</li>
+<li>Εντόπισε το extremal στοιχείο</li>
 <li>Κατέγραψε τι <em>δεν</em> μπορεί να κάνει</li>
-<li>Δες πώς επηρεάζει τα υπόλοιπα</li>
-<li>Χρησιμοποίησε τον περιορισμό για συμπέρασμα</li>
+<li>Δες πώς οι περιορισμοί του επηρεάζουν τα υπόλοιπα</li>
+<li>Χρησιμοποίησε τον περιορισμό για συμπέρασμα ή άτοπο</li>
 </ol>
 </div>
 
-<!-- PROBLEMS -->
-<div style="background:#f9fafb;padding:24px;border-radius:14px;">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
 <strong>Προβλήματα (χωρίς λύσεις):</strong>
 
-<p data-tags="IMO,Combinatorics,Extremal" data-level="easy">
-<strong>Π1.</strong>  
+<p>
+<strong>Συνδυαστική:</strong><br>
 Δίνεται πεπερασμένο σύνολο θετικών ακεραίων
-με την ιδιότητα ότι το άθροισμα
-οποιωνδήποτε δύο διαφορετικών στοιχείων
-είναι διαφορετικό από κάθε άλλο τέτοιο άθροισμα.
-Να δείξετε ότι το σύνολο περιέχει
-<strong>το πολύ έναν άρτιο αριθμό</strong>.
+με την ιδιότητα ότι το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων
+είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.
+Να αποδείξετε ότι το σύνολο περιέχει <strong>το πολύ έναν άρτιο αριθμό</strong>.
 </p>
 
-<p data-tags="Geometry,Extremal,Olympiad" data-level="medium">
-<strong>Π2.</strong>  
+<p>
+<strong>Γεωμετρία:</strong><br>
 Δίνονται \(n\) σημεία στο επίπεδο.
 Να αποδείξετε ότι υπάρχει σημείο τέτοιο ώστε,
 αν αφαιρεθεί,
@@ -251,81 +264,95 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 δεν μειώνεται.
 </p>
 
-<p data-tags="GraphTheory,Extremal" data-level="medium">
-<strong>Π3.</strong>  
+<p>
+<strong>Θεωρία Γραφημάτων:</strong><br>
 Σε συνεκτικό γράφημα,
 να αποδείξετε ότι υπάρχει κορυφή
 της οποίας η αφαίρεση
-δεν αυξάνει τον αριθμό
-των συνιστωσών συνοχής.
+δεν αυξάνει τον αριθμό των συνιστωσών.
 </p>
 </div>
 
-<!-- QUIZ -->
-<div style="margin-top:30px;background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:20px;">
-<p><strong>Mini Quiz:</strong> Ποια στρατηγική εφαρμόζεται;</p>
-
-<button onclick="checkQuiz(this,false)">Invariant</button>
-<button onclick="checkQuiz(this,true)">Extremal Element</button>
-<button onclick="checkQuiz(this,false)">Symmetry</button>
-
-<div class="quiz-result" style="margin-top:10px;"></div>
 </div>
 
-</div>
-
-<!-- ================= ENGLISH ================= -->
+<!-- ========== ENGLISH ========== -->
 <div class="lang-en">
 
 <p>
-The hardest part of many problems
-is deciding <strong>where to start</strong>.
-The <strong>Extremal Element</strong> strategy
-suggests starting from the most constrained object:
-the smallest, largest, first, or last.
+In many mathematical problems,
+the main difficulty is not computation,
+but deciding <strong>where to start</strong>.
+A wrong starting point can hide even the right idea.
 </p>
 
 <p>
-Because this element has fewer options,
-its limitations often expose contradictions
-or force the structure of the solution.
+The <strong>Extremal Element strategy</strong> is based on a simple principle:
+start where freedom is minimal.
+The smallest, largest, first, or last element
+is the most constrained.
 </p>
 
-<div style="background:#eef2ff;border-radius:14px;padding:22px;margin:30px 0;">
+<p>
+Because of these constraints,
+the extremal element quickly reveals
+what <em>cannot</em> happen —
+often enough to solve the problem.
+</p>
+
+<strong>When to use:</strong>
+<ul>
+<li>“At most” / “at least” statements</li>
+<li>Minimum or maximum conditions</li>
+<li>Uniqueness arguments</li>
+</ul>
+
 <strong>Thinking steps:</strong>
 <ol>
-<li>Identify an extremal element</li>
-<li>List its restrictions</li>
+<li>Identify the extremal element</li>
+<li>List its constraints</li>
 <li>Analyze its interaction with others</li>
-<li>Use the restriction to conclude</li>
+<li>Use restrictions to conclude</li>
 </ol>
-</div>
 
-<div style="background:#f9fafb;padding:24px;border-radius:14px;">
 <strong>Problems (no solutions):</strong>
+<p><strong>Combinatorics:</strong> Unique pairwise sums → at most one even.</p>
+<p><strong>Geometry:</strong> Removing a point without decreasing minimal distance.</p>
+<p><strong>Graph Theory:</strong> Vertex whose removal preserves connectivity.</p>
 
-<p><strong>P1.</strong>  
-A finite set of positive integers has all pairwise sums distinct.
-Show that the set contains at most one even number.</p>
-
-<p><strong>P2.</strong>  
-Given \(n\) points in the plane,
-show that one can be removed
-without decreasing the minimum distance
-among the remaining points.</p>
-
-<p><strong>P3.</strong>  
-In a connected graph,
-prove that there exists a vertex
-whose removal does not increase
-the number of connected components.</p>
 </div>
+
+<!-- ================= QUIZ ================= -->
+
+<div style="margin-top:40px;padding:22px;border-radius:14px;background:#f8fafc;border:1px solid #e5e7eb;">
+
+<h3 class="lang-el">🧠 Μικρό Quiz</h3>
+<h3 class="lang-en">🧠 Quick Quiz</h3>
+
+<p class="lang-el">
+<strong>Ερώτηση:</strong><br>
+Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης
+στη στρατηγική του Extremal Element;
+</p>
+
+<p class="lang-en">
+<strong>Question:</strong><br>
+Which element is usually the correct starting point
+in the Extremal Element strategy?
+</p>
+
+<button onclick="checkQuiz(this,true)">Το πιο περιορισμένο στοιχείο</button>
+<button onclick="checkQuiz(this,false)">Ένα τυχαίο στοιχείο</button>
+<button onclick="checkQuiz(this,true)">The most constrained element</button>
+<button onclick="checkQuiz(this,false)">Any random element</button>
+
+<div class="quiz-result" style="margin-top:12px;font-weight:bold;"></div>
 
 </div>
 
 </div>
 </div>
 </section>
+
 
 <!-- ================= STRATEGY 2 : MEANINGFUL CASES ================= -->
 <section id="cases" class="strategy-section" style="display:none;">
