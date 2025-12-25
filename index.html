@@ -167,151 +167,37 @@ navigate, and complete challenging mathematical problems.
 </div>
 </section>
 <!-- ================= STRATEGY 2 : INVARIANTS ================= -->
-
 <section id="invariants" class="strategy-section" style="display:none;">
-
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
-
-<!-- HEADER -->
 <div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);padding:24px 28px;">
-
-<h2 class="lang-el" style="margin:0;font-size:1.8em;">
-🟢 2. Αναλλοίωτα (Invariants)
-</h2>
-
-<h2 class="lang-en" style="margin:0;font-size:1.8em;">
-🟢 2. Invariants
-</h2>
-
-<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-Τι μένει σταθερό ενώ όλα αλλάζουν
-</p>
-
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">🟢 2. Αναλλοίωτα</h2>
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">🟢 2. Invariants</h2>
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">Τι μένει σταθερό ενώ όλα αλλάζουν</p>
 </div>
-
-<!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ================= GREEK ================= -->
-<div class="lang-el">
-
-<p>
-Πολλά μαθηματικά προβλήματα περιγράφουν
-μια <strong>διαδικασία</strong>:
-σε κάθε βήμα κάτι αλλάζει,
-μετασχηματίζεται ή μετακινείται.
-</p>
-
-<p>
-Η στρατηγική των <strong>Αναλλοίωτων</strong>
-σε καλεί να εντοπίσεις
-μια ποσότητα ή ιδιότητα
-που <strong>δεν αλλάζει</strong>,
-όσο κι αν εξελίσσεται η διαδικασία.
-</p>
-
-<p>
-Το αναλλοίωτο λειτουργεί σαν
-<strong>άγκυρα</strong>:
-περιορίζει τις δυνατές τελικές καταστάσεις
-και συχνά αποδεικνύει ότι
-κάτι είναι αδύνατο ή αναγκαστικά αληθές.
-</p>
-
-<h3>Πώς σκέφτεσαι</h3>
-<ol>
-<li>Εντόπισε μια ποσότητα που <em>ίσως</em> παραμένει σταθερή</li>
-<li>Έλεγξε αν διατηρείται σε κάθε επιτρεπτό βήμα</li>
-<li>Σύγκρινε αρχική και τελική κατάσταση</li>
-<li>Χρησιμοποίησε το αναλλοίωτο για συμπέρασμα</li>
-</ol>
-
-<h3>Προβλήματα</h3>
-
-<p><strong>Πρόβλημα 1.</strong>
-Σε έναν πίνακα βρίσκονται ακέραιοι αριθμοί.
-Σε κάθε βήμα επιλέγουμε δύο αριθμούς
-και τους αντικαθιστούμε με τη διαφορά τους.
-Να εξετάσετε αν είναι δυνατόν
-να προκύψει τελικά μόνο μηδενικά.</p>
-
-<p><strong>Πρόβλημα 2.</strong>
-Σε έναν κύκλο είναι γραμμένοι ακέραιοι αριθμοί.
-Σε κάθε κίνηση αντικαθιστούμε
-δύο γειτονικούς αριθμούς
-με τη διαφορά τους.
-Να δείξετε ότι αν αρχικά υπάρχει άρτιος αριθμός,
-δεν μπορούν να εξαφανιστούν όλοι.</p>
-
-<p><strong>Πρόβλημα 3.</strong>
-Υπάρχουν <em>n</em> κουτιά με μπίλιες.
-Επιτρέπεται σε κάθε βήμα
-να μεταφέρουμε μία μπίλια
-από ένα κουτί σε άλλο.
-Να εξετάσετε αν είναι πάντα δυνατό
-όλα τα κουτιά να καταλήξουν
-με ίσο πλήθος μπιλιών.</p>
-
+<div class="level-tabs">
+<button onclick="openLevel('inv-easy')">Εύκολο</button>
+<button onclick="openLevel('inv-med')">Μέτριο</button>
+<button onclick="openLevel('inv-hard')">Δύσκολο</button>
 </div>
 
-<!-- ================= ENGLISH ================= -->
-<div class="lang-en">
+<div id="inv-easy" class="level-content">
+<p><strong>Πρόβλημα:</strong> Σε κύκλο γράφουμε 1,2,…,n. Επιτρέπεται να αντικαταστήσεις δύο γειτονικούς με το <strong>άθροισμά</strong> τους. Μπορείς να φτάσεις <strong>όλους ίσους</strong>;</p>
+<button onclick="toggleHint('inv-easy-hint')">Σκέψου</button>
+<div id="inv-easy-hint" class="hint-box">Τι συμβαίνει με το <strong>άθροισμα όλων</strong> mod 2; Αν ξεκινήσεις με <strong>περιττό</strong> n, μπορείς να φτάσεις όλους ίσους;</div>
+</div>
 
-<p>
-Many mathematical problems describe
-a <strong>process</strong>:
-at each step, something changes,
-moves, or transforms.
-</p>
+<div id="inv-med" class="level-content" style="display:none;">
+<p><strong>Πρόβλημα:</strong> 3 κουτιά με μπίλιες. Επιτρέπεται να <strong>διπλασιάσεις</strong> ένα κουτί παίρνοντας από τα άλλα δύο. Μπορείς να φτάσεις <strong>ίσες μπίλιες</strong> σε όλα;</p>
+<button onclick="toggleHint('inv-med-hint')">Σκέψου</button>
+<div id="inv-med-hint" class="hint-box">Θεώρησε το <strong>άθροισμα mod 3</strong>. Τι συμβαίνει όταν διπλασιάζεις;</div>
+</div>
 
-<p>
-The <strong>Invariant</strong> strategy asks you
-to identify a quantity or property
-that <strong>remains unchanged</strong>
-throughout the entire process.
-</p>
-
-<p>
-An invariant acts as an
-<strong>anchor</strong>:
-it restricts the possible outcomes
-and often proves that
-a situation is impossible
-or necessarily true.
-</p>
-
-<h3>How to Think</h3>
-<ol>
-<li>Identify a quantity that might remain constant</li>
-<li>Check that it is preserved at every step</li>
-<li>Compare the initial and final states</li>
-<li>Use the invariant to reach a conclusion</li>
-</ol>
-
-<h3>Problems</h3>
-
-<p><strong>Problem 1.</strong>
-A table contains integers.
-At each step, two numbers are chosen
-and replaced by their difference.
-Investigate whether it is possible
-to end up with only zeros.</p>
-
-<p><strong>Problem 2.</strong>
-Integers are written on a circle.
-At each move, two neighboring numbers
-are replaced by their difference.
-Show that if an even number is present initially,
-they cannot all disappear.</p>
-
-<p><strong>Problem 3.</strong>
-There are <em>n</em> boxes containing balls.
-At each step, one ball may be moved
-from one box to another.
-Determine whether it is always possible
-for all boxes to end with
-the same number of balls.</p>
-
+<div id="inv-hard" class="level-content" style="display:none;">
+<p><strong>Πρόβλημα:</strong> Σε 5×5 πίνακας όλα 0 εκτός από ένα 1. Επιτρέπεται να αλλάζεις πρόσημο <strong>ολόκληρης γραμμής/στήλης</strong>. Μπορείς να φτάσεις <strong>μόνο 0</strong>;</p>
+<button onclick="toggleHint('inv-hard-hint')">Σκέψου</button>
+<div id="inv-hard-hint" class="hint-box">Θεώρησε το <strong>άθροισμα κάθε γραμμής</strong> ως διάνυσμα στο \(\mathbb F_2^5\). Τι μένει αναλλοίωτο;</div>
 </div>
 
 </div>
