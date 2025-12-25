@@ -122,135 +122,45 @@ navigate, and complete challenging mathematical problems.
 </div>
 
 <!-- ================= STRATEGY 1 : EXTREMAL ELEMENT ================= -->
-
 <section id="extremal" class="strategy-section" style="display:none;">
-
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
 <!-- HEADER -->
 <div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
-
-<h2 class="lang-el" style="margin:0;font-size:1.8em;">
-🔵 1. Extremal Στοιχείο
-</h2>
-
-<h2 class="lang-en" style="margin:0;font-size:1.8em;">
-🔵 1. Extremal Element
-</h2>
-
-<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">
-Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
-</p>
-
+<h2 class="lang-el" style="margin:0;font-size:1.8em;">🔵 1. Extremal Στοιχείο</h2>
+<h2 class="lang-en" style="margin:0;font-size:1.8em;">🔵 1. Extremal Element</h2>
+<p style="margin:8px 0 0;font-size:1.05em;color:#374151;">Από πού ξεκινάς — το πιο περιορισμένο στοιχείο</p>
 </div>
 
 <!-- CONTENT -->
 <div style="padding:30px 28px;">
 
-<!-- ================= GREEK ================= -->
-<div class="lang-el">
-
-<p>
-Η στρατηγική του <strong>Extremal στοιχείου</strong>
-σε προτρέπει να μη ξεκινήσεις αυθαίρετα.
-Ξεκίνα από το στοιχείο που βρίσκεται σε
-<strong>ακραία θέση</strong>:
-το μικρότερο, το μεγαλύτερο,
-το πρώτο ή το τελευταίο.
-</p>
-
-<p>
-Το extremal στοιχείο έχει
-<strong>λιγότερες ελευθερίες</strong>
-από όλα τα υπόλοιπα.
-Ακριβώς γι’ αυτό,
-οι περιορισμοί του αποκαλύπτουν γρήγορα
-τι είναι δυνατό και τι αδύνατο.
-</p>
-
-<h3>Πώς σκέφτεσαι</h3>
-<ol>
-<li>Εντόπισε ένα στοιχείο με ακραία ιδιότητα</li>
-<li>Εξέτασε ποιες κινήσεις ή σχέσεις του απαγορεύονται</li>
-<li>Χρησιμοποίησε τους περιορισμούς για συμπέρασμα ή άτοπο</li>
-</ol>
-
-<h3>Προβλήματα</h3>
-
-<p><strong>Πρόβλημα 1.</strong>
-Σε ένα σύνολο θετικών ακεραίων,
-το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων
-είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.
-Να αποδείξετε ότι υπάρχει στοιχείο
-μεγαλύτερο από το άθροισμα όλων των υπολοίπων.</p>
-
-<p><strong>Πρόβλημα 2.</strong>
-Δίνονται <em>n</em> σημεία στο επίπεδο,
-όχι όλα συνευθειακά.
-Να δείξετε ότι υπάρχει σημείο
-του οποίου η ελάχιστη απόσταση
-από τα υπόλοιπα σημεία
-είναι μοναδική.</p>
-
-<p><strong>Πρόβλημα 3.</strong>
-Σε γράφημα με πεπερασμένο πλήθος κορυφών,
-κάθε κορυφή έχει βαθμό τουλάχιστον 2.
-Να αποδείξετε ότι υπάρχει κορυφή
-η αφαίρεση της οποίας
-δεν αυξάνει τον αριθμό των συνεκτικών συνιστωσών.</p>
-
+<!-- ΕΠΙΠΕΔΑ -->
+<div class="level-tabs">
+<button onclick="openLevel('extremal-easy')">Εύκολο</button>
+<button onclick="openLevel('extremal-med')">Μέτριο</button>
+<button onclick="openLevel('extremal-hard')">Δύσκολο</button>
 </div>
 
-<!-- ================= ENGLISH ================= -->
-<div class="lang-en">
+<!-- ΕΥΚΟΛΟ -->
+<div id="extremal-easy" class="level-content">
+<p><strong>Πρόβλημα:</strong> Σε 10 κουτιά υπάρχουν μπίλιες. Δείξε ότι υπάρχει κουτί με τον <strong>ελάχιστο</strong> αριθμό μπιλιών. Τι συμβαίνει αν το <strong>αφαιρέσεις</strong>;</p>
+<button onclick="toggleHint('extremal-easy-hint')">Σκέψου</button>
+<div id="extremal-easy-hint" class="hint-box">Το ελάχιστο κουτί έχει <strong>λιγότερες</strong> μπίλιες από όλα τα άλλα. Αν το αφαιρέσεις, το επόμενο ελάχιστο είναι <strong>μεγαλύτερο</strong> — τι σου λέει αυτό για τη συνολική δομή;</div>
+</div>
 
-<p>
-The <strong>Extremal Element</strong> strategy tells you
-not to start arbitrarily.
-Instead, begin with an object
-in an <strong>extreme position</strong>:
-the smallest, the largest,
-the first, or the last.
-</p>
+<!-- ΜΕΤΡΙΟ -->
+<div id="extremal-med" class="level-content" style="display:none;">
+<p><strong>Πρόβλημα:</strong> Δίνονται 2025 διανύσματα στο επίπεδο, κανένα μηδέν. Δείξε ότι υπάρχει ζεύγος με <strong>γωνία ≤ 1°</strong>.</p>
+<button onclick="toggleHint('extremal-med-hint')">Σκέψου</button>
+<div id="extremal-med-hint" class="hint-box">Θεώρησε το ζεύγος με τη <strong>μεγαλύτερη</strong> γωνία. Τι συμβαίνει αν υποθέσεις ότι <strong>όλες</strong> οι γωνίες είναι > 1°; Πόσες χωράνε στον κύκλο;</div>
+</div>
 
-<p>
-An extremal object has
-<strong>fewer possible behaviors</strong>
-than all others.
-These restrictions often reveal
-the structure of the problem immediately.
-</p>
-
-<h3>How to Think</h3>
-<ol>
-<li>Identify an object with an extreme property</li>
-<li>Analyze which actions or relations are impossible for it</li>
-<li>Use these restrictions to derive a conclusion or contradiction</li>
-</ol>
-
-<h3>Problems</h3>
-
-<p><strong>Problem 1.</strong>
-In a set of positive integers,
-the sum of any two distinct elements
-is different from the sum of any other two.
-Prove that there exists an element
-greater than the sum of all the others.</p>
-
-<p><strong>Problem 2.</strong>
-Given <em>n</em> points in the plane,
-not all collinear,
-prove that there exists a point
-whose minimum distance to the other points
-is unique.</p>
-
-<p><strong>Problem 3.</strong>
-In a finite graph,
-every vertex has degree at least 2.
-Prove that there exists a vertex
-whose removal does not increase
-the number of connected components.</p>
-
+<!-- ΔΥΣΚΟΛΟ -->
+<div id="extremal-hard" class="level-content" style="display:none;">
+<p><strong>Πρόβλημα:</strong> Σύνολο \(S\subset\mathbb N\) τέτοιο ώστε για κάθε \(n\) το \(\{s\in S: s\le n\}\) έχει μέγεθος ≤ \( \log_2n \). Δείξε ότι υπάρχούν δύο στοιχεία του \(S\) με απόσταση **ακριβώς** 10.</p>
+<button onclick="toggleHint('extremal-hard-hint')">Σκέψου</button>
+<div id="extremal-hard-hint" class="hint-box">Χτίσε τον <strong>μεγαλύτερο</strong> δυνατό \(S\) που αποφεύγει τη διαφορά 10. Χρησιμοποίησε το <strong>άτοπο</strong>: αν δεν υπάρχουν τέτοια ζεύγη, πόσα στοιχεία μπορεί να έχει το \(S\) μέχρι το \(N\);</div>
 </div>
 
 </div>
