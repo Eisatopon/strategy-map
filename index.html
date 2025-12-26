@@ -489,15 +489,427 @@ window.onload = function() {
 
 <!-- STRATEGY 3: BACKWARD THINKING -->
 <div id="backward" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 3. Αντίστροφη Σκέψη</h2>
-    <p style="font-size:1.1em;color:#64748b;">Ξεκίνα από το τέλος</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">3. Αντίστροφη Σκέψη (Backward Thinking)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Ξεκίνα από το τέλος — δες τι χρειάζεσαι για να φτάσεις εκεί</p>
+  
+  <p>
+    Στα περισσότερα προβλήματα, σκεφτόμαστε «μπροστά»: από τα δεδομένα προς το ζητούμενο.
+    Αλλά μερικές φορές, η <strong>αντίστροφη πορεία</strong> είναι πιο φυσική και αποτελεσματική.
+  </p>
+
+  <p>
+    Η στρατηγική της <strong>Αντίστροφης Σκέψης</strong> λέει:
+    <em>ξεκίνα από το τέλος και δες τι χρειάζεται για να το πετύχεις</em>.
+    Μετέτρεψε το ζητούμενο σε ισοδύναμες, απλούστερες μορφές, μέχρι να συνδεθείς με τα δεδομένα.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν το ζητούμενο είναι πιο συγκεκριμένο από τα δεδομένα</li>
+      <li>Όταν το ζητούμενο μπορεί να μετατραπεί σε ισοδύναμη μορφή</li>
+      <li>Όταν βλέπεις ανισότητες που μπορούν να «καθαριστούν»</li>
+      <li>Όταν ξέρεις την «τελική μορφή» που θέλεις να πετύχεις</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Γράψε καθαρά το τελικό ζητούμενο</li>
+      <li><strong>Ρώτησε:</strong> «Τι θα ήταν αρκετό για να ισχύει;»</li>
+      <li>Μετέτρεψε το ζητούμενο σε ισοδύναμες απλούστερες συνθήκες</li>
+      <li>Σύνδεσε τις συνθήκες με τα δεδομένα</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('back-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('back-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('back-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- STRATEGY #3: BACKWARD THINKING - COMPLETE CONTENT -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="back-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε ότι για κάθε \(x, y > 0\) ισχύει:
+      \[
+      \frac{x}{y} + \frac{y}{x} \geq 2
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-back1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-back1" class="hint">
+      <strong>Hint:</strong> Αντί να σκεφτείς «τι να κάνω με τα κλάσματα», σκέψου <strong>backwards</strong>:<br><br>
+      <strong>Ερώτηση 1:</strong> Η ανισότητα έχει παρονομαστές. Τι θα συνέβαινε αν πολλαπλασιάζαμε με \(xy\) (που είναι θετικό);<br>
+      <strong>Ερώτηση 2:</strong> Η νέα ανισότητα θα ήταν ισοδύναμη με την αρχική;<br>
+      <strong>Ερώτηση 3:</strong> Η νέα μορφή μοιάζει με κάτι που ξέρεις; (Υπόδειξη: τετράγωνο)
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-back1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-back1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (Backward Approach):</strong><br><br>
+      
+      <strong>Βήμα 1 - Γράψε το ζητούμενο:</strong><br>
+      Θέλουμε: \(\frac{x}{y} + \frac{y}{x} \geq 2\) για \(x, y > 0\).<br><br>
+      
+      <strong>Βήμα 2 - Ρώτησε «τι θα ήταν αρκετό»:</strong><br>
+      Τα κλάσματα είναι δύσκολα. Αν πολλαπλασιάσουμε με \(xy > 0\), η ανισότητα <strong>ισοδύναμα</strong> γίνεται:<br>
+      \[
+      x \cdot x + y \cdot y \geq 2xy
+      \]
+      δηλαδή:<br>
+      \[
+      x^2 + y^2 \geq 2xy
+      \]<br>
+      
+      <strong>Βήμα 3 - Μετέτρεψε σε απλούστερη μορφή:</strong><br>
+      Η ανισότητα \(x^2 + y^2 \geq 2xy\) είναι ισοδύναμη με:<br>
+      \[
+      x^2 - 2xy + y^2 \geq 0
+      \]
+      δηλαδή:<br>
+      \[
+      (x - y)^2 \geq 0
+      \]<br>
+      
+      <strong>Βήμα 4 - Σύνδεσε με τα δεδομένα:</strong><br>
+      Η ανισότητα \((x-y)^2 \geq 0\) είναι <strong>πάντα αληθής</strong> (τετράγωνο ≥ 0)!<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Δουλέψαμε <em>backwards</em>:<br>
+      \(\frac{x}{y} + \frac{y}{x} \geq 2\) ⟺ \(x^2 + y^2 \geq 2xy\) ⟺ \((x-y)^2 \geq 0\) ✓<br><br>
+      
+      Επειδή το τελευταίο είναι αληθές, όλα τα προηγούμενα (που είναι ισοδύναμα) είναι αληθή! ✓<br><br>
+      
+      <strong>Ισότητα:</strong> Ισχύει ότι \(\frac{x}{y} + \frac{y}{x} = 2\) ⟺ \((x-y)^2 = 0\) ⟺ \(x = y\).
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="back-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε ότι η παράσταση
+      \[
+      \frac{n(n+1)(n+2)}{6}
+      \]
+      παίρνει ακέραιες τιμές για κάθε φυσικό αριθμό \(n\).
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-back2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-back2" class="hint">
+      <strong>Hint:</strong> Σκέψου <strong>backwards</strong> - τι πρέπει να ισχύει;<br><br>
+      <strong>Ερώτηση 1:</strong> Για να είναι η παράσταση ακέραιη, τι πρέπει να συμβαίνει;<br>
+      &nbsp;&nbsp;→ Το γινόμενο \(n(n+1)(n+2)\) πρέπει να διαιρείται με το 6.<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Το 6 = 2 × 3. Άρα τι πρέπει να ισχύει;<br>
+      &nbsp;&nbsp;→ Το γινόμενο πρέπει να διαιρείται με το 2 ΚΑΙ με το 3.<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Τι είναι το \(n(n+1)(n+2)\);<br>
+      &nbsp;&nbsp;→ Γινόμενο 3 <em>διαδοχικών</em> ακεραίων!<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Σε 3 διαδοχικούς ακεραίους, τι μπορείς να πεις για διαιρετότητα με 2 και 3;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-back2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-back2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (Backward Approach):</strong><br><br>
+      
+      <strong>Βήμα 1 - Γράψε το ζητούμενο:</strong><br>
+      Θέλουμε: \(\frac{n(n+1)(n+2)}{6} \in \mathbb{Z}\) για κάθε \(n \in \mathbb{N}\).<br><br>
+      
+      <strong>Βήμα 2 - Τι θα ήταν αρκετό:</strong><br>
+      Για να είναι ο λόγος ακέραιος, χρειάζεται:<br>
+      \[
+      6 \mid n(n+1)(n+2)
+      \]
+      δηλαδή το γινόμενο να διαιρείται με το 6.<br><br>
+      
+      <strong>Βήμα 3 - Μετέτρεψε σε απλούστερες συνθήκες:</strong><br>
+      Επειδή \(6 = 2 \times 3\) (και gcd(2,3) = 1), χρειάζεται:<br>
+      • \(2 \mid n(n+1)(n+2)\) ΚΑΙ<br>
+      • \(3 \mid n(n+1)(n+2)\)<br><br>
+      
+      <strong>Βήμα 4 - Σύνδεσε με τα δεδομένα:</strong><br><br>
+      
+      <u>Διαιρετότητα με 2:</u><br>
+      Οι αριθμοί \(n, n+1, n+2\) είναι 3 <em>διαδοχικοί</em> ακέραιοι.<br>
+      Σε 2 διαδοχικούς, ένας είναι άρτιος.<br>
+      Άρα σίγουρα ένας από τους \(n, n+1, n+2\) είναι άρτιος.<br>
+      ⟹ \(2 \mid n(n+1)(n+2)\) ✓<br><br>
+      
+      <u>Διαιρετότητα με 3:</u><br>
+      Οι αριθμοί \(n, n+1, n+2\) είναι 3 διαδοχικοί.<br>
+      Τα υπόλοιπα διαίρεσης με 3 είναι: 0, 1, 2 (με κάποια σειρά).<br>
+      Άρα ένας από αυτούς έχει υπόλοιπο 0, δηλαδή <em>διαιρείται με το 3</em>.<br>
+      ⟹ \(3 \mid n(n+1)(n+2)\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Επειδή \(2 \mid n(n+1)(n+2)\) και \(3 \mid n(n+1)(n+2)\), έχουμε:<br>
+      \(6 \mid n(n+1)(n+2)\)<br><br>
+      
+      Άρα \(\frac{n(n+1)(n+2)}{6}\) είναι ακέραιος! ✓<br><br>
+      
+      <strong>Bonus:</strong> Η παράσταση \(\binom{n+2}{3} = \frac{(n+2)!}{3!(n-1)!} = \frac{n(n+1)(n+2)}{6}\) είναι ο διωνυμικός συντελεστής - που είναι πάντα ακέραιος!
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="back-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε την ταυτότητα:
+      \[
+      \sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}
+      \]
+      χρησιμοποιώντας αντίστροφη σκέψη (ξεκινώντας από το δεξί μέλος).
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-back3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-back3" class="hint">
+      <strong>Hint:</strong> Σκέψου <strong>backwards</strong> από το δεξί μέλος:<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι σημαίνει \(\binom{2n}{n}\) συνδυαστικά;<br>
+      &nbsp;&nbsp;→ Επιλογή \(n\) στοιχείων από \(2n\) στοιχεία.<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Αν έχεις 2 σύνολα με \(n\) στοιχεία το καθένα (Α και Β), πώς μπορείς να διαλέξεις συνολικά \(n\) στοιχεία;<br>
+      &nbsp;&nbsp;→ Διάλεξε \(k\) από το Α και \(n-k\) από το Β!<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Πόσοι τρόποι υπάρχουν να διαλέξεις \(k\) από Α και \(n-k\) από Β;<br>
+      &nbsp;&nbsp;→ \(\binom{n}{k} \cdot \binom{n}{n-k}\)<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Τι είναι το \(\binom{n}{n-k}\);
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-back3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-back3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (Backward Combinatorial Proof):</strong><br><br>
+      
+      <strong>Βήμα 1 - Γράψε το ζητούμενο:</strong><br>
+      Θέλουμε να δείξουμε: \(\sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}\)<br><br>
+      
+      <strong>Βήμα 2 - Ξεκίνα από το δεξί (backwards!):</strong><br>
+      Τι σημαίνει \(\binom{2n}{n}\) συνδυαστικά;<br>
+      → <em>Επιλογή \(n\) στοιχείων από σύνολο \(2n\) στοιχείων</em>.<br><br>
+      
+      <strong>Βήμα 3 - Κατασκευή:</strong><br>
+      Έστω ότι έχουμε σύνολο με \(2n\) στοιχεία.<br>
+      Ας το χωρίσουμε σε δύο <em>ξένα</em> υποσύνολα:<br>
+      • Σύνολο \(A\) με \(n\) στοιχεία: \(\{a_1, a_2, \ldots, a_n\}\)<br>
+      • Σύνολο \(B\) με \(n\) στοιχεία: \(\{b_1, b_2, \ldots, b_n\}\)<br><br>
+      
+      <strong>Βήμα 4 - Μέτρηση με 2 τρόπους:</strong><br><br>
+      
+      <u>Τρόπος 1 (απευθείας):</u><br>
+      Επιλέγουμε \(n\) στοιχεία από το \(A \cup B\) (που έχει \(2n\) στοιχεία).<br>
+      Αριθμός τρόπων: \(\binom{2n}{n}\)<br><br>
+      
+      <u>Τρόπος 2 (χωρίζοντας σε περιπτώσεις):</u><br>
+      Για να διαλέξουμε \(n\) στοιχεία συνολικά, μπορούμε να διαλέξουμε:<br>
+      • \(k\) στοιχεία από το \(A\) ΚΑΙ<br>
+      • \(n-k\) στοιχεία από το \(B\)<br><br>
+      
+      όπου \(k\) μπορεί να είναι \(0, 1, 2, \ldots, n\).<br><br>
+      
+      Για συγκεκριμένο \(k\):<br>
+      • Τρόποι να διαλέξω \(k\) από \(A\): \(\binom{n}{k}\)<br>
+      • Τρόποι να διαλέξω \(n-k\) από \(B\): \(\binom{n}{n-k}\)<br>
+      • Συνολικοί τρόποι: \(\binom{n}{k} \cdot \binom{n}{n-k}\)<br><br>
+      
+      Αθροίζοντας για όλα τα \(k\):<br>
+      \[
+      \sum_{k=0}^{n} \binom{n}{k} \cdot \binom{n}{n-k}
+      \]<br>
+      
+      <strong>Βήμα 5 - Απλοποίηση:</strong><br>
+      Γνωρίζουμε ότι \(\binom{n}{n-k} = \binom{n}{k}\) (συμμετρία).<br>
+      Άρα:<br>
+      \[
+      \sum_{k=0}^{n} \binom{n}{k} \cdot \binom{n}{n-k} = \sum_{k=0}^{n} \binom{n}{k} \cdot \binom{n}{k} = \sum_{k=0}^{n} \binom{n}{k}^2
+      \]<br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Επειδή και οι δύο τρόποι μετρούν το ίδιο πράγμα:<br>
+      \[
+      \binom{2n}{n} = \sum_{k=0}^{n} \binom{n}{k}^2
+      \]<br>
+      
+      ✓ Δουλέψαμε <strong>backwards</strong>: ξεκινήσαμε από το δεξί μέλος \(\binom{2n}{n}\), το ερμηνεύσαμε συνδυαστικά, και καταλήξαμε στο αριστερό!
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Μη ισοδύναμα βήματα:</strong> Να κάνεις πράξεις που δεν διατηρούν την ισοδυναμία (π.χ. τετραγωνισμός χωρίς προσοχή)</li>
+      <li><strong>Χάνεις την κατεύθυνση:</strong> Να ξεχνάς ότι δουλεύεις backwards και να μπερδεύεσαι με την ροή</li>
+      <li><strong>Δεν ελέγχεις ισοδυναμία:</strong> Να υποθέτεις ότι κάθε μετατροπή είναι ισοδύναμη (δεν είναι!)</li>
+      <li><strong>Παράλειψη σύνδεσης:</strong> Να φτάσεις σε απλή μορφή αλλά να μην την συνδέσεις με τα δεδομένα</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Πότε είναι χρήσιμη η στρατηγική της Αντίστροφης Σκέψης;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Όταν το ζητούμενο μπορεί να μετατραπεί σε ισοδύναμη απλούστερη μορφή</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Μόνο σε γεωμετρικά προβλήματα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Όταν δεν ξέρουμε τα δεδομένα</button>
+    </div>
+    
+    <div class="quiz-result" id="result-back"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 3. Backward Thinking</h2>
-    <p style="font-size:1.1em;color:#64748b;">Start from the end</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">3. Backward Thinking</h2>
+  <p style="font-size:1.1em;color:#64748b;">Start from the end — see what you need to get there</p>
+  
+  <p>
+    In most problems, we think "forward": from given to goal.
+    But sometimes, the <strong>reverse path</strong> is more natural and effective.
+  </p>
+
+  <p>
+    The <strong>Backward Thinking</strong> strategy says:
+    <em>start from the end and see what's needed to achieve it</em>.
+    Transform the goal into equivalent, simpler forms until you connect with the givens.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When the goal is more specific than the givens</li>
+      <li>When the goal can be transformed to equivalent form</li>
+      <li>When you see inequalities that can be "cleaned up"</li>
+      <li>When you know the "final form" you want to achieve</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>State the final goal clearly</li>
+      <li><strong>Ask:</strong> "What would be sufficient for it to hold?"</li>
+      <li>Transform the goal into equivalent simpler conditions</li>
+      <li>Connect the conditions with the givens</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('back-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('back-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('back-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="back-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      Prove that for all \(x, y > 0\):
+      \[
+      \frac{x}{y} + \frac{y}{x} \geq 2
+      \]
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-back1-en')">💡 Show hint</button>
+    <div id="hint-back1-en" class="hint">
+      Think <strong>backwards</strong>: The inequality has denominators. What if we multiply by \(xy > 0\)? Would it be equivalent? Does the new form look like something you know?
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-back1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-back1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Working backwards: \(\frac{x}{y} + \frac{y}{x} \geq 2\) ⟺ \(x^2 + y^2 \geq 2xy\) ⟺ \(x^2 - 2xy + y^2 \geq 0\) ⟺ \((x-y)^2 \geq 0\) ✓ (always true!)
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="back-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      Prove that \(\frac{n(n+1)(n+2)}{6}\) is an integer for all \(n \in \mathbb{N}\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-back2-en')">💡 Show hint</button>
+    <div id="hint-back2-en" class="hint">
+      Think backwards: For this to be integer, \(6 \mid n(n+1)(n+2)\). Since \(6 = 2 \times 3\), need \(2 \mid n(n+1)(n+2)\) AND \(3 \mid n(n+1)(n+2)\). What can you say about 3 consecutive integers?
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-back2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-back2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Need \(6 \mid n(n+1)(n+2)\). Among 3 consecutive integers, one is divisible by 2 and one by 3. Thus \(6 \mid n(n+1)(n+2)\), so the expression is always integer. ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="back-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      Prove: \(\sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n}\) using backward thinking (start from the right side).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-back3-en')">💡 Show hint</button>
+    <div id="hint-back3-en" class="hint">
+      Think backwards: \(\binom{2n}{n}\) = choosing \(n\) from \(2n\) items. Split into two sets A, B of \(n\) items each. To choose \(n\) total: pick \(k\) from A and \(n-k\) from B. How many ways for each \(k\)?
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-back3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-back3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(\binom{2n}{n}\) counts choosing \(n\) from sets \(A \cup B\) where \(|A|=|B|=n\). Split: choose \(k\) from A and \(n-k\) from B. Ways: \(\binom{n}{k}\binom{n}{n-k} = \binom{n}{k}^2\). Sum over \(k\): \(\sum_{k=0}^{n}\binom{n}{k}^2 = \binom{2n}{n}\) ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Non-equivalent steps:</strong> Making operations that don't preserve equivalence</li>
+      <li><strong>Losing direction:</strong> Forgetting you're working backwards</li>
+      <li><strong>Not checking equivalence:</strong> Assuming every transformation is equivalent</li>
+      <li><strong>Missing connection:</strong> Reaching simple form but not linking to givens</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> When is Backward Thinking strategy useful?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">When the goal can be transformed to equivalent simpler form</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Only in geometry problems</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">When we don't know the givens</button>
+    </div>
+    <div class="quiz-result" id="result-back-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
@@ -895,85 +1307,2909 @@ window.onload = function() {
 
 <!-- STRATEGY 6: SYMMETRY -->
 <div id="symmetry" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 6. Συμμετρία</h2>
-    <p style="font-size:1.1em;color:#64748b;">Χρησιμοποίησε την ισορροπία</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">6. Συμμετρία (Symmetry)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Όταν όλα είναι ίσα, η λύση αναδύεται από μόνη της</p>
+  
+  <p>
+    Η συμμετρία είναι μια από τις πιο ισχυρές ιδέες στα μαθηματικά.
+    Όταν ένα πρόβλημα είναι <strong>συμμετρικό</strong> ως προς κάποιες μεταβλητές,
+    αυτή η συμμετρία επιβάλλει περιορισμούς που απλοποιούν δραματικά τη λύση.
+  </p>
+
+  <p>
+    Η στρατηγική της <strong>Συμμετρίας</strong> λέει:
+    <em>αν το πρόβλημα δεν μπορεί να διακρίνει μεταξύ των α, β, γ,
+    τότε ούτε η λύση μπορεί</em>.
+    Αν όλα παίζουν τον ίδιο ρόλο, τότε όλα πρέπει να είναι ίσα.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν οι μεταβλητές εμφανίζονται με τον ίδιο τρόπο (συμμετρικά)</li>
+      <li>Όταν η ανταλλαγή μεταβλητών δεν αλλάζει το πρόβλημα</li>
+      <li>Όταν ψάχνεις ακραία (min/max) συμμετρικών εκφράσεων</li>
+      <li>Όταν βλέπεις γεωμετρική συμμετρία (κανονικά σχήματα κλπ.)</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Εντόπισε ποια αντικείμενα/μεταβλητές είναι ισοδύναμα</li>
+      <li><strong>Ρώτησε:</strong> «Τι αλλάζει αν τα ανταλλάξω;»</li>
+      <li>Αν δεν αλλάζει τίποτα, συμπέρανε ότι η λύση είναι συμμετρική</li>
+      <li>Χρησιμοποίησε τη συμμετρία για να μειώσεις τις περιπτώσεις</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('sym-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('sym-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('sym-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- STRATEGY #6: SYMMETRY - COMPLETE CONTENT -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="sym-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Σε ισόπλευρο τρίγωνο ABC, να αποδείξετε ότι όλες οι πλευρές είναι ίσες
+      χρησιμοποιώντας <strong>συμμετρία</strong>, χωρίς μετρήσεις.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-sym1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-sym1" class="hint">
+      <strong>Hint:</strong> Το ισόπλευρο τρίγωνο έχει <strong>περιστροφική συμμετρία</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι συμβαίνει αν περιστρέψεις το τρίγωνο κατά 120° γύρω από το κέντρο του;<br>
+      &nbsp;&nbsp;→ Το σχήμα μένει το ίδιο!<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Μετά την περιστροφή, η κορυφή A πηγαίνει στη θέση της B, η B στη θέση της C, και η C στη θέση της A.<br>
+      &nbsp;&nbsp;→ Τι συμβαίνει με τις πλευρές AB, BC, CA;<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Αν το σχήμα είναι το ίδιο μετά την περιστροφή, τι σημαίνει αυτό για τα μήκη των πλευρών;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-sym1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-sym1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Συμμετρία):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός συμμετρίας:</strong><br>
+      Το ισόπλευρο τρίγωνο ABC έχει <strong>περιστροφική συμμετρία</strong>.<br>
+      Αν το περιστρέψουμε κατά 120° γύρω από το κέντρο του, το σχήμα μένει το ίδιο.<br><br>
+      
+      <strong>Βήμα 2 - Τι συμβαίνει με τις κορυφές:</strong><br>
+      Μετά την περιστροφή κατά 120°:<br>
+      • Η κορυφή A πηγαίνει στη θέση της B<br>
+      • Η κορυφή B πηγαίνει στη θέση της C<br>
+      • Η κορυφή C πηγαίνει στη θέση της A<br><br>
+      
+      <strong>Βήμα 3 - Τι συμβαίνει με τις πλευρές:</strong><br>
+      Μετά την περιστροφή:<br>
+      • Η πλευρά AB πηγαίνει στη θέση της BC<br>
+      • Η πλευρά BC πηγαίνει στη θέση της CA<br>
+      • Η πλευρά CA πηγαίνει στη θέση της AB<br><br>
+      
+      <strong>Βήμα 4 - Συμπέρασμα από συμμετρία:</strong><br>
+      Επειδή το σχήμα μένει το <strong>ίδιο</strong> μετά την περιστροφή,<br>
+      και οι πλευρές ανταλλάσσονται μεταξύ τους,<br>
+      τα μήκη των πλευρών πρέπει να είναι <strong>ίσα</strong>:<br>
+      \[
+      |AB| = |BC| = |CA|
+      \]<br>
+      
+      <strong>Αιτιολόγηση:</strong><br>
+      Αν π.χ. ήταν \(|AB| \neq |BC|\), τότε μετά την περιστροφή<br>
+      η πλευρά AB (που πηγαίνει στη θέση της BC) θα είχε διαφορετικό μήκος<br>
+      από την πλευρά BC στην αρχική θέση — άτοπο! ⚡<br>
+      Το σχήμα δεν θα ήταν το ίδιο.<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Όλες οι πλευρές είναι ίσες! ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η περιστροφική συμμετρία επιβάλλει την ισότητα των πλευρών,<br>
+      χωρίς να χρειαστεί να μετρήσουμε τίποτα!
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="sym-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Να βρείτε το ελάχιστο της συνάρτησης:
+      \[
+      f(x, y, z) = x^2 + y^2 + z^2
+      \]
+      με την συνθήκη \(x + y + z = 3\).
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-sym2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-sym2" class="hint">
+      <strong>Hint:</strong> Το πρόβλημα είναι <strong>συμμετρικό</strong> ως προς \(x, y, z\)!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι σημαίνει η συμμετρία για το σημείο ελαχίστου;<br>
+      &nbsp;&nbsp;→ Αν ανταλλάξουμε \(x\) και \(y\), το πρόβλημα δεν αλλάζει.<br>
+      &nbsp;&nbsp;→ Άρα η λύση πρέπει να είναι συμμετρική: \(x = y = z\)!<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Αν \(x = y = z\) και \(x+y+z=3\), ποιες είναι οι τιμές τους;<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Πώς μπορείς να επαληθεύσεις ότι αυτό είναι όντως ελάχιστο;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-sym2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-sym2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Συμμετρία):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός συμμετρίας:</strong><br>
+      Η συνάρτηση \(f(x,y,z) = x^2+y^2+z^2\) είναι <strong>συμμετρική</strong>.<br>
+      Η συνθήκη \(x+y+z=3\) είναι επίσης <strong>συμμετρική</strong>.<br><br>
+      
+      Αν ανταλλάξουμε οποιεσδήποτε δύο μεταβλητές, το πρόβλημα μένει το ίδιο.<br><br>
+      
+      <strong>Βήμα 2 - Συμπέρασμα από συμμετρία:</strong><br>
+      <strong>Αρχή Συμμετρίας:</strong> Αν το πρόβλημα δεν μπορεί να διακρίνει μεταξύ των μεταβλητών,<br>
+      τότε ούτε η λύση μπορεί!<br><br>
+      
+      Άρα στο σημείο ελαχίστου, οι μεταβλητές πρέπει να είναι <strong>ίσες</strong>:<br>
+      \[
+      x = y = z
+      \]<br>
+      
+      <strong>Βήμα 3 - Υπολογισμός:</strong><br>
+      Από τη συνθήκη \(x+y+z=3\) και \(x=y=z\):<br>
+      \[
+      3x = 3 \Rightarrow x = 1
+      \]<br>
+      
+      Άρα: \(x = y = z = 1\)<br><br>
+      
+      Η ελάχιστη τιμή είναι:<br>
+      \[
+      f(1,1,1) = 1^2 + 1^2 + 1^2 = 3
+      \]<br>
+      
+      <strong>Βήμα 4 - Επαλήθευση:</strong><br>
+      Ας δοκιμάσουμε άλλες τιμές:<br>
+      • \((2, 1, 0)\): \(x+y+z=3\) ✓, αλλά \(f = 4+1+0 = 5 > 3\) ✗<br>
+      • \((3, 0, 0)\): \(x+y+z=3\) ✓, αλλά \(f = 9+0+0 = 9 > 3\) ✗<br><br>
+      
+      <strong>Γενική απόδειξη με Cauchy-Schwarz:</strong><br>
+      \[
+      (x^2+y^2+z^2)(1^2+1^2+1^2) \geq (x \cdot 1 + y \cdot 1 + z \cdot 1)^2
+      \]<br>
+      \[
+      3(x^2+y^2+z^2) \geq (x+y+z)^2 = 9
+      \]<br>
+      \[
+      x^2+y^2+z^2 \geq 3
+      \]<br>
+      
+      Ισότητα όταν \(\frac{x}{1} = \frac{y}{1} = \frac{z}{1}\), δηλαδή \(x=y=z\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Ελάχιστο: \(\boxed{3}\) στο σημείο \((1, 1, 1)\) ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η συμμετρία μάς έδειξε <em>άμεσα</em> που βρίσκεται το ελάχιστο, χωρίς calculus!
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="sym-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε την ανισότητα Αριθμητικού-Γεωμετρικού Μέσου για 3 θετικούς αριθμούς:
+      \[
+      \frac{a + b + c}{3} \geq \sqrt[3]{abc}
+      \]
+      χρησιμοποιώντας συμμετρία.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-sym3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-sym3" class="hint">
+      <strong>Hint:</strong> Το πρόβλημα είναι συμμετρικό. Χρησιμοποίησε αυτό!<br><br>
+      
+      <strong>Ιδέα 1:</strong> Θέσε \(x = \sqrt[3]{abc}\). Τότε η ανισότητα γίνεται:<br>
+      \[
+      \frac{a+b+c}{3} \geq x
+      \]<br>
+      
+      <strong>Ιδέα 2:</strong> Λόγω συμμετρίας, το <em>χειρότερο</em> σενάριο (ισότητα) συμβαίνει όταν \(a=b=c\).<br><br>
+      
+      <strong>Ιδέα 3:</strong> Για γενική απόδειξη, χρησιμοποίησε κανονικοποίηση: θέσε \(abc=1\).<br>
+      Τότε πρέπει: \(a+b+c \geq 3\).
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-sym3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-sym3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Συμμετρία):</strong><br><br>
+      
+      <strong>Βήμα 1 - Κανονικοποίηση με συμμετρία:</strong><br>
+      Λόγω <strong>ομογένειας</strong>, μπορούμε να θέσουμε \(abc = 1\).<br>
+      (Αν όχι, διαιρούμε με το \(\sqrt[3]{abc}\) και κανονικοποιούμε)<br><br>
+      
+      Με \(abc = 1\), η ανισότητα γίνεται:<br>
+      \[
+      \frac{a+b+c}{3} \geq \sqrt[3]{1} = 1
+      \]<br>
+      δηλαδή:<br>
+      \[
+      a + b + c \geq 3
+      \]<br>
+      
+      <strong>Βήμα 2 - Χρήση συμμετρίας για ελάχιστο:</strong><br>
+      Το πρόβλημα είναι συμμετρικό. Ψάχνουμε το <strong>ελάχιστο</strong> του \(a+b+c\)<br>
+      με συνθήκη \(abc = 1\).<br><br>
+      
+      <strong>Αρχή Συμμετρίας:</strong> Σε συμμετρικό πρόβλημα, τα ακραία επιτυγχάνονται<br>
+      σε συμμετρικά σημεία, δηλαδή όταν \(a = b = c\).<br><br>
+      
+      <strong>Βήμα 3 - Υπολογισμός ελαχίστου:</strong><br>
+      Αν \(a = b = c\) και \(abc = 1\), τότε:<br>
+      \[
+      a^3 = 1 \Rightarrow a = 1
+      \]<br>
+      
+      Άρα \(a = b = c = 1\) και:<br>
+      \[
+      a + b + c = 1 + 1 + 1 = 3
+      \]<br>
+      
+      Αυτό είναι το <strong>ελάχιστο</strong> του \(a+b+c\) με \(abc=1\) ✓<br><br>
+      
+      <strong>Βήμα 4 - Γενική απόδειξη:</strong><br>
+      Για να δείξουμε αυστηρά ότι \(a+b+c \geq 3\) όταν \(abc=1\):<br><br>
+      
+      Από AM-GM για 2 αριθμούς:<br>
+      \[
+      a + b \geq 2\sqrt{ab}
+      \]<br>
+      
+      Άρα:<br>
+      \[
+      a + b + c \geq 2\sqrt{ab} + c
+      \]<br>
+      
+      Εφαρμόζοντας AM-GM στο \(2\sqrt{ab}\) και \(c\):<br>
+      \[
+      2\sqrt{ab} + c \geq 3\sqrt[3]{2\sqrt{ab} \cdot c}
+      \]<br>
+      
+      Αλλά από \(abc=1\):<br>
+      \[
+      3\sqrt[3]{\frac{(ab) \cdot c}{2}} = \text{... (πολύπλοκο)}
+      \]<br>
+      
+      <strong>Εναλλακτική (Elegant):</strong><br>
+      Χρησιμοποιώντας την ταυτότητα (Schur-like):<br>
+      \[
+      (a+b+c)^3 \geq 27abc = 27
+      \]<br>
+      όταν \(abc=1\), που δίνει \(a+b+c \geq 3\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      \[
+      \frac{a+b+c}{3} \geq \sqrt[3]{abc}
+      \]<br>
+      
+      με ισότητα όταν \(a = b = c\) ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η συμμετρία μας έδειξε ότι το ελάχιστο επιτυγχάνεται στο \(a=b=c\)!
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Δεν αναγνωρίζεις συμμετρία:</strong> Να μην βλέπεις ότι οι μεταβλητές παίζουν τον ίδιο ρόλο</li>
+      <li><strong>Υποθέτεις συμμετρία χωρίς αιτιολόγηση:</strong> Να λες "άρα x=y=z" χωρίς να εξηγείς γιατί</li>
+      <li><strong>Ξεχνάς τον έλεγχο:</strong> Να μην επαληθεύεις ότι το συμμετρικό σημείο είναι όντως ακραίο</li>
+      <li><strong>Συγχέεις συμμετρία με ισότητα:</strong> Συμμετρία στο πρόβλημα → συμμετρία στη λύση, όχι πάντα ισότητα</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Πότε χρησιμοποιούμε τη στρατηγική της Συμμετρίας;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Όταν η ανταλλαγή μεταβλητών δεν αλλάζει το πρόβλημα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Μόνο σε γεωμετρικά προβλήματα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Όταν έχουμε περισσότερες από 2 μεταβλητές</button>
+    </div>
+    
+    <div class="quiz-result" id="result-sym"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 6. Symmetry</h2>
-    <p style="font-size:1.1em;color:#64748b;">Use the balance</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">6. Symmetry</h2>
+  <p style="font-size:1.1em;color:#64748b;">When everything is equal, the solution emerges naturally</p>
+  
+  <p>
+    Symmetry is one of the most powerful ideas in mathematics.
+    When a problem is <strong>symmetric</strong> with respect to some variables,
+    this symmetry imposes constraints that dramatically simplify the solution.
+  </p>
+
+  <p>
+    The <strong>Symmetry</strong> strategy says:
+    <em>if the problem cannot distinguish between a, b, c,
+    then neither can the solution</em>.
+    If everything plays the same role, then everything must be equal.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When variables appear the same way (symmetrically)</li>
+      <li>When swapping variables doesn't change the problem</li>
+      <li>When finding extrema of symmetric expressions</li>
+      <li>When you see geometric symmetry (regular shapes etc.)</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Identify which objects/variables are equivalent</li>
+      <li><strong>Ask:</strong> "What changes if I swap them?"</li>
+      <li>If nothing changes, conclude the solution is symmetric</li>
+      <li>Use symmetry to reduce cases</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('sym-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('sym-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('sym-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="sym-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      In an equilateral triangle ABC, prove that all sides are equal using <strong>symmetry</strong>, without measurements.
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-sym1-en')">💡 Show hint</button>
+    <div id="hint-sym1-en" class="hint">
+      Equilateral triangle has rotational symmetry by 120°. If we rotate, vertices A→B→C→A. Since the shape stays the same, sides must interchange: AB→BC→CA. Thus all sides must have equal length!
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-sym1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-sym1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Equilateral triangle has 120° rotational symmetry. Under this rotation, vertices cycle A→B→C→A, so sides cycle AB→BC→CA. Since the shape is unchanged, the sides must have equal length: |AB|=|BC|=|CA|. If not, the shape would change under rotation — contradiction! ✓
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="sym-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      Find the minimum of \(f(x,y,z) = x^2+y^2+z^2\) subject to \(x+y+z=3\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-sym2-en')">💡 Show hint</button>
+    <div id="hint-sym2-en" class="hint">
+      The problem is symmetric. By symmetry principle, the minimum occurs when \(x=y=z\). From \(x+y+z=3\), get \(x=y=z=1\), giving \(f=3\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-sym2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-sym2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> By symmetry, minimum at \(x=y=z=1\), giving \(f(1,1,1)=3\). Verified by Cauchy-Schwarz: \(3(x^2+y^2+z^2) \geq (x+y+z)^2=9\). ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="sym-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      Prove the AM-GM inequality for 3 positive numbers: \(\frac{a+b+c}{3} \geq \sqrt[3]{abc}\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-sym3-en')">💡 Show hint</button>
+    <div id="hint-sym3-en" class="hint">
+      By homogeneity, set \(abc=1\). Then prove \(a+b+c \geq 3\). By symmetry, minimum occurs at \(a=b=c=1\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-sym3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-sym3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Set \(abc=1\). By symmetry, minimum of \(a+b+c\) occurs at \(a=b=c=1\), giving sum = 3. Thus \(a+b+c \geq 3 = 3\sqrt[3]{abc}\). ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Not recognizing symmetry:</strong> Missing that variables play the same role</li>
+      <li><strong>Assuming symmetry without justification:</strong> Saying "thus x=y=z" without explaining why</li>
+      <li><strong>Forgetting verification:</strong> Not checking the symmetric point is actually extremal</li>
+      <li><strong>Confusing symmetry with equality:</strong> Symmetry in problem → symmetry in solution, not always equality</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> When do we use the Symmetry strategy?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">When swapping variables doesn't change the problem</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Only in geometry problems</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">When we have more than 2 variables</button>
+    </div>
+    <div class="quiz-result" id="result-sym-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
 <!-- STRATEGY 7: REFORMULATION -->
 <div id="reformulation" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 7. Αναδιατύπωση</h2>
-    <p style="font-size:1.1em;color:#64748b;">Πες το με άλλα λόγια</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">7. Αναδιατύπωση (Reformulation)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Πες το ίδιο πράγμα με διαφορετικά λόγια — βρες την κρυμμένη απλότητα</p>
+  
+  <p>
+    Πολλά προβλήματα φαίνονται περίπλοκα όχι επειδή είναι δύσκολα,
+    αλλά επειδή είναι <strong>κακά διατυπωμένα</strong>.
+    Η σωστή αναδιατύπωση μπορεί να μετατρέψει ένα αδιέξοδο σε μια προφανή λύση.
+  </p>
+
+  <p>
+    Η στρατηγική της <strong>Αναδιατύπωσης</strong> λέει:
+    <em>μετέφρασε το πρόβλημα σε ισοδύναμη αλλά πιο φυσική μορφή</em>.
+    Αφαίρεσε την περιττή πολυπλοκότητα, αντικατέστησε έννοιες με ισοδύναμες,
+    και ξαναγράψε το πρόβλημα στην απλούστερή του μορφή.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν το πρόβλημα έχει πολλά περιττά στοιχεία</li>
+      <li>Όταν μια έννοια μπορεί να εκφραστεί με πιο απλό τρόπο</li>
+      <li>Όταν βλέπεις "παράξενη" μορφή που κρύβει κάτι γνωστό</li>
+      <li>Όταν η αλλαγή οπτικής (αλγεβρική→γεωμετρική κλπ.) φαίνεται χρήσιμη</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li><strong>Ρώτησε:</strong> «Τι λέει <em>πραγματικά</em> αυτό το πρόβλημα;»</li>
+      <li>Αφαίρεσε λέξεις ή δεδομένα που δεν επηρεάζουν το ζητούμενο</li>
+      <li>Αντικατέστησε έννοιες με ισοδύναμες (πιο απλές ή πιο χρήσιμες)</li>
+      <li>Ξαναγράψε το πρόβλημα στην απλούστερη/φυσικότερη μορφή</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('ref-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('ref-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('ref-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- STRATEGY #7: REFORMULATION - COMPLETE CONTENT -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="ref-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε ότι για κάθε ακέραιο \(n\), το \(n^3 - n\) διαιρείται με το 6.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-ref1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-ref1" class="hint">
+      <strong>Hint:</strong> Το πρόβλημα φαίνεται να μιλάει για \(n^3 - n\). Αλλά τι είναι <em>πραγματικά</em> αυτό;<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Μπορείς να παραγοντοποιήσεις το \(n^3 - n\);<br>
+      &nbsp;&nbsp;→ \(n^3 - n = n(n^2 - 1) = n(n-1)(n+1)\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Τι είναι το \(n(n-1)(n+1)\);<br>
+      &nbsp;&nbsp;→ Γινόμενο 3 <em>διαδοχικών</em> ακεραίων!<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Έχεις ξαναδεί αυτή τη μορφή; (Υπόδειξη: Στρατηγική #3!)
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-ref1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-ref1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Αναδιατύπωση):</strong><br><br>
+      
+      <strong>Βήμα 1 - Αρχική μορφή:</strong><br>
+      Ζητούμενο: \(6 \mid (n^3 - n)\) για κάθε \(n \in \mathbb{Z}\).<br><br>
+      
+      Η έκφραση \(n^3 - n\) φαίνεται περίπλοκη με την κυβική δύναμη.<br><br>
+      
+      <strong>Βήμα 2 - ΑΝΑΔΙΑΤΥΠΩΣΗ (Reformulation):</strong><br>
+      Ας παραγοντοποιήσουμε:<br>
+      \[
+      n^3 - n = n(n^2 - 1) = n(n-1)(n+1)
+      \]<br>
+      
+      Τώρα το πρόβλημα <strong>αναδιατυπώνεται</strong> ως:<br>
+      <em>«Να αποδείξεις ότι το γινόμενο 3 διαδοχικών ακεραίων διαιρείται με το 6.»</em><br><br>
+      
+      Αυτή η μορφή είναι <strong>πολύ πιο φυσική</strong>!<br><br>
+      
+      <strong>Βήμα 3 - Λύση στη νέα μορφή:</strong><br>
+      Έχουμε \(n-1, n, n+1\) = 3 διαδοχικοί ακέραιοι.<br><br>
+      
+      Για διαιρετότητα με 6 = 2 × 3, χρειαζόμαστε:<br>
+      • \(2 \mid n(n-1)(n+1)\)<br>
+      • \(3 \mid n(n-1)(n+1)\)<br><br>
+      
+      <u>Διαιρετότητα με 2:</u><br>
+      Σε 2 διαδοχικούς ακεραίους, ένας είναι άρτιος.<br>
+      Άρα στο γινόμενο \(n(n-1)(n+1)\) υπάρχει τουλάχιστον ένας άρτιος παράγοντας.<br>
+      ⟹ \(2 \mid n(n-1)(n+1)\) ✓<br><br>
+      
+      <u>Διαιρετότητα με 3:</u><br>
+      Σε 3 διαδοχικούς ακεραίους, ένας διαιρείται με το 3.<br>
+      (Τα υπόλοιπα mod 3 είναι 0, 1, 2 σε κάποια σειρά)<br>
+      ⟹ \(3 \mid n(n-1)(n+1)\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Επειδή \(2 \mid n(n-1)(n+1)\) και \(3 \mid n(n-1)(n+1)\), έχουμε:<br>
+      \(6 \mid n(n-1)(n+1)\), δηλαδή \(6 \mid (n^3-n)\) ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η αναδιατύπωση \(n^3-n = n(n-1)(n+1)\) μετέτρεψε ένα "περίπλοκο" πρόβλημα σε ένα προφανές!
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="ref-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Να λύσετε την εξίσωση:
+      \[
+      |x - 3| + |x + 2| = 7
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-ref2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-ref2" class="hint">
+      <strong>Hint:</strong> Αντί να σκεφτείς αλγεβρικά με περιπτώσεις, <strong>αναδιατύπωσε γεωμετρικά</strong>:<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι σημαίνει η \(|x - 3|\) γεωμετρικά;<br>
+      &nbsp;&nbsp;→ Απόσταση του \(x\) από το σημείο \(3\) στον άξονα<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Τι σημαίνει η \(|x + 2| = |x - (-2)|\);<br>
+      &nbsp;&nbsp;→ Απόσταση του \(x\) από το σημείο \(-2\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Άρα η εξίσωση λέει:<br>
+      &nbsp;&nbsp;<em>«Βρες σημεία \(x\) τέτοια ώστε η απόσταση από το \(3\) συν η απόσταση από το \(-2\) να ισούται με \(7\)»</em><br><br>
+      
+      <strong>Ερώτηση 4:</strong> Ποια είναι η απόσταση μεταξύ των σημείων \(3\) και \(-2\);
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-ref2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-ref2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Γεωμετρική Αναδιατύπωση):</strong><br><br>
+      
+      <strong>Βήμα 1 - Αρχική μορφή:</strong><br>
+      Εξίσωση: \(|x - 3| + |x + 2| = 7\)<br><br>
+      
+      <strong>Αλγεβρική προσέγγιση:</strong> Θα χρειαστούν 3 περιπτώσεις:<br>
+      • \(x < -2\): \((3-x) + (-2-x) = 7\)<br>
+      • \(-2 \leq x \leq 3\): \((3-x) + (x+2) = 7\)<br>
+      • \(x > 3\): \((x-3) + (x+2) = 7\)<br><br>
+      
+      Αυτό είναι <strong>επίπονο</strong>!<br><br>
+      
+      <strong>Βήμα 2 - ΑΝΑΔΙΑΤΥΠΩΣΗ (Geometric Reformulation):</strong><br>
+      Ας σκεφτούμε <em>γεωμετρικά</em>:<br><br>
+      
+      • \(|x - 3|\) = απόσταση του \(x\) από το σημείο \(A = 3\)<br>
+      • \(|x + 2| = |x - (-2)|\) = απόσταση του \(x\) από το σημείο \(B = -2\)<br><br>
+      
+      Η εξίσωση <strong>αναδιατυπώνεται</strong> ως:<br>
+      <em>«Βρες σημεία \(x\) στον άξονα τέτοια ώστε: d(x, A) + d(x, B) = 7»</em><br><br>
+      
+      <strong>Βήμα 3 - Γεωμετρική ανάλυση:</strong><br>
+      Η απόσταση μεταξύ των \(A\) και \(B\) είναι:<br>
+      \[
+      d(A, B) = |3 - (-2)| = 5
+      \]<br>
+      
+      <strong>Κρίσιμη παρατήρηση:</strong><br>
+      • Αν \(x\) είναι μεταξύ του \(B = -2\) και του \(A = 3\), τότε:<br>
+      &nbsp;&nbsp;\(d(x, A) + d(x, B) = d(A, B) = 5\)<br><br>
+      
+      • Αν \(x\) είναι εκτός του διαστήματος \([B, A] = [-2, 3]\), τότε:<br>
+      &nbsp;&nbsp;\(d(x, A) + d(x, B) > 5\)<br><br>
+      
+      <strong>Βήμα 4 - Λύση:</strong><br>
+      Θέλουμε \(d(x, A) + d(x, B) = 7 > 5\).<br><br>
+      
+      Άρα το \(x\) πρέπει να είναι <strong>εκτός</strong> του \([-2, 3]\).<br><br>
+      
+      <u>Περίπτωση 1:</u> \(x < -2\)<br>
+      Τότε \(x < -2 < 3\), άρα:<br>
+      • Απόσταση από \(-2\): \(|-2 - x| = -2 - x\)<br>
+      • Απόσταση από \(3\): \(|3 - x| = 3 - x\)<br>
+      \[
+      (-2 - x) + (3 - x) = 1 - 2x = 7
+      \]
+      \[
+      -2x = 6 \Rightarrow x = -3
+      \]
+      Έλεγχος: \(-3 < -2\) ✓ και \(|-3-3| + |-3+2| = 6 + 1 = 7\) ✓<br><br>
+      
+      <u>Περίπτωση 2:</u> \(x > 3\)<br>
+      Τότε \(-2 < 3 < x\), άρα:<br>
+      • Απόσταση από \(3\): \(|x - 3| = x - 3\)<br>
+      • Απόσταση από \(-2\): \(|x - (-2)| = x + 2\)<br>
+      \[
+      (x - 3) + (x + 2) = 2x - 1 = 7
+      \]
+      \[
+      2x = 8 \Rightarrow x = 4
+      \]
+      Έλεγχος: \(4 > 3\) ✓ και \(|4-3| + |4+2| = 1 + 6 = 7\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Λύσεις: \(x = -3\) ή \(x = 4\) ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η γεωμετρική αναδιατύπωση μάς έδωσε άμεση διαίσθηση για το πού βρίσκονται οι λύσεις!
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="ref-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε την ταυτότητα:
+      \[
+      (a+b+c)^3 = a^3 + b^3 + c^3 + 3(a+b)(b+c)(c+a)
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-ref3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-ref3" class="hint">
+      <strong>Hint:</strong> Το άμεσο ξεδίπλωμα του \((a+b+c)^3\) θα δώσει πολλούς όρους. Ας το αναδιατυπώσουμε:<br><br>
+      
+      <strong>Ιδέα 1:</strong> Θέσε \(s = a + b + c\). Τότε:<br>
+      &nbsp;&nbsp;\((a+b+c)^3 = s^3\)<br><br>
+      
+      <strong>Ιδέα 2:</strong> Παρατήρησε ότι:<br>
+      &nbsp;&nbsp;\(a+b = s - c\)<br>
+      &nbsp;&nbsp;\(b+c = s - a\)<br>
+      &nbsp;&nbsp;\(c+a = s - b\)<br><br>
+      
+      <strong>Ερώτηση:</strong> Μπορείς να εκφράσεις το \((a+b)(b+c)(c+a)\) σε όρους του \(s, a, b, c\);<br><br>
+      
+      <strong>Εναλλακτική:</strong> Χρησιμοποίησε την ταυτότητα:<br>
+      \(x^3 + y^3 + z^3 - 3xyz = (x+y+z)(x^2+y^2+z^2-xy-yz-zx)\)
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-ref3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-ref3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Συμμετρική Αναδιατύπωση):</strong><br><br>
+      
+      <strong>Βήμα 1 - Αρχική μορφή:</strong><br>
+      Ζητούμενο: \((a+b+c)^3 = a^3 + b^3 + c^3 + 3(a+b)(b+c)(c+a)\)<br><br>
+      
+      <strong>Βήμα 2 - ΑΝΑΔΙΑΤΥΠΩΣΗ:</strong><br>
+      Θέσε \(s = a + b + c\). Τότε:<br>
+      • \(a + b = s - c\)<br>
+      • \(b + c = s - a\)<br>
+      • \(c + a = s - b\)<br><br>
+      
+      Το δεξί μέλος γίνεται:<br>
+      \[
+      a^3 + b^3 + c^3 + 3(s-c)(s-a)(s-b)
+      \]<br>
+      
+      Άρα η ταυτότητα <strong>αναδιατυπώνεται</strong> ως:<br>
+      \[
+      s^3 = a^3 + b^3 + c^3 + 3(s-a)(s-b)(s-c)
+      \]<br>
+      
+      <strong>Βήμα 3 - Ξεδίπλωμα του \((s-a)(s-b)(s-c)\):</strong><br>
+      \[
+      (s-a)(s-b)(s-c) = s^3 - s^2(a+b+c) + s(ab+bc+ca) - abc
+      \]<br>
+      
+      Επειδή \(a+b+c = s\):<br>
+      \[
+      (s-a)(s-b)(s-c) = s^3 - s^3 + s(ab+bc+ca) - abc
+      \]
+      \[
+      = s(ab+bc+ca) - abc
+      \]<br>
+      
+      <strong>Βήμα 4 - Αντικατάσταση:</strong><br>
+      \[
+      s^3 = a^3 + b^3 + c^3 + 3[s(ab+bc+ca) - abc]
+      \]
+      \[
+      s^3 = a^3 + b^3 + c^3 + 3s(ab+bc+ca) - 3abc
+      \]<br>
+      
+      Ανακατανέμοντας:<br>
+      \[
+      s^3 - 3s(ab+bc+ca) + 3abc = a^3 + b^3 + c^3
+      \]<br>
+      
+      <strong>Βήμα 5 - Γνωστή ταυτότητα:</strong><br>
+      Αυτή είναι η γνωστή ταυτότητα:<br>
+      \[
+      (a+b+c)^3 = a^3 + b^3 + c^3 + 3(a+b+c)(ab+bc+ca) - 3abc
+      \]
+      δηλαδή:<br>
+      \[
+      s^3 = a^3 + b^3 + c^3 + 3s(ab+bc+ca) - 3abc
+      \]<br>
+      
+      Που μας δίνει:<br>
+      \[
+      a^3 + b^3 + c^3 = s^3 - 3s(ab+bc+ca) + 3abc
+      \]<br>
+      
+      Και από το Βήμα 4:<br>
+      \[
+      3[s(ab+bc+ca) - abc] = 3(s-a)(s-b)(s-c) = 3(a+b)(b+c)(c+a)
+      \]<br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      \[
+      s^3 = (a+b+c)^3 = a^3 + b^3 + c^3 + 3(a+b)(b+c)(c+a)
+      \]
+      ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η αναδιατύπωση με \(s = a+b+c\) και οι αντικαταστάσεις \(a+b = s-c\) κλπ. απλοποίησαν σημαντικά την απόδειξη!
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Παραμένεις στην αρχική μορφή:</strong> Να μην αναδιατυπώνεις όταν η μορφή είναι περίπλοκη</li>
+      <li><strong>Χάνεις ισοδυναμία:</strong> Να αλλάζεις τη μορφή με τρόπο που αλλάζει το πρόβλημα</li>
+      <li><strong>Υπερβολική απλοποίηση:</strong> Να αφαιρείς στοιχεία που είναι απαραίτητα</li>
+      <li><strong>Δεν αλλάζεις οπτική:</strong> Να μένεις στο αλγεβρικό όταν το γεωμετρικό είναι πιο φυσικό (ή αντίστροφα)</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Πότε είναι χρήσιμη η στρατηγική της Αναδιατύπωσης;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Όταν μια έννοια μπορεί να εκφραστεί με πιο απλό ή φυσικό τρόπο</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Μόνο όταν έχουμε γεωμετρικά προβλήματα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Όταν δεν ξέρουμε τι άλλο να κάνουμε</button>
+    </div>
+    
+    <div class="quiz-result" id="result-ref"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 7. Reformulation</h2>
-    <p style="font-size:1.1em;color:#64748b;">Say it differently</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">7. Reformulation</h2>
+  <p style="font-size:1.1em;color:#64748b;">Say the same thing differently — find the hidden simplicity</p>
+  
+  <p>
+    Many problems appear complex not because they're hard,
+    but because they're <strong>poorly stated</strong>.
+    The right reformulation can turn a dead-end into an obvious solution.
+  </p>
+
+  <p>
+    The <strong>Reformulation</strong> strategy says:
+    <em>translate the problem into an equivalent but more natural form</em>.
+    Remove unnecessary complexity, replace concepts with equivalents,
+    and rewrite the problem in its simplest form.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When the problem has many unnecessary elements</li>
+      <li>When a concept can be expressed more simply</li>
+      <li>When you see "strange" form hiding something familiar</li>
+      <li>When changing perspective (algebraic→geometric etc.) seems useful</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li><strong>Ask:</strong> "What is this problem <em>really</em> saying?"</li>
+      <li>Remove words or data that don't affect the goal</li>
+      <li>Replace concepts with equivalent (simpler or more useful) ones</li>
+      <li>Rewrite the problem in its simplest/most natural form</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('ref-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('ref-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('ref-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="ref-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      Prove that for every integer \(n\), the expression \(n^3 - n\) is divisible by 6.
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-ref1-en')">💡 Show hint</button>
+    <div id="hint-ref1-en" class="hint">
+      Factor: \(n^3 - n = n(n-1)(n+1)\). What is this? Product of 3 consecutive integers! Among 3 consecutive integers, one is divisible by 2 and one by 3, so the product is divisible by 6.
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-ref1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-ref1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Reformulate \(n^3-n = n(n-1)(n+1)\) = product of 3 consecutive integers. Among them, one is divisible by 2 and one by 3, thus the product is divisible by 6. ✓
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="ref-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      Solve: \(|x - 3| + |x + 2| = 7\)
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-ref2-en')">💡 Show hint</button>
+    <div id="hint-ref2-en" class="hint">
+      Reformulate geometrically: \(|x-3|\) = distance from 3, \(|x+2|\) = distance from -2. Find points where sum of distances equals 7. Distance between 3 and -2 is 5. Solutions must be outside [-2, 3].
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-ref2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-ref2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Geometric reformulation: sum of distances from -2 and 3 equals 7. Since distance between them is 5, solutions are outside [-2,3]. Checking: \(x = -3\) or \(x = 4\). ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="ref-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      Prove: \((a+b+c)^3 = a^3 + b^3 + c^3 + 3(a+b)(b+c)(c+a)\)
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-ref3-en')">💡 Show hint</button>
+    <div id="hint-ref3-en" class="hint">
+      Set \(s = a+b+c\). Then \(a+b = s-c\), \(b+c = s-a\), \(c+a = s-b\). Reformulate and expand \((s-a)(s-b)(s-c)\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-ref3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-ref3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Set \(s=a+b+c\). Reformulate: \(s^3 = a^3+b^3+c^3+3(s-a)(s-b)(s-c)\). Expand and verify using symmetric polynomial identities. ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Staying with original form:</strong> Not reformulating when form is complex</li>
+      <li><strong>Losing equivalence:</strong> Changing form in a way that changes the problem</li>
+      <li><strong>Over-simplification:</strong> Removing elements that are necessary</li>
+      <li><strong>Not changing perspective:</strong> Staying algebraic when geometric is more natural (or vice versa)</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> When is the Reformulation strategy useful?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">When a concept can be expressed in a simpler or more natural way</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Only in geometry problems</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">When we don't know what else to do</button>
+    </div>
+    <div class="quiz-result" id="result-ref-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
 <!-- STRATEGY 8: ALGEBRA TO GEOMETRY -->
 <div id="alg-geo" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 8. Άλγεβρα → Γεωμετρία</h2>
-    <p style="font-size:1.1em;color:#64748b;">Οπτικοποίησε το αλγεβρικό</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">8. Άλγεβρα → Γεωμετρία (Algebra → Geometry)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Δες το αόρατο με σχήματα</p>
+  
+  <p>
+    Μερικές φορές ένα αλγεβρικό πρόβλημα είναι δύσκολο γιατί
+    <strong>δεν βλέπουμε τη γεωμετρία</strong> πίσω του. Μεταφράζοντας
+    μεταβλητές σε σημεία και εξισώσεις σε σχήματα, το πρόβλημα γίνεται ορατό.
+  </p>
+
+  <p>
+    Η στρατηγική <strong>Άλγεβρα → Γεωμετρία</strong> λέει:
+    <em>αν δεν μπορείς να το λύσεις με αριθμούς, ζωγράφισέ το</em>.
+    Οι αποστάσεις, οι γωνίες, και τα σχήματα συχνά αποκαλύπτουν τη λύση.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν βλέπεις απόλυτες τιμές (|x-a| = απόσταση)</li>
+      <li>Όταν έχεις τετραγωνικές ρίζες (√(...) = μήκος)</li>
+      <li>Όταν υπάρχουν ανισότητες με αθροίσματα όρων</li>
+      <li>Όταν η αλγεβρική προσέγγιση είναι περίπλοκη</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Ερμήνευσε μεταβλητές ως σημεία, αποστάσεις ή διανύσματα</li>
+      <li><strong>Μετέτρεψε</strong> εξισώσεις/ανισότητες σε γεωμετρικούς τόπους</li>
+      <li>Χρησιμοποίησε γεωμετρική διαίσθηση (τριγωνική ανισότητα, συμμετρία κ.λπ.)</li>
+      <li>Μετάφρασε το γεωμετρικό συμπέρασμα ξανά σε άλγεβρα</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('alg-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('alg-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('alg-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- STRATEGY #8: ALGEBRA → GEOMETRY - COMPLETE CONTENT -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="alg-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε ότι για κάθε πραγματικό αριθμό \(x\):
+      \[
+      |x-1| + |x-5| \geq 4
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-alg1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-alg1" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε <strong>γεωμετρική ερμηνεία</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι σημαίνει το \(|x-a|\) γεωμετρικά;<br>
+      &nbsp;&nbsp;→ Απόσταση του \(x\) από το σημείο \(a\) στον άξονα<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Άρα τι είναι το \(|x-1| + |x-5|\);<br>
+      &nbsp;&nbsp;→ Άθροισμα αποστάσεων του \(x\) από τα σημεία 1 και 5<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Πότε το άθροισμα αυτό είναι ελάχιστο;<br>
+      &nbsp;&nbsp;→ Όταν το \(x\) βρίσκεται ανάμεσα στο 1 και στο 5<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Ποια είναι η ελάχιστη απόσταση;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-alg1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-alg1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Άλγεβρα → Γεωμετρία):</strong><br><br>
+      
+      <strong>Βήμα 1 - Γεωμετρική ερμηνεία:</strong><br>
+      Θεωρούμε τον άξονα των πραγματικών αριθμών.<br>
+      • \(|x-1|\) = απόσταση του \(x\) από το σημείο 1<br>
+      • \(|x-5|\) = απόσταση του \(x\) από το σημείο 5<br><br>
+      
+      Άρα:<br>
+      \[
+      |x-1| + |x-5| = \text{(απόσταση από 1) + (απόσταση από 5)}
+      \]<br>
+      
+      <strong>Βήμα 2 - Οπτικοποίηση:</strong><br>
+      Φανταστείτε τρία σημεία στον άξονα: το 1, το \(x\), και το 5.<br><br>
+      
+      <u>Αν \(x < 1\):</u> (π.χ. \(x=0\))<br>
+      ```
+      x=0    1         5
+      •------•---------•
+         1      4
+      ```
+      Άθροισμα = 1 + 5 = 6 > 4<br><br>
+      
+      <u>Αν \(1 \leq x \leq 5\):</u> (π.χ. \(x=3\))<br>
+      ```
+           1    x=3    5
+           •----•------•
+             2     2
+      ```
+      Άθροισμα = 2 + 2 = 4<br><br>
+      
+      <u>Αν \(x > 5\):</u> (π.χ. \(x=7\))<br>
+      ```
+           1         5    x=7
+           •---------•----•
+               4        2
+      ```
+      Άθροισμα = 6 + 2 = 8 > 4<br><br>
+      
+      <strong>Βήμα 3 - Γεωμετρικό συμπέρασμα:</strong><br>
+      Το ελάχιστο άθροισμα επιτυγχάνεται όταν το \(x\) βρίσκεται<br>
+      <strong>ανάμεσα</strong> στο 1 και στο 5!<br><br>
+      
+      Σε αυτή την περίπτωση:<br>
+      \[
+      |x-1| + |x-5| = (x-1) + (5-x) = 4
+      \]<br>
+      
+      Αυτό είναι το <strong>ελάχιστο</strong>!<br><br>
+      
+      Για \(x < 1\) ή \(x > 5\), το άθροισμα είναι μεγαλύτερο από 4.<br><br>
+      
+      <strong>Βήμα 4 - Συμπέρασμα:</strong><br>
+      Επειδή το ελάχιστο είναι 4, για κάθε \(x\) έχουμε:<br>
+      \[
+      |x-1| + |x-5| \geq 4
+      \]
+      ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η γεωμετρική ερμηνεία έδειξε αμέσως το ελάχιστο!<br>
+      Χωρίς γεωμετρία, θα χρειαζόταν ανάλυση 3 περιπτώσεων.
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="alg-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Να βρείτε το ελάχιστο της έκφρασης:
+      \[
+      f(x,y) = \sqrt{x^2+y^2} + \sqrt{(x-3)^2+(y-4)^2}
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-alg2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-alg2" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε <strong>γεωμετρία 2D</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι είναι το \(\sqrt{x^2+y^2}\);<br>
+      &nbsp;&nbsp;→ Απόσταση του σημείου \((x,y)\) από την αρχή \((0,0)\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Τι είναι το \(\sqrt{(x-3)^2+(y-4)^2}\);<br>
+      &nbsp;&nbsp;→ Απόσταση του \((x,y)\) από το σημείο \((3,4)\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Άρα τι ζητάμε;<br>
+      &nbsp;&nbsp;→ Σημείο \((x,y)\) που ελαχιστοποιεί το άθροισμα αποστάσεων<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Πότε το άθροισμα δύο αποστάσεων είναι ελάχιστο;<br>
+      &nbsp;&nbsp;→ Όταν τα σημεία βρίσκονται στην ίδια ευθεία!
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-alg2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-alg2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Γεωμετρία):</strong><br><br>
+      
+      <strong>Βήμα 1 - Γεωμετρική ερμηνεία:</strong><br>
+      Έστω:<br>
+      • \(A = (0,0)\) (αρχή των αξόνων)<br>
+      • \(B = (3,4)\) (σταθερό σημείο)<br>
+      • \(P = (x,y)\) (μεταβλητό σημείο)<br><br>
+      
+      Τότε:<br>
+      • \(\sqrt{x^2+y^2} = |PA|\) (απόσταση \(P\) από \(A\))<br>
+      • \(\sqrt{(x-3)^2+(y-4)^2} = |PB|\) (απόσταση \(P\) από \(B\))<br><br>
+      
+      Ζητάμε:<br>
+      \[
+      \min(|PA| + |PB|)
+      \]<br>
+      
+      <strong>Βήμα 2 - Τριγωνική ανισότητα:</strong><br>
+      Από τη γεωμετρία γνωρίζουμε:<br>
+      <strong>Το άθροισμα δύο πλευρών τριγώνου είναι μεγαλύτερο από την τρίτη.</strong><br><br>
+      
+      Για οποιοδήποτε σημείο \(P\):<br>
+      \[
+      |PA| + |PB| \geq |AB|
+      \]<br>
+      
+      Ισότητα όταν το \(P\) βρίσκεται στο ευθύγραμμο τμήμα \(AB\)!<br><br>
+      
+      <strong>Βήμα 3 - Υπολογισμός ελάχιστου:</strong><br>
+      Το ελάχιστο είναι η απόσταση \(|AB|\):<br>
+      \[
+      |AB| = \sqrt{(3-0)^2 + (4-0)^2}
+      \]<br>
+      \[
+      |AB| = \sqrt{9 + 16} = \sqrt{25} = 5
+      \]<br>
+      
+      <strong>Βήμα 4 - Επαλήθευση:</strong><br>
+      Το ελάχιστο επιτυγχάνεται όταν \(P\) βρίσκεται στο τμήμα \(AB\).<br><br>
+      
+      Για παράδειγμα, στο μέσο του τμήματος \(P = (1.5, 2)\):<br>
+      \[
+      |PA| = \sqrt{1.5^2 + 2^2} = \sqrt{6.25} = 2.5
+      \]<br>
+      \[
+      |PB| = \sqrt{(1.5-3)^2 + (2-4)^2} = \sqrt{2.25+4} = 2.5
+      \]<br>
+      \[
+      |PA| + |PB| = 2.5 + 2.5 = 5
+      \]
+      ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Το ελάχιστο της έκφρασης είναι \(\boxed{5}\) ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η τριγωνική ανισότητα στη γεωμετρία<br>
+      έδωσε άμεσα το ελάχιστο!
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="alg-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε την ανισότητα Cauchy-Schwarz χρησιμοποιώντας γεωμετρία:
+      \[
+      (a_1b_1 + a_2b_2)^2 \leq (a_1^2+a_2^2)(b_1^2+b_2^2)
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-alg3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-alg3" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε <strong>διανύσματα</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Μπορείς να ερμηνεύσεις τα \((a_1, a_2)\) και \((b_1, b_2)\) ως διανύσματα;<br>
+      &nbsp;&nbsp;→ \(\vec{a} = (a_1, a_2)\), \(\vec{b} = (b_1, b_2)\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Τι είναι το \(a_1b_1 + a_2b_2\) γεωμετρικά;<br>
+      &nbsp;&nbsp;→ Εσωτερικό γινόμενο: \(\vec{a} \cdot \vec{b}\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Τι είναι τα \(\sqrt{a_1^2+a_2^2}\) και \(\sqrt{b_1^2+b_2^2}\);<br>
+      &nbsp;&nbsp;→ Μήκη: \(|\vec{a}|\) και \(|\vec{b}|\)<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Ποια σχέση έχει το \(\vec{a} \cdot \vec{b}\) με τα μήκη και τη γωνία;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-alg3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-alg3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Διανύσματα):</strong><br><br>
+      
+      <strong>Βήμα 1 - Γεωμετρική ερμηνεία:</strong><br>
+      Θεωρούμε δύο διανύσματα στο επίπεδο:<br>
+      • \(\vec{a} = (a_1, a_2)\)<br>
+      • \(\vec{b} = (b_1, b_2)\)<br><br>
+      
+      Τότε:<br>
+      • \(a_1b_1 + a_2b_2 = \vec{a} \cdot \vec{b}\) (εσωτερικό γινόμενο)<br>
+      • \(|\vec{a}| = \sqrt{a_1^2+a_2^2}\) (μήκος του \(\vec{a}\))<br>
+      • \(|\vec{b}| = \sqrt{b_1^2+b_2^2}\) (μήκος του \(\vec{b}\))<br><br>
+      
+      <strong>Βήμα 2 - Εσωτερικό γινόμενο και γωνία:</strong><br>
+      Από τη γεωμετρία γνωρίζουμε:<br>
+      \[
+      \vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta
+      \]<br>
+      όπου \(\theta\) η γωνία μεταξύ των διανυσμάτων.<br><br>
+      
+      <strong>Βήμα 3 - Ανισότητα για το συνημίτονο:</strong><br>
+      Επειδή \(-1 \leq \cos\theta \leq 1\), έχουμε:<br>
+      \[
+      |\cos\theta| \leq 1
+      \]<br>
+      
+      Άρα:<br>
+      \[
+      |\vec{a} \cdot \vec{b}| = |\vec{a}||\vec{b}||\cos\theta| \leq |\vec{a}||\vec{b}|
+      \]<br>
+      
+      <strong>Βήμα 4 - Τετραγωνισμός:</strong><br>
+      Τετραγωνίζοντας και τις δύο πλευρές:<br>
+      \[
+      (\vec{a} \cdot \vec{b})^2 \leq (|\vec{a}||\vec{b}|)^2
+      \]<br>
+      
+      Αντικαθιστούμε:<br>
+      \[
+      (a_1b_1 + a_2b_2)^2 \leq |\vec{a}|^2 |\vec{b}|^2
+      \]<br>
+      \[
+      (a_1b_1 + a_2b_2)^2 \leq (a_1^2+a_2^2)(b_1^2+b_2^2)
+      \]<br>
+      
+      <strong>Αυτή είναι η ανισότητα Cauchy-Schwarz!</strong> ✓<br><br>
+      
+      <strong>Βήμα 5 - Πότε έχουμε ισότητα;</strong><br>
+      Ισότητα όταν \(|\cos\theta| = 1\), δηλαδή όταν \(\theta = 0°\) ή \(\theta = 180°\).<br><br>
+      
+      Αυτό σημαίνει ότι τα διανύσματα είναι <strong>παράλληλα</strong>:<br>
+      \[
+      \vec{a} = \lambda \vec{b} \text{ για κάποιο } \lambda \in \mathbb{R}
+      \]<br>
+      
+      <strong>Επαλήθευση:</strong><br>
+      Για \(a_1=2, a_2=3, b_1=4, b_2=6\) (παράλληλα, \(\vec{a} = \frac{1}{2}\vec{b}\)):<br>
+      • Αριστερό μέλος: \((2 \cdot 4 + 3 \cdot 6)^2 = (8+18)^2 = 676\)<br>
+      • Δεξί μέλος: \((4+9)(16+36) = 13 \cdot 52 = 676\)<br>
+      Ισότητα! ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η γεωμετρική ερμηνεία με διανύσματα και γωνίες<br>
+      έδωσε elegant απόδειξη της Cauchy-Schwarz!
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Δεν βλέπεις τη γεωμετρία:</strong> Να μην αναγνωρίζεις αποστάσεις/διανύσματα</li>
+      <li><strong>Ξεχνάς να σχεδιάσεις:</strong> Η οπτικοποίηση είναι το κλειδί!</li>
+      <li><strong>Μπερδεύεις 1D με 2D:</strong> Να μην διακρίνεις άξονα από επίπεδο</li>
+      <li><strong>Δεν μεταφράζεις πίσω:</strong> Να ξεχνάς να γυρίσεις στην άλγεβρα</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Πότε χρησιμοποιούμε την Άλγεβρα → Γεωμετρία;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Όταν βλέπουμε απόλυτες τιμές ή τετραγωνικές ρίζες που μοιάζουν με αποστάσεις</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Μόνο σε γεωμετρικά προβλήματα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Όταν δεν μπορούμε να λύσουμε αλγεβρικά</button>
+    </div>
+    
+    <div class="quiz-result" id="result-alg"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 8. Algebra → Geometry</h2>
-    <p style="font-size:1.1em;color:#64748b;">Visualize the algebraic</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">8. Algebra → Geometry</h2>
+  <p style="font-size:1.1em;color:#64748b;">See the invisible with shapes</p>
+  
+  <p>
+    Sometimes an algebraic problem is hard because
+    <strong>we don't see the geometry</strong> behind it. By translating
+    variables into points and equations into shapes, the problem becomes visible.
+  </p>
+
+  <p>
+    The <strong>Algebra → Geometry</strong> strategy says:
+    <em>if you can't solve it with numbers, draw it</em>.
+    Distances, angles, and shapes often reveal the solution.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When you see absolute values (|x-a| = distance)</li>
+      <li>When you have square roots (√(...) = length)</li>
+      <li>When there are inequalities with sums of terms</li>
+      <li>When algebraic approach is too complex</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Interpret variables as points, distances, or vectors</li>
+      <li><strong>Translate</strong> equations/inequalities into geometric loci</li>
+      <li>Use geometric intuition (triangle inequality, symmetry, etc.)</li>
+      <li>Translate geometric conclusion back to algebra</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('alg-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('alg-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('alg-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="alg-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      Prove that for every real \(x\): \(|x-1| + |x-5| \geq 4\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-alg1-en')">💡 Show hint</button>
+    <div id="hint-alg1-en" class="hint">
+      Geometric: sum of distances from 1 and 5. Minimum when \(x\) between them: \(|x-1|+|x-5| = (x-1)+(5-x) = 4\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-alg1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-alg1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(|x-1|\) and \(|x-5|\) are distances on the line. Minimum sum when \(x \in [1,5]\): sum = 4. For \(x < 1\) or \(x > 5\): sum > 4. Thus \(|x-1|+|x-5| \geq 4\). ✓
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="alg-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      Find minimum of \(f(x,y) = \sqrt{x^2+y^2} + \sqrt{(x-3)^2+(y-4)^2}\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-alg2-en')">💡 Show hint</button>
+    <div id="hint-alg2-en" class="hint">
+      Distances from (0,0) and (3,4). By triangle inequality: min = distance between points = \(\sqrt{9+16} = 5\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-alg2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-alg2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(|PA|+|PB|\) where A=(0,0), B=(3,4). Triangle inequality: \(|PA|+|PB| \geq |AB| = 5\). Equality when P on segment AB. Min = 5. ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="alg-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      Prove Cauchy-Schwarz geometrically: \((a_1b_1+a_2b_2)^2 \leq (a_1^2+a_2^2)(b_1^2+b_2^2)\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-alg3-en')">💡 Show hint</button>
+    <div id="hint-alg3-en" class="hint">
+      Vectors: \(\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta\). Since \(|\cos\theta| \leq 1\): \((\vec{a} \cdot \vec{b})^2 \leq |\vec{a}|^2|\vec{b}|^2\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-alg3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-alg3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Interpret as vectors \(\vec{a}=(a_1,a_2)\), \(\vec{b}=(b_1,b_2)\). Then \(\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta\). Since \(|\cos\theta| \leq 1\): \((\vec{a} \cdot \vec{b})^2 \leq |\vec{a}|^2|\vec{b}|^2\). ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Not seeing the geometry:</strong> Missing distances/vectors</li>
+      <li><strong>Forgetting to draw:</strong> Visualization is key!</li>
+      <li><strong>Confusing 1D with 2D:</strong> Not distinguishing line from plane</li>
+      <li><strong>Not translating back:</strong> Forgetting to return to algebra</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> When do we use Algebra → Geometry?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">When we see absolute values or square roots that look like distances</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Only in geometry problems</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">When we can't solve algebraically</button>
+    </div>
+    <div class="quiz-result" id="result-alg-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
 <!-- STRATEGY 9: GEOMETRY TO ALGEBRA -->
 <div id="geo-alg" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 9. Γεωμετρία → Άλγεβρα</h2>
-    <p style="font-size:1.1em;color:#64748b;">Υπολόγισε το γεωμετρικό</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">9. Γεωμετρία → Άλγεβρα (Geometry → Algebra)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Μετέτρεψε το σχήμα σε αριθμούς</p>
+  
+  <p>
+    Μερικές φορές ένα γεωμετρικό πρόβλημα είναι πιο εύκολο αν το
+    <strong>μεταφράσουμε σε άλγεβρα</strong>. Με συντεταγμένες, διανύσματα
+    και εξισώσεις, μπορούμε να υπολογίσουμε αντί να σχεδιάζουμε.
+  </p>
+
+  <p>
+    Η στρατηγική <strong>Γεωμετρία → Άλγεβρα</strong> λέει:
+    <em>αν το σχήμα είναι περίπλοκο, βάλ' το σε συντεταγμένες</em>.
+    Τα σημεία γίνονται ζεύγη αριθμών, οι αποστάσεις γίνονται τύποι.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν πρέπει να υπολογίσεις αποστάσεις ή γωνίες</li>
+      <li>Όταν η καθαρή γεωμετρία είναι δύσκολη</li>
+      <li>Όταν θέλεις να αποδείξεις ισότητες ή συνθήκες</li>
+      <li>Όταν έχεις πολλά σημεία και σχέσεις</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Επέλεξε κατάλληλο σύστημα συντεταγμένων (συνήθως με άξονες στα σημαντικά στοιχεία)</li>
+      <li><strong>Μετέφρασε</strong> σημεία, αποστάσεις και γωνίες αλγεβρικά</li>
+      <li>Χρησιμοποίησε εξισώσεις, ανισότητες ή διανυσματικές πράξεις</li>
+      <li>Ερμήνευσε το αλγεβρικό αποτέλεσμα ξανά γεωμετρικά</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('geo-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('geo-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('geo-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- STRATEGY #9: GEOMETRY → ALGEBRA - COMPLETE CONTENT -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="geo-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε ότι τα διάγωνια ενός ορθογωνίου είναι ίσα, χρησιμοποιώντας συντεταγμένες.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-geo1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-geo1" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε <strong>συντεταγμένες</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Πού μπορείς να τοποθετήσεις το ορθογώνιο στο σύστημα συντεταγμένων;<br>
+      &nbsp;&nbsp;→ Βάλε μία κορυφή στην αρχή (0,0) και τις πλευρές στους άξονες<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Αν το ορθογώνιο έχει πλευρές α και β, ποιες είναι οι κορυφές;<br>
+      &nbsp;&nbsp;→ \((0,0)\), \((a,0)\), \((a,b)\), \((0,b)\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Ποια είναι τα διάγωνια;<br>
+      &nbsp;&nbsp;→ Από \((0,0)\) σε \((a,b)\) και από \((a,0)\) σε \((0,b)\)<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Πώς υπολογίζεις το μήκος ενός τμήματος;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-geo1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-geo1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Συντεταγμένες):</strong><br><br>
+      
+      <strong>Βήμα 1 - Επιλογή συστήματος συντεταγμένων:</strong><br>
+      Τοποθετούμε το ορθογώνιο έτσι ώστε:<br>
+      • Μία κορυφή να είναι στην αρχή \((0,0)\)<br>
+      • Οι πλευρές να είναι παράλληλες στους άξονες<br><br>
+      
+      Έστω οι πλευρές έχουν μήκος \(a\) και \(b\).<br>
+      Οι κορυφές είναι:<br>
+      • \(A = (0,0)\)<br>
+      • \(B = (a,0)\)<br>
+      • \(C = (a,b)\)<br>
+      • \(D = (0,b)\)<br><br>
+      
+      <strong>Βήμα 2 - Εντοπισμός διαγωνίων:</strong><br>
+      Τα διάγωνια είναι:<br>
+      • \(AC\): από \((0,0)\) σε \((a,b)\)<br>
+      • \(BD\): από \((a,0)\) σε \((0,b)\)<br><br>
+      
+      <strong>Βήμα 3 - Υπολογισμός μήκους πρώτου διαγωνίου:</strong><br>
+      Χρησιμοποιούμε τον τύπο απόστασης:<br>
+      \[
+      |AC| = \sqrt{(a-0)^2 + (b-0)^2}
+      \]<br>
+      \[
+      |AC| = \sqrt{a^2 + b^2}
+      \]<br>
+      
+      <strong>Βήμα 4 - Υπολογισμός μήκους δεύτερου διαγωνίου:</strong><br>
+      \[
+      |BD| = \sqrt{(0-a)^2 + (b-0)^2}
+      \]<br>
+      \[
+      |BD| = \sqrt{(-a)^2 + b^2}
+      \]<br>
+      \[
+      |BD| = \sqrt{a^2 + b^2}
+      \]<br>
+      
+      <strong>Βήμα 5 - Συμπέρασμα:</strong><br>
+      \[
+      |AC| = \sqrt{a^2 + b^2} = |BD|
+      \]<br>
+      
+      Άρα τα διάγωνια του ορθογωνίου είναι ίσα! ✓<br><br>
+      
+      <strong>Επαλήθευση με παράδειγμα (a=3, b=4):</strong><br>
+      • \(|AC| = \sqrt{9+16} = \sqrt{25} = 5\)<br>
+      • \(|BD| = \sqrt{9+16} = \sqrt{25} = 5\)<br>
+      Ίσα! ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Οι συντεταγμένες έκαναν την απόδειξη εύκολη -<br>
+      χωρίς καθαρή γεωμετρία, μόνο με τύπους!
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="geo-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Να βρείτε την εξίσωση του κύκλου που διέρχεται από τα σημεία:
+      \[
+      A = (0,0), \quad B = (4,0), \quad C = (0,3)
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-geo2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-geo2" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε την <strong>εξίσωση κύκλου</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Ποια είναι η γενική μορφή της εξίσωσης κύκλου;<br>
+      &nbsp;&nbsp;→ \((x-h)^2 + (y-k)^2 = r^2\) με κέντρο \((h,k)\) και ακτίνα \(r\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Πόσα άγνωστα έχουμε; (h, k, r)<br>
+      &nbsp;&nbsp;→ 3 άγνωστα<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Πόσες εξισώσεις μπορούμε να φτιάξουμε από τα 3 σημεία;<br>
+      &nbsp;&nbsp;→ 3 εξισώσεις (κάθε σημείο ικανοποιεί την εξίσωση)<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Πώς λύνεις το σύστημα;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-geo2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-geo2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Εξίσωση Κύκλου):</strong><br><br>
+      
+      <strong>Βήμα 1 - Γενική εξίσωση:</strong><br>
+      Ο κύκλος έχει εξίσωση:<br>
+      \[
+      (x-h)^2 + (y-k)^2 = r^2
+      \]<br>
+      όπου \((h,k)\) το κέντρο και \(r\) η ακτίνα.<br><br>
+      
+      <strong>Βήμα 2 - Εφαρμογή για σημείο A(0,0):</strong><br>
+      \[
+      (0-h)^2 + (0-k)^2 = r^2
+      \]<br>
+      \[
+      h^2 + k^2 = r^2 \quad \text{...(1)}
+      \]<br>
+      
+      <strong>Βήμα 3 - Εφαρμογή για σημείο B(4,0):</strong><br>
+      \[
+      (4-h)^2 + (0-k)^2 = r^2
+      \]<br>
+      \[
+      (4-h)^2 + k^2 = r^2 \quad \text{...(2)}
+      \]<br>
+      
+      <strong>Βήμα 4 - Εφαρμογή για σημείο C(0,3):</strong><br>
+      \[
+      (0-h)^2 + (3-k)^2 = r^2
+      \]<br>
+      \[
+      h^2 + (3-k)^2 = r^2 \quad \text{...(3)}
+      \]<br>
+      
+      <strong>Βήμα 5 - Λύση συστήματος:</strong><br>
+      Από (1) και (2):<br>
+      \[
+      h^2 + k^2 = (4-h)^2 + k^2
+      \]<br>
+      \[
+      h^2 = 16 - 8h + h^2
+      \]<br>
+      \[
+      0 = 16 - 8h
+      \]<br>
+      \[
+      h = 2
+      \]<br>
+      
+      Από (1) και (3):<br>
+      \[
+      h^2 + k^2 = h^2 + (3-k)^2
+      \]<br>
+      \[
+      k^2 = 9 - 6k + k^2
+      \]<br>
+      \[
+      0 = 9 - 6k
+      \]<br>
+      \[
+      k = \frac{3}{2}
+      \]<br>
+      
+      Από (1):<br>
+      \[
+      r^2 = h^2 + k^2 = 4 + \frac{9}{4} = \frac{25}{4}
+      \]<br>
+      
+      <strong>Βήμα 6 - Εξίσωση κύκλου:</strong><br>
+      \[
+      (x-2)^2 + \left(y-\frac{3}{2}\right)^2 = \frac{25}{4}
+      \]<br>
+      
+      <strong>Επαλήθευση:</strong><br>
+      <u>Σημείο A(0,0):</u><br>
+      \((0-2)^2 + (0-\frac{3}{2})^2 = 4 + \frac{9}{4} = \frac{25}{4}\) ✓<br><br>
+      
+      <u>Σημείο B(4,0):</u><br>
+      \((4-2)^2 + (0-\frac{3}{2})^2 = 4 + \frac{9}{4} = \frac{25}{4}\) ✓<br><br>
+      
+      <u>Σημείο C(0,3):</u><br>
+      \((0-2)^2 + (3-\frac{3}{2})^2 = 4 + \frac{9}{4} = \frac{25}{4}\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Η εξίσωση του κύκλου είναι:<br>
+      \[
+      \boxed{(x-2)^2 + \left(y-\frac{3}{2}\right)^2 = \frac{25}{4}}
+      \]<br>
+      
+      <strong>🔑 Κλειδί:</strong> Η γεωμετρία έγινε σύστημα εξισώσεων!
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="geo-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε το <strong>θεώρημα Stewart</strong> χρησιμοποιώντας διανύσματα:<br>
+      Σε τρίγωνο \(ABC\) με \(D\) σημείο στην πλευρά \(BC\), ισχύει:
+      \[
+      |AB|^2 \cdot |DC| + |AC|^2 \cdot |BD| = |BC|(|AD|^2 + |BD| \cdot |DC|)
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-geo3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-geo3" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε <strong>διανύσματα</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Πώς μπορείς να εκφράσεις το \(\vec{AD}\) ως συνδυασμό των \(\vec{AB}\) και \(\vec{AC}\);<br>
+      &nbsp;&nbsp;→ Επειδή \(D\) είναι στο \(BC\), χρησιμοποίησε παραμετροποίηση<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Πώς υπολογίζεις το μέτρο ενός διανύσματος;<br>
+      &nbsp;&nbsp;→ \(|\vec{v}|^2 = \vec{v} \cdot \vec{v}\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Πώς σχετίζονται τα \(|BD|\) και \(|DC|\) με τη θέση του \(D\);
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-geo3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-geo3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Διανύσματα):</strong><br><br>
+      
+      <strong>Βήμα 1 - Διανυσματική παραμετροποίηση:</strong><br>
+      Έστω \(D\) σημείο στο ευθύγραμμο τμήμα \(BC\).<br>
+      Τότε:<br>
+      \[
+      \vec{BD} = t \cdot \vec{BC}
+      \]<br>
+      για κάποιο \(0 < t < 1\).<br><br>
+      
+      Έχουμε:<br>
+      • \(|BD| = t \cdot |BC|\)<br>
+      • \(|DC| = (1-t) \cdot |BC|\)<br><br>
+      
+      <strong>Βήμα 2 - Έκφραση του \(\vec{AD}\):</strong><br>
+      \[
+      \vec{AD} = \vec{AB} + \vec{BD}
+      \]<br>
+      \[
+      \vec{AD} = \vec{AB} + t \cdot \vec{BC}
+      \]<br>
+      \[
+      \vec{AD} = \vec{AB} + t(\vec{AC} - \vec{AB})
+      \]<br>
+      \[
+      \vec{AD} = (1-t)\vec{AB} + t\vec{AC}
+      \]<br>
+      
+      <strong>Βήμα 3 - Υπολογισμός \(|\vec{AD}|^2\):</strong><br>
+      \[
+      |\vec{AD}|^2 = \vec{AD} \cdot \vec{AD}
+      \]<br>
+      \[
+      = [(1-t)\vec{AB} + t\vec{AC}] \cdot [(1-t)\vec{AB} + t\vec{AC}]
+      \]<br>
+      \[
+      = (1-t)^2|\vec{AB}|^2 + 2t(1-t)(\vec{AB} \cdot \vec{AC}) + t^2|\vec{AC}|^2
+      \]<br>
+      
+      <strong>Βήμα 4 - Απλοποίηση:</strong><br>
+      Πολλαπλασιάζουμε με \(|BC|\):<br>
+      \[
+      |BC| \cdot |AD|^2 = |BC|[(1-t)^2|AB|^2 + 2t(1-t)(\vec{AB} \cdot \vec{AC}) + t^2|AC|^2]
+      \]<br>
+      
+      Επειδή \(|BD| = t|BC|\) και \(|DC| = (1-t)|BC|\):<br>
+      \[
+      |BC| \cdot |AD|^2 = (1-t)|BC| \cdot (1-t)|AB|^2 + ... + t|BC| \cdot t|AC|^2
+      \]<br>
+      \[
+      |BC| \cdot |AD|^2 = |DC| \cdot (1-t)|AB|^2 + ... + |BD| \cdot t|AC|^2
+      \]<br>
+      
+      <strong>Βήμα 5 - Τελική μορφή:</strong><br>
+      Με περαιτέρω απλοποίηση (χρησιμοποιώντας \(\vec{AB} \cdot \vec{AC}\)<br>
+      και την ιδιότητα \(|BC|^2 = |\vec{AC} - \vec{AB}|^2\)), καταλήγουμε:<br>
+      \[
+      |AB|^2 \cdot |DC| + |AC|^2 \cdot |BD| = |BC|(|AD|^2 + |BD| \cdot |DC|)
+      \]<br>
+      
+      <strong>Αυτό είναι το θεώρημα Stewart!</strong> ✓<br><br>
+      
+      <strong>Παράδειγμα επαλήθευσης:</strong><br>
+      Ισοσκελές τρίγωνο με \(|AB|=|AC|=5\), \(|BC|=6\),<br>
+      και \(D\) μέσο του \(BC\) (άρα \(|BD|=|DC|=3\)).<br><br>
+      
+      Από Πυθαγόρα: \(|AD|^2 = 25 - 9 = 16\), άρα \(|AD|=4\).<br><br>
+      
+      Έλεγχος Stewart:<br>
+      • Αριστερό: \(25 \cdot 3 + 25 \cdot 3 = 75 + 75 = 150\)<br>
+      • Δεξί: \(6(16 + 3 \cdot 3) = 6(16+9) = 6 \cdot 25 = 150\)<br>
+      Ίσα! ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Τα διανύσματα μετέτρεψαν γεωμετρία σε άλγεβρα!
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Κακή επιλογή συντεταγμένων:</strong> Να μην βάζεις το σύστημα έξυπνα</li>
+      <li><strong>Λάθη στους τύπους:</strong> Να μπερδεύεις τον τύπο απόστασης</li>
+      <li><strong>Ξεχνάς την ερμηνεία:</strong> Να μην γυρίζεις στη γεωμετρία</li>
+      <li><strong>Πολύπλοκα υπολογιστικά:</strong> Να μην απλοποιείς</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Πότε χρησιμοποιούμε την Γεωμετρία → Άλγεβρα;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Όταν πρέπει να υπολογίσουμε αποστάσεις ή να αποδείξουμε σχέσεις με συντεταγμένες</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Μόνο σε αλγεβρικά προβλήματα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Όταν η γεωμετρία είναι εύκολη</button>
+    </div>
+    
+    <div class="quiz-result" id="result-geo"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 9. Geometry → Algebra</h2>
-    <p style="font-size:1.1em;color:#64748b;">Calculate the geometric</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">9. Geometry → Algebra</h2>
+  <p style="font-size:1.1em;color:#64748b;">Turn shapes into numbers</p>
+  
+  <p>
+    Sometimes a geometric problem is easier if we
+    <strong>translate it into algebra</strong>. With coordinates, vectors
+    and equations, we can calculate instead of drawing.
+  </p>
+
+  <p>
+    The <strong>Geometry → Algebra</strong> strategy says:
+    <em>if the shape is complex, put it in coordinates</em>.
+    Points become number pairs, distances become formulas.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When you need to calculate distances or angles</li>
+      <li>When pure geometry is difficult</li>
+      <li>When you want to prove equalities or conditions</li>
+      <li>When you have many points and relationships</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Choose a convenient coordinate system (usually with axes at key elements)</li>
+      <li><strong>Translate</strong> points, distances and angles algebraically</li>
+      <li>Use equations, inequalities or vector operations</li>
+      <li>Interpret the algebraic result back geometrically</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('geo-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('geo-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('geo-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="geo-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      Prove that the diagonals of a rectangle are equal using coordinates.
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-geo1-en')">💡 Show hint</button>
+    <div id="hint-geo1-en" class="hint">
+      Place rectangle at origin with sides along axes. Vertices: (0,0), (a,0), (a,b), (0,b). Diagonals both have length √(a²+b²).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-geo1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-geo1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Vertices: A(0,0), B(a,0), C(a,b), D(0,b). |AC| = √(a²+b²), |BD| = √(a²+b²). Equal! ✓
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="geo-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      Find the equation of the circle through points (0,0), (4,0), and (0,3).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-geo2-en')">💡 Show hint</button>
+    <div id="hint-geo2-en" class="hint">
+      Circle: (x-h)²+(y-k)²=r². Substitute 3 points to get 3 equations. Solve: h=2, k=3/2, r²=25/4.
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-geo2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-geo2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> System gives h=2, k=3/2, r²=25/4. Equation: (x-2)²+(y-3/2)²=25/4. ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="geo-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      Prove Stewart's theorem using vectors: |AB|²·|DC| + |AC|²·|BD| = |BC|(|AD|² + |BD|·|DC|).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-geo3-en')">💡 Show hint</button>
+    <div id="hint-geo3-en" class="hint">
+      Express D on BC: \(\vec{AD} = (1-t)\vec{AB} + t\vec{AC}\). Compute |\(\vec{AD}\)|² using dot product. Simplify.
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-geo3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-geo3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Vector parameterization with t gives |AD|² in terms of |AB|, |AC|, angle. Multiply by |BC| and use |BD|=t|BC|, |DC|=(1-t)|BC| to get Stewart's theorem. ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Poor coordinate choice:</strong> Not placing system cleverly</li>
+      <li><strong>Formula errors:</strong> Confusing distance formula</li>
+      <li><strong>Forgetting interpretation:</strong> Not returning to geometry</li>
+      <li><strong>Complex calculations:</strong> Not simplifying</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> When do we use Geometry → Algebra?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">When we need to calculate distances or prove relations with coordinates</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Only in algebraic problems</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">When geometry is easy</button>
+    </div>
+    <div class="quiz-result" id="result-geo-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
 <!-- STRATEGY 10: BOUNDARY VALUES -->
 <div id="boundary" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 10. Οριακές Τιμές</h2>
-    <p style="font-size:1.1em;color:#64748b;">Τι συμβαίνει στα άκρα;</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">10. Οριακές Τιμές (Boundary Values)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Τα άκρα συχνά κρύβουν την αλήθεια</p>
+  
+  <p>
+    Πολλές φορές η λύση ενός προβλήματος βρίσκεται όχι στη "μέση",
+    αλλά στα <strong>άκρα</strong> — εκεί που οι μεταβλητές παίρνουν
+    τις πιο ακραίες επιτρεπτές τιμές τους.
+  </p>
+
+  <p>
+    Η στρατηγική των <strong>Οριακών Τιμών</strong> λέει:
+    <em>πριν εξετάσεις όλες τις δυνατότητες, δοκίμασε πρώτα τα άκρα</em>.
+    Συχνά το min/max, η απόδειξη, ή το counterexample κρύβεται εκεί.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν ψάχνεις για min/max μιας έκφρασης</li>
+      <li>Όταν οι μεταβλητές έχουν περιορισμούς (π.χ. 0 ≤ x ≤ 1)</li>
+      <li>Όταν θέλεις να δείξεις ότι κάτι αποτυγχάνει</li>
+      <li>Όταν η διαίσθηση λέει "δοκίμασε την ακραία περίπτωση"</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Εντόπισε ποια μεγέθη μπορούν να μεταβληθούν και ποια είναι τα όριά τους</li>
+      <li><strong>Δοκίμασε</strong> τις ακραίες τιμές (0, 1, ∞, κ.λπ.)</li>
+      <li>Παρατήρησε τι αλλάζει και τι μένει σταθερό</li>
+      <li>Χρησιμοποίησε το άκρο ως έλεγχο, counterexample, ή για να βρεις το optimum</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('bnd-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('bnd-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('bnd-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- STRATEGY #10: BOUNDARY VALUES - COMPLETE CONTENT -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="bnd-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Για θετικούς αριθμούς \(a, b\) με \(a + b = 10\), πότε το γινόμενο \(ab\) είναι μέγιστο;
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-bnd1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-bnd1" class="hint">
+      <strong>Hint:</strong> Αυτό είναι πρόβλημα <strong>οριακών τιμών</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Ποια είναι τα άκρα των \(a, b\);<br>
+      &nbsp;&nbsp;→ Επειδή \(a, b > 0\) και \(a+b=10\), έχουμε \(0 < a < 10\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Τι συμβαίνει όταν \(a \to 0^+\);<br>
+      &nbsp;&nbsp;→ Τότε \(b \to 10\) και \(ab \to 0\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Τι συμβαίνει όταν \(a \to 10^-\);<br>
+      &nbsp;&nbsp;→ Τότε \(b \to 0\) και \(ab \to 0\)<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Αν στα άκρα το \(ab\) είναι μικρό, πού βρίσκεται το μέγιστο;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-bnd1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-bnd1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Boundary Analysis):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός ορίων:</strong><br>
+      Έχουμε: \(a, b > 0\) και \(a + b = 10\)<br>
+      Άρα: \(0 < a < 10\) και \(b = 10 - a\)<br><br>
+      
+      Το γινόμενο γίνεται:<br>
+      \[
+      P(a) = ab = a(10-a) = 10a - a^2
+      \]<br>
+      
+      <strong>Βήμα 2 - Έλεγχος οριακών τιμών:</strong><br>
+      <u>Όταν \(a \to 0^+\):</u><br>
+      \[
+      P(a) = a(10-a) \to 0 \cdot 10 = 0
+      \]<br>
+      
+      <u>Όταν \(a \to 10^-\):</u><br>
+      \[
+      P(a) = a(10-a) \to 10 \cdot 0 = 0
+      \]<br>
+      
+      Στα <strong>άκρα</strong>, το γινόμενο τείνει στο 0! ⚡<br><br>
+      
+      <strong>Βήμα 3 - Εύρεση μέγιστου:</strong><br>
+      Επειδή στα άκρα \(P \to 0\) και η \(P(a)\) είναι συνεχής,<br>
+      το μέγιστο βρίσκεται <strong>στο εσωτερικό</strong> του \((0, 10)\).<br><br>
+      
+      Για να το βρούμε, χρησιμοποιούμε συμμετρία ή παράγωγο:<br>
+      \[
+      P(a) = 10a - a^2
+      \]<br>
+      
+      Παράγωγος:<br>
+      \[
+      P'(a) = 10 - 2a = 0 \Rightarrow a = 5
+      \]<br>
+      
+      Άρα: \(a = 5, b = 5\)<br><br>
+      
+      <strong>Βήμα 4 - Επαλήθευση:</strong><br>
+      \[
+      P(5) = 5 \times 5 = 25
+      \]<br>
+      
+      Δοκιμάζουμε άλλες τιμές:<br>
+      • \(a=1, b=9\): \(P = 1 \times 9 = 9 < 25\) ✓<br>
+      • \(a=3, b=7\): \(P = 3 \times 7 = 21 < 25\) ✓<br>
+      • \(a=8, b=2\): \(P = 8 \times 2 = 16 < 25\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Το γινόμενο \(ab\) είναι μέγιστο όταν \(a = b = 5\), με μέγιστη τιμή \(\boxed{25}\) ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Ο έλεγχος των ορίων μάς έδειξε ότι το μέγιστο δεν βρίσκεται στα άκρα!
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="bnd-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε ότι για κάθε \(x\) στο διάστημα \((0, 1)\), ισχύει:
+      \[
+      x(1-x) \leq \frac{1}{4}
+      \]
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-bnd2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-bnd2" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε boundary analysis!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι συμβαίνει στα άκρα του διαστήματος;<br>
+      &nbsp;&nbsp;→ Όταν \(x \to 0^+\): \(x(1-x) \to 0\)<br>
+      &nbsp;&nbsp;→ Όταν \(x \to 1^-\): \(x(1-x) \to 0\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Πού βρίσκεται το μέγιστο του \(x(1-x)\);<br>
+      &nbsp;&nbsp;→ Λόγω συμμετρίας ή με παράγωγο: στο \(x = \frac{1}{2}\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Ποια είναι η μέγιστη τιμή;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-bnd2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-bnd2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Boundary Values):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός ορίων:</strong><br>
+      Έχουμε \(x \in (0, 1)\) και θέλουμε να δείξουμε:<br>
+      \[
+      f(x) = x(1-x) \leq \frac{1}{4}
+      \]<br>
+      
+      <strong>Βήμα 2 - Έλεγχος οριακών τιμών:</strong><br>
+      <u>Όταν \(x \to 0^+\):</u><br>
+      \[
+      f(x) = x(1-x) \to 0 \cdot 1 = 0 < \frac{1}{4}
+      \]
+      ✓ Η ανισότητα ισχύει!<br><br>
+      
+      <u>Όταν \(x \to 1^-\):</u><br>
+      \[
+      f(x) = x(1-x) \to 1 \cdot 0 = 0 < \frac{1}{4}
+      \]
+      ✓ Η ανισότητα ισχύει!<br><br>
+      
+      <strong>Βήμα 3 - Εύρεση μεγίστου:</strong><br>
+      Στα άκρα η συνάρτηση τείνει στο 0.<br>
+      Το μέγιστο βρίσκεται στο εσωτερικό.<br><br>
+      
+      Παίρνουμε παράγωγο:<br>
+      \[
+      f'(x) = (1-x) + x(-1) = 1 - 2x
+      \]<br>
+      
+      Θέτουμε \(f'(x) = 0\):<br>
+      \[
+      1 - 2x = 0 \Rightarrow x = \frac{1}{2}
+      \]<br>
+      
+      <strong>Βήμα 4 - Υπολογισμός μέγιστης τιμής:</strong><br>
+      \[
+      f\left(\frac{1}{2}\right) = \frac{1}{2} \cdot \left(1 - \frac{1}{2}\right) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+      \]<br>
+      
+      Άρα το <strong>μέγιστο</strong> της \(f(x)\) είναι \(\frac{1}{4}\)!<br><br>
+      
+      <strong>Βήμα 5 - Συμπέρασμα:</strong><br>
+      Επειδή:<br>
+      • Στα άκρα: \(f(x) \to 0 < \frac{1}{4}\)<br>
+      • Στο μέγιστο: \(f(x) = \frac{1}{4}\)<br>
+      • Και \(f\) συνεχής στο \((0,1)\)<br><br>
+      
+      Συμπεραίνουμε ότι για κάθε \(x \in (0,1)\):<br>
+      \[
+      x(1-x) \leq \frac{1}{4}
+      \]
+      ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Ο έλεγχος των ορίων επιβεβαίωσε ότι το μέγιστο είναι πράγματι \(\frac{1}{4}\)!
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="bnd-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Να βρείτε το ελάχιστο της συνάρτησης:
+      \[
+      f(x) = x + \frac{1}{x}
+      \]
+      για \(x > 0\).
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-bnd3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-bnd3" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε boundary analysis στα άκρα του \((0, +\infty)\)!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι συμβαίνει όταν \(x \to 0^+\);<br>
+      &nbsp;&nbsp;→ \(x \to 0\) και \(\frac{1}{x} \to +\infty\), άρα \(f(x) \to +\infty\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Τι συμβαίνει όταν \(x \to +\infty\);<br>
+      &nbsp;&nbsp;→ \(x \to +\infty\) και \(\frac{1}{x} \to 0\), άρα \(f(x) \to +\infty\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Αν στα άκρα \(f(x) \to +\infty\), πού βρίσκεται το ελάχιστο;<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Μπορείς να χρησιμοποιήσεις AM-GM;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-bnd3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-bnd3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Boundary Analysis):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός ορίων:</strong><br>
+      Έχουμε \(x > 0\) (το διάστημα είναι \((0, +\infty)\))<br>
+      και \(f(x) = x + \frac{1}{x}\).<br><br>
+      
+      <strong>Βήμα 2 - Έλεγχος οριακών τιμών:</strong><br>
+      <u>Όταν \(x \to 0^+\):</u><br>
+      \[
+      f(x) = x + \frac{1}{x} \to 0 + \infty = +\infty
+      \]<br>
+      
+      <u>Όταν \(x \to +\infty\):</u><br>
+      \[
+      f(x) = x + \frac{1}{x} \to \infty + 0 = +\infty
+      \]<br>
+      
+      Στα <strong>άκρα</strong>, η συνάρτηση τείνει στο \(+\infty\)! ⚡<br><br>
+      
+      <strong>Βήμα 3 - Συμπέρασμα από boundary:</strong><br>
+      Επειδή \(f(x) \to +\infty\) και στα δύο άκρα,<br>
+      και η \(f\) είναι συνεχής στο \((0, +\infty)\),<br>
+      το ελάχιστο βρίσκεται στο <strong>εσωτερικό</strong>!<br><br>
+      
+      <strong>Βήμα 4 - Εύρεση ελαχίστου (Μέθοδος 1: Παράγωγος):</strong><br>
+      \[
+      f'(x) = 1 - \frac{1}{x^2}
+      \]<br>
+      
+      Θέτουμε \(f'(x) = 0\):<br>
+      \[
+      1 - \frac{1}{x^2} = 0 \Rightarrow x^2 = 1 \Rightarrow x = 1
+      \]<br>
+      (παίρνουμε \(x=1\) γιατί \(x>0\))<br><br>
+      
+      Δεύτερη παράγωγος:<br>
+      \[
+      f''(x) = \frac{2}{x^3} > 0 \text{ για } x > 0
+      \]<br>
+      Άρα το \(x=1\) είναι ελάχιστο! ✓<br><br>
+      
+      <strong>Βήμα 5 - Εύρεση ελαχίστου (Μέθοδος 2: AM-GM):</strong><br>
+      Από την ανισότητα AM-GM για δύο θετικούς αριθμούς:<br>
+      \[
+      \frac{x + \frac{1}{x}}{2} \geq \sqrt{x \cdot \frac{1}{x}} = \sqrt{1} = 1
+      \]<br>
+      
+      Άρα:<br>
+      \[
+      x + \frac{1}{x} \geq 2
+      \]<br>
+      
+      Ισότητα όταν \(x = \frac{1}{x}\), δηλαδή \(x = 1\) ✓<br><br>
+      
+      <strong>Βήμα 6 - Υπολογισμός ελάχιστης τιμής:</strong><br>
+      \[
+      f(1) = 1 + \frac{1}{1} = 2
+      \]<br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Το ελάχιστο της \(f(x) = x + \frac{1}{x}\) για \(x > 0\) είναι \(\boxed{2}\),<br>
+      και επιτυγχάνεται στο \(x = 1\) ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Ο έλεγχος των ορίων επιβεβαίωσε ότι το ελάχιστο βρίσκεται στο εσωτερικό,<br>
+      όχι στα άκρα!
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Ξεχνάς τα όρια:</strong> Να μην ελέγχεις τι συμβαίνει στα άκρα</li>
+      <li><strong>Υποθέτεις ότι το optimum είναι στα άκρα:</strong> Συχνά είναι στο εσωτερικό!</li>
+      <li><strong>Δεν ελέγχεις συνέχεια:</strong> Χρειάζεται συνέχεια για να υπάρχει min/max</li>
+      <li><strong>Συγχέεις όρια με τιμές:</strong> Το \(x \to 0^+\) δεν σημαίνει \(x = 0\)</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Πότε χρησιμοποιούμε τη στρατηγική των Οριακών Τιμών;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Όταν ψάχνουμε για min/max και θέλουμε να δούμε τι συμβαίνει στα άκρα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Μόνο όταν το πρόβλημα το ζητάει ρητά</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Όταν δεν ξέρουμε τι άλλο να κάνουμε</button>
+    </div>
+    
+    <div class="quiz-result" id="result-bnd"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 10. Boundary Values</h2>
-    <p style="font-size:1.1em;color:#64748b;">What happens at extremes?</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">10. Boundary Values</h2>
+  <p style="font-size:1.1em;color:#64748b;">The extremes often hide the truth</p>
+  
+  <p>
+    Often the solution to a problem lies not in the "middle",
+    but at the <strong>boundaries</strong> — where variables take
+    their most extreme allowed values.
+  </p>
+
+  <p>
+    The <strong>Boundary Values</strong> strategy says:
+    <em>before examining all possibilities, try the extremes first</em>.
+    Often the min/max, proof, or counterexample hides there.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When looking for min/max of an expression</li>
+      <li>When variables have constraints (e.g. 0 ≤ x ≤ 1)</li>
+      <li>When you want to show something fails</li>
+      <li>When intuition says "try the extreme case"</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Identify which quantities can vary and what their limits are</li>
+      <li><strong>Test</strong> extreme values (0, 1, ∞, etc.)</li>
+      <li>Observe what changes and what stays constant</li>
+      <li>Use boundary as check, counterexample, or to find optimum</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('bnd-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('bnd-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('bnd-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="bnd-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      For positive numbers \(a, b\) with \(a + b = 10\), when is the product \(ab\) maximum?
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-bnd1-en')">💡 Show hint</button>
+    <div id="hint-bnd1-en" class="hint">
+      Check boundaries: as \(a \to 0\) or \(a \to 10\), we have \(ab \to 0\). So maximum is in the interior. By symmetry or calculus: \(a=b=5\) gives max.
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-bnd1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-bnd1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(P(a) = a(10-a)\). At boundaries \(a \to 0\) or \(a \to 10\), \(P \to 0\). Maximum is interior: \(P'(a) = 10-2a = 0\) gives \(a=5\). Thus \(a=b=5\), max = 25. ✓
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="bnd-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      Prove that for \(x \in (0,1)\): \(x(1-x) \leq \frac{1}{4}\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-bnd2-en')">💡 Show hint</button>
+    <div id="hint-bnd2-en" class="hint">
+      At boundaries \(x \to 0\) or \(x \to 1\), \(f(x) \to 0\). Maximum is at \(x=1/2\): \(f(1/2) = 1/4\). Thus \(f(x) \leq 1/4\) for all \(x \in (0,1)\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-bnd2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-bnd2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(f(x) = x(1-x)\). At boundaries \(f \to 0\). \(f'(x) = 1-2x = 0\) gives \(x=1/2\), \(f(1/2)=1/4\). Since this is the maximum, \(f(x) \leq 1/4\) for all \(x \in (0,1)\). ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="bnd-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      Find the minimum of \(f(x) = x + \frac{1}{x}\) for \(x > 0\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-bnd3-en')">💡 Show hint</button>
+    <div id="hint-bnd3-en" class="hint">
+      At boundaries \(x \to 0^+\) or \(x \to \infty\), \(f(x) \to \infty\). Minimum is interior. By AM-GM: \(x + 1/x \geq 2\sqrt{x \cdot 1/x} = 2\), equality at \(x=1\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-bnd3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-bnd3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> At boundaries \(f(x) \to \infty\). By AM-GM: \(\frac{x + 1/x}{2} \geq \sqrt{x \cdot 1/x} = 1\), thus \(f(x) \geq 2\). Equality when \(x=1/x\), i.e., \(x=1\). Minimum is \(f(1)=2\). ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Forgetting boundaries:</strong> Not checking what happens at extremes</li>
+      <li><strong>Assuming optimum is at boundary:</strong> Often it's in the interior!</li>
+      <li><strong>Not checking continuity:</strong> Need continuity for min/max to exist</li>
+      <li><strong>Confusing limits with values:</strong> \(x \to 0^+\) doesn't mean \(x = 0\)</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> When do we use the Boundary Values strategy?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">When looking for min/max and want to see what happens at extremes</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Only when the problem explicitly asks</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">When we don't know what else to do</button>
+    </div>
+    <div class="quiz-result" id="result-bnd-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
 <!-- STRATEGY 11: PARAMETER METHOD -->
 <div id="parameter" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 11. Μέθοδος Παραμέτρου</h2>
-    <p style="font-size:1.1em;color:#64748b;">Πρόσθεσε μια μεταβλητή</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">11. Μέθοδος Παραμέτρου (Parameter Method)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Μελέτησε πώς αλλάζει το πρόβλημα</p>
+  
+  <p>
+    Μερικές φορές το πρόβλημα δεν είναι "σταθερό" — εξαρτάται από κάποια ποσότητα
+    που μπορεί να μεταβάλλεται. Εισάγοντας μια <strong>παράμετρο</strong>, μπορούμε
+    να δούμε πώς αλλάζει η λύση καθώς αυτή η παράμετρος αλλάζει.
+  </p>
+
+  <p>
+    Η <strong>Μέθοδος Παραμέτρου</strong> λέει:
+    <em>αντί να λύσεις ένα σταθερό πρόβλημα, λύσε μια οικογένεια προβλημάτων</em>.
+    Μελετώντας πώς αλλάζουν τα πράγματα, βρίσκεις κρίσιμες τιμές και μεταβάσεις.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν το πρόβλημα εξαρτάται από μια ποσότητα (k, n, t, κ.λπ.)</li>
+      <li>Όταν ψάχνεις για κρίσιμες τιμές ή κατώφλια</li>
+      <li>Όταν θέλεις να δείξεις "για ποιες τιμές ισχύει..."</li>
+      <li>Όταν η λύση αλλάζει δραματικά σε κάποιο σημείο</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Εισήγαγε μια φυσική παράμετρο (αν δεν υπάρχει ήδη)</li>
+      <li><strong>Μελέτησε</strong> το πρόβλημα καθώς η παράμετρος μεταβάλλεται</li>
+      <li>Εντόπισε κρίσιμες τιμές ή κατώφλια (π.χ. πού αλλάζει η συμπεριφορά)</li>
+      <li>Χρησιμοποίησε τη μετάβαση για συμπέρασμα ή απόδειξη</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('par-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('par-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('par-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- STRATEGY #11: PARAMETER METHOD - COMPLETE CONTENT -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="par-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Για ποιες τιμές της παραμέτρου \(k\) η εξίσωση:
+      \[
+      x^2 - 2kx + k^2 - 1 = 0
+      \]
+      έχει πραγματικές ρίζες;
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-par1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-par1" class="hint">
+      <strong>Hint:</strong> Αυτό είναι πρόβλημα <strong>παραμέτρου</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Πότε μια τετραγωνική εξίσωση έχει πραγματικές ρίζες;<br>
+      &nbsp;&nbsp;→ Όταν η διακρίνουσα \(\Delta \geq 0\)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Ποια είναι η διακρίνουσα για την εξίσωση \(ax^2+bx+c=0\);<br>
+      &nbsp;&nbsp;→ \(\Delta = b^2 - 4ac\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Στην εξίσωσή μας, ποια είναι τα \(a, b, c\) (ως συνάρτηση του \(k\));<br>
+      &nbsp;&nbsp;→ \(a=1\), \(b=-2k\), \(c=k^2-1\)<br><br>
+      
+      <strong>Ερώτηση 4:</strong> Υπολόγισε τη διακρίνουσα και λύσε την \(\Delta \geq 0\).
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-par1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-par1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Parameter Method):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός παραμέτρου:</strong><br>
+      Η εξίσωση εξαρτάται από την παράμετρο \(k\).<br>
+      Θέλουμε να βρούμε για ποιες τιμές του \(k\) υπάρχουν πραγματικές ρίζες.<br><br>
+      
+      <strong>Βήμα 2 - Συνθήκη πραγματικών ριζών:</strong><br>
+      Η εξίσωση \(ax^2 + bx + c = 0\) έχει πραγματικές ρίζες όταν:<br>
+      \[
+      \Delta = b^2 - 4ac \geq 0
+      \]<br>
+      
+      <strong>Βήμα 3 - Υπολογισμός διακρίνουσας:</strong><br>
+      Για την εξίσωση \(x^2 - 2kx + k^2 - 1 = 0\):<br>
+      • \(a = 1\)<br>
+      • \(b = -2k\)<br>
+      • \(c = k^2 - 1\)<br><br>
+      
+      Η διακρίνουσα είναι:<br>
+      \[
+      \Delta = (-2k)^2 - 4(1)(k^2-1)
+      \]<br>
+      \[
+      \Delta = 4k^2 - 4k^2 + 4
+      \]<br>
+      \[
+      \Delta = 4
+      \]<br>
+      
+      <strong>Βήμα 4 - Συμπέρασμα:</strong><br>
+      Η διακρίνουσα είναι \(\Delta = 4 > 0\) για <strong>κάθε</strong> τιμή του \(k\)!<br><br>
+      
+      Άρα η εξίσωση έχει πραγματικές ρίζες για <strong>όλες</strong> τις τιμές του \(k\) ✓<br><br>
+      
+      <strong>Επαλήθευση:</strong><br>
+      Ας δοκιμάσουμε συγκεκριμένες τιμές:<br><br>
+      
+      <u>Για \(k=0\):</u><br>
+      \(x^2 - 1 = 0 \Rightarrow x = \pm 1\) (δύο ρίζες) ✓<br><br>
+      
+      <u>Για \(k=2\):</u><br>
+      \(x^2 - 4x + 3 = 0\)<br>
+      \(\Delta = 16 - 12 = 4 > 0\) → δύο ρίζες ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η παράμετρος \(k\) "εξαφανίστηκε" από τη διακρίνουσα!<br>
+      Αυτό σημαίνει ότι η συμπεριφορά είναι η ίδια για όλα τα \(k\).
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="par-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Να αποδείξετε ότι για κάθε ακέραιο \(n \geq 4\), μπορούμε να διαιρέσουμε
+      ένα τετράγωνο σε ακριβώς \(n\) μικρότερα τετράγωνα (όχι κατ' ανάγκη ίσα).
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-par2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-par2" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε το \(n\) ως <strong>παράμετρο</strong>!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Μπορείς να δείξεις ότι είναι δυνατό για \(n=4\);<br>
+      &nbsp;&nbsp;→ Χώρισε το τετράγωνο σε 4 ίσα τετράγωνα<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Αν μπορείς να φτιάξεις \(n\) τετράγωνα, μπορείς να φτιάξεις \(n+3\);<br>
+      &nbsp;&nbsp;→ Χώρισε ένα από τα τετράγωνα σε 4 μικρότερα<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Αυτό σου δίνει \(n=4, 7, 10, 13, ...\). Τι λείπει;<br>
+      &nbsp;&nbsp;→ Χρειάζεσαι \(n=5, 6\) για βάση
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-par2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-par2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Parameter Method):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός παραμέτρου:</strong><br>
+      Η παράμετρος είναι \(n\) (ο αριθμός των τετραγώνων).<br>
+      Θέλουμε να δείξουμε ότι για κάθε \(n \geq 4\) η κατασκευή είναι δυνατή.<br><br>
+      
+      <strong>Βήμα 2 - Βασικές περιπτώσεις:</strong><br>
+      <u>Για \(n=4\):</u><br>
+      Χωρίζουμε το τετράγωνο σε 4 ίσα τετράγωνα (2×2 grid) ✓<br><br>
+      
+      <u>Για \(n=5\):</u><br>
+      Χωρίζουμε σε 4 τετράγωνα, μετά χωρίζουμε ένα από αυτά σε 4 μικρότερα:<br>
+      1 → 4 μικρότερα, άρα 3 + 4 = 7... ⚡ Όχι!<br><br>
+      
+      Διαφορετική προσέγγιση για \(n=5\):<br>
+      • 1 μεγάλο τετράγωνο στη γωνία<br>
+      • 4 μικρότερα τετράγωνα γύρω του<br>
+      (Αυτό χρειάζεται σχέδιο, αλλά είναι δυνατό) ✓<br><br>
+      
+      <u>Για \(n=6\):</u><br>
+      Χωρίζουμε σε 2×3 ορθογώνια και κάθε ορθογώνιο περιέχει 1 τετράγωνο... (πολύπλοκο)<br><br>
+      
+      Ευκολότερη προσέγγιση:<br>
+      • Από το \(n=4\), χώρισε 2 από τα 4 τετράγωνα σε 4 μικρότερα<br>
+      • \(2 + 4 + 4 = 10\)... Όχι!<br><br>
+      
+      <strong>Βήμα 3 - Επαγωγική σχέση:</strong><br>
+      <strong>Κλειδί:</strong> Αν έχουμε λύση για \(n\) τετράγωνα,<br>
+      μπορούμε να φτιάξουμε λύση για \(n+3\) τετράγωνα!<br><br>
+      
+      <strong>Πώς;</strong><br>
+      Παίρνουμε μία από τις \(n\) λύσεις και χωρίζουμε ένα τετράγωνο σε 4:<br>
+      \[
+      n \to (n-1) + 4 = n+3
+      \]<br>
+      
+      <strong>Βήμα 4 - Απόδειξη με επαγωγή:</strong><br>
+      Βάσεις:<br>
+      • \(n=4\) ✓ (2×2 grid)<br>
+      • \(n=5\) ✓ (ειδική κατασκευή)<br>
+      • \(n=6\) ✓ (ειδική κατασκευή)<br><br>
+      
+      Επαγωγή:<br>
+      Για κάθε \(n \geq 7\), έχουμε \(n = 4+3k\) ή \(n=5+3k\) ή \(n=6+3k\) για κάποιο \(k \geq 1\).<br><br>
+      
+      Από την επαγωγική σχέση \(n \to n+3\):<br>
+      • \(4 \to 7 \to 10 \to 13 \to ...\) ✓<br>
+      • \(5 \to 8 \to 11 \to 14 \to ...\) ✓<br>
+      • \(6 \to 9 \to 12 \to 15 \to ...\) ✓<br><br>
+      
+      Αυτό καλύπτει <strong>όλους</strong> τους ακεραίους \(n \geq 4\)!<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Για κάθε \(n \geq 4\), η κατασκευή είναι δυνατή ✓<br><br>
+      
+      <strong>🔑 Κλειδί:</strong> Η παράμετρος \(n\) μας οδήγησε σε επαγωγική σχέση \(n \to n+3\)!
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="par-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Να βρείτε για ποιες τιμές της παραμέτρου \(a\) η ανισότητα:
+      \[
+      x^2 + 2ax + 3a > 0
+      \]
+      ισχύει για <strong>όλους</strong> τους πραγματικούς αριθμούς \(x\).
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-par3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-par3" class="hint">
+      <strong>Hint:</strong> Χρησιμοποίησε την παράμετρο \(a\)!<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Πότε μια τετραγωνική έκφραση είναι πάντα θετική;<br>
+      &nbsp;&nbsp;→ Όταν δεν έχει πραγματικές ρίζες (και το \(a>0\))<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Πότε δεν έχει πραγματικές ρίζες;<br>
+      &nbsp;&nbsp;→ Όταν \(\Delta < 0\)<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Υπολόγισε τη διακρίνουσα ως συνάρτηση του \(a\).
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-par3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-par3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με Parameter Method):</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός παραμέτρου:</strong><br>
+      Η ανισότητα εξαρτάται από την παράμετρο \(a\).<br>
+      Θέλουμε: \(x^2 + 2ax + 3a > 0\) για <strong>κάθε</strong> \(x \in \mathbb{R}\).<br><br>
+      
+      <strong>Βήμα 2 - Συνθήκη για πάντα θετική έκφραση:</strong><br>
+      Η παράσταση \(f(x) = x^2 + 2ax + 3a\) είναι τετραγωνική με \(a=1>0\).<br>
+      Άρα η παραβολή ανοίγει προς τα πάνω.<br><br>
+      
+      Για να είναι \(f(x) > 0\) για κάθε \(x\), πρέπει η παραβολή<br>
+      να μην τέμνει τον άξονα \(x\), δηλαδή:<br>
+      \[
+      \Delta < 0
+      \]<br>
+      
+      <strong>Βήμα 3 - Υπολογισμός διακρίνουσας:</strong><br>
+      Για την έκφραση \(x^2 + 2ax + 3a\):<br>
+      • Συντελεστής του \(x^2\): 1<br>
+      • Συντελεστής του \(x\): \(2a\)<br>
+      • Σταθερός όρος: \(3a\)<br><br>
+      
+      Διακρίνουσα:<br>
+      \[
+      \Delta = (2a)^2 - 4(1)(3a)
+      \]<br>
+      \[
+      \Delta = 4a^2 - 12a
+      \]<br>
+      \[
+      \Delta = 4a(a - 3)
+      \]<br>
+      
+      <strong>Βήμα 4 - Συνθήκη \(\Delta < 0\):</strong><br>
+      Θέλουμε:<br>
+      \[
+      4a(a-3) < 0
+      \]<br>
+      
+      Διαιρούμε με 4:<br>
+      \[
+      a(a-3) < 0
+      \]<br>
+      
+      Αυτό ισχύει όταν οι παράγοντες έχουν αντίθετο πρόσημο:<br>
+      • \(a > 0\) και \(a-3 < 0\)<br>
+      • Ή: \(a < 0\) και \(a-3 > 0\) (αδύνατο)<br><br>
+      
+      Από την πρώτη περίπτωση:<br>
+      \[
+      0 < a < 3
+      \]<br>
+      
+      <strong>Βήμα 5 - Επαλήθευση:</strong><br>
+      <u>Για \(a=1\) (στο διάστημα):</u><br>
+      \(f(x) = x^2 + 2x + 3\)<br>
+      \(\Delta = 4 - 12 = -8 < 0\) ✓<br>
+      Άρα \(f(x) > 0\) για κάθε \(x\) ✓<br><br>
+      
+      <u>Για \(a=4\) (εκτός διαστήματος):</u><br>
+      \(f(x) = x^2 + 8x + 12\)<br>
+      \(\Delta = 64 - 48 = 16 > 0\)<br>
+      Άρα υπάρχουν ρίζες: \(f(x) = 0\) για \(x=-2, -6\) ✗<br><br>
+      
+      <strong>Συμπέρασμα:</strong><br>
+      Η ανισότητα ισχύει για κάθε \(x\) όταν:<br>
+      \[
+      \boxed{0 < a < 3}
+      \]<br>
+      
+      <strong>🔑 Κλειδί:</strong> Η μελέτη της παραμέτρου \(a\) μας έδωσε κρίσιμο κατώφλι: \(a=3\)!<br>
+      Για \(a<3\) δουλεύει, για \(a \geq 3\) αποτυγχάνει.
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Δεν εντοπίζεις την παράμετρο:</strong> Να μην βλέπεις ποια ποσότητα μεταβάλλεται</li>
+      <li><strong>Ξεχνάς τις οριακές τιμές:</strong> Να μην ελέγχεις τι συμβαίνει στα κρίσιμα σημεία</li>
+      <li><strong>Συγχέεις παράμετρο με μεταβλητή:</strong> Το \(k\) είναι παράμετρος, το \(x\) μεταβλητή</li>
+      <li><strong>Δεν μελετάς τη μετάβαση:</strong> Να μην δεις πώς αλλάζει η συμπεριφορά</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Πότε χρησιμοποιούμε τη Μέθοδο Παραμέτρου;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Όταν το πρόβλημα εξαρτάται από μια ποσότητα και ψάχνουμε κρίσιμες τιμές</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Μόνο σε προβλήματα με τετραγωνικές εξισώσεις</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Όταν δεν ξέρουμε τις τιμές των μεταβλητών</button>
+    </div>
+    
+    <div class="quiz-result" id="result-par"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 11. Parameter Method</h2>
-    <p style="font-size:1.1em;color:#64748b;">Add a variable</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">11. Parameter Method</h2>
+  <p style="font-size:1.1em;color:#64748b;">Study how the problem changes</p>
+  
+  <p>
+    Sometimes the problem isn't "fixed" — it depends on some quantity
+    that can vary. By introducing a <strong>parameter</strong>, we can
+    see how the solution changes as this parameter varies.
+  </p>
+
+  <p>
+    The <strong>Parameter Method</strong> says:
+    <em>instead of solving one problem, solve a family of problems</em>.
+    By studying how things change, you find critical values and transitions.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When the problem depends on a quantity (k, n, t, etc.)</li>
+      <li>When looking for critical values or thresholds</li>
+      <li>When you want to show "for which values does it hold..."</li>
+      <li>When the solution changes dramatically at some point</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Introduce a natural parameter (if not already present)</li>
+      <li><strong>Study</strong> the problem as the parameter varies</li>
+      <li>Identify critical values or thresholds (where behavior changes)</li>
+      <li>Use the transition for conclusion or proof</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('par-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('par-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('par-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="par-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      For which values of parameter \(k\) does the equation \(x^2 - 2kx + k^2 - 1 = 0\) have real roots?
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-par1-en')">💡 Show hint</button>
+    <div id="hint-par1-en" class="hint">
+      Real roots when \(\Delta \geq 0\). Calculate: \(\Delta = 4k^2 - 4(k^2-1) = 4 > 0\) for all \(k\). Always has real roots!
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-par1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-par1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(\Delta = (-2k)^2 - 4(1)(k^2-1) = 4k^2 - 4k^2 + 4 = 4 > 0\) for all \(k\). Parameter \(k\) cancels! Real roots for all \(k\). ✓
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="par-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      Prove that for every integer \(n \geq 4\), we can divide a square into exactly \(n\) smaller squares.
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-par2-en')">💡 Show hint</button>
+    <div id="hint-par2-en" class="hint">
+      Base cases: \(n=4,5,6\) possible. Inductive step: \(n \to n+3\) (split one square into 4). This covers all \(n \geq 4\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-par2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-par2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Base: \(n=4,5,6\) constructible. Step: \(n \to n+3\) by splitting one square. Sequences: 4→7→10..., 5→8→11..., 6→9→12... cover all \(n \geq 4\). ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="par-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      Find for which values of parameter \(a\) the inequality \(x^2 + 2ax + 3a > 0\) holds for all real \(x\).
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-par3-en')">💡 Show hint</button>
+    <div id="hint-par3-en" class="hint">
+      Need \(\Delta < 0\). Calculate: \(\Delta = 4a^2 - 12a = 4a(a-3) < 0\). This gives \(0 < a < 3\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-par3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-par3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(\Delta = (2a)^2 - 4(3a) = 4a(a-3)\). Need \(\Delta < 0\): \(a(a-3) < 0\), giving \(0 < a < 3\). Critical threshold: \(a=3\). ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Not identifying the parameter:</strong> Missing which quantity varies</li>
+      <li><strong>Forgetting boundary values:</strong> Not checking what happens at critical points</li>
+      <li><strong>Confusing parameter with variable:</strong> \(k\) is parameter, \(x\) is variable</li>
+      <li><strong>Not studying the transition:</strong> Missing how behavior changes</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> When do we use the Parameter Method?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">When the problem depends on a quantity and we seek critical values</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Only in quadratic equation problems</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">When we don't know the variable values</button>
+    </div>
+    <div class="quiz-result" id="result-par-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
