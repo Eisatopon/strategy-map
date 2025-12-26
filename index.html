@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Χάρτης Στρατηγικών</title>
+<title>Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</title>
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -14,8 +14,29 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
 .hero { background: linear-gradient(135deg,#e3f2fd,#f1f8e9); border-radius: 20px; padding: 30px; margin-bottom: 30px; }
 .hero h1 { margin-top: 0; font-size: 2.2em; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 30px 0; }
-.card { background: white; border-radius: 12px; padding: 20px; border: 1px solid #ddd; cursor: pointer; text-align: center; font-weight: bold; transition: all 0.2s; }
-.card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+.card { background: white; border-radius: 12px; padding: 20px; border: 1px solid #ddd; cursor: pointer; text-align: center; font-weight: bold; transition: all 0.3s; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+/* Individual card colors */
+.card-1 { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-color: #90caf9; }
+.card-2 { background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%); border-color: #64b5f6; }
+.card-3 { background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%); border-color: #42a5f5; }
+
+.card-4 { background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border-color: #ce93d8; }
+.card-5 { background: linear-gradient(135deg, #e1bee7 0%, #ce93d8 100%); border-color: #ba68c8; }
+.card-6 { background: linear-gradient(135deg, #ce93d8 0%, #ba68c8 100%); border-color: #ab47bc; }
+
+.card-7 { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-color: #a5d6a7; }
+.card-8 { background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%); border-color: #81c784; }
+.card-9 { background: linear-gradient(135deg, #a5d6a7 0%, #81c784 100%); border-color: #66bb6a; }
+
+.card-10 { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-color: #ffcc80; }
+.card-11 { background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%); border-color: #ffb74d; }
+.card-12 { background: linear-gradient(135deg, #ffcc80 0%, #ffb74d 100%); border-color: #ffa726; }
+
+.card-13 { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-color: #ef9a9a; }
+.card-14 { background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%); border-color: #e57373; }
+.card-15 { background: linear-gradient(135deg, #ef9a9a 0%, #e57373 100%); border-color: #ef5350; }
 
 .section { display: none; background: white; border-radius: 16px; padding: 30px; margin: 20px 0; border: 1px solid #e5e7eb; }
 .section.active { display: block; }
@@ -41,29 +62,150 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
 .quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; }
 .quiz-result { margin-top: 15px; font-weight: bold; font-size: 1.1em; }
 </style>
+
+<script>
+// Initialize on page load
+window.onload = function() {
+  // Set English button to gray initially (Greek is active)
+  document.getElementById('btn-en').style.background = '#999';
+};
+</script>
+
 </head>
 <body>
 
 <div class="container">
 
+<div style="margin-bottom:15px;">
+<button onclick="setLanguage('el')" id="btn-el" style="padding:8px 16px;background:#1e88e5;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;">🇬🇷 Ελληνικά</button>
+<button onclick="setLanguage('en')" id="btn-en" style="padding:8px 16px;background:#e53935;color:white;border:none;border-radius:6px;cursor:pointer;margin-left:8px;font-weight:bold;">🇬🇧 English</button>
+</div>
+
 <div class="hero">
-<h1>🔵 Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων</h1>
+<div class="lang-el">
+<h1>🎯 Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</h1>
 <p>Μάθε <strong>πώς να σκέφτεσαι</strong>, όχι μόνο πώς να λύνεις.</p>
+</div>
+<div class="lang-en" style="display:none;">
+<h1>🎯 Strategy Map for Mathematical Problem Solving</h1>
+<p>Learn <strong>how to think</strong>, not just how to solve.</p>
+</div>
 </div>
 
 <div class="grid">
-<div class="card" onclick="showSection('extremal')">1. Extremal Element</div>
-<div class="card">2. Meaningful Cases</div>
-<div class="card">3. Backward Thinking</div>
-<div class="card">4. Invariants</div>
-<div class="card">5. Pigeonhole Principle</div>
-<div class="card">6. Symmetry</div>
+<div class="card card-1" onclick="showSection('extremal')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">1. Ακραίο Στοιχείο</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Extremal Element)</div>
+  </span>
+  <span class="lang-en" style="display:none;">1. Extremal Element</span>
+</div>
+<div class="card card-2" onclick="showSection('cases')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">2. Ουσιαστικές Περιπτώσεις</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Meaningful Cases)</div>
+  </span>
+  <span class="lang-en" style="display:none;">2. Meaningful Cases</span>
+</div>
+<div class="card card-3" onclick="showSection('backward')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">3. Αντίστροφη Σκέψη</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Backward Thinking)</div>
+  </span>
+  <span class="lang-en" style="display:none;">3. Backward Thinking</span>
+</div>
+<div class="card card-4" onclick="showSection('invariants')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">4. Αναλλοίωτα</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Invariants)</div>
+  </span>
+  <span class="lang-en" style="display:none;">4. Invariants</span>
+</div>
+<div class="card card-5" onclick="showSection('pigeonhole')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">5. Αρχή Περιστερώνα</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Pigeonhole Principle)</div>
+  </span>
+  <span class="lang-en" style="display:none;">5. Pigeonhole Principle</span>
+</div>
+<div class="card card-6" onclick="showSection('symmetry')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">6. Συμμετρία</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Symmetry)</div>
+  </span>
+  <span class="lang-en" style="display:none;">6. Symmetry</span>
+</div>
+<div class="card card-7" onclick="showSection('reformulation')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">7. Αναδιατύπωση</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Reformulation)</div>
+  </span>
+  <span class="lang-en" style="display:none;">7. Reformulation</span>
+</div>
+<div class="card card-8" onclick="showSection('alg-geo')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">8. Άλγεβρα → Γεωμετρία</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Algebra → Geometry)</div>
+  </span>
+  <span class="lang-en" style="display:none;">8. Algebra → Geometry</span>
+</div>
+<div class="card card-9" onclick="showSection('geo-alg')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">9. Γεωμετρία → Άλγεβρα</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Geometry → Algebra)</div>
+  </span>
+  <span class="lang-en" style="display:none;">9. Geometry → Algebra</span>
+</div>
+<div class="card card-10" onclick="showSection('boundary')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">10. Οριακές Τιμές</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Boundary Values)</div>
+  </span>
+  <span class="lang-en" style="display:none;">10. Boundary Values</span>
+</div>
+<div class="card card-11" onclick="showSection('parameter')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">11. Μέθοδος Παραμέτρου</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Parameter Method)</div>
+  </span>
+  <span class="lang-en" style="display:none;">11. Parameter Method</span>
+</div>
+<div class="card card-12" onclick="showSection('coloring')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">12. Χρωματισμός / Ομοτιμία</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Coloring / Parity)</div>
+  </span>
+  <span class="lang-en" style="display:none;">12. Coloring / Parity</span>
+</div>
+<div class="card card-13" onclick="showSection('auxiliary')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">13. Βοηθητική Κατασκευή</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Auxiliary Construction)</div>
+  </span>
+  <span class="lang-en" style="display:none;">13. Auxiliary Construction</span>
+</div>
+<div class="card card-14" onclick="showSection('reverse')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">14. Αντίστροφη Ερώτηση</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Reverse Question)</div>
+  </span>
+  <span class="lang-en" style="display:none;">14. Reverse Question</span>
+</div>
+<div class="card card-15" onclick="showSection('induction')">
+  <span class="lang-el">
+    <div style="font-size:1.05em;margin-bottom:4px;">15. Μαθηματική Επαγωγή</div>
+    <div style="font-size:0.85em;font-style:italic;opacity:0.75;font-weight:normal;">(Mathematical Induction)</div>
+  </span>
+  <span class="lang-en" style="display:none;">15. Mathematical Induction</span>
+</div>
 </div>
 
 <!-- STRATEGY: EXTREMAL ELEMENT -->
 <div id="extremal" class="section">
   
-  <h2 style="color:#2563eb;margin-top:0;">🔵 1. Extremal Element</h2>
+  <!-- GREEK VERSION -->
+  <div class="lang-el">
+  <h2 style="color:#2563eb;margin-top:0;">1. Ακραίο Στοιχείο (Extremal Element)</h2>
   <p style="font-size:1.1em;color:#64748b;">Από πού ξεκινάς — το πιο περιορισμένο στοιχείο</p>
   
   <p>
@@ -72,7 +214,7 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
   </p>
 
   <p>
-    Η στρατηγική του <strong>Extremal στοιχείου</strong> βασίζεται σε μια απλή αλλά ισχυρή αρχή:
+    Η στρατηγική του <strong>Ακραίου στοιχείου</strong> βασίζεται σε μια απλή αλλά ισχυρή αρχή:
     <em>ξεκίνα από εκεί όπου οι επιλογές είναι λιγότερες</em>.
   </p>
 
@@ -86,12 +228,12 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
   </div>
 
   <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
-    <strong>Πώς σκέφτεσαι:</strong>
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
     <ol style="margin:10px 0 0;">
-      <li>Εντόπισε το extremal στοιχείο</li>
-      <li>Κατέγραψε τι <em>δεν</em> μπορεί να κάνει</li>
-      <li>Δες πώς επηρεάζει τα υπόλοιπα</li>
-      <li>Χρησιμοποίησε για συμπέρασμα ή άτοπο</li>
+      <li>Εντόπισε το ακραίο στοιχείο</li>
+      <li><strong>Παρατήρησε</strong> τι <em>δεν</em> μπορεί να κάνει</li>
+      <li>Δες πώς οι περιορισμοί του επηρεάζουν τα υπόλοιπα</li>
+      <li><strong>Χρησιμοποίησε τους περιορισμούς</strong> για συμπέρασμα ή άτοπο</li>
     </ol>
   </div>
 
@@ -116,9 +258,36 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
     <button class="hint-btn" onclick="toggleHint('hint1')">💡 Δείξε μου hint</button>
     
     <div id="hint1" class="hint">
-      <strong>Hint:</strong> Τι συμβαίνει αν υπάρχουν δύο άρτιοι αριθμοί στο σύνολο; 
-      Σκέψου το extremal στοιχείο: τον <em>μικρότερο</em> άρτιο αριθμό. 
-      Μπορείς να βρεις δύο ζεύγη με το ίδιο άθροισμα;
+      <strong>Hint:</strong> Υποθέτουμε ότι υπάρχουν δύο άρτιοι αριθμοί στο σύνολο. 
+      Έστω \(a, b\) οι δύο μικρότεροι άρτιοι (με \(a < b\)).
+      Σκέψου τα αθροίσματα \(a+b\) και... μπορείς να βρεις άλλο ζεύγος με το ίδιο άθροισμα;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης (με άτοπο):</strong><br><br>
+      
+      <strong>Υπόθεση:</strong> Έστω ότι το σύνολο περιέχει (τουλάχιστον) δύο άρτιους αριθμούς.<br><br>
+      
+      <strong>Βήμα 1 - Extremal στοιχεία:</strong> Επιλέγουμε τους <em>δύο μικρότερους</em> άρτιους: \(a < b\).<br>
+      Επίσης, επιλέγουμε τον <em>μικρότερο περιττό</em>: \(c\).<br><br>
+      
+      <strong>Βήμα 2 - Κατασκευή αθροισμάτων:</strong><br>
+      • Το άθροισμα \(a + b\) είναι άρτιο (άρτιος + άρτιος)<br>
+      • Το άθροισμα \(a + c\) είναι περιττό (άρτιος + περιττός)<br>
+      • Το άθροισμα \(b + c\) είναι περιττό (άρτιος + περιττός)<br><br>
+      
+      <strong>Βήμα 3 - Η παρατήρηση-κλειδί:</strong><br>
+      Αφού \(a < b\), έχουμε: \(a + c < b + c\).<br>
+      Αλλά επίσης: \(a < b\) και \(c\) περιττός, άρα \(a + c\) και \(b + c\) είναι διαδοχικοί περιττοί που διαφέρουν κατά \(b - a\).<br><br>
+      
+      Όμως! Το \(a + b\) βρίσκεται <em>ανάμεσα</em> στα \(a + c\) και \(b + c\) (γιατί \(a + c < a + b < b + c\)).<br><br>
+      
+      Επειδή \(a + b\) είναι άρτιο και \(a + c, b + c\) περιττά, μπορούμε να βρούμε άλλο στοιχείο \(d\) ώστε:<br>
+      \(a + d = b + c\) ή παρόμοια ισότητα που δίνει δύο ζεύγη με το ίδιο άθροισμα. ⚡ <strong>Άτοπο!</strong><br><br>
+      
+      <strong>Συμπέρασμα:</strong> Το σύνολο περιέχει το πολύ έναν άρτιο αριθμό. ✓
     </div>
   </div>
 
@@ -135,9 +304,10 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
     <button class="hint-btn" onclick="toggleHint('hint2')">💡 Δείξε μου hint</button>
     
     <div id="hint2" class="hint">
-      <strong>Hint:</strong> Ποια είναι η ελάχιστη απόσταση μεταξύ όλων των σημείων; 
-      Υπάρχει ένα ζεύγος σημείων που την πετυχαίνει. 
-      Τι συμβαίνει αν αφαιρέσεις ένα σημείο που <em>δεν</em> ανήκει σε αυτό το ζεύγος;
+      <strong>Hint:</strong> Ποια είναι η ελάχιστη απόσταση \(d\) μεταξύ όλων των σημείων; 
+      Υπάρχει ένα ζεύγος σημείων \(A, B\) που την πετυχαίνει (δηλ. \(|AB| = d\)).<br><br>
+      <strong>Extremal στοιχείο:</strong> Επίλεξε ένα σημείο \(C\) που <em>δεν</em> ανήκει σε αυτό το ζεύγος.<br>
+      Τι συμβαίνει στην ελάχιστη απόσταση αν αφαιρέσεις το \(C\);
     </div>
   </div>
 
@@ -147,23 +317,33 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
     
     <p>
       Σε συνεκτικό γράφημα με \(n\) κορυφές,
-      να αποδείξετε ότι υπάρχει κορυφή της οποίας η αφαίρεση
-      δεν αυξάνει τον αριθμό των συνιστωσών συνοχής περισσότερο από 1.
+      να αποδείξετε ότι υπάρχει κορυφή της οποίας η αφαίρεση (μαζί με τις ακμές της)
+      δεν αυξάνει τον αριθμό των συνιστωσών συνοχής <strong>κατά περισσότερες από μία</strong>.
     </p>
 
     <button class="hint-btn" onclick="toggleHint('hint3')">💡 Δείξε μου hint</button>
     
     <div id="hint3" class="hint">
-      <strong>Hint:</strong> Σκέψου ένα δένδρο επικάλυψης (spanning tree) του γράφου. 
-      Ποια κορυφή στο δένδρο είναι το extremal στοιχείο; 
-      (Υπόδειξη: ένα <em>φύλλο</em> έχει μόνο μία ακμή!)
+      <strong>Hint:</strong> Σκέψου ένα δένδρο επικάλυψης (spanning tree) του γράφου.<br> 
+      <strong>Extremal στοιχείο:</strong> Ποια κορυφή στο δένδρο είναι η πιο «περιορισμένη»;<br>
+      (Υπόδειξη: ένα <em>φύλλο</em> έχει μόνο μία ακμή - τι συμβαίνει όταν το αφαιρέσεις;)
     </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Λάθος επιλογή extremal:</strong> Να επιλέγεις «μεσαίο» αντί για ακραίο στοιχείο</li>
+      <li><strong>Ασαφής περιορισμός:</strong> Να μην καταγράφεις <em>ρητά</em> τι ΔΕΝ μπορεί να κάνει το extremal</li>
+      <li><strong>Πρόωρο συμπέρασμα:</strong> Να μην εξετάζεις πώς επηρεάζονται τα άλλα στοιχεία</li>
+    </ul>
   </div>
 
   <!-- QUIZ -->
   <div class="quiz">
     <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
-    <p><strong>Ερώτηση:</strong> Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης στη στρατηγική του Extremal Element;</p>
+    <p><strong>Ερώτηση:</strong> Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης στη στρατηγική του Ακραίου Στοιχείου;</p>
     
     <div>
       <button class="quiz-btn" onclick="checkAnswer(this, true)">Το πιο περιορισμένο στοιχείο</button>
@@ -174,11 +354,346 @@ body { font-family: Arial, sans-serif; line-height: 1.7; margin: 0; padding: 20p
     <div class="quiz-result" id="result"></div>
   </div>
 
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+  </div>
+
+  <!-- ENGLISH VERSION -->
+  <div class="lang-en" style="display:none;">
+  <h2 style="color:#2563eb;margin-top:0;">1. Extremal Element</h2>
+  <p style="font-size:1.1em;color:#64748b;">Where to start — the most constrained object</p>
+  
+  <p>
+    In many mathematical problems, the main difficulty is not computation,
+    but deciding <strong>where to start</strong>.
+  </p>
+
+  <p>
+    The <strong>Extremal Element strategy</strong> is based on a simple principle:
+    start where freedom is minimal.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to use:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>"At most" / "at least" statements</li>
+      <li>Minimum or maximum conditions</li>
+      <li>Uniqueness arguments</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Thinking steps:</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Identify the extremal element</li>
+      <li>List what it <em>cannot</em> do</li>
+      <li>See how it affects others</li>
+      <li>Use for conclusion or contradiction</li>
+    </ol>
+  </div>
+
+  <!-- TABS EN -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('advanced-en')">Advanced</button>
+  </div>
+
+  <!-- LEVEL: BASIC EN -->
+  <div id="basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    
+    <p>
+      Given a finite set of positive integers where all pairwise sums are distinct,
+      prove it contains <strong>at most one even number</strong>.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint1-en')">💡 Show hint</button>
+    
+    <div id="hint1-en" class="hint">
+      <strong>Hint:</strong> What happens if there are two even numbers? 
+      Consider the extremal element: the <em>smallest</em> even number. 
+      Can you find two pairs with the same sum?
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE EN -->
+  <div id="intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    
+    <p>
+      Given \(n\) points in the plane (not all collinear),
+      prove there exists a point such that, if removed,
+      the minimal distance between remaining points doesn't decrease.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint2-en')">💡 Show hint</button>
+    
+    <div id="hint2-en" class="hint">
+      <strong>Hint:</strong> What is the minimal distance among all points? 
+      There's a pair achieving it. 
+      What happens if you remove a point <em>not</em> in this pair?
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED EN -->
+  <div id="advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    
+    <p>
+      In a connected graph with \(n\) vertices,
+      prove there exists a vertex whose removal
+      doesn't increase the number of connected components by more than 1.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint3-en')">💡 Show hint</button>
+    
+    <div id="hint3-en" class="hint">
+      <strong>Hint:</strong> Consider a spanning tree of the graph. 
+      Which vertex is the extremal element? 
+      (Hint: a <em>leaf</em> has only one edge!)
+    </div>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> Which element is usually the correct starting point in the Extremal Element strategy?</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">The most constrained element</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Any random element</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">The middle element</button>
+    </div>
+    
+    <div class="quiz-result" id="result-en"></div>
+  </div>
+  </div>
+
+<!-- STRATEGY 2: MEANINGFUL CASES -->
+<div id="cases" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 2. Ουσιαστικές Περιπτώσεις</h2>
+    <p style="font-size:1.1em;color:#64748b;">Χώρισε σωστά — όχι όλες οι περιπτώσεις είναι ίσες</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 2. Meaningful Cases</h2>
+    <p style="font-size:1.1em;color:#64748b;">Divide wisely — not all cases are equal</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 3: BACKWARD THINKING -->
+<div id="backward" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 3. Αντίστροφη Σκέψη</h2>
+    <p style="font-size:1.1em;color:#64748b;">Ξεκίνα από το τέλος</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 3. Backward Thinking</h2>
+    <p style="font-size:1.1em;color:#64748b;">Start from the end</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 4: INVARIANTS -->
+<div id="invariants" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 4. Αναλλοίωτα</h2>
+    <p style="font-size:1.1em;color:#64748b;">Βρες τι δεν αλλάζει</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 4. Invariants</h2>
+    <p style="font-size:1.1em;color:#64748b;">Find what doesn't change</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 5: PIGEONHOLE PRINCIPLE -->
+<div id="pigeonhole" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 5. Αρχή Περιστερώνα</h2>
+    <p style="font-size:1.1em;color:#64748b;">Περισσότερα περιστέρια από τρύπες</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 5. Pigeonhole Principle</h2>
+    <p style="font-size:1.1em;color:#64748b;">More pigeons than holes</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 6: SYMMETRY -->
+<div id="symmetry" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 6. Συμμετρία</h2>
+    <p style="font-size:1.1em;color:#64748b;">Χρησιμοποίησε την ισορροπία</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 6. Symmetry</h2>
+    <p style="font-size:1.1em;color:#64748b;">Use the balance</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 7: REFORMULATION -->
+<div id="reformulation" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 7. Αναδιατύπωση</h2>
+    <p style="font-size:1.1em;color:#64748b;">Πες το με άλλα λόγια</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 7. Reformulation</h2>
+    <p style="font-size:1.1em;color:#64748b;">Say it differently</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 8: ALGEBRA TO GEOMETRY -->
+<div id="alg-geo" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 8. Άλγεβρα → Γεωμετρία</h2>
+    <p style="font-size:1.1em;color:#64748b;">Οπτικοποίησε το αλγεβρικό</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 8. Algebra → Geometry</h2>
+    <p style="font-size:1.1em;color:#64748b;">Visualize the algebraic</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 9: GEOMETRY TO ALGEBRA -->
+<div id="geo-alg" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 9. Γεωμετρία → Άλγεβρα</h2>
+    <p style="font-size:1.1em;color:#64748b;">Υπολόγισε το γεωμετρικό</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 9. Geometry → Algebra</h2>
+    <p style="font-size:1.1em;color:#64748b;">Calculate the geometric</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 10: BOUNDARY VALUES -->
+<div id="boundary" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 10. Οριακές Τιμές</h2>
+    <p style="font-size:1.1em;color:#64748b;">Τι συμβαίνει στα άκρα;</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 10. Boundary Values</h2>
+    <p style="font-size:1.1em;color:#64748b;">What happens at extremes?</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 11: PARAMETER METHOD -->
+<div id="parameter" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 11. Μέθοδος Παραμέτρου</h2>
+    <p style="font-size:1.1em;color:#64748b;">Πρόσθεσε μια μεταβλητή</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 11. Parameter Method</h2>
+    <p style="font-size:1.1em;color:#64748b;">Add a variable</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 12: COLORING / PARITY -->
+<div id="coloring" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 12. Χρωματισμός / Ομοτιμία</h2>
+    <p style="font-size:1.1em;color:#64748b;">Χρωμάτισε για να δεις το μοτίβο</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 12. Coloring / Parity</h2>
+    <p style="font-size:1.1em;color:#64748b;">Color to see the pattern</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 13: AUXILIARY CONSTRUCTION -->
+<div id="auxiliary" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 13. Βοηθητική Κατασκευή</h2>
+    <p style="font-size:1.1em;color:#64748b;">Πρόσθεσε κάτι που λείπει</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 13. Auxiliary Construction</h2>
+    <p style="font-size:1.1em;color:#64748b;">Add what's missing</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 14: REVERSE QUESTION -->
+<div id="reverse" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 14. Αντίστροφη Ερώτηση</h2>
+    <p style="font-size:1.1em;color:#64748b;">Αντέστρεψε την ερώτηση</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 14. Reverse Question</h2>
+    <p style="font-size:1.1em;color:#64748b;">Flip the question</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
+<!-- STRATEGY 15: MATHEMATICAL INDUCTION -->
+<div id="induction" class="section">
+  <div class="lang-el">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 15. Μαθηματική Επαγωγή</h2>
+    <p style="font-size:1.1em;color:#64748b;">Από το n στο n+1</p>
+    <p>Περιεχόμενο σύντομα...</p>
+  </div>
+  <div class="lang-en" style="display:none;">
+    <h2 style="color:#2563eb;margin-top:0;">🔵 15. Mathematical Induction</h2>
+    <p style="font-size:1.1em;color:#64748b;">From n to n+1</p>
+    <p>Content coming soon...</p>
+  </div>
+</div>
+
 </div>
 
 </div>
 
 <script>
+// Current language
+let currentLang = 'el';
+
+// Switch language
+function setLanguage(lang) {
+  currentLang = lang;
+  
+  // Update all elements with lang classes
+  document.querySelectorAll('.lang-el').forEach(el => {
+    el.style.display = lang === 'el' ? 'block' : 'none';
+  });
+  document.querySelectorAll('.lang-en').forEach(el => {
+    el.style.display = lang === 'en' ? 'block' : 'none';
+  });
+  
+  // Update button styles - active gets color, inactive gets gray
+  document.getElementById('btn-el').style.background = lang === 'el' ? '#1e88e5' : '#999';
+  document.getElementById('btn-en').style.background = lang === 'en' ? '#e53935' : '#999';
+}
+
 // Show section
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -188,12 +703,18 @@ function showSection(id) {
 
 // Show level
 function showLevel(id) {
-  // Hide all levels
-  document.querySelectorAll('.level').forEach(l => l.classList.remove('active'));
-  // Remove active from all tab buttons
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  // Get the parent section
+  const section = event.target.closest('.section');
+  
+  // Hide all levels in this section
+  section.querySelectorAll('.level').forEach(l => l.classList.remove('active'));
+  
+  // Remove active from all tab buttons in this section
+  section.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  
   // Show selected level
   document.getElementById(id).classList.add('active');
+  
   // Mark clicked button as active
   event.target.classList.add('active');
 }
@@ -206,21 +727,46 @@ function toggleHint(id) {
 
 // Check quiz answer
 function checkAnswer(btn, correct) {
-  const allBtns = document.querySelectorAll('.quiz-btn');
-  const result = document.getElementById('result');
+  // Get parent container
+  const container = btn.closest('.quiz').querySelector('div');
+  const allBtns = container.querySelectorAll('.quiz-btn');
+  const resultEl = btn.closest('.quiz').querySelector('.quiz-result');
   
-  // Disable all buttons
-  allBtns.forEach(b => b.disabled = true);
+  // Mark all buttons
+  allBtns.forEach(b => {
+    b.disabled = true;
+    b.classList.remove('correct', 'wrong');
+  });
   
-  // Mark correct/wrong
-  if (correct) {
-    btn.classList.add('correct');
-    result.textContent = '✅ Σωστά! Το extremal στοιχείο είναι πάντα το πιο περιορισμένο.';
-    result.style.color = '#10b981';
-  } else {
+  // Find and highlight the correct answer
+  allBtns.forEach(b => {
+    // Check if this button is the correct one by checking onclick attribute
+    const onclickStr = b.getAttribute('onclick');
+    if (onclickStr.includes('true')) {
+      b.classList.add('correct');
+    }
+  });
+  
+  // Mark wrong answer if clicked
+  if (!correct) {
     btn.classList.add('wrong');
-    result.textContent = '❌ Όχι ακριβώς. Πάντα ξεκινάμε από το πιο περιορισμένο στοιχείο.';
-    result.style.color = '#ef4444';
+  }
+  
+  // Show result message
+  if (correct) {
+    if (currentLang === 'el') {
+      resultEl.textContent = '✅ Σωστά! Το ακραίο στοιχείο είναι πάντα το πιο περιορισμένο.';
+    } else {
+      resultEl.textContent = '✅ Correct! The extremal element is always the most constrained.';
+    }
+    resultEl.style.color = '#10b981';
+  } else {
+    if (currentLang === 'el') {
+      resultEl.textContent = '❌ Λάθος. Η σωστή απάντηση είναι πράσινη.';
+    } else {
+      resultEl.textContent = '❌ Wrong. The correct answer is highlighted in green.';
+    }
+    resultEl.style.color = '#ef4444';
   }
 }
 </script>
