@@ -503,15 +503,379 @@ window.onload = function() {
 
 <!-- STRATEGY 4: INVARIANTS -->
 <div id="invariants" class="section">
+  
+  <!-- GREEK VERSION -->
   <div class="lang-el">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 4. Αναλλοίωτα</h2>
-    <p style="font-size:1.1em;color:#64748b;">Βρες τι δεν αλλάζει</p>
-    <p>Περιεχόμενο σύντομα...</p>
+  <h2 style="color:#2563eb;margin-top:0;">4. Αναλλοίωτα (Invariants)</h2>
+  <p style="font-size:1.1em;color:#64748b;">Βρες τι παραμένει σταθερό στο χάος της αλλαγής</p>
+  
+  <p>
+    Φαντάσου ένα σύστημα που αλλάζει συνεχώς: αριθμοί αντικαθίστανται, θέσεις μετακινούνται, 
+    καταστάσεις μεταβάλλονται. Μέσα σε αυτό το χάος, υπάρχει κάτι που <strong>δεν αλλάζει ποτέ</strong>;
+  </p>
+
+  <p>
+    Η στρατηγική των <strong>Αναλλοίωτων</strong> βασίζεται σε μια ισχυρή ιδέα:
+    <em>βρες μια ποσότητα που διατηρείται σε κάθε επιτρεπτό βήμα</em>.
+    Αν η αρχική και η τελική κατάσταση έχουν διαφορετικές τιμές σε αυτήν την ποσότητα,
+    τότε η μετάβαση είναι <strong>αδύνατη</strong>.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πότε να τη διαλέξεις:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>Όταν το πρόβλημα περιγράφει μια <em>διαδικασία</em> ή <em>επιτρεπτά βήματα</em></li>
+      <li>Όταν ζητείται «είναι δυνατόν να...»</li>
+      <li>Όταν υπάρχουν mod, ομοτιμία (άρτιο/περιττό), ή χρωματισμοί</li>
+      <li>Όταν κάτι «φαίνεται» να μένει σταθερό</li>
+    </ul>
   </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>Πώς σκέφτεσαι (βήμα-βήμα):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Εντόπισε μια ποσότητα που <strong>ίσως</strong> παραμένει σταθερή</li>
+      <li><strong>Έλεγξε</strong> ότι διατηρείται σε <em>κάθε</em> επιτρεπτό βήμα</li>
+      <li>Σύγκρινε την αρχική και την τελική κατάσταση</li>
+      <li>Χρησιμοποίησε τη διαφορά για να αποδείξεις αδυναμία</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('inv-basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('inv-intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('inv-advanced')">Προχωρημένο</button>
+  </div>
+
+<!-- COMPLETE STRATEGY #4: INVARIANTS -->
+
+  <!-- LEVEL: BASIC -->
+  <div id="inv-basic" class="level active">
+    <h3 style="margin-top:0;">📘 Πρόβλημα Βασικού Επιπέδου</h3>
+    
+    <p>
+      Σε κύκλο γράφουμε τους αριθμούς \(1, 2, 3, \ldots, n\) (με \(n \geq 2\)).
+      Επιτρέπεται να αντικαταστήσεις δύο γειτονικούς αριθμούς με το <strong>άθροισμά</strong> τους.
+      Είναι δυνατόν, μετά από κάποια βήματα, να καταλήξουμε σε κατάσταση όπου
+      <strong>όλοι οι αριθμοί στον κύκλο είναι ίσοι</strong>;
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-inv1')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-inv1" class="hint">
+      <strong>Hint:</strong> Τι συμβαίνει με την <strong>ομοτιμία</strong> (άρτιο/περιττό) των αριθμών;<br><br>
+      Αρχικά, πόσοι περιττοί αριθμοί υπάρχουν στον κύκλο;<br>
+      Όταν αντικαθιστάς δύο γειτονικούς αριθμούς με το άθροισμά τους, πώς αλλάζει ο αριθμός των περιττών;<br>
+      (Σκέψου: άρτιος + άρτιος = άρτιος, άρτιος + περιττός = περιττός, περιττός + περιττός = άρτιος)
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-inv1')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-inv1" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης:</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός αναλλοίωτου:</strong><br>
+      Θα εξετάσουμε τον αριθμό των <em>περιττών</em> αριθμών στον κύκλο.<br><br>
+      
+      <strong>Βήμα 2 - Αρχική κατάσταση:</strong><br>
+      Έχουμε τους αριθμούς \(1, 2, 3, \ldots, n\).<br>
+      • Αν \(n\) άρτιο: υπάρχουν \(\frac{n}{2}\) περιττοί (1, 3, 5, ..., n-1)<br>
+      • Αν \(n\) περιττό: υπάρχουν \(\frac{n+1}{2}\) περιττοί (1, 3, 5, ..., n)<br>
+      Σε κάθε περίπτωση: <strong>υπάρχει τουλάχιστον 1 περιττός</strong>.<br><br>
+      
+      <strong>Βήμα 3 - Έλεγχος διατήρησης:</strong><br>
+      Τι συμβαίνει όταν αντικαθιστούμε δύο γείτονες \(a, b\) με \(a+b\);<br><br>
+      • Αν \(a\) άρτιος και \(b\) άρτιος → \(a+b\) άρτιος (0 περιττοί → 0 περιττοί)<br>
+      • Αν \(a\) άρτιος και \(b\) περιττός → \(a+b\) περιττός (1 περιττός → 1 περιττός)<br>
+      • Αν \(a\) περιττός και \(b\) περιττός → \(a+b\) άρτιος (2 περιττοί → 0 περιττοί, <strong>-2</strong>)<br><br>
+      
+      <strong>Συμπέρασμα:</strong> Σε κάθε βήμα, ο αριθμός των περιττών αριθμών:<br>
+      • Είτε μένει ίδιος<br>
+      • Είτε μειώνεται κατά 2<br><br>
+      
+      Άρα η <strong>ομοτιμία του αριθμού των περιττών</strong> (mod 2) είναι αναλλοίωτη!<br><br>
+      
+      <strong>Βήμα 4 - Σύγκριση καταστάσεων:</strong><br>
+      • Αρχικά: τουλάχιστον 1 περιττός → αριθμός περιττών είναι περιττός (mod 2 ≡ 1)<br>
+      • Τελικά (όλοι ίσοι με \(k\)):<br>
+      &nbsp;&nbsp;- Αν \(k\) άρτιος → 0 περιττοί (mod 2 ≡ 0) ⚡<br>
+      &nbsp;&nbsp;- Αν \(k\) περιττός και \(n\) άρτιο → \(n\) περιττοί, mod 2 ≡ 0 ⚡<br><br>
+      
+      ⚡ <strong>Άτοπο!</strong> Η ομοτιμία άλλαξε, άρα είναι <strong>αδύνατο</strong>. ✓
+    </div>
+  </div>
+
+  <!-- LEVEL: INTERMEDIATE -->
+  <div id="inv-intermediate" class="level">
+    <h3 style="margin-top:0;">📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h3>
+    
+    <p>
+      Υπάρχουν 3 κουτιά με μπίλιες. Σε κάθε βήμα επιτρέπεται να <strong>διπλασιάζεις</strong>
+      τις μπίλιες ενός κουτιού, παίρνοντας από τα άλλα δύο κουτιά
+      (από το καθένα παίρνεις όσες μπίλιες χρειάζεται για να διπλασιαστεί το πρώτο).
+      Είναι δυνατόν να φτάσεις σε κατάσταση όπου <strong>και τα 3 κουτιά έχουν τον ίδιο αριθμό μπιλιών</strong>;
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-inv2')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-inv2" class="hint">
+      <strong>Hint:</strong> Έστω \(a, b, c\) οι αριθμοί μπιλιών στα 3 κουτιά.<br><br>
+      Όταν διπλασιάζεις το πρώτο κουτί:<br>
+      • Νέα κατάσταση: \((2a, b-a, c-a)\)<br>
+      • Υπολόγισε τις <strong>διαφορές</strong> \(a-b, b-c, c-a\) modulo 3 πριν και μετά το βήμα.<br>
+      • Τι παρατηρείς;
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-inv2')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-inv2" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης:</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός αναλλοίωτου:</strong><br>
+      Θα εξετάσουμε τις <strong>διαφορές των κουτιών modulo 3</strong>.<br><br>
+      
+      <strong>Βήμα 2 - Έλεγχος διατήρησης:</strong><br>
+      Έστω \(a, b, c\) οι μπίλιες στα 3 κουτιά.<br><br>
+      
+      Αν διπλασιάσουμε το πρώτο κουτί:<br>
+      • Παίρνουμε \(a\) μπίλιες από το δεύτερο και \(a\) από το τρίτο<br>
+      • Νέα κατάσταση: \((2a, b-a, c-a)\)<br><br>
+      
+      Νέες διαφορές:<br>
+      • \(a' - b' = 2a - (b-a) = 3a - b \equiv -b \pmod{3}\)<br>
+      • \(b' - c' = (b-a) - (c-a) = b - c\) ✓ (αμετάβλητο!)<br>
+      • \(c' - a' = (c-a) - 2a = c - 3a \equiv c \pmod{3}\) ✓<br><br>
+      
+      Modulo 3, οι διαφορές <strong>διατηρούνται</strong> (με πιθανή αλλαγή προσήμου)!<br><br>
+      
+      <strong>Βήμα 3 - Σύγκριση:</strong><br>
+      • Αρχικά: \(a, b, c\) (τυχαίοι)<br>
+      • Τελικά: \(k, k, k\) (όλοι ίσοι)<br><br>
+      
+      Τελικές διαφορές: \(k-k = 0 \equiv 0 \pmod{3}\)<br><br>
+      
+      Άρα ΜΟΝΟ αν αρχικά \(a \equiv b \equiv c \pmod{3}\) μπορούμε να φτάσουμε σε ίσα.<br>
+      Αλλιώς <strong>αδύνατο</strong>! ✓
+    </div>
+  </div>
+
+  <!-- LEVEL: ADVANCED -->
+  <div id="inv-advanced" class="level">
+    <h3 style="margin-top:0;">📕 Πρόβλημα Προχωρημένου Επιπέδου</h3>
+    
+    <p>
+      Δίνεται σκακιέρα \(8 \times 8\). Σε κάθε τετράγωνο υπάρχει ένας ακέραιος αριθμός.
+      Επιτρέπεται να <strong>προσθέσεις 1</strong> σε όλα τα τετράγωνα μιας γραμμής
+      ή σε όλα τα τετράγωνα μιας στήλης.
+      Αν αρχικά το <strong>άθροισμα όλων των αριθμών</strong> δεν διαιρείται με το 8,
+      αποδείξτε ότι δεν μπορείτε να φτάσετε σε κατάσταση όπου
+      <strong>όλα τα τετράγωνα έχουν τον ίδιο αριθμό</strong>.
+    </p>
+
+    <button class="hint-btn" onclick="toggleHint('hint-inv3')">💡 Δείξε μου hint</button>
+    
+    <div id="hint-inv3" class="hint">
+      <strong>Hint:</strong> Έστω \(S\) το άθροισμα όλων των 64 αριθμών.<br><br>
+      
+      <strong>Ερώτηση 1:</strong> Τι συμβαίνει στο \(S\) όταν προσθέτεις 1 σε μια γραμμή;<br>
+      (Υπάρχουν 8 τετράγωνα σε μια γραμμή → \(S\) αυξάνεται κατά 8)<br><br>
+      
+      <strong>Ερώτηση 2:</strong> Τι συμβαίνει στο \(S \bmod 8\);<br><br>
+      
+      <strong>Ερώτηση 3:</strong> Αν όλα τα τετράγωνα είναι ίσα με \(k\), ποιο είναι το \(S\);<br>
+      (\(S = 64k = 8 \times 8k\). Πώς σχετίζεται το 64 με το 8;)
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('example-inv3')" style="background:#10b981;margin-left:8px;">📝 Δείξε μου παράδειγμα λύσης</button>
+    
+    <div id="example-inv3" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Παράδειγμα Λύσης:</strong><br><br>
+      
+      <strong>Βήμα 1 - Εντοπισμός αναλλοίωτου:</strong><br>
+      Θα εξετάσουμε το <strong>άθροισμα \(S\) όλων των αριθμών modulo 8</strong>.<br><br>
+      
+      <strong>Βήμα 2 - Έλεγχος διατήρησης:</strong><br>
+      
+      Όταν προσθέτουμε 1 σε μια γραμμή:<br>
+      • Μια γραμμή έχει 8 τετράγωνα<br>
+      • Προσθέτουμε 1 σε καθένα → συνολική αύξηση: \(8 \times 1 = 8\)<br>
+      • Νέο άθροισμα: \(S' = S + 8 \equiv S \pmod{8}\) ✓<br><br>
+      
+      Ομοίως για στήλη: \(S' = S + 8 \equiv S \pmod{8}\) ✓<br><br>
+      
+      <strong>Συμπέρασμα:</strong> Το \(S \bmod 8\) είναι <strong>αναλλοίωτο</strong>!<br><br>
+      
+      <strong>Βήμα 3 - Σύγκριση καταστάσεων:</strong><br>
+      
+      • <strong>Αρχική:</strong> Έστω \(S_0\) το άθροισμα. Υπόθεση: \(S_0 \not\equiv 0 \pmod{8}\)<br>
+      • <strong>Τελική:</strong> Όλα ίσα με \(k\) → \(S_f = 64k = 8(8k) \equiv 0 \pmod{8}\)<br><br>
+      
+      <strong>Βήμα 4 - Άτοπο:</strong><br>
+      Από αναλλοίωτο: \(S_0 \equiv S_f \pmod{8}\)<br>
+      Αλλά: \(S_0 \not\equiv 0\) και \(S_f \equiv 0\)<br>
+      ⚡ <strong>Άτοπο!</strong> Αδύνατο. ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Συχνά Λάθη:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Λάθος αναλλοίωτο:</strong> Να επιλέγεις ποσότητα που ΔΕΝ διατηρείται</li>
+      <li><strong>Ελλιπής έλεγχος:</strong> Να μην ελέγχεις ΟΛΑ τα πιθανά βήματα</li>
+      <li><strong>Σύγχυση mod:</strong> Να ξεχνάς ότι \(a \equiv b \pmod{n}\) σημαίνει \(n \mid (a-b)\)</li>
+      <li><strong>Παράλειψη αρχικής:</strong> Να ξεχνάς να ελέγξεις την αρχική κατάσταση</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Μικρό Quiz</h3>
+    <p><strong>Ερώτηση:</strong> Τι είναι ένα αναλλοίωτο (invariant) σε ένα πρόβλημα;</p>
+    
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Μια ποσότητα που διατηρείται σε κάθε επιτρεπτό βήμα</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Ένας αριθμός που είναι πάντα πρώτος</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Ένα στοιχείο που δεν μπορεί να μετακινηθεί</button>
+    </div>
+    
+    <div class="quiz-result" id="result-inv"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Επιστροφή στη Λίστα Στρατηγικών
+    </button>
+  </div>
+
+  </div>
+
+  <!-- ENGLISH VERSION -->
   <div class="lang-en" style="display:none;">
-    <h2 style="color:#2563eb;margin-top:0;">🔵 4. Invariants</h2>
-    <p style="font-size:1.1em;color:#64748b;">Find what doesn't change</p>
-    <p>Content coming soon...</p>
+  <h2 style="color:#2563eb;margin-top:0;">4. Invariants</h2>
+  <p style="font-size:1.1em;color:#64748b;">Find what stays constant in the chaos of change</p>
+  
+  <p>
+    Imagine a system that constantly changes: numbers are replaced, positions shift,
+    states transform. In all this chaos, is there something that <strong>never changes</strong>?
+  </p>
+
+  <p>
+    The <strong>Invariants</strong> strategy is based on a powerful idea:
+    <em>find a quantity that is preserved in every allowed step</em>.
+    If initial and final states have different values for this quantity,
+    then the transition is <strong>impossible</strong>.
+  </p>
+
+  <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>When to choose it:</strong>
+    <ul style="margin:10px 0 0;">
+      <li>When the problem describes a <em>process</em> or <em>allowed steps</em></li>
+      <li>When asking "is it possible to..."</li>
+      <li>When there are mod, parity (even/odd), or colorings</li>
+      <li>When something "seems" to stay constant</li>
+    </ul>
+  </div>
+
+  <div style="background:#eef2ff;padding:18px;border-radius:10px;margin:20px 0;">
+    <strong>How to think (step-by-step):</strong>
+    <ol style="margin:10px 0 0;">
+      <li>Identify a quantity that <strong>might</strong> stay constant</li>
+      <li><strong>Check</strong> it is preserved in <em>every</em> allowed step</li>
+      <li>Compare initial and final states</li>
+      <li>Use the difference to prove impossibility</li>
+    </ol>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('inv-basic-en')">Basic</button>
+    <button class="tab-btn" onclick="showLevel('inv-intermediate-en')">Intermediate</button>
+    <button class="tab-btn" onclick="showLevel('inv-advanced-en')">Advanced</button>
+  </div>
+
+  <!-- BASIC EN -->
+  <div id="inv-basic-en" class="level active">
+    <h3 style="margin-top:0;">📘 Basic Level Problem</h3>
+    <p>
+      Numbers \(1, 2, 3, \ldots, n\) (with \(n \geq 2\)) are written on a circle.
+      You may replace two adjacent numbers with their <strong>sum</strong>.
+      Is it possible to reach a state where <strong>all numbers are equal</strong>?
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-inv1-en')">💡 Show hint</button>
+    <div id="hint-inv1-en" class="hint">
+      Consider the <strong>parity</strong> (even/odd) of numbers. Initially there's at least one odd number. When replacing two adjacent numbers with their sum, how does the count of odd numbers change? (even+even=even, even+odd=odd, odd+odd=even)
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-inv1-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-inv1-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> The parity of the count of odd numbers is invariant. Initially ≥1 odd exists (odd count). If all equal k: either all even (0 odd) or all odd (n odd). If n is even, final count is even - contradiction! ✓
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE EN -->
+  <div id="inv-intermediate-en" class="level">
+    <h3 style="margin-top:0;">📙 Intermediate Level Problem</h3>
+    <p>
+      3 boxes with balls. You may <strong>double</strong> one box by taking from the other two.
+      Can you reach <strong>all 3 boxes having equal balls</strong>?
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-inv2-en')">💡 Show hint</button>
+    <div id="hint-inv2-en" class="hint">
+      Let boxes have \(a,b,c\) balls. When doubling the first: new state is \((2a, b-a, c-a)\). Check the <strong>differences modulo 3</strong>: \(a-b, b-c, c-a\) before and after.
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-inv2-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-inv2-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> Differences mod 3 are invariant. If final state is \((k,k,k)\), all differences are 0 mod 3. So only possible if initially \(a \equiv b \equiv c \pmod{3}\). Otherwise impossible! ✓
+    </div>
+  </div>
+
+  <!-- ADVANCED EN -->
+  <div id="inv-advanced-en" class="level">
+    <h3 style="margin-top:0;">📕 Advanced Level Problem</h3>
+    <p>
+      An \(8 \times 8\) board has integers. You may <strong>add 1</strong> to all squares in a row or column.
+      If initial <strong>sum of all numbers</strong> is not divisible by 8,
+      prove you cannot reach <strong>all squares having the same number</strong>.
+    </p>
+    <button class="hint-btn" onclick="toggleHint('hint-inv3-en')">💡 Show hint</button>
+    <div id="hint-inv3-en" class="hint">
+      Let \(S\) = sum of all 64 numbers. When adding 1 to a row: 8 squares increase → \(S\) increases by 8. What happens to \(S \bmod 8\)? If all squares equal \(k\): \(S = 64k = 8(8k)\).
+    </div>
+    <button class="hint-btn" onclick="toggleHint('example-inv3-en')" style="background:#10b981;margin-left:8px;">📝 Show solution</button>
+    <div id="example-inv3-en" class="hint" style="border-left-color:#10b981;background:#ecfdf5;">
+      <strong>Solution:</strong> \(S \bmod 8\) is invariant (adding 1 to row/column adds 8). Initial: \(S_0 \not\equiv 0 \pmod{8}\). Final (all equal k): \(S_f = 64k \equiv 0 \pmod{8}\). Contradiction! ✓
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES EN -->
+  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:18px;border-radius:10px;margin:30px 0;">
+    <strong>⚠️ Common Mistakes:</strong>
+    <ul style="margin:10px 0 0;">
+      <li><strong>Wrong invariant:</strong> Choosing a quantity that is NOT preserved</li>
+      <li><strong>Incomplete check:</strong> Not verifying ALL possible steps</li>
+      <li><strong>Mod confusion:</strong> Forgetting \(a \equiv b \pmod{n}\) means \(n \mid (a-b)\)</li>
+      <li><strong>Ignoring initial:</strong> Only checking final state, forgetting initial</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ EN -->
+  <div class="quiz">
+    <h3 style="margin-top:0;">🧠 Quick Quiz</h3>
+    <p><strong>Question:</strong> What is an invariant in a problem?</p>
+    <div>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">A quantity preserved in every allowed step</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">A number that is always prime</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">An element that cannot move</button>
+    </div>
+    <div class="quiz-result" id="result-inv-en"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <button onclick="document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));window.scrollTo({top:0,behavior:'smooth'});" style="padding:12px 24px;background:#64748b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:bold;">
+      ← Back to Strategy List
+    </button>
+  </div>
   </div>
 </div>
 
