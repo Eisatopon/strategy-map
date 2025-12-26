@@ -64,12 +64,14 @@ body{
   transform:translateY(-4px);
   box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
-.lang-en{display:none}
-.lang-el{display:block}
+.hidden{display:none !important;}
 footer{
   text-align:center;
   color:#667;
   margin:60px 0 20px;
+}
+.level-tabs{
+  margin:20px 0;
 }
 .level-tabs button{
   margin-right:6px;
@@ -89,11 +91,9 @@ footer{
   color:white;
 }
 .level-content{
-  display:none;
   margin-top:16px;
 }
 .hint-box{
-  display:none;
   margin-top:12px;
   padding:12px 16px;
   background:#fef3c7;
@@ -127,50 +127,68 @@ footer{
   border-color:#ef4444;
   background:#fee2e2;
 }
+.hint-btn{
+  padding:8px 16px;
+  background:#3b82f6;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:12px;
+  font-size:1em;
+}
+.hint-btn:hover{
+  background:#2563eb;
+}
 </style>
 
 <script>
+let currentLang = 'el';
+
 function setLang(lang){
-  document.querySelectorAll('.lang-el').forEach(e=>e.style.display=lang==='el'?'block':'none');
-  document.querySelectorAll('.lang-en').forEach(e=>e.style.display=lang==='en'?'block':'none');
+  currentLang = lang;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    if(el.getAttribute('data-lang') === lang){
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  });
 }
+
 function openStrategy(id){
   document.querySelectorAll('.strategy-section').forEach(sec=>{
-    sec.style.display='none';
+    sec.classList.add('hidden');
   });
   const target = document.getElementById(id);
   if(target){
-    target.style.display='block';
+    target.classList.remove('hidden');
     target.scrollIntoView({behavior:'smooth'});
-    // Find and click the first VISIBLE tab (respecting current language)
-    setTimeout(() => {
-      const visibleTabs = Array.from(target.querySelectorAll('.level-tabs button')).filter(tab => {
-        return tab.offsetParent !== null; // Check if actually visible
-      });
-      if(visibleTabs.length > 0) {
-        visibleTabs[0].click();
-      }
-    }, 50);
+    // Auto-open first level
+    const firstBtn = target.querySelector('.level-tabs button');
+    if(firstBtn) firstBtn.click();
   }
 }
-function openLevel(sectionId, levelId, button){
-  const section = document.getElementById(sectionId);
-  // Hide all level content in this section
-  section.querySelectorAll('.level-content').forEach(div=>div.style.display='none');
-  // Remove active from all tabs in the same level-tabs container
-  const tabContainer = button.parentElement;
-  tabContainer.querySelectorAll('button').forEach(btn=>btn.classList.remove('active'));
-  // Show the selected level
-  const targetLevel = document.getElementById(levelId);
-  if(targetLevel) {
-    targetLevel.style.display='block';
-  }
-  button.classList.add('active');
+
+function openLevel(btn, levelId){
+  // Hide all levels in this section
+  const section = btn.closest('.strategy-section');
+  section.querySelectorAll('.level-content').forEach(lc => lc.classList.add('hidden'));
+  
+  // Remove active from all tabs in this tab group
+  const tabGroup = btn.closest('.level-tabs');
+  tabGroup.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  
+  // Show selected level
+  document.getElementById(levelId).classList.remove('hidden');
+  btn.classList.add('active');
 }
+
 function toggleHint(id){
-  const box=document.getElementById(id);
-  box.style.display=box.style.display==='block'?'none':'block';
+  const hint = document.getElementById(id);
+  hint.classList.toggle('hidden');
 }
+
 function checkQuiz(button, isCorrect){
   const container = button.parentElement;
   const buttons = container.querySelectorAll('.quiz-button');
@@ -191,6 +209,11 @@ function checkQuiz(button, isCorrect){
     result.style.color = '#ef4444';
   }
 }
+
+// Initialize on load
+window.addEventListener('DOMContentLoaded', () => {
+  setLang('el');
+});
 </script>
 </head>
 
@@ -208,7 +231,7 @@ function checkQuiz(button, isCorrect){
 </div>
 
 <div class="hero">
-<div class="lang-el">
+<div data-lang="el">
 <h1>Χάρτης Στρατηγικών Λύσης Μαθηματικών Προβλημάτων</h1>
 <p>
 Δεν είναι συλλογή λύσεων.<br>
@@ -216,7 +239,7 @@ function checkQuiz(button, isCorrect){
 </p>
 </div>
 
-<div class="lang-en">
+<div data-lang="en" class="hidden">
 <h1>Strategy Map for Mathematical Problem Solving</h1>
 <p>
 Not a list of solutions.<br>
@@ -245,23 +268,19 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 
 <!-- ================= STRATEGY 1 : EXTREMAL ELEMENT ================= -->
 
-<section id="extremal" class="strategy-section" style="display:none;">
+<section id="extremal" class="strategy-section hidden">
 
 <div style="border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#ffffff;">
 
 <!-- HEADER -->
 <div style="background:linear-gradient(135deg,#dbeafe,#eef2ff);padding:24px 28px;">
-  <h2 class="lang-el" style="margin:0;font-size:1.8em;">
+  <h2 style="margin:0;font-size:1.8em;">
     🔵 1. Extremal Element
   </h2>
-  <h2 class="lang-en" style="margin:0;font-size:1.8em;">
-    🔵 1. Extremal Element
-  </h2>
-
-  <p class="lang-el" style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+  <p data-lang="el" style="margin:8px 0 0;font-size:1.05em;color:#374151;">
     Από πού ξεκινάς — το πιο περιορισμένο στοιχείο
   </p>
-  <p class="lang-en" style="margin:8px 0 0;font-size:1.05em;color:#374151;">
+  <p data-lang="en" class="hidden" style="margin:8px 0 0;font-size:1.05em;color:#374151;">
     Where to start — the most constrained object
   </p>
 </div>
@@ -270,7 +289,7 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 <div style="padding:30px 28px;">
 
 <!-- ========== GREEK ========== -->
-<div class="lang-el">
+<div data-lang="el">
 
 <p>
 Σε πολλά μαθηματικά προβλήματα,
@@ -317,14 +336,14 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 
 <!-- LEVEL TABS -->
 <div class="level-tabs">
-<button onclick="openLevel('extremal','level-basic',this)" class="active">Βασικό</button>
-<button onclick="openLevel('extremal','level-intermediate',this)">Ενδιάμεσο</button>
-<button onclick="openLevel('extremal','level-advanced',this)">Προχωρημένο</button>
+<button onclick="openLevel(this,'level-basic-el')" class="active">Βασικό</button>
+<button onclick="openLevel(this,'level-intermediate-el')">Ενδιάμεσο</button>
+<button onclick="openLevel(this,'level-advanced-el')">Προχωρημένο</button>
 </div>
 
 <!-- LEVEL: BASIC -->
-<div id="level-basic" class="level-content" style="display:block;">
-<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+<div id="level-basic-el" class="level-content">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
 
 <p><strong>📘 Πρόβλημα Βασικού Επιπέδου:</strong></p>
 
@@ -335,11 +354,11 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 Να αποδείξετε ότι το σύνολο περιέχει <strong>το πολύ έναν άρτιο αριθμό</strong>.
 </p>
 
-<button onclick="toggleHint('hint-basic')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+<button class="hint-btn" onclick="toggleHint('hint-basic-el')">
 💡 Δείξε μου hint
 </button>
 
-<div id="hint-basic" class="hint-box">
+<div id="hint-basic-el" class="hint-box hidden">
 <strong>Hint:</strong> Τι συμβαίνει αν υπάρχουν δύο άρτιοι αριθμοί στο σύνολο; 
 Σκέψου το extremal στοιχείο: τον <em>μικρότερο</em> άρτιο αριθμό. 
 Μπορείς να βρεις δύο ζεύγη με το ίδιο άθροισμα;
@@ -349,8 +368,8 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 </div>
 
 <!-- LEVEL: INTERMEDIATE -->
-<div id="level-intermediate" class="level-content">
-<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+<div id="level-intermediate-el" class="level-content hidden">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
 
 <p><strong>📙 Πρόβλημα Ενδιάμεσου Επιπέδου:</strong></p>
 
@@ -362,11 +381,11 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 δεν μειώνεται.
 </p>
 
-<button onclick="toggleHint('hint-intermediate')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+<button class="hint-btn" onclick="toggleHint('hint-intermediate-el')">
 💡 Δείξε μου hint
 </button>
 
-<div id="hint-intermediate" class="hint-box">
+<div id="hint-intermediate-el" class="hint-box hidden">
 <strong>Hint:</strong> Ποια είναι η ελάχιστη απόσταση μεταξύ όλων των σημείων; 
 Υπάρχει ένα ζεύγος σημείων που την πετυχαίνει. 
 Τι συμβαίνει αν αφαιρέσεις ένα σημείο που <em>δεν</em> ανήκει σε αυτό το ζεύγος;
@@ -376,8 +395,8 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 </div>
 
 <!-- LEVEL: ADVANCED -->
-<div id="level-advanced" class="level-content">
-<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+<div id="level-advanced-el" class="level-content hidden">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
 
 <p><strong>📕 Πρόβλημα Προχωρημένου Επιπέδου:</strong></p>
 
@@ -389,11 +408,11 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 περισσότερο από 1.
 </p>
 
-<button onclick="toggleHint('hint-advanced')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+<button class="hint-btn" onclick="toggleHint('hint-advanced-el')">
 💡 Δείξε μου hint
 </button>
 
-<div id="hint-advanced" class="hint-box">
+<div id="hint-advanced-el" class="hint-box hidden">
 <strong>Hint:</strong> Σκέψου ένα δένδρο επικάλυψης (spanning tree) του γράφου. 
 Ποια κορυφή στο δένδρο είναι το extremal στοιχείο; 
 (Υπόδειξη: ένα <em>φύλλο</em> έχει μόνο μία ακμή!)
@@ -405,7 +424,7 @@ A <strong>thinking map</strong> showing how expert solvers start, navigate, and 
 </div>
 
 <!-- ========== ENGLISH ========== -->
-<div class="lang-en">
+<div data-lang="en" class="hidden">
 
 <p>
 In many mathematical problems,
@@ -448,25 +467,25 @@ often enough to solve the problem.
 </ol>
 </div>
 
-<!-- LEVEL TABS -->
+<!-- LEVEL TABS EN -->
 <div class="level-tabs">
-<button onclick="openLevel('extremal','level-basic-en',this)" class="active">Basic</button>
-<button onclick="openLevel('extremal','level-intermediate-en',this)">Intermediate</button>
-<button onclick="openLevel('extremal','level-advanced-en',this)">Advanced</button>
+<button onclick="openLevel(this,'level-basic-en')" class="active">Basic</button>
+<button onclick="openLevel(this,'level-intermediate-en')">Intermediate</button>
+<button onclick="openLevel(this,'level-advanced-en')">Advanced</button>
 </div>
 
 <!-- LEVEL: BASIC EN -->
-<div id="level-basic-en" class="level-content" style="display:block;">
-<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+<div id="level-basic-en" class="level-content">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
 
 <p><strong>📘 Basic Problem:</strong></p>
 <p>Given a finite set of positive integers where all pairwise sums are distinct, prove it contains at most one even number.</p>
 
-<button onclick="toggleHint('hint-basic-en')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+<button class="hint-btn" onclick="toggleHint('hint-basic-en')">
 💡 Show hint
 </button>
 
-<div id="hint-basic-en" class="hint-box">
+<div id="hint-basic-en" class="hint-box hidden">
 <strong>Hint:</strong> What happens if there are two even numbers? Consider the smallest even number.
 </div>
 
@@ -474,17 +493,17 @@ often enough to solve the problem.
 </div>
 
 <!-- LEVEL: INTERMEDIATE EN -->
-<div id="level-intermediate-en" class="level-content">
-<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+<div id="level-intermediate-en" class="level-content hidden">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
 
 <p><strong>📙 Intermediate Problem:</strong></p>
 <p>Given n points in the plane, prove there exists a point whose removal doesn't decrease the minimal distance.</p>
 
-<button onclick="toggleHint('hint-intermediate-en')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+<button class="hint-btn" onclick="toggleHint('hint-intermediate-en')">
 💡 Show hint
 </button>
 
-<div id="hint-intermediate-en" class="hint-box">
+<div id="hint-intermediate-en" class="hint-box hidden">
 <strong>Hint:</strong> Consider the pair achieving minimal distance. Remove a point NOT in this pair.
 </div>
 
@@ -492,17 +511,17 @@ often enough to solve the problem.
 </div>
 
 <!-- LEVEL: ADVANCED EN -->
-<div id="level-advanced-en" class="level-content">
-<div style="background:#f9fafb;padding:22px;border-radius:14px;margin-top:16px;">
+<div id="level-advanced-en" class="level-content hidden">
+<div style="background:#f9fafb;padding:22px;border-radius:14px;">
 
 <p><strong>📕 Advanced Problem:</strong></p>
 <p>In a connected graph, prove there's a vertex whose removal doesn't increase components by more than 1.</p>
 
-<button onclick="toggleHint('hint-advanced-en')" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer;margin-top:12px;">
+<button class="hint-btn" onclick="toggleHint('hint-advanced-en')">
 💡 Show hint
 </button>
 
-<div id="hint-advanced-en" class="hint-box">
+<div id="hint-advanced-en" class="hint-box hidden">
 <strong>Hint:</strong> Consider a spanning tree. Which vertex is most constrained? (A leaf!)
 </div>
 
@@ -515,24 +534,24 @@ often enough to solve the problem.
 
 <div style="margin-top:40px;padding:22px;border-radius:14px;background:#f0f9ff;border:2px solid #bae6fd;">
 
-<h3 class="lang-el" style="margin-top:0;">🧠 Μικρό Quiz</h3>
-<h3 class="lang-en" style="margin-top:0;">🧠 Quick Quiz</h3>
+<h3 data-lang="el" style="margin-top:0;">🧠 Μικρό Quiz</h3>
+<h3 data-lang="en" class="hidden" style="margin-top:0;">🧠 Quick Quiz</h3>
 
-<p class="lang-el" style="margin-bottom:16px;">
+<p data-lang="el" style="margin-bottom:16px;">
 <strong>Ερώτηση:</strong> Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης στη στρατηγική του Extremal Element;
 </p>
 
-<p class="lang-en" style="margin-bottom:16px;">
+<p data-lang="en" class="hidden" style="margin-bottom:16px;">
 <strong>Question:</strong> Which element is usually the correct starting point in the Extremal Element strategy?
 </p>
 
-<div class="lang-el">
+<div data-lang="el">
 <button class="quiz-button" onclick="checkQuiz(this,true)">Το πιο περιορισμένο στοιχείο</button>
 <button class="quiz-button" onclick="checkQuiz(this,false)">Ένα τυχαίο στοιχείο</button>
 <button class="quiz-button" onclick="checkQuiz(this,false)">Το μεσαίο στοιχείο</button>
 </div>
 
-<div class="lang-en">
+<div data-lang="en" class="hidden">
 <button class="quiz-button" onclick="checkQuiz(this,true)">The most constrained element</button>
 <button class="quiz-button" onclick="checkQuiz(this,false)">Any random element</button>
 <button class="quiz-button" onclick="checkQuiz(this,false)">The middle element</button>
@@ -547,8 +566,8 @@ often enough to solve the problem.
 </section>
 
 <footer>
-<p class="lang-el">Χάρτης Στρατηγικών © 2025 — Μάθε πώς να σκέφτεσαι, όχι μόνο πώς να λύνεις</p>
-<p class="lang-en">Strategy Map © 2025 — Learn to think, not just to solve</p>
+<p data-lang="el">Χάρτης Στρατηγικών © 2025 — Μάθε πώς να σκέφτεσαι, όχι μόνο πώς να λύνεις</p>
+<p data-lang="en" class="hidden">Strategy Map © 2025 — Learn to think, not just to solve</p>
 </footer>
 
 </div>
