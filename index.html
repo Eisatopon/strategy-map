@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 Στρατηγικές - Αντιπαραδείγματα & Αντίστροφη Σκέψη</title>
+<title>12 Στρατηγικές - Συμμετρία</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
@@ -56,7 +56,6 @@ body {
 .card-title { font-size: 1.1em; margin-bottom: 8px; line-height: 1.3; }
 .card-subtitle { font-size: 0.8em; font-style: italic; opacity: 0.7; font-weight: normal; }
 
-/* Χρώματα */
 .card-1 { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-color: #2196f3; }
 .card-2 { background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%); border-color: #1976d2; }
 .card-3 { background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%); border-color: #1565c0; }
@@ -196,6 +195,14 @@ body {
 .group-transform { background: #ff9800; }
 .group-advanced { background: #e91e63; }
 
+.symmetry-box {
+  background: #f0fdf4;
+  border-left: 4px solid #22c55e;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
 @media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { 
   .grid { grid-template-columns: repeat(2, 1fr); }
@@ -291,352 +298,208 @@ body {
   </div>
 </div>
 
-<!-- SECTION 3: ΑΝΤΙΠΑΡΑΔΕΙΓΜΑΤΑ -->
-<div id="section-counterexample" class="section">
-  <h2>3. Αντιπαραδείγματα (Counterexamples)</h2>
-  <h3>Ένα παράδειγμα που σπάει τον κανόνα</h3>
+<!-- SECTION 5: ΣΥΜΜΕΤΡΙΑ -->
+<div id="section-symmetry" class="section">
+  <h2>5. Συμμετρία (Symmetry)</h2>
+  <h3>Όταν όλα είναι "ίσα" — εκμεταλλεύσου το!</h3>
   
-  <p>Μερικές φορές ο καλύτερος τρόπος να δείξεις ότι κάτι είναι <strong>λάθος</strong> δεν είναι να το αποδείξεις, αλλά να βρεις <strong>ένα μόνο παράδειγμα</strong> που το διαψεύδει.</p>
+  <p>Η συμμετρία είναι μια από τις πιο ισχυρές και κομψές στρατηγικές στα μαθηματικά. Όταν ένα πρόβλημα έχει <strong>συμμετρική δομή</strong> — όταν όλα τα στοιχεία παίζουν τον ίδιο ρόλο — μπορείς να το εκμεταλλευτείς για να απλοποιήσεις δραστικά τη λύση.</p>
 
-  <p>Η στρατηγική των <strong>Αντιπαραδειγμάτων</strong> είναι απλή αλλά καταλυτική: <em>για να διαψεύσεις μια γενική πρόταση, αρκεί ένα μόνο παράδειγμα που δεν την ικανοποιεί</em>.</p>
+  <p>Η βασική ιδέα: <em>αν όλα τα στοιχεία είναι "ίδια", τότε η λύση πρέπει να τα αντιμετωπίζει το ίδιο</em>.</p>
 
-  <p>Αντί να πολεμάς με πολύπλοκες αποδείξεις, βρες το "εξαιρετικό" στοιχείο που καταρρίπτει την υπόθεση. Ένα αντιπαράδειγμα αξίζει όσο χίλιες λέξεις!</p>
+  <div class="symmetry-box">
+    <p><strong>🔄 Τι σημαίνει συμμετρία;</strong></p>
+    <p>Ένα πρόβλημα είναι συμμετρικό όταν:</p>
+    <ul style="margin: 10px 0 0 20px;">
+      <li>Μπορείς να ανταλλάξεις μεταβλητές (a ↔ b ↔ c) χωρίς να αλλάξει το πρόβλημα</li>
+      <li>Όλα τα στοιχεία έχουν τα ίδια "δικαιώματα" και περιορισμούς</li>
+      <li>Δεν υπάρχει κάτι που να ξεχωρίζει ένα στοιχείο από τα άλλα</li>
+    </ul>
+  </div>
 
   <h3>Πότε να τη διαλέξεις:</h3>
   <ul>
-    <li>Όταν μια πρόταση φαίνεται "πολύ γενική" ή "πολύ ισχυρή"</li>
-    <li>Όταν ζητείται να ελέγξεις αν μια δήλωση είναι αληθής</li>
-    <li>Όταν βλέπεις λέξεις όπως "όλοι", "κάθε", "πάντα"</li>
-    <li>Όταν η διαίσθησή σου λέει "αυτό δεν μπορεί να ισχύει παντού"</li>
+    <li>Όταν οι μεταβλητές είναι ανταλλάξιμες (π.χ. a, b, c παίζουν τον ίδιο ρόλο)</li>
+    <li>Όταν το πρόβλημα δεν αλλάζει με permutations</li>
+    <li>Όταν βλέπεις φράσεις όπως "για κάθε i", "όλα τα στοιχεία"</li>
+    <li>Σε γεωμετρικά προβλήματα με ίσα μήκη, ίσες γωνίες</li>
+    <li>Όταν υποψιάζεσαι ότι η λύση θα είναι "ίδια για όλα"</li>
   </ul>
 
   <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
   <ol>
-    <li>Διάβασε προσεκτικά την πρόταση - τι ισχυρίζεται <strong>ακριβώς</strong>;</li>
-    <li><strong>Ψάξε για ακραίες περιπτώσεις:</strong> πολύ μικρές/μεγάλες τιμές, 0, 1, αρνητικοί αριθμοί</li>
-    <li>Δοκίμασε <strong>ειδικές περιπτώσεις</strong> που συνήθως δημιουργούν προβλήματα</li>
-    <li>Αν βρεις παράδειγμα που παραβιάζει την πρόταση → <strong>τελείωσες!</strong></li>
-    <li>Αν δεν βρεις, τότε ίσως η πρόταση είναι αληθής (και χρειάζεται απόδειξη)</li>
+    <li><strong>Εντόπισε τη συμμετρία:</strong> Ποια στοιχεία είναι ανταλλάξιμα;</li>
+    <li><strong>Υπόθεσε συμμετρική λύση:</strong> Αν a=b=c=... τότε τι γίνεται;</li>
+    <li><strong>Απλοποίησε:</strong> Με a=b=c, το πρόβλημα γίνεται πολύ πιο απλό</li>
+    <li><strong>Λύσε το απλοποιημένο:</strong> Βρες την τιμή</li>
+    <li><strong>Επαλήθευσε:</strong> Είναι αυτή η συμμετρική λύση βέλτιστη;</li>
   </ol>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="showLevel('counterexample', 'basic')">Βασικό</button>
-    <button class="tab-btn" onclick="showLevel('counterexample', 'intermediate')">Ενδιάμεσο</button>
-    <button class="tab-btn" onclick="showLevel('counterexample', 'advanced')">Προχωρημένο</button>
+    <button class="tab-btn active" onclick="showLevel('symmetry', 'basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('symmetry', 'intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('symmetry', 'advanced')">Προχωρημένο</button>
   </div>
 
-  <div id="counterexample-basic" class="level active">
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="symmetry-basic" class="level active">
     <div class="problem">
       <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
-      <p><strong>Πρόταση:</strong> "Το τετράγωνο κάθε πραγματικού αριθμού είναι θετικό."</p>
-      <p>Είναι αυτή η πρόταση αληθής; Αν όχι, δώστε αντιπαράδειγμα.</p>
+      <p>Έχεις 12€ και θέλεις να αγοράσεις 3 δώρα για 3 φίλους σου. Θέλεις να ξοδέψεις όλα τα χρήματα και να είναι δίκαιο για όλους.</p>
+      <p><strong>Πόσα θα δώσεις σε κάθε φίλο;</strong></p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('counterexample-basic-hint')">💡 Δείξε μου hint</button>
-    <div id="counterexample-basic-hint" class="hint">
-      <p><strong>Hint:</strong> Σκέψου τι συμβαίνει με "ειδικούς" αριθμούς.</p>
-      <p><strong>Ερώτηση 1:</strong> Τι γίνεται με θετικούς αριθμούς; (π.χ. 3² = 9 > 0 ✓)</p>
-      <p><strong>Ερώτηση 2:</strong> Τι γίνεται με αρνητικούς; (π.χ. (-2)² = 4 > 0 ✓)</p>
-      <p><strong>Ερώτηση 3:</strong> Υπάρχει κάποιος αριθμός που το τετράγωνό του ΔΕΝ είναι θετικό;</p>
-      <p><strong>Ερώτηση 4:</strong> Τι γίνεται με το μηδέν;</p>
+    <button class="hint-btn" onclick="toggleHint('symmetry-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="symmetry-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Υπάρχει κάτι που κάνει έναν φίλο "ξεχωριστό" από τους άλλους;</p>
+      <p><strong>Ερώτηση 1:</strong> Όλοι οι φίλοι είναι εξίσου σημαντικοί;</p>
+      <p><strong>Ερώτηση 2:</strong> Τι σημαίνει "δίκαιο για όλους";</p>
+      <p><strong>Ιδέα:</strong> Αφού όλοι είναι ίσοι, δώσε <strong>τα ίδια</strong> χρήματα σε όλους!</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('counterexample-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="counterexample-basic-solution" class="solution">
-      <h4>Λύση:</h4>
-      <p><strong>Απάντηση:</strong> Η πρόταση είναι <strong>ψευδής</strong>. ✗</p>
-      <p><strong>Αντιπαράδειγμα:</strong> x = 0</p>
-      <p><strong>Αιτιολόγηση:</strong><br>
-      Για x = 0, έχουμε: x² = 0² = 0</p>
-      <p>Το 0 <strong>δεν είναι θετικός</strong> αριθμός (0 ≥ 0 αλλά 0 ≠ θετικός).</p>
-      <p>Άρα υπάρχει τουλάχιστον ένας πραγματικός αριθμός (το 0) του οποίου το τετράγωνο δεν είναι θετικό. ✓</p>
-      <p><strong>🔑 Κλειδί:</strong> Ένα μόνο αντιπαράδειγμα αρκεί για να καταρρίψει μια γενική πρόταση!</p>
+    <button class="hint-btn" onclick="toggleHint('symmetry-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="symmetry-basic-solution" class="solution">
+      <h4>Λύση με Συμμετρία:</h4>
+      
+      <p><strong>Παρατήρηση Συμμετρίας:</strong><br>
+      Όλοι οι 3 φίλοι είναι εξίσου σημαντικοί. Δεν υπάρχει κάτι που να κάνει κάποιον "ξεχωριστό".</p>
+      
+      <p><strong>Συμμετρική Λύση:</strong><br>
+      Αφού όλοι είναι ίσοι, θα πάρουν το ίδιο ποσό.<br>
+      Έστω x = χρήματα ανά φίλο</p>
+      
+      <p><strong>Εξίσωση:</strong><br>
+      3x = 12€<br>
+      x = 4€</p>
+      
+      <p><strong>Απάντηση:</strong> Θα δώσω <strong>4€ σε κάθε φίλο</strong>. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η συμμετρία (όλοι οι φίλοι ίσοι) μας έδειξε ότι η λύση πρέπει να είναι συμμετρική (ίσα χρήματα)!</p>
     </div>
   </div>
 
-  <div id="counterexample-intermediate" class="level">
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="symmetry-intermediate" class="level">
     <div class="problem">
       <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
-      <p><strong>Πρόταση:</strong> "Αν n είναι φυσικός αριθμός, τότε το n² + n + 41 είναι πρώτος αριθμός."</p>
-      <p>Είναι αυτή η πρόταση αληθής; Αν όχι, βρείτε αντιπαράδειγμα.</p>
+      <p>Να βρεθούν οι θετικοί πραγματικοί \(a, b, c\) που ελαχιστοποιούν την έκφραση:</p>
+      <p>\[S = a + b + c\]</p>
+      <p>υπό τον περιορισμό: \(abc = 8\)</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('counterexample-int-hint')">💡 Δείξε μου hint</button>
-    <div id="counterexample-int-hint" class="hint">
-      <p><strong>Hint:</strong> Δοκίμασε μικρές τιμές, αλλά και <strong>ειδικές τιμές</strong> σχετικές με το 41!</p>
-      <p><strong>Ερώτηση 1:</strong> Δοκίμασε n = 1: 1² + 1 + 41 = 43 (πρώτος ✓)</p>
-      <p><strong>Ερώτηση 2:</strong> Δοκίμασε n = 2: 4 + 2 + 41 = 47 (πρώτος ✓)</p>
-      <p><strong>Ερώτηση 3:</strong> Τι θα συμβεί αν το n σχετίζεται με το 41; (π.χ. n = 40 ή n = 41)</p>
-      <p><strong>Ερώτηση 4:</strong> Αν n = 41, μπορείς να παραγοντοποιήσεις;</p>
+    <button class="hint-btn" onclick="toggleHint('symmetry-int-hint')">💡 Δείξε μου hint</button>
+    <div id="symmetry-int-hint" class="hint">
+      <p><strong>Hint:</strong> Υπάρχει συμμετρία μεταξύ των a, b, c;</p>
+      <p><strong>Ερώτηση 1:</strong> Τι συμβαίνει αν ανταλλάξεις a ↔ b; Αλλάζει το πρόβλημα;</p>
+      <p><strong>Ερώτηση 2:</strong> Αφού a, b, c παίζουν τον ίδιο ρόλο, τι θα περίμενες για τη λύση;</p>
+      <p><strong>Υπόθεση:</strong> Δοκίμασε a = b = c</p>
+      <p><strong>AM-GM:</strong> Η συμμετρική λύση είναι πάντα βέλτιστη για τέτοια προβλήματα!</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('counterexample-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="counterexample-int-solution" class="solution">
-      <h4>Λύση:</h4>
-      <p><strong>Απάντηση:</strong> Η πρόταση είναι <strong>ψευδής</strong>. ✗</p>
-      <p><strong>Αντιπαράδειγμα:</strong> n = 41</p>
-      <p><strong>Υπολογισμός:</strong></p>
-      <p>n² + n + 41 = 41² + 41 + 41<br>
-      = 1681 + 41 + 41<br>
-      = 1763<br>
-      = 41 × 43</p>
-      <p><strong>Παρατήρηση:</strong><br>
-      Μπορούμε να παραγοντοποιήσουμε:<br>
-      41² + 41 + 41 = 41(41 + 1 + 1) = 41 × 43</p>
-      <p>Επειδή 1763 = 41 × 43, δεν είναι πρώτος αριθμός. ✗</p>
-      <p><strong>🔑 Κλειδί:</strong> Αν και η πρόταση λειτουργεί για n = 0, 1, 2, ..., 39, 40, αποτυγχάνει για n = 41!</p>
+    <button class="hint-btn" onclick="toggleHint('symmetry-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="symmetry-int-solution" class="solution">
+      <h4>Λύση με Συμμετρία:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός Συμμετρίας:</strong><br>
+      Οι μεταβλητές a, b, c είναι ανταλλάξιμες.<br>
+      Αν ανταλλάξω a ↔ b ↔ c, το πρόβλημα δεν αλλάζει!</p>
+      
+      <p><strong>Βήμα 2 - Υπόθεση Συμμετρίας:</strong><br>
+      Αφού υπάρχει συμμετρία, υποθέτω ότι η λύση είναι συμμετρική:<br>
+      <strong>a = b = c</strong></p>
+      
+      <p><strong>Βήμα 3 - Απλοποίηση:</strong><br>
+      Αν a = b = c, τότε:<br>
+      abc = a³ = 8<br>
+      a = 2</p>
+      
+      <p>Άρα: a = b = c = 2</p>
+      
+      <p><strong>Βήμα 4 - Υπολογισμός:</strong><br>
+      S = a + b + c = 2 + 2 + 2 = <strong>6</strong></p>
+      
+      <p><strong>Βήμα 5 - Επαλήθευση (AM-GM):</strong><br>
+      \(\frac{a+b+c}{3} \geq \sqrt[3]{abc}\)<br>
+      \(\frac{a+b+c}{3} \geq \sqrt[3]{8} = 2\)<br>
+      \(a+b+c \geq 6\)</p>
+      
+      <p>Η ισότητα επιτυγχάνεται όταν a = b = c = 2! ✓</p>
+      
+      <p><strong>Απάντηση:</strong> Το ελάχιστο είναι <strong>S = 6</strong> όταν a = b = c = 2.</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η συμμετρία μας έδειξε αμέσως τη λύση - χωρίς παραγώγους ή πολύπλοκους υπολογισμούς!</p>
     </div>
   </div>
 
-  <div id="counterexample-advanced" class="level">
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="symmetry-advanced" class="level">
     <div class="problem">
       <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
-      <p><strong>Πρόταση:</strong> "Κάθε συνεχής συνάρτηση είναι παραγωγίσιμη."</p>
-      <p>Βρείτε αντιπαράδειγμα που δείχνει ότι η πρόταση είναι ψευδής.</p>
+      <p>Σε ένα τρίγωνο ABC, έστω D, E, F τα μέσα των πλευρών BC, CA, AB αντίστοιχα.</p>
+      <p><strong>Να αποδείξετε ότι τα ευθύγραμμα τμήματα AD, BE, CF (διάμεσοι) τέμνονται σε ένα κοινό σημείο G που τις διαιρεί με λόγο 2:1.</strong></p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('counterexample-adv-hint')">💡 Δείξε μου hint</button>
-    <div id="counterexample-adv-hint" class="hint">
-      <p><strong>Hint:</strong> Ψάξε για συνάρτηση με <strong>"γωνία"</strong> ή <strong>"αιχμή"</strong>.</p>
-      <p><strong>Ερώτηση 1:</strong> Τι γίνεται με τη συνάρτηση f(x) = x; (συνεχής ✓, παραγωγίσιμη ✓)</p>
-      <p><strong>Ερώτηση 2:</strong> Τι γίνεται με f(x) = x²; (συνεχής ✓, παραγωγίσιμη ✓)</p>
-      <p><strong>Ερώτηση 3:</strong> Τι γίνεται με την απόλυτη τιμή f(x) = |x|; Έχει παράγωγο στο x = 0;</p>
-      <p><strong>Ερώτηση 4:</strong> Ποια είναι η κλίση αριστερά και δεξιά του 0;</p>
+    <button class="hint-btn" onclick="toggleHint('symmetry-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="symmetry-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Υπάρχει συμμετρία μεταξύ των 3 διαμέσων;</p>
+      <p><strong>Ερώτηση 1:</strong> Όλες οι διάμεσοι παίζουν τον ίδιο ρόλο;</p>
+      <p><strong>Ερώτηση 2:</strong> Αν μια διάμεσος χωρίζεται 2:1, τι θα περίμενες για τις άλλες;</p>
+      <p><strong>Ιδέα:</strong> Χρησιμοποίησε διανύσματα και συμμετρία!</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('counterexample-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="counterexample-adv-solution" class="solution">
-      <h4>Λύση:</h4>
-      <p><strong>Απάντηση:</strong> Η πρόταση είναι <strong>ψευδής</strong>. ✗</p>
-      <p><strong>Αντιπαράδειγμα:</strong> f(x) = |x|</p>
-      <p><strong>Απόδειξη:</strong></p>
-      <p>1. <strong>Συνέχεια:</strong> Η f(x) = |x| είναι συνεχής παντού, συμπεριλαμβανομένου του x = 0.</p>
-      <p>2. <strong>Παραγωγισιμότητα στο x = 0:</strong></p>
-      <p>Αριστερή παράγωγος: f'(0⁻) = -1</p>
-      <p>Δεξιά παράγωγος: f'(0⁺) = 1</p>
-      <p>Επειδή f'(0⁻) ≠ f'(0⁺), η συνάρτηση <strong>δεν είναι παραγωγίσιμη</strong> στο x = 0. ✗</p>
-      <p><strong>Συμπέρασμα:</strong> Η f(x) = |x| είναι συνεχής παντού αλλά <strong>όχι</strong> παραγωγίσιμη στο x = 0. Άρα η πρόταση είναι ψευδής. ✓</p>
-      <p><strong>🔑 Κλειδί:</strong> Συνέχεια ≠ Παραγωγισιμότητα!</p>
+    <button class="hint-btn" onclick="toggleHint('symmetry-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="symmetry-adv-solution" class="solution">
+      <h4>Λύση με Συμμετρία:</h4>
+      
+      <p><strong>Συμμετρική Παρατήρηση:</strong><br>
+      Οι 3 διάμεσοι AD, BE, CF παίζουν <strong>συμμετρικό ρόλο</strong>.<br>
+      Δεν υπάρχει τίποτα που να κάνει μία διάμεσο "ξεχωριστή".</p>
+      
+      <p><strong>Υπόθεση από Συμμετρία:</strong><br>
+      Αφού όλες οι διάμεσοι είναι ίσες σε "δικαιώματα", αν τέμνονται, θα τις χωρίζουν με τον <strong>ίδιο λόγο</strong>.</p>
+      
+      <p><strong>Απόδειξη με Διανύσματα:</strong><br>
+      Έστω \(\vec{OA} = \vec{a}\), \(\vec{OB} = \vec{b}\), \(\vec{OC} = \vec{c}\)</p>
+      
+      <p>Το μέσο D της BC:<br>
+      \(\vec{OD} = \frac{\vec{b} + \vec{c}}{2}\)</p>
+      
+      <p>Σημείο G στην AD με λόγο AG:GD = 2:1:<br>
+      \(\vec{OG} = \frac{1}{3}\vec{a} + \frac{2}{3} \cdot \frac{\vec{b}+\vec{c}}{2}\)<br>
+      \(= \frac{1}{3}\vec{a} + \frac{1}{3}\vec{b} + \frac{1}{3}\vec{c}\)<br>
+      \(= \frac{\vec{a} + \vec{b} + \vec{c}}{3}\)</p>
+      
+      <p><strong>Συμμετρική Παρατήρηση:</strong><br>
+      Το σημείο \(G = \frac{\vec{a} + \vec{b} + \vec{c}}{3}\) είναι <strong>πλήρως συμμετρικό</strong> στα A, B, C!</p>
+      
+      <p>Άρα το ίδιο σημείο G ανήκει και στις 3 διαμέσους, και τις χωρίζει όλες με λόγο 2:1! ✓</p>
+      
+      <p><strong>Απάντηση:</strong> Το κέντρο βάρους G = (A + B + C)/3 είναι το σημείο τομής των διαμέσων.</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η συμμετρία μας έδωσε το G αμέσως - δεν χρειάστηκε να υπολογίσουμε ξεχωριστά κάθε διάμεσο!</p>
     </div>
   </div>
 
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
   <div class="mistakes">
     <h4>⚠️ Συχνά Λάθη:</h4>
     <ul>
-      <li><strong>Σταματάς πολύ νωρίς:</strong> Δοκιμάζεις 2-3 περιπτώσεις και συμπεραίνεις ότι ισχύει γενικά</li>
-      <li><strong>Ξεχνάς ειδικές τιμές:</strong> 0, 1, -1, άπειρο είναι συχνά "προβληματικές" τιμές</li>
-      <li><strong>Δεν ελέγχεις ακραία:</strong> Πολύ μικρές/μεγάλες τιμές, όρια</li>
-      <li><strong>Παίρνεις μόνο "ωραίες" τιμές:</strong> Δοκίμασε και "άσχημα" παραδείγματα</li>
-      <li><strong>Συγχέεις "συχνά αληθές" με "πάντα αληθές":</strong> Ακόμα κι αν ισχύει σε 1000 περιπτώσεις, μία εξαίρεση το καταρρίπτει</li>
+      <li><strong>Δεν αναγνωρίζεις τη συμμετρία:</strong> Ψάξε για ανταλλάξιμες μεταβλητές!</li>
+      <li><strong>Υποθέτεις συμμετρία που δεν υπάρχει:</strong> Όχι κάθε πρόβλημα είναι συμμετρικό - έλεγξε πρώτα!</li>
+      <li><strong>Ξεχνάς να επαληθεύσεις:</strong> Η συμμετρική λύση πρέπει να είναι και βέλτιστη</li>
+      <li><strong>Σπας τη συμμετρία χωρίς λόγο:</strong> Αν a=b λειτουργεί, μην τα κάνεις διαφορετικά!</li>
+      <li><strong>Παραβλέπεις μερική συμμετρία:</strong> Μερικές φορές μόνο 2 από 3 μεταβλητές είναι συμμετρικές</li>
     </ul>
   </div>
 
+  <!-- QUIZ -->
   <div class="quiz">
     <h4>🧠 Μικρό Quiz</h4>
-    <p><strong>Ερώτηση:</strong> Τι χρειάζεται για να διαψεύσεις μια πρόταση της μορφής "Για κάθε x, ισχύει P(x)";</p>
-    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'a')">Ένα μόνο παράδειγμα x όπου το P(x) είναι ψευδές</button>
-    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'b')">Να δείξεις ότι το P(x) είναι ψευδές για τα περισσότερα x</button>
-    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'c')">Να αποδείξεις γιατί το P(x) δεν μπορεί να ισχύει</button>
-    <div id="counterexample-quiz-result" class="quiz-result"></div>
-  </div>
-
-  <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
-</div>
-
-<!-- SECTION 4: ΑΝΤΙΣΤΡΟΦΗ ΣΚΕΨΗ -->
-<div id="section-backward" class="section">
-  <h2>4. Αντίστροφη Σκέψη (Backward Thinking)</h2>
-  <h3>Ξεκίνα από το τέλος και δούλεψε προς τα πίσω</h3>
-  
-  <p>Όταν η απευθείας πορεία από το πρόβλημα στη λύση φαίνεται ασαφής, δοκίμασε την <strong>αντίστροφη κατεύθυνση</strong>.</p>
-
-  <p>Η στρατηγική της <strong>Αντίστροφης Σκέψης</strong> σημαίνει: <em>ξεκίνα από το ζητούμενο και ρώτα "τι χρειάζομαι για να το πετύχω αυτό;"</em> — μετά ρώτα το ίδιο για κάθε προηγούμενο βήμα, έως ότου φτάσεις στα δεδομένα.</p>
-
-  <p>Είναι σαν να λύνεις έναν λαβύρινθο από την έξοδο προς την είσοδο — συχνά είναι πολύ ευκολότερο!</p>
-
-  <h3>Πότε να τη διαλέξεις:</h3>
-  <ul>
-    <li>Όταν το ζητούμενο είναι ξεκάθαρο αλλά δεν ξέρεις πώς να ξεκινήσεις από τα δεδομένα</li>
-    <li>Όταν το πρόβλημα έχει συγκεκριμένο στόχο (απόδειξη, κατασκευή, υπολογισμός)</li>
-    <li>Σε προβλήματα κατασκευής (γεωμετρία, παιχνίδια, στρατηγικές)</li>
-    <li>Όταν υπάρχει αλυσίδα συνεπειών που πρέπει να ανακατασκευάσεις</li>
-    <li>Σε προβλήματα με πολλαπλά βήματα</li>
-  </ul>
-
-  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
-  <ol>
-    <li><strong>Γράψε το ζητούμενο:</strong> Τι ακριβώς θέλεις να αποδείξεις/βρεις/κατασκευάσεις;</li>
-    <li><strong>Ρώτα "Τι χρειάζομαι;":</strong> Τι πρέπει να ισχύει για να πετύχω το ζητούμενο;</li>
-    <li><strong>Επανάλαβε:</strong> Για κάθε προηγούμενο βήμα, ρώτα πάλι "Τι χρειάζομαι;"</li>
-    <li><strong>Σταμάτα όταν:</strong> Φτάσεις σε κάτι που ξέρεις ή που δίνεται στο πρόβλημα</li>
-    <li><strong>Αντίστρεψε τη σειρά:</strong> Γράψε τη λύση από την αρχή προς το τέλος</li>
-  </ol>
-
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showLevel('backward', 'basic')">Βασικό</button>
-    <button class="tab-btn" onclick="showLevel('backward', 'intermediate')">Ενδιάμεσο</button>
-    <button class="tab-btn" onclick="showLevel('backward', 'advanced')">Προχωρημένο</button>
-  </div>
-
-  <div id="backward-basic" class="level active">
-    <div class="problem">
-      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
-      <p>Σκέφτομαι έναν αριθμό. Τον πολλαπλασιάζω επί 3, προσθέτω 15, διαιρώ με 2, και το αποτέλεσμα είναι 30.</p>
-      <p><strong>Ποιον αριθμό σκέφτομαι;</strong></p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('backward-basic-hint')">💡 Δείξε μου hint</button>
-    <div id="backward-basic-hint" class="hint">
-      <p><strong>Hint:</strong> Αντί να προσπαθήσεις με δοκιμές, πήγαινε <strong>ανάποδα</strong>!</p>
-      <p><strong>Τελευταίο βήμα:</strong> Διαίρεσε δια 2 → αποτέλεσμα 30</p>
-      <p><strong>Ερώτηση:</strong> Τι αριθμός διαιρεμένος δια 2 δίνει 30;</p>
-      <p><strong>Συνέχισε ανάποδα:</strong> Πριν τη διαίρεση, τι είχες;</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('backward-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="backward-basic-solution" class="solution">
-      <h4>Λύση με Αντίστροφη Σκέψη:</h4>
-      
-      <p><strong>Ας πάμε ΑΝΕΣΤΡΑΜΜΕΝΑ:</strong></p>
-      
-      <p><strong>Βήμα 1 (ανάποδα):</strong><br>
-      Αποτέλεσμα = 30<br>
-      Πριν τη διαίρεση δια 2: <strong>30 × 2 = 60</strong></p>
-      
-      <p><strong>Βήμα 2 (ανάποδα):</strong><br>
-      Είχαμε 60 μετά το "πρόσθεσε 15"<br>
-      Πριν την πρόσθεση: <strong>60 - 15 = 45</strong></p>
-      
-      <p><strong>Βήμα 3 (ανάποδα):</strong><br>
-      Είχαμε 45 μετά το "πολλαπλασίασε επί 3"<br>
-      Πριν τον πολλαπλασιασμό: <strong>45 ÷ 3 = 15</strong></p>
-      
-      <p><strong>Απάντηση:</strong> Ο αριθμός που σκέφτομαι είναι <strong>15</strong>.</p>
-      
-      <p><strong>Επαλήθευση (προς τα εμπρός):</strong><br>
-      15 × 3 = 45<br>
-      45 + 15 = 60<br>
-      60 ÷ 2 = 30 ✓</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Αντέστρεψα τις πράξεις (×3 → ÷3, +15 → -15, ÷2 → ×2) και δούλεψα προς τα πίσω!</p>
-    </div>
-  </div>
-
-  <div id="backward-intermediate" class="level">
-    <div class="problem">
-      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
-      <p>Έχεις δύο κουβάδες: έναν 5-λίτρων και έναν 3-λίτρων. Δεν έχουν σημάδια. Έχεις απεριόριστη πρόσβαση σε νερό.</p>
-      <p><strong>Πώς μπορείς να μετρήσεις ακριβώς 4 λίτρα νερό;</strong></p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('backward-int-hint')">💡 Δείξε μου hint</button>
-    <div id="backward-int-hint" class="hint">
-      <p><strong>Hint:</strong> Σκέψου ανάποδα - πώς θα φτάσεις στα 4 λίτρα;</p>
-      <p><strong>Στόχος:</strong> 4 λίτρα στον κουβά των 5 λίτρων</p>
-      <p><strong>Ερώτηση:</strong> Πώς μπορείς να αφήσεις 4 λίτρα στον μεγάλο κουβά;</p>
-      <p><strong>Ιδέα:</strong> Αν γεμίσεις τον 5L και αφαιρέσεις 1L...</p>
-      <p><strong>Πώς αφαιρείς 1L;</strong> Με τον 3L κουβά που έχει ήδη 2L μέσα!</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('backward-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="backward-int-solution" class="solution">
-      <h4>Λύση με Αντίστροφη Σκέψη:</h4>
-      
-      <p><strong>Σκέψη Ανάποδα:</strong></p>
-      
-      <p><strong>Στόχος:</strong> 4L στον κουβά των 5L</p>
-      
-      <p><strong>Πώς;</strong> 5L - 1L = 4L<br>
-      Χρειάζομαι: Γεμάτο τον 5L και να αφαιρέσω 1L</p>
-      
-      <p><strong>Πώς αφαιρώ 1L;</strong><br>
-      Χύνω από τον 5L στον 3L που έχει ήδη 2L μέσα<br>
-      (Ο 3L μπορεί να πάρει μόνο 1L ακόμα)</p>
-      
-      <p><strong>Πώς βάζω 2L στον 3L;</strong><br>
-      Γεμίζω 3L, χύνω στον 5L (5L έχει 3L)<br>
-      Γεμίζω ξανά 3L, χύνω στον 5L μέχρι να γεμίσει<br>
-      (Ο 5L παίρνει 2L, άρα στον 3L μένουν 1L)<br>
-      Άδειασε τον 5L, χύνε το 1L από τον 3L στον 5L<br>
-      Γέμισε τον 3L → έχεις 3L<br>
-      Χύνε τα 3L στον 5L (που έχει 1L) → 1L + 3L = 4L ✓</p>
-      
-      <p><strong>Βήματα (σωστή σειρά):</strong></p>
-      <ol>
-        <li>Γέμισε τον 3L κουβά</li>
-        <li>Χύσε τον στον 5L (5L: 3L, 3L: 0L)</li>
-        <li>Γέμισε ξανά τον 3L</li>
-        <li>Χύσε στον 5L μέχρι να γεμίσει (5L: 5L, 3L: 1L)</li>
-        <li>Άδειασε τον 5L</li>
-        <li>Χύσε το 1L από τον 3L στον 5L (5L: 1L, 3L: 0L)</li>
-        <li>Γέμισε τον 3L</li>
-        <li>Χύσε τον στον 5L (5L: 4L, 3L: 0L) ✓</li>
-      </ol>
-      
-      <p><strong>🔑 Κλειδί:</strong> Σκεφτόμουν ανάποδα "Πώς να φτάσω στα 4L;" και βρήκα τη διαδρομή!</p>
-    </div>
-  </div>
-
-  <div id="backward-advanced" class="level">
-    <div class="problem">
-      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
-      <p>Να αποδείξετε ότι αν \(a, b, c\) είναι θετικοί πραγματικοί με \(abc = 1\), τότε:</p>
-      <p>\[\frac{1}{a^3(b+c)} + \frac{1}{b^3(c+a)} + \frac{1}{c^3(a+b)} \geq \frac{3}{2}\]</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('backward-adv-hint')">💡 Δείξε μου hint</button>
-    <div id="backward-adv-hint" class="hint">
-      <p><strong>Hint 1:</strong> Σκέψου ανάποδα - τι θα ήθελες να δείξεις αν είχες abc=1;</p>
-      <p><strong>Hint 2:</strong> Αν abc=1, τότε \(\frac{1}{a^3} = b^3c^3\)</p>
-      <p><strong>Hint 3:</strong> Δοκίμασε να μετασχηματίσεις κάθε όρο χρησιμοποιώντας abc=1</p>
-      <p><strong>Hint 4:</strong> Μετά χρησιμοποίησε AM-GM ή Cauchy-Schwarz</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('backward-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="backward-adv-solution" class="solution">
-      <h4>Λύση με Αντίστροφη Σκέψη:</h4>
-      
-      <p><strong>Στόχος:</strong> Να δείξουμε το άθροισμα ≥ 3/2</p>
-      
-      <p><strong>Αντίστροφα:</strong> Τι χρειάζομαι για να φτάσω εκεί;</p>
-      
-      <p><strong>Βήμα 1:</strong> Χρησιμοποίησε abc = 1<br>
-      \(\frac{1}{a^3} = (bc)^3\) (επειδή abc = 1 ⟹ a = 1/(bc))</p>
-      
-      <p>Άρα:<br>
-      \[\frac{1}{a^3(b+c)} = \frac{(bc)^3}{b+c} = \frac{b^3c^3}{b+c}\]</p>
-      
-      <p><strong>Βήμα 2:</strong> Το ίδιο για τους άλλους όρους:<br>
-      \[\frac{b^3c^3}{b+c} + \frac{c^3a^3}{c+a} + \frac{a^3b^3}{a+b} \geq \frac{3}{2}\]</p>
-      
-      <p><strong>Βήμα 3:</strong> Χρησιμοποίησε AM-GM:<br>
-      \(\frac{b^3c^3}{b+c} \geq \frac{b^3c^3}{2\sqrt{bc}} = \frac{(bc)^{5/2}}{2}\)</p>
-      
-      <p><strong>Βήμα 4:</strong> Αθροίζοντας και χρησιμοποιώντας AM-GM ξανά:<br>
-      Το άθροισμα ≥ 3/2 ✓</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Σκεφτόμουν ανάποδα "Τι μετασχηματισμό χρειάζομαι;" και χρησιμοποίησα το abc=1!</p>
-    </div>
-  </div>
-
-  <div class="mistakes">
-    <h4>⚠️ Συχνά Λάθη:</h4>
-    <ul>
-      <li><strong>Ξεχνάς να αντιστρέψεις:</strong> Αφού βρεις τη διαδρομή ανάποδα, πρέπει να τη γράψεις σωστά!</li>
-      <li><strong>Δεν ελέγχεις αν κάθε βήμα αντιστρέφεται:</strong> Μερικές πράξεις δεν αντιστρέφονται (π.χ. x²=4 δεν σημαίνει x=2)</li>
-      <li><strong>Σταματάς πολύ νωρίς:</strong> Συνέχισε ανάποδα μέχρι να φτάσεις σε κάτι που ξέρεις</li>
-      <li><strong>Μπερδεύεις τη σειρά:</strong> Κράτα σημειώσεις για να μην χάσεις το νήμα</li>
-      <li><strong>Δεν επαληθεύεις:</strong> Πάντα έλεγξε τη λύση σου προς τα εμπρός!</li>
-    </ul>
-  </div>
-
-  <div class="quiz">
-    <h4>🧠 Μικρό Quiz</h4>
-    <p><strong>Ερώτηση:</strong> Ποια είναι η βασική ιδέα της Αντίστροφης Σκέψης;</p>
-    <button class="quiz-btn" onclick="checkQuiz('backward', 'a')">Ξεκινάς από το ζητούμενο και δουλεύεις προς τα πίσω μέχρι τα δεδομένα</button>
-    <button class="quiz-btn" onclick="checkQuiz('backward', 'b')">Λύνεις το πρόβλημα με την αντίθετη μέθοδο από τη συνηθισμένη</button>
-    <button class="quiz-btn" onclick="checkQuiz('backward', 'c')">Αντιστρέφεις όλους τους αριθμούς στο πρόβλημα</button>
-    <div id="backward-quiz-result" class="quiz-result"></div>
+    <p><strong>Ερώτηση:</strong> Πότε ένα πρόβλημα έχει συμμετρία;</p>
+    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'a')">Όταν μπορείς να ανταλλάξεις μεταβλητές χωρίς να αλλάξει το πρόβλημα</button>
+    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'b')">Όταν όλοι οι αριθμοί είναι ίσοι</button>
+    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'c')">Όταν το πρόβλημα είναι εύκολο</button>
+    <div id="symmetry-quiz-result" class="quiz-result"></div>
   </div>
 
   <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
@@ -686,8 +549,7 @@ function toggleHint(hintId) {
 }
 
 const quizAnswers = {
-  'counterexample': 'a',
-  'backward': 'a'
+  'symmetry': 'a'
 };
 
 function checkQuiz(strategy, answer) {
@@ -703,17 +565,13 @@ function checkQuiz(strategy, answer) {
     event.target.classList.add('correct');
     if (resultDiv) {
       resultDiv.className = 'quiz-result correct';
-      if (strategy === 'counterexample') {
-        resultDiv.textContent = '✓ Σωστά! Ένα μόνο αντιπαράδειγμα αρκεί!';
-      } else if (strategy === 'backward') {
-        resultDiv.textContent = '✓ Σωστά! Ξεκινάς από το τέλος και πας προς την αρχή!';
-      }
+      resultDiv.textContent = '✓ Σωστά! Η συμμετρία σημαίνει ανταλλαξιμότητα!';
     }
   } else {
     event.target.classList.add('wrong');
     if (resultDiv) {
       resultDiv.className = 'quiz-result wrong';
-      resultDiv.textContent = '✗ Προσπάθησε ξανά!';
+      resultDiv.textContent = '✗ Προσπάθησε ξανά! Σκέψου: τι σημαίνει "συμμετρία";';
     }
   }
 }
