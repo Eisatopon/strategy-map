@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 Στρατηγικές - Συμμετρία</title>
+<title>12 Στρατηγικές - Μαθηματική Επαγωγή</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
@@ -18,7 +18,7 @@ body {
 .container { max-width: 1200px; margin: 0 auto; }
 
 .hero { 
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   color: white;
   border-radius: 20px; 
   padding: 40px; 
@@ -56,10 +56,10 @@ body {
 .card-title { font-size: 1.1em; margin-bottom: 8px; line-height: 1.3; }
 .card-subtitle { font-size: 0.8em; font-style: italic; opacity: 0.7; font-weight: normal; }
 
-.card-1 { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-color: #2196f3; }
-.card-2 { background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%); border-color: #1976d2; }
-.card-3 { background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%); border-color: #1565c0; }
-.card-4 { background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%); border-color: #0d47a1; }
+.card-1 { background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%); border-color: #06b6d4; }
+.card-2 { background: linear-gradient(135deg, #a5f3fc 0%, #67e8f9 100%); border-color: #0891b2; }
+.card-3 { background: linear-gradient(135deg, #67e8f9 0%, #22d3ee 100%); border-color: #0e7490; }
+.card-4 { background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%); border-color: #0e7490; }
 .card-5 { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-color: #4caf50; }
 .card-6 { background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%); border-color: #388e3c; }
 .card-7 { background: linear-gradient(135deg, #a5d6a7 0%, #81c784 100%); border-color: #2e7d32; }
@@ -98,7 +98,7 @@ body {
 }
 .tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
 .tab-btn.active { 
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   color: white; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
@@ -190,18 +190,29 @@ body {
   text-align: center; font-size: 1.3em; font-weight: bold;
   margin: 30px 0 10px; padding: 10px; border-radius: 10px; color: white;
 }
-.group-basics { background: #2196f3; }
+.group-basics { background: #06b6d4; }
 .group-structural { background: #4caf50; }
 .group-transform { background: #ff9800; }
 .group-advanced { background: #e91e63; }
 
-.symmetry-box {
-  background: #f0fdf4;
-  border-left: 4px solid #22c55e;
+.induction-box {
+  background: #fee2e2;
+  border-left: 4px solid #dc2626;
   padding: 15px;
   margin: 15px 0;
   border-radius: 8px;
 }
+
+.congrats {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 3px solid #f59e0b;
+  border-radius: 15px;
+  padding: 30px;
+  margin: 30px 0;
+  text-align: center;
+}
+.congrats h3 { color: #92400e; margin-bottom: 15px; font-size: 1.8em; }
+.congrats p { color: #78350f; font-size: 1.1em; }
 
 @media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { 
@@ -219,7 +230,7 @@ body {
 <div class="hero">
   <h1>🎯 Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</h1>
   <p>Μάθε <strong>πώς να σκέφτεσαι</strong>, όχι μόνο πώς να λύνεις</p>
-  <p style="margin-top: 10px; font-size: 1em; opacity: 0.9;">12 Βασικές Στρατηγικές σε Παιδαγωγική Σειρά</p>
+  
 </div>
 
 <div class="group-title group-basics">ΟΜΑΔΑ Α: ΒΑΣΙΚΕΣ ΣΤΡΑΤΗΓΙΚΕΣ (1-4)</div>
@@ -298,185 +309,212 @@ body {
   </div>
 </div>
 
-<!-- SECTION 5: ΣΥΜΜΕΤΡΙΑ -->
-<div id="section-symmetry" class="section">
-  <h2>5. Συμμετρία (Symmetry)</h2>
-  <h3>Όταν όλα είναι "ίσα" — εκμεταλλεύσου το!</h3>
+<!-- SECTION 12: ΜΑΘΗΜΑΤΙΚΗ ΕΠΑΓΩΓΗ -->
+<div id="section-induction" class="section">
+  <h2>12. Μαθηματική Επαγωγή (Mathematical Induction)</h2>
+  <h3>Η σκάλα του άπειρου: Ένα βήμα τη φορά!</h3>
   
-  <p>Η συμμετρία είναι μια από τις πιο ισχυρές και κομψές στρατηγικές στα μαθηματικά. Όταν ένα πρόβλημα έχει <strong>συμμετρική δομή</strong> — όταν όλα τα στοιχεία παίζουν τον ίδιο ρόλο — μπορείς να το εκμεταλλευτείς για να απλοποιήσεις δραστικά τη λύση.</p>
+  <p>Η <strong>Μαθηματική Επαγωγή</strong> είναι μία από τις πιο ισχυρές και κομψές μεθόδους απόδειξης. Σου επιτρέπει να αποδείξεις ότι κάτι ισχύει για <strong>άπειρα πολλές</strong> περιπτώσεις — με μόνο δύο βήματα!</p>
 
-  <p>Η βασική ιδέα: <em>αν όλα τα στοιχεία είναι "ίδια", τότε η λύση πρέπει να τα αντιμετωπίζει το ίδιο</em>.</p>
+  <p>Η ιδέα είναι σαν σκάλα: <em>αν μπορείς να ανεβείς στο πρώτο σκαλοπάτι, και αν από κάθε σκαλοπάτι μπορείς να ανεβείς στο επόμενο, τότε μπορείς να ανεβείς όσο ψηλά θέλεις!</em></p>
 
-  <div class="symmetry-box">
-    <p><strong>🔄 Τι σημαίνει συμμετρία;</strong></p>
-    <p>Ένα πρόβλημα είναι συμμετρικό όταν:</p>
-    <ul style="margin: 10px 0 0 20px;">
-      <li>Μπορείς να ανταλλάξεις μεταβλητές (a ↔ b ↔ c) χωρίς να αλλάξει το πρόβλημα</li>
-      <li>Όλα τα στοιχεία έχουν τα ίδια "δικαιώματα" και περιορισμούς</li>
-      <li>Δεν υπάρχει κάτι που να ξεχωρίζει ένα στοιχείο από τα άλλα</li>
-    </ul>
+  <div class="induction-box">
+    <p><strong>🪜 Η Αρχή της Μαθηματικής Επαγωγής:</strong></p>
+    <p>Για να αποδείξεις ότι μια πρόταση P(n) ισχύει για κάθε φυσικό n ≥ n₀:</p>
+    <ol style="margin: 10px 0 0 20px;">
+      <li><strong>Βάση Επαγωγής:</strong> Δείξε ότι P(n₀) ισχύει</li>
+      <li><strong>Επαγωγική Υπόθεση:</strong> Υπόθεσε ότι P(k) ισχύει για κάποιο k ≥ n₀</li>
+      <li><strong>Επαγωγικό Βήμα:</strong> Χρησιμοποιώντας την υπόθεση, δείξε ότι P(k+1) ισχύει</li>
+      <li><strong>Συμπέρασμα:</strong> Από την αρχή επαγωγής, P(n) ισχύει για κάθε n ≥ n₀</li>
+    </ol>
   </div>
 
   <h3>Πότε να τη διαλέξεις:</h3>
   <ul>
-    <li>Όταν οι μεταβλητές είναι ανταλλάξιμες (π.χ. a, b, c παίζουν τον ίδιο ρόλο)</li>
-    <li>Όταν το πρόβλημα δεν αλλάζει με permutations</li>
-    <li>Όταν βλέπεις φράσεις όπως "για κάθε i", "όλα τα στοιχεία"</li>
-    <li>Σε γεωμετρικά προβλήματα με ίσα μήκη, ίσες γωνίες</li>
-    <li>Όταν υποψιάζεσαι ότι η λύση θα είναι "ίδια για όλα"</li>
+    <li>Όταν η πρόταση αφορά "για κάθε φυσικό n", "για όλα τα n ≥ ..."</li>
+    <li>Σε τύπους με άθροισμα 1+2+...+n</li>
+    <li>Σε αναδρομικά ορισμένες ακολουθίες</li>
+    <li>Σε διαιρετότητες που εξαρτώνται από n</li>
+    <li>Όταν βλέπεις δομή που "χτίζεται" βήμα-βήμα</li>
   </ul>
 
   <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
   <ol>
-    <li><strong>Εντόπισε τη συμμετρία:</strong> Ποια στοιχεία είναι ανταλλάξιμα;</li>
-    <li><strong>Υπόθεσε συμμετρική λύση:</strong> Αν a=b=c=... τότε τι γίνεται;</li>
-    <li><strong>Απλοποίησε:</strong> Με a=b=c, το πρόβλημα γίνεται πολύ πιο απλό</li>
-    <li><strong>Λύσε το απλοποιημένο:</strong> Βρες την τιμή</li>
-    <li><strong>Επαλήθευσε:</strong> Είναι αυτή η συμμετρική λύση βέλτιστη;</li>
+    <li><strong>Κατανόησε την πρόταση P(n):</strong> Τι ακριβώς πρέπει να ισχύει;</li>
+    <li><strong>Βάση (n=n₀):</strong> Έλεγξε την πρόταση για την αρχική τιμή</li>
+    <li><strong>Υπόθεση (n=k):</strong> "Έστω ότι P(k) ισχύει"</li>
+    <li><strong>Βήμα (n=k+1):</strong> Χρησιμοποίησε P(k) για να δείξεις P(k+1)</li>
+    <li><strong>Ολοκλήρωση:</strong> Άρα P(n) ισχύει για κάθε n!</li>
   </ol>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="showLevel('symmetry', 'basic')">Βασικό</button>
-    <button class="tab-btn" onclick="showLevel('symmetry', 'intermediate')">Ενδιάμεσο</button>
-    <button class="tab-btn" onclick="showLevel('symmetry', 'advanced')">Προχωρημένο</button>
+    <button class="tab-btn active" onclick="showLevel('induction', 'basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('induction', 'intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('induction', 'advanced')">Προχωρημένο</button>
   </div>
 
   <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
-  <div id="symmetry-basic" class="level active">
+  <div id="induction-basic" class="level active">
     <div class="problem">
       <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
-      <p>Έχεις 12€ και θέλεις να αγοράσεις 3 δώρα για 3 φίλους σου. Θέλεις να ξοδέψεις όλα τα χρήματα και να είναι δίκαιο για όλους.</p>
-      <p><strong>Πόσα θα δώσεις σε κάθε φίλο;</strong></p>
+      <p>Να αποδείξετε με επαγωγή ότι για κάθε φυσικό n ≥ 1:</p>
+      <p>\[1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}\]</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('symmetry-basic-hint')">💡 Δείξε μου hint</button>
-    <div id="symmetry-basic-hint" class="hint">
-      <p><strong>Hint:</strong> Υπάρχει κάτι που κάνει έναν φίλο "ξεχωριστό" από τους άλλους;</p>
-      <p><strong>Ερώτηση 1:</strong> Όλοι οι φίλοι είναι εξίσου σημαντικοί;</p>
-      <p><strong>Ερώτηση 2:</strong> Τι σημαίνει "δίκαιο για όλους";</p>
-      <p><strong>Ιδέα:</strong> Αφού όλοι είναι ίσοι, δώσε <strong>τα ίδια</strong> χρήματα σε όλους!</p>
+    <button class="hint-btn" onclick="toggleHint('induction-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="induction-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Ακολούθησε τα 3 βήματα!</p>
+      <p><strong>Βάση:</strong> Δοκίμασε για n=1</p>
+      <p><strong>Υπόθεση:</strong> Υπόθεσε ότι ισχύει για n=k</p>
+      <p><strong>Βήμα:</strong> Δείξε για n=k+1:<br>
+      1+2+...+k+(k+1) = ?<br>
+      Χρησιμοποίησε την υπόθεση!</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('symmetry-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="symmetry-basic-solution" class="solution">
-      <h4>Λύση με Συμμετρία:</h4>
+    <button class="hint-btn" onclick="toggleHint('induction-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="induction-basic-solution" class="solution">
+      <h4>Απόδειξη με Επαγωγή:</h4>
       
-      <p><strong>Παρατήρηση Συμμετρίας:</strong><br>
-      Όλοι οι 3 φίλοι είναι εξίσου σημαντικοί. Δεν υπάρχει κάτι που να κάνει κάποιον "ξεχωριστό".</p>
+      <p><strong>Πρόταση P(n):</strong> \(1 + 2 + \cdots + n = \frac{n(n+1)}{2}\)</p>
       
-      <p><strong>Συμμετρική Λύση:</strong><br>
-      Αφού όλοι είναι ίσοι, θα πάρουν το ίδιο ποσό.<br>
-      Έστω x = χρήματα ανά φίλο</p>
+      <p><strong>Βήμα 1 - Βάση Επαγωγής (n=1):</strong></p>
+      <p>Αριστερά: 1<br>
+      Δεξιά: \(\frac{1(1+1)}{2} = \frac{2}{2} = 1\)</p>
+      <p>Αριστερά = Δεξιά ✓<br>
+      Άρα P(1) ισχύει.</p>
       
-      <p><strong>Εξίσωση:</strong><br>
-      3x = 12€<br>
-      x = 4€</p>
+      <p><strong>Βήμα 2 - Επαγωγική Υπόθεση:</strong></p>
+      <p>Υποθέτουμε ότι η P(k) ισχύει για κάποιο k ≥ 1:<br>
+      \[1 + 2 + \cdots + k = \frac{k(k+1)}{2}\]</p>
       
-      <p><strong>Απάντηση:</strong> Θα δώσω <strong>4€ σε κάθε φίλο</strong>. ✓</p>
+      <p><strong>Βήμα 3 - Επαγωγικό Βήμα (n=k+1):</strong></p>
+      <p>Θέλουμε να δείξουμε:<br>
+      \[1 + 2 + \cdots + k + (k+1) = \frac{(k+1)(k+2)}{2}\]</p>
       
-      <p><strong>🔑 Κλειδί:</strong> Η συμμετρία (όλοι οι φίλοι ίσοι) μας έδειξε ότι η λύση πρέπει να είναι συμμετρική (ίσα χρήματα)!</p>
+      <p>Αριστερό μέλος:<br>
+      \(1 + 2 + \cdots + k + (k+1)\)<br>
+      = \(\left[\frac{k(k+1)}{2}\right] + (k+1)\) (χρησιμοποιήσαμε την υπόθεση!)<br>
+      = \(\frac{k(k+1)}{2} + \frac{2(k+1)}{2}\)<br>
+      = \(\frac{k(k+1) + 2(k+1)}{2}\)<br>
+      = \(\frac{(k+1)(k+2)}{2}\) ✓</p>
+      
+      <p><strong>Συμπέρασμα:</strong><br>
+      Από την αρχή της μαθηματικής επαγωγής, η πρόταση P(n) ισχύει για κάθε n ≥ 1. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Χρησιμοποιήσαμε την επαγωγική υπόθεση για να δείξουμε το επόμενο βήμα!</p>
     </div>
   </div>
 
   <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
-  <div id="symmetry-intermediate" class="level">
+  <div id="induction-intermediate" class="level">
     <div class="problem">
       <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
-      <p>Να βρεθούν οι θετικοί πραγματικοί \(a, b, c\) που ελαχιστοποιούν την έκφραση:</p>
-      <p>\[S = a + b + c\]</p>
-      <p>υπό τον περιορισμό: \(abc = 8\)</p>
+      <p>Να αποδείξετε ότι για κάθε φυσικό n ≥ 1:</p>
+      <p>\[1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)(2n+1)}{6}\]</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('symmetry-int-hint')">💡 Δείξε μου hint</button>
-    <div id="symmetry-int-hint" class="hint">
-      <p><strong>Hint:</strong> Υπάρχει συμμετρία μεταξύ των a, b, c;</p>
-      <p><strong>Ερώτηση 1:</strong> Τι συμβαίνει αν ανταλλάξεις a ↔ b; Αλλάζει το πρόβλημα;</p>
-      <p><strong>Ερώτηση 2:</strong> Αφού a, b, c παίζουν τον ίδιο ρόλο, τι θα περίμενες για τη λύση;</p>
-      <p><strong>Υπόθεση:</strong> Δοκίμασε a = b = c</p>
-      <p><strong>AM-GM:</strong> Η συμμετρική λύση είναι πάντα βέλτιστη για τέτοια προβλήματα!</p>
+    <button class="hint-btn" onclick="toggleHint('induction-int-hint')">💡 Δείξε μου hint</button>
+    <div id="induction-int-hint" class="hint">
+      <p><strong>Hint:</strong> Ίδια μέθοδος - 3 βήματα!</p>
+      <p><strong>Βάση:</strong> n=1 → 1² = 1·2·3/6 = 1 ✓</p>
+      <p><strong>Υπόθεση:</strong> Ισχύει για k</p>
+      <p><strong>Βήμα:</strong> Πρόσθεσε (k+1)² και απλοποίησε!</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('symmetry-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="symmetry-int-solution" class="solution">
-      <h4>Λύση με Συμμετρία:</h4>
+    <button class="hint-btn" onclick="toggleHint('induction-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="induction-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
       
-      <p><strong>Βήμα 1 - Εντοπισμός Συμμετρίας:</strong><br>
-      Οι μεταβλητές a, b, c είναι ανταλλάξιμες.<br>
-      Αν ανταλλάξω a ↔ b ↔ c, το πρόβλημα δεν αλλάζει!</p>
+      <p><strong>Βάση (n=1):</strong><br>
+      1² = 1<br>
+      \(\frac{1·2·3}{6} = 1\) ✓</p>
       
-      <p><strong>Βήμα 2 - Υπόθεση Συμμετρίας:</strong><br>
-      Αφού υπάρχει συμμετρία, υποθέτω ότι η λύση είναι συμμετρική:<br>
-      <strong>a = b = c</strong></p>
+      <p><strong>Επαγωγική Υπόθεση:</strong><br>
+      \[1^2 + 2^2 + \cdots + k^2 = \frac{k(k+1)(2k+1)}{6}\]</p>
       
-      <p><strong>Βήμα 3 - Απλοποίηση:</strong><br>
-      Αν a = b = c, τότε:<br>
-      abc = a³ = 8<br>
-      a = 2</p>
+      <p><strong>Επαγωγικό Βήμα (n=k+1):</strong></p>
       
-      <p>Άρα: a = b = c = 2</p>
+      <p>Θέλουμε:<br>
+      \[1^2 + 2^2 + \cdots + k^2 + (k+1)^2 = \frac{(k+1)(k+2)(2k+3)}{6}\]</p>
       
-      <p><strong>Βήμα 4 - Υπολογισμός:</strong><br>
-      S = a + b + c = 2 + 2 + 2 = <strong>6</strong></p>
+      <p>Αριστερό μέλος:<br>
+      \(\frac{k(k+1)(2k+1)}{6} + (k+1)^2\)</p>
       
-      <p><strong>Βήμα 5 - Επαλήθευση (AM-GM):</strong><br>
-      \(\frac{a+b+c}{3} \geq \sqrt[3]{abc}\)<br>
-      \(\frac{a+b+c}{3} \geq \sqrt[3]{8} = 2\)<br>
-      \(a+b+c \geq 6\)</p>
+      <p>Κοινός παρονομαστής:<br>
+      \(= \frac{k(k+1)(2k+1) + 6(k+1)^2}{6}\)<br>
+      \(= \frac{(k+1)[k(2k+1) + 6(k+1)]}{6}\)<br>
+      \(= \frac{(k+1)[2k^2 + k + 6k + 6]}{6}\)<br>
+      \(= \frac{(k+1)[2k^2 + 7k + 6]}{6}\)<br>
+      \(= \frac{(k+1)(k+2)(2k+3)}{6}\) ✓</p>
       
-      <p>Η ισότητα επιτυγχάνεται όταν a = b = c = 2! ✓</p>
+      <p>(Παραγοντοποίηση: 2k²+7k+6 = (k+2)(2k+3))</p>
       
-      <p><strong>Απάντηση:</strong> Το ελάχιστο είναι <strong>S = 6</strong> όταν a = b = c = 2.</p>
+      <p><strong>Συμπέρασμα:</strong> Ισχύει για κάθε n ≥ 1. ✓</p>
       
-      <p><strong>🔑 Κλειδί:</strong> Η συμμετρία μας έδειξε αμέσως τη λύση - χωρίς παραγώγους ή πολύπλοκους υπολογισμούς!</p>
+      <p><strong>🔑 Κλειδί:</strong> Η επαγωγή λειτουργεί και για πιο περίπλοκους τύπους!</p>
     </div>
   </div>
 
   <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
-  <div id="symmetry-advanced" class="level">
+  <div id="induction-advanced" class="level">
     <div class="problem">
       <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
-      <p>Σε ένα τρίγωνο ABC, έστω D, E, F τα μέσα των πλευρών BC, CA, AB αντίστοιχα.</p>
-      <p><strong>Να αποδείξετε ότι τα ευθύγραμμα τμήματα AD, BE, CF (διάμεσοι) τέμνονται σε ένα κοινό σημείο G που τις διαιρεί με λόγο 2:1.</strong></p>
+      <p>Να αποδείξετε ότι για κάθε φυσικό n ≥ 1:</p>
+      <p>\[3^n > 2^n + n^2\]</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('symmetry-adv-hint')">💡 Δείξε μου hint</button>
-    <div id="symmetry-adv-hint" class="hint">
-      <p><strong>Hint:</strong> Υπάρχει συμμετρία μεταξύ των 3 διαμέσων;</p>
-      <p><strong>Ερώτηση 1:</strong> Όλες οι διάμεσοι παίζουν τον ίδιο ρόλο;</p>
-      <p><strong>Ερώτηση 2:</strong> Αν μια διάμεσος χωρίζεται 2:1, τι θα περίμενες για τις άλλες;</p>
-      <p><strong>Ιδέα:</strong> Χρησιμοποίησε διανύσματα και συμμετρία!</p>
+    <button class="hint-btn" onclick="toggleHint('induction-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="induction-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Ανισότητα - πρόσεχε στο επαγωγικό βήμα!</p>
+      <p><strong>Βάση:</strong> n=1 → 3 > 2+1 → 3>3? ΟΧΙ! Δοκίμασε n=2</p>
+      <p><strong>Βήμα:</strong> Από 3^k > 2^k + k², δείξε 3^(k+1) > 2^(k+1) + (k+1)²</p>
+      <p><strong>Τεχνική:</strong> 3^(k+1) = 3·3^k > 3(2^k + k²)</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('symmetry-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="symmetry-adv-solution" class="solution">
-      <h4>Λύση με Συμμετρία:</h4>
+    <button class="hint-btn" onclick="toggleHint('induction-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="induction-adv-solution" class="solution">
+      <h4>Απόδειξη:</h4>
       
-      <p><strong>Συμμετρική Παρατήρηση:</strong><br>
-      Οι 3 διάμεσοι AD, BE, CF παίζουν <strong>συμμετρικό ρόλο</strong>.<br>
-      Δεν υπάρχει τίποτα που να κάνει μία διάμεσο "ξεχωριστή".</p>
+      <p><strong>Βάση:</strong> Ελέγχουμε για n=1:<br>
+      3¹ = 3, αλλά 2¹ + 1² = 3<br>
+      3 > 3? ΟΧΙ! ✗</p>
       
-      <p><strong>Υπόθεση από Συμμετρία:</strong><br>
-      Αφού όλες οι διάμεσοι είναι ίσες σε "δικαιώματα", αν τέμνονται, θα τις χωρίζουν με τον <strong>ίδιο λόγο</strong>.</p>
+      <p>Για n=2:<br>
+      3² = 9, και 2² + 2² = 8<br>
+      9 > 8 ✓</p>
       
-      <p><strong>Απόδειξη με Διανύσματα:</strong><br>
-      Έστω \(\vec{OA} = \vec{a}\), \(\vec{OB} = \vec{b}\), \(\vec{OC} = \vec{c}\)</p>
+      <p>Άρα η βάση είναι n₀ = 2.</p>
       
-      <p>Το μέσο D της BC:<br>
-      \(\vec{OD} = \frac{\vec{b} + \vec{c}}{2}\)</p>
+      <p><strong>Επαγωγική Υπόθεση:</strong><br>
+      \[3^k > 2^k + k^2\] για κάποιο k ≥ 2</p>
       
-      <p>Σημείο G στην AD με λόγο AG:GD = 2:1:<br>
-      \(\vec{OG} = \frac{1}{3}\vec{a} + \frac{2}{3} \cdot \frac{\vec{b}+\vec{c}}{2}\)<br>
-      \(= \frac{1}{3}\vec{a} + \frac{1}{3}\vec{b} + \frac{1}{3}\vec{c}\)<br>
-      \(= \frac{\vec{a} + \vec{b} + \vec{c}}{3}\)</p>
+      <p><strong>Επαγωγικό Βήμα (n=k+1):</strong></p>
       
-      <p><strong>Συμμετρική Παρατήρηση:</strong><br>
-      Το σημείο \(G = \frac{\vec{a} + \vec{b} + \vec{c}}{3}\) είναι <strong>πλήρως συμμετρικό</strong> στα A, B, C!</p>
+      <p>Θέλουμε: \(3^{k+1} > 2^{k+1} + (k+1)^2\)</p>
       
-      <p>Άρα το ίδιο σημείο G ανήκει και στις 3 διαμέσους, και τις χωρίζει όλες με λόγο 2:1! ✓</p>
+      <p>Αριστερό μέλος:<br>
+      \(3^{k+1} = 3 \cdot 3^k\)<br>
+      \(> 3(2^k + k^2)\) (επαγωγική υπόθεση)<br>
+      \(= 3 \cdot 2^k + 3k^2\)</p>
       
-      <p><strong>Απάντηση:</strong> Το κέντρο βάρους G = (A + B + C)/3 είναι το σημείο τομής των διαμέσων.</p>
+      <p>Αρκεί να δείξουμε:<br>
+      \(3 \cdot 2^k + 3k^2 > 2 \cdot 2^k + (k+1)^2\)<br>
+      \(2^k + 3k^2 > (k+1)^2\)<br>
+      \(2^k + 3k^2 > k^2 + 2k + 1\)<br>
+      \(2^k + 2k^2 > 2k + 1\)</p>
       
-      <p><strong>🔑 Κλειδί:</strong> Η συμμετρία μας έδωσε το G αμέσως - δεν χρειάστηκε να υπολογίσουμε ξεχωριστά κάθε διάμεσο!</p>
+      <p>Για k ≥ 2:<br>
+      • 2^k ≥ 4<br>
+      • 2k² ≥ 8<br>
+      • Άθροισμα ≥ 12</p>
+      
+      <p>Ενώ 2k + 1 ≤ 5 για k=2.</p>
+      
+      <p>Άρα ισχύει! ✓</p>
+      
+      <p><strong>Συμπέρασμα:</strong> \(3^n > 2^n + n^2\) για κάθε n ≥ 2. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Στις ανισότητες, πολλαπλασιάζουμε την υπόθεση και απλοποιούμε!</p>
     </div>
   </div>
 
@@ -484,22 +522,29 @@ body {
   <div class="mistakes">
     <h4>⚠️ Συχνά Λάθη:</h4>
     <ul>
-      <li><strong>Δεν αναγνωρίζεις τη συμμετρία:</strong> Ψάξε για ανταλλάξιμες μεταβλητές!</li>
-      <li><strong>Υποθέτεις συμμετρία που δεν υπάρχει:</strong> Όχι κάθε πρόβλημα είναι συμμετρικό - έλεγξε πρώτα!</li>
-      <li><strong>Ξεχνάς να επαληθεύσεις:</strong> Η συμμετρική λύση πρέπει να είναι και βέλτιστη</li>
-      <li><strong>Σπας τη συμμετρία χωρίς λόγο:</strong> Αν a=b λειτουργεί, μην τα κάνεις διαφορετικά!</li>
-      <li><strong>Παραβλέπεις μερική συμμετρία:</strong> Μερικές φορές μόνο 2 από 3 μεταβλητές είναι συμμετρικές</li>
+      <li><strong>Ξεχνάς τη βάση:</strong> Πρέπει ΠΑΝΤΑ να ελέγξεις την αρχική περίπτωση!</li>
+      <li><strong>Δεν χρησιμοποιείς την υπόθεση:</strong> Στο επαγωγικό βήμα ΠΡΕΠΕΙ να χρησιμοποιήσεις P(k)</li>
+      <li><strong>Υποθέτεις το ζητούμενο:</strong> Μην υποθέσεις P(k+1) - αυτό θέλεις να αποδείξεις!</li>
+      <li><strong>Λάθος βάση:</strong> Μερικές φορές η πρόταση ισχύει από n₀ > 1</li>
+      <li><strong>Ατελής απόδειξη:</strong> Πρέπει να ολοκληρώσεις και τα 3 βήματα!</li>
     </ul>
   </div>
 
   <!-- QUIZ -->
   <div class="quiz">
     <h4>🧠 Μικρό Quiz</h4>
-    <p><strong>Ερώτηση:</strong> Πότε ένα πρόβλημα έχει συμμετρία;</p>
-    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'a')">Όταν μπορείς να ανταλλάξεις μεταβλητές χωρίς να αλλάξει το πρόβλημα</button>
-    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'b')">Όταν όλοι οι αριθμοί είναι ίσοι</button>
-    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'c')">Όταν το πρόβλημα είναι εύκολο</button>
-    <div id="symmetry-quiz-result" class="quiz-result"></div>
+    <p><strong>Ερώτηση:</strong> Ποια είναι τα 3 βασικά βήματα της Μαθηματικής Επαγωγής;</p>
+    <button class="quiz-btn" onclick="checkQuiz('induction', 'a')">Βάση, Επαγωγική Υπόθεση, Επαγωγικό Βήμα</button>
+    <button class="quiz-btn" onclick="checkQuiz('induction', 'b')">Αρχή, Μέση, Τέλος</button>
+    <button class="quiz-btn" onclick="checkQuiz('induction', 'c')">Υπόθεση, Απόδειξη, Συμπέρασμα</button>
+    <div id="induction-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <div class="congrats">
+    <h3>🎉 Συγχαρητήρια! 🎉</h3>
+    <p>Ολοκλήρωσες και τις 12 στρατηγικές!</p>
+    <p style="margin-top: 15px;">Τώρα έχεις έναν πλήρη <strong>χάρτη</strong> για την επίλυση μαθηματικών προβλημάτων!</p>
+    <p style="margin-top: 10px; font-size: 1em;">Μην ξεχνάς: Η τέχνη δεν είναι να τις ξέρεις όλες,<br>αλλά να ξέρεις <strong>ποια</strong> να διαλέξεις <strong>πότε</strong>!</p>
   </div>
 
   <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
@@ -549,7 +594,7 @@ function toggleHint(hintId) {
 }
 
 const quizAnswers = {
-  'symmetry': 'a'
+  'induction': 'a'
 };
 
 function checkQuiz(strategy, answer) {
@@ -565,13 +610,13 @@ function checkQuiz(strategy, answer) {
     event.target.classList.add('correct');
     if (resultDiv) {
       resultDiv.className = 'quiz-result correct';
-      resultDiv.textContent = '✓ Σωστά! Η συμμετρία σημαίνει ανταλλαξιμότητα!';
+      resultDiv.textContent = '✓ Σωστά! Βάση → Υπόθεση → Βήμα!';
     }
   } else {
     event.target.classList.add('wrong');
     if (resultDiv) {
       resultDiv.className = 'quiz-result wrong';
-      resultDiv.textContent = '✗ Προσπάθησε ξανά! Σκέψου: τι σημαίνει "συμμετρία";';
+      resultDiv.textContent = '✗ Προσπάθησε ξανά! Ποια είναι η δομή της επαγωγής;';
     }
   }
 }
