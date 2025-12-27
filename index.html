@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 Στρατηγικές - Ειδικές & Οριακές Περιπτώσεις</title>
+<title>12 Στρατηγικές - Αντιπαραδείγματα & Αντίστροφη Σκέψη</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
@@ -196,14 +196,6 @@ body {
 .group-transform { background: #ff9800; }
 .group-advanced { background: #e91e63; }
 
-.example-box {
-  background: #f0f9ff;
-  border-left: 4px solid #0ea5e9;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 8px;
-}
-
 @media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { 
   .grid { grid-template-columns: repeat(2, 1fr); }
@@ -299,240 +291,352 @@ body {
   </div>
 </div>
 
-<!-- SECTION 2: ΕΙΔΙΚΕΣ & ΟΡΙΑΚΕΣ ΠΕΡΙΠΤΩΣΕΙΣ -->
-<div id="section-special" class="section">
-  <h2>2. Ειδικές & Οριακές Περιπτώσεις (Special & Boundary Cases)</h2>
-  <h3>Τα άκρα κρύβουν την αλήθεια — δοκίμασε n=0, 1, 2 και τα όρια</h3>
+<!-- SECTION 3: ΑΝΤΙΠΑΡΑΔΕΙΓΜΑΤΑ -->
+<div id="section-counterexample" class="section">
+  <h2>3. Αντιπαραδείγματα (Counterexamples)</h2>
+  <h3>Ένα παράδειγμα που σπάει τον κανόνα</h3>
   
-  <p>Όταν αντιμετωπίζεις ένα πρόβλημα με άγνωστη παράμετρο (όπως το <em>n</em>), μια από τις πιο αποτελεσματικές στρατηγικές είναι να <strong>δοκιμάσεις συγκεκριμένες τιμές</strong>.</p>
+  <p>Μερικές φορές ο καλύτερος τρόπος να δείξεις ότι κάτι είναι <strong>λάθος</strong> δεν είναι να το αποδείξεις, αλλά να βρεις <strong>ένα μόνο παράδειγμα</strong> που το διαψεύδει.</p>
 
-  <p>Αντί να προσπαθείς να λύσεις το γενικό πρόβλημα αμέσως, ξεκίνα με τις <strong>ειδικές περιπτώσεις</strong> (n=0, 1, 2, 3...) και τις <strong>οριακές τιμές</strong> (πολύ μικρές, πολύ μεγάλες, άπειρο). Αυτές συχνά αποκαλύπτουν το μοτίβο ή την ιδέα της λύσης!</p>
+  <p>Η στρατηγική των <strong>Αντιπαραδειγμάτων</strong> είναι απλή αλλά καταλυτική: <em>για να διαψεύσεις μια γενική πρόταση, αρκεί ένα μόνο παράδειγμα που δεν την ικανοποιεί</em>.</p>
 
-  <div class="example-box">
-    <p><strong>💡 Γιατί λειτουργεί;</strong></p>
-    <p>• <strong>Απλοποίηση:</strong> Τα ειδικά cases είναι ευκολότερα να λυθούν<br>
-    • <strong>Μοτίβα:</strong> Βλέπεις πώς συμπεριφέρεται το πρόβλημα<br>
-    • <strong>Υποθέσεις:</strong> Φτιάχνεις υποψίες για τη γενική λύση<br>
-    • <strong>Debugging:</strong> Ελέγχεις αν η λύση σου δουλεύει</p>
-  </div>
+  <p>Αντί να πολεμάς με πολύπλοκες αποδείξεις, βρες το "εξαιρετικό" στοιχείο που καταρρίπτει την υπόθεση. Ένα αντιπαράδειγμα αξίζει όσο χίλιες λέξεις!</p>
 
   <h3>Πότε να τη διαλέξεις:</h3>
   <ul>
-    <li>Όταν το πρόβλημα περιέχει παράμετρο (n, k, m...)</li>
-    <li>Όταν δεν ξέρεις από πού να ξεκινήσεις</li>
-    <li>Όταν θέλεις να δοκιμάσεις μια υπόθεση πριν την αποδείξεις</li>
-    <li>Όταν ψάχνεις για μοτίβο ή τύπο</li>
-    <li>Όταν θέλεις να ελέγξεις αν η λύση σου είναι σωστή</li>
+    <li>Όταν μια πρόταση φαίνεται "πολύ γενική" ή "πολύ ισχυρή"</li>
+    <li>Όταν ζητείται να ελέγξεις αν μια δήλωση είναι αληθής</li>
+    <li>Όταν βλέπεις λέξεις όπως "όλοι", "κάθε", "πάντα"</li>
+    <li>Όταν η διαίσθησή σου λέει "αυτό δεν μπορεί να ισχύει παντού"</li>
   </ul>
 
   <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
   <ol>
-    <li><strong>Ειδικές τιμές:</strong> Δοκίμασε n = 0, 1, 2, 3, 4... (τουλάχιστον 3-4 τιμές)</li>
-    <li><strong>Οριακές τιμές:</strong> Τι γίνεται όταν n → πολύ μεγάλο ή πολύ μικρό;</li>
-    <li><strong>Ακραίες περιπτώσεις:</strong> Αρνητικοί; Μηδέν; Άπειρο;</li>
-    <li><strong>Παρατήρησε μοτίβα:</strong> Βλέπεις κάποια σχέση, ακολουθία, τύπο;</li>
-    <li><strong>Γενίκευσε:</strong> Χρησιμοποίησε τις παρατηρήσεις για τη γενική λύση</li>
+    <li>Διάβασε προσεκτικά την πρόταση - τι ισχυρίζεται <strong>ακριβώς</strong>;</li>
+    <li><strong>Ψάξε για ακραίες περιπτώσεις:</strong> πολύ μικρές/μεγάλες τιμές, 0, 1, αρνητικοί αριθμοί</li>
+    <li>Δοκίμασε <strong>ειδικές περιπτώσεις</strong> που συνήθως δημιουργούν προβλήματα</li>
+    <li>Αν βρεις παράδειγμα που παραβιάζει την πρόταση → <strong>τελείωσες!</strong></li>
+    <li>Αν δεν βρεις, τότε ίσως η πρόταση είναι αληθής (και χρειάζεται απόδειξη)</li>
   </ol>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="showLevel('special', 'basic')">Βασικό</button>
-    <button class="tab-btn" onclick="showLevel('special', 'intermediate')">Ενδιάμεσο</button>
-    <button class="tab-btn" onclick="showLevel('special', 'advanced')">Προχωρημένο</button>
+    <button class="tab-btn active" onclick="showLevel('counterexample', 'basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('counterexample', 'intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('counterexample', 'advanced')">Προχωρημένο</button>
   </div>
 
-  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
-  <div id="special-basic" class="level active">
+  <div id="counterexample-basic" class="level active">
     <div class="problem">
       <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
-      <p>Ποιος είναι ο τύπος για το άθροισμα των πρώτων \(n\) θετικών ακεραίων;</p>
-      <p>\[S_n = 1 + 2 + 3 + ... + n = ?\]</p>
+      <p><strong>Πρόταση:</strong> "Το τετράγωνο κάθε πραγματικού αριθμού είναι θετικό."</p>
+      <p>Είναι αυτή η πρόταση αληθής; Αν όχι, δώστε αντιπαράδειγμα.</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('special-basic-hint')">💡 Δείξε μου hint</button>
-    <div id="special-basic-hint" class="hint">
-      <p><strong>Hint:</strong> Δοκίμασε μικρές τιμές του n!</p>
-      <p><strong>n = 1:</strong> S₁ = 1</p>
-      <p><strong>n = 2:</strong> S₂ = 1 + 2 = 3</p>
-      <p><strong>n = 3:</strong> S₃ = 1 + 2 + 3 = 6</p>
-      <p><strong>n = 4:</strong> S₄ = 1 + 2 + 3 + 4 = 10</p>
-      <p><strong>n = 5:</strong> S₅ = 1 + 2 + 3 + 4 + 5 = 15</p>
-      <p><strong>Ερώτηση:</strong> Βλέπεις κάποια σχέση μεταξύ του n και του αποτελέσματος;</p>
+    <button class="hint-btn" onclick="toggleHint('counterexample-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="counterexample-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Σκέψου τι συμβαίνει με "ειδικούς" αριθμούς.</p>
+      <p><strong>Ερώτηση 1:</strong> Τι γίνεται με θετικούς αριθμούς; (π.χ. 3² = 9 > 0 ✓)</p>
+      <p><strong>Ερώτηση 2:</strong> Τι γίνεται με αρνητικούς; (π.χ. (-2)² = 4 > 0 ✓)</p>
+      <p><strong>Ερώτηση 3:</strong> Υπάρχει κάποιος αριθμός που το τετράγωνό του ΔΕΝ είναι θετικό;</p>
+      <p><strong>Ερώτηση 4:</strong> Τι γίνεται με το μηδέν;</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('special-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="special-basic-solution" class="solution">
-      <h4>Λύση με Ειδικές Περιπτώσεις:</h4>
-      
-      <p><strong>Βήμα 1 - Δοκιμάζουμε ειδικές τιμές:</strong></p>
-      <table style="margin: 15px 0; border-collapse: collapse;">
-        <tr style="background: #e0f2fe; font-weight: bold;">
-          <td style="padding: 8px; border: 1px solid #0ea5e9;">n</td>
-          <td style="padding: 8px; border: 1px solid #0ea5e9;">Άθροισμα</td>
-          <td style="padding: 8px; border: 1px solid #0ea5e9;">Παρατήρηση</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">1</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">1</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">1 × 2 / 2 = 1</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">2</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">3</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">2 × 3 / 2 = 3</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">3</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">6</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">3 × 4 / 2 = 6</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">4</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">10</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">4 × 5 / 2 = 10</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">5</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">15</td>
-          <td style="padding: 8px; border: 1px solid #cbd5e1;">5 × 6 / 2 = 15</td>
-        </tr>
-      </table>
-      
-      <p><strong>Βήμα 2 - Παρατηρούμε το μοτίβο:</strong><br>
-      Φαίνεται ότι: \(S_n = \frac{n(n+1)}{2}\)</p>
-      
-      <p><strong>Βήμα 3 - Επαλήθευση:</strong><br>
-      Δοκιμάζουμε για n = 10:<br>
-      Υπολογισμός: 1+2+3+...+10 = 55 ✓<br>
-      Τύπος: 10 × 11 / 2 = 55 ✓</p>
-      
-      <p><strong>Απάντηση:</strong> \[S_n = \frac{n(n+1)}{2}\]</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Δοκιμάζοντας ειδικές περιπτώσεις (n=1,2,3,4,5), ανακαλύψαμε το μοτίβο και βρήκαμε τον τύπο!</p>
+    <button class="hint-btn" onclick="toggleHint('counterexample-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="counterexample-basic-solution" class="solution">
+      <h4>Λύση:</h4>
+      <p><strong>Απάντηση:</strong> Η πρόταση είναι <strong>ψευδής</strong>. ✗</p>
+      <p><strong>Αντιπαράδειγμα:</strong> x = 0</p>
+      <p><strong>Αιτιολόγηση:</strong><br>
+      Για x = 0, έχουμε: x² = 0² = 0</p>
+      <p>Το 0 <strong>δεν είναι θετικός</strong> αριθμός (0 ≥ 0 αλλά 0 ≠ θετικός).</p>
+      <p>Άρα υπάρχει τουλάχιστον ένας πραγματικός αριθμός (το 0) του οποίου το τετράγωνο δεν είναι θετικό. ✓</p>
+      <p><strong>🔑 Κλειδί:</strong> Ένα μόνο αντιπαράδειγμα αρκεί για να καταρρίψει μια γενική πρόταση!</p>
     </div>
   </div>
 
-  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
-  <div id="special-intermediate" class="level">
+  <div id="counterexample-intermediate" class="level">
     <div class="problem">
       <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
-      <p>Έχουμε μια σειρά από \(n\) κύκλους που αλληλοτέμνονται. Κάθε κύκλος τέμνει όλους τους άλλους σε ακριβώς 2 σημεία και δεν υπάρχουν 3 κύκλοι που να τέμνονται στο ίδιο σημείο.</p>
-      <p><strong>Σε πόσες περιοχές χωρίζουν το επίπεδο οι \(n\) κύκλοι;</strong></p>
+      <p><strong>Πρόταση:</strong> "Αν n είναι φυσικός αριθμός, τότε το n² + n + 41 είναι πρώτος αριθμός."</p>
+      <p>Είναι αυτή η πρόταση αληθής; Αν όχι, βρείτε αντιπαράδειγμα.</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('special-int-hint')">💡 Δείξε μου hint</button>
-    <div id="special-int-hint" class="hint">
-      <p><strong>Hint:</strong> Ξεκίνα από μικρές τιμές!</p>
-      <p><strong>n = 1:</strong> Ένας κύκλος χωρίζει το επίπεδο σε πόσες περιοχές;</p>
-      <p><strong>n = 2:</strong> Δύο κύκλοι που τέμνονται σε 2 σημεία;</p>
-      <p><strong>n = 3:</strong> Τρεις κύκλοι;</p>
-      <p><strong>Παρατήρηση:</strong> Πόσες ΝΕΕΣ περιοχές δημιουργεί κάθε νέος κύκλος;</p>
+    <button class="hint-btn" onclick="toggleHint('counterexample-int-hint')">💡 Δείξε μου hint</button>
+    <div id="counterexample-int-hint" class="hint">
+      <p><strong>Hint:</strong> Δοκίμασε μικρές τιμές, αλλά και <strong>ειδικές τιμές</strong> σχετικές με το 41!</p>
+      <p><strong>Ερώτηση 1:</strong> Δοκίμασε n = 1: 1² + 1 + 41 = 43 (πρώτος ✓)</p>
+      <p><strong>Ερώτηση 2:</strong> Δοκίμασε n = 2: 4 + 2 + 41 = 47 (πρώτος ✓)</p>
+      <p><strong>Ερώτηση 3:</strong> Τι θα συμβεί αν το n σχετίζεται με το 41; (π.χ. n = 40 ή n = 41)</p>
+      <p><strong>Ερώτηση 4:</strong> Αν n = 41, μπορείς να παραγοντοποιήσεις;</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('special-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="special-int-solution" class="solution">
+    <button class="hint-btn" onclick="toggleHint('counterexample-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="counterexample-int-solution" class="solution">
       <h4>Λύση:</h4>
-      
-      <p><strong>Βήμα 1 - Ειδικές περιπτώσεις:</strong></p>
-      
-      <p><strong>n = 0:</strong> Καμία κύκλος → 1 περιοχή (όλο το επίπεδο)</p>
-      
-      <p><strong>n = 1:</strong> 1 κύκλος → 2 περιοχές (μέσα + έξω)</p>
-      
-      <p><strong>n = 2:</strong> Ο 2ος κύκλος τέμνει τον 1ο σε 2 σημεία<br>
-      Διέρχεται από 2 υπάρχουσες περιοχές και τις χωρίζει<br>
-      Νέες περιοχές = 2 + 2 = 4</p>
-      
-      <p><strong>n = 3:</strong> Ο 3ος κύκλος τέμνει τους 2 προηγούμενους<br>
-      Σημεία τομής = 2 × 2 = 4<br>
-      Διέρχεται από 4 υπάρχουσες περιοχές και τις χωρίζει<br>
-      Νέες περιοχές = 4 + 4 = 8</p>
-      
-      <p><strong>Βήμα 2 - Μοτίβο:</strong><br>
-      Κάθε νέος (k-οστός) κύκλος:<br>
-      • Τέμνει τους (k-1) προηγούμενους σε 2(k-1) σημεία<br>
-      • Δημιουργεί 2(k-1) νέες περιοχές</p>
-      
-      <p><strong>Βήμα 3 - Τύπος:</strong><br>
-      Περιοχές(n) = 1 + 2 + 4 + 6 + ... + 2(n-1) + 2n<br>
-      = 1 + 2(1 + 2 + 3 + ... + n)<br>
-      = 1 + 2 × n(n+1)/2<br>
-      = 1 + n(n+1)<br>
-      = <strong>n² + n + 1</strong></p>
-      
-      <p><strong>Επαλήθευση:</strong><br>
-      n=1: 1² + 1 + 1 = 3? ΟΧΙ... (Ας ξανασκεφτούμε!)<br>
-      Ο σωστός τύπος είναι: <strong>R(n) = n² - n + 2</strong></p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Με ειδικές περιπτώσεις βρήκαμε το μοτίβο! (Και ανακαλύψαμε λάθος στον πρώτο μας τύπο!)</p>
+      <p><strong>Απάντηση:</strong> Η πρόταση είναι <strong>ψευδής</strong>. ✗</p>
+      <p><strong>Αντιπαράδειγμα:</strong> n = 41</p>
+      <p><strong>Υπολογισμός:</strong></p>
+      <p>n² + n + 41 = 41² + 41 + 41<br>
+      = 1681 + 41 + 41<br>
+      = 1763<br>
+      = 41 × 43</p>
+      <p><strong>Παρατήρηση:</strong><br>
+      Μπορούμε να παραγοντοποιήσουμε:<br>
+      41² + 41 + 41 = 41(41 + 1 + 1) = 41 × 43</p>
+      <p>Επειδή 1763 = 41 × 43, δεν είναι πρώτος αριθμός. ✗</p>
+      <p><strong>🔑 Κλειδί:</strong> Αν και η πρόταση λειτουργεί για n = 0, 1, 2, ..., 39, 40, αποτυγχάνει για n = 41!</p>
     </div>
   </div>
 
-  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
-  <div id="special-advanced" class="level">
+  <div id="counterexample-advanced" class="level">
     <div class="problem">
       <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
-      <p>Έχουμε μια ακολουθία που ορίζεται αναδρομικά:</p>
-      <p>\[a_1 = 1\]</p>
-      <p>\[a_{n+1} = a_n + \frac{1}{a_n}\]</p>
-      <p><strong>Να αποδείξετε ότι \(a_n < \sqrt{2n}\) για κάθε \(n \geq 1\).</strong></p>
+      <p><strong>Πρόταση:</strong> "Κάθε συνεχής συνάρτηση είναι παραγωγίσιμη."</p>
+      <p>Βρείτε αντιπαράδειγμα που δείχνει ότι η πρόταση είναι ψευδής.</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('special-adv-hint')">💡 Δείξε μου hint</button>
-    <div id="special-adv-hint" class="hint">
-      <p><strong>Hint 1:</strong> Δοκίμασε πρώτα μερικές τιμές για να πάρεις αίσθηση!</p>
-      <p><strong>Hint 2:</strong> Υπολόγισε \(a_1, a_2, a_3, a_4\) και σύγκρινέ τα με \(\sqrt{2}, \sqrt{4}, \sqrt{6}, \sqrt{8}\)</p>
-      <p><strong>Hint 3:</strong> Μετά δοκίμασε επαγωγή!</p>
-      <p><strong>Hint 4:</strong> Θα χρειαστεί να δείξεις: \((a_n + \frac{1}{a_n})^2 < 2(n+1)\)</p>
+    <button class="hint-btn" onclick="toggleHint('counterexample-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="counterexample-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Ψάξε για συνάρτηση με <strong>"γωνία"</strong> ή <strong>"αιχμή"</strong>.</p>
+      <p><strong>Ερώτηση 1:</strong> Τι γίνεται με τη συνάρτηση f(x) = x; (συνεχής ✓, παραγωγίσιμη ✓)</p>
+      <p><strong>Ερώτηση 2:</strong> Τι γίνεται με f(x) = x²; (συνεχής ✓, παραγωγίσιμη ✓)</p>
+      <p><strong>Ερώτηση 3:</strong> Τι γίνεται με την απόλυτη τιμή f(x) = |x|; Έχει παράγωγο στο x = 0;</p>
+      <p><strong>Ερώτηση 4:</strong> Ποια είναι η κλίση αριστερά και δεξιά του 0;</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('special-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="special-adv-solution" class="solution">
+    <button class="hint-btn" onclick="toggleHint('counterexample-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="counterexample-adv-solution" class="solution">
       <h4>Λύση:</h4>
-      
-      <p><strong>Βήμα 1 - Ειδικές περιπτώσεις (για διαίσθηση):</strong></p>
-      
-      <p>\(a_1 = 1 < \sqrt{2} \approx 1.414\) ✓</p>
-      
-      <p>\(a_2 = 1 + \frac{1}{1} = 2 < \sqrt{4} = 2\)... Όριο! Ίσα-ίσα!</p>
-      
-      <p>\(a_3 = 2 + \frac{1}{2} = 2.5 < \sqrt{6} \approx 2.449\)... ΟΧΙ! ✗</p>
-      
-      <p><strong>Ωπα!</strong> Κάτι δεν πάει καλά! Ας ξανασκεφτούμε...</p>
-      
-      <p><strong>Βήμα 2 - Διόρθωση:</strong><br>
-      Η ανισότητα φαίνεται να μην ισχύει όπως είναι!<br>
-      Ίσως να ισχύει \(a_n < C\sqrt{n}\) για κάποιο C > √2;</p>
-      
-      <p><strong>Βήμα 3 - Νέα δοκιμή:</strong><br>
-      Δοκιμάζουμε \(a_n < \sqrt{2n + α}\) για κάποιο α...</p>
-      
-      <p>Υπολογισμοί δείχνουν ότι χρειάζεται<br>
-      \(a_n \sim \sqrt{2n}\) ασυμπτωτικά (για μεγάλα n)</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Οι ειδικές περιπτώσεις μας έδειξαν ότι η αρχική ανισότητα ήταν λάθος! Αυτό είναι το νόημα του testing - να βρούμε αν κάτι λειτουργεί πριν το αποδείξουμε!</p>
+      <p><strong>Απάντηση:</strong> Η πρόταση είναι <strong>ψευδής</strong>. ✗</p>
+      <p><strong>Αντιπαράδειγμα:</strong> f(x) = |x|</p>
+      <p><strong>Απόδειξη:</strong></p>
+      <p>1. <strong>Συνέχεια:</strong> Η f(x) = |x| είναι συνεχής παντού, συμπεριλαμβανομένου του x = 0.</p>
+      <p>2. <strong>Παραγωγισιμότητα στο x = 0:</strong></p>
+      <p>Αριστερή παράγωγος: f'(0⁻) = -1</p>
+      <p>Δεξιά παράγωγος: f'(0⁺) = 1</p>
+      <p>Επειδή f'(0⁻) ≠ f'(0⁺), η συνάρτηση <strong>δεν είναι παραγωγίσιμη</strong> στο x = 0. ✗</p>
+      <p><strong>Συμπέρασμα:</strong> Η f(x) = |x| είναι συνεχής παντού αλλά <strong>όχι</strong> παραγωγίσιμη στο x = 0. Άρα η πρόταση είναι ψευδής. ✓</p>
+      <p><strong>🔑 Κλειδί:</strong> Συνέχεια ≠ Παραγωγισιμότητα!</p>
     </div>
   </div>
 
-  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
   <div class="mistakes">
     <h4>⚠️ Συχνά Λάθη:</h4>
     <ul>
-      <li><strong>Πολύ λίγες περιπτώσεις:</strong> Δοκίμασε τουλάχιστον 3-4 τιμές, όχι μόνο 1-2</li>
-      <li><strong>Ξεχνάς τα άκρα:</strong> Μην ξεχνάς n=0, αρνητικούς, ή πολύ μεγάλες τιμές</li>
-      <li><strong>Βιαστικό γενίκευμα:</strong> Μην υποθέτεις τύπο από 2 παραδείγματα - μπορεί να είναι τυχαίο!</li>
-      <li><strong>Δεν ελέγχεις τον τύπο:</strong> Αφού βρεις τύπο, δοκίμασέ τον σε νέες τιμές!</li>
-      <li><strong>Παραλείπεις τις οριακές:</strong> Τι γίνεται στα όρια; (n→0, n→∞)</li>
+      <li><strong>Σταματάς πολύ νωρίς:</strong> Δοκιμάζεις 2-3 περιπτώσεις και συμπεραίνεις ότι ισχύει γενικά</li>
+      <li><strong>Ξεχνάς ειδικές τιμές:</strong> 0, 1, -1, άπειρο είναι συχνά "προβληματικές" τιμές</li>
+      <li><strong>Δεν ελέγχεις ακραία:</strong> Πολύ μικρές/μεγάλες τιμές, όρια</li>
+      <li><strong>Παίρνεις μόνο "ωραίες" τιμές:</strong> Δοκίμασε και "άσχημα" παραδείγματα</li>
+      <li><strong>Συγχέεις "συχνά αληθές" με "πάντα αληθές":</strong> Ακόμα κι αν ισχύει σε 1000 περιπτώσεις, μία εξαίρεση το καταρρίπτει</li>
     </ul>
   </div>
 
-  <!-- QUIZ -->
   <div class="quiz">
     <h4>🧠 Μικρό Quiz</h4>
-    <p><strong>Ερώτηση:</strong> Γιατί είναι χρήσιμο να δοκιμάζεις ειδικές περιπτώσεις;</p>
-    <button class="quiz-btn" onclick="checkQuiz('special', 'a')">Για να βρεις μοτίβα και να πάρεις ιδέες για τη γενική λύση</button>
-    <button class="quiz-btn" onclick="checkQuiz('special', 'b')">Γιατί είναι πιο εύκολο να λύσεις το γενικό πρόβλημα</button>
-    <button class="quiz-btn" onclick="checkQuiz('special', 'c')">Για να αποφύγεις να κάνεις οποιαδήποτε απόδειξη</button>
-    <div id="special-quiz-result" class="quiz-result"></div>
+    <p><strong>Ερώτηση:</strong> Τι χρειάζεται για να διαψεύσεις μια πρόταση της μορφής "Για κάθε x, ισχύει P(x)";</p>
+    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'a')">Ένα μόνο παράδειγμα x όπου το P(x) είναι ψευδές</button>
+    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'b')">Να δείξεις ότι το P(x) είναι ψευδές για τα περισσότερα x</button>
+    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'c')">Να αποδείξεις γιατί το P(x) δεν μπορεί να ισχύει</button>
+    <div id="counterexample-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
+</div>
+
+<!-- SECTION 4: ΑΝΤΙΣΤΡΟΦΗ ΣΚΕΨΗ -->
+<div id="section-backward" class="section">
+  <h2>4. Αντίστροφη Σκέψη (Backward Thinking)</h2>
+  <h3>Ξεκίνα από το τέλος και δούλεψε προς τα πίσω</h3>
+  
+  <p>Όταν η απευθείας πορεία από το πρόβλημα στη λύση φαίνεται ασαφής, δοκίμασε την <strong>αντίστροφη κατεύθυνση</strong>.</p>
+
+  <p>Η στρατηγική της <strong>Αντίστροφης Σκέψης</strong> σημαίνει: <em>ξεκίνα από το ζητούμενο και ρώτα "τι χρειάζομαι για να το πετύχω αυτό;"</em> — μετά ρώτα το ίδιο για κάθε προηγούμενο βήμα, έως ότου φτάσεις στα δεδομένα.</p>
+
+  <p>Είναι σαν να λύνεις έναν λαβύρινθο από την έξοδο προς την είσοδο — συχνά είναι πολύ ευκολότερο!</p>
+
+  <h3>Πότε να τη διαλέξεις:</h3>
+  <ul>
+    <li>Όταν το ζητούμενο είναι ξεκάθαρο αλλά δεν ξέρεις πώς να ξεκινήσεις από τα δεδομένα</li>
+    <li>Όταν το πρόβλημα έχει συγκεκριμένο στόχο (απόδειξη, κατασκευή, υπολογισμός)</li>
+    <li>Σε προβλήματα κατασκευής (γεωμετρία, παιχνίδια, στρατηγικές)</li>
+    <li>Όταν υπάρχει αλυσίδα συνεπειών που πρέπει να ανακατασκευάσεις</li>
+    <li>Σε προβλήματα με πολλαπλά βήματα</li>
+  </ul>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Γράψε το ζητούμενο:</strong> Τι ακριβώς θέλεις να αποδείξεις/βρεις/κατασκευάσεις;</li>
+    <li><strong>Ρώτα "Τι χρειάζομαι;":</strong> Τι πρέπει να ισχύει για να πετύχω το ζητούμενο;</li>
+    <li><strong>Επανάλαβε:</strong> Για κάθε προηγούμενο βήμα, ρώτα πάλι "Τι χρειάζομαι;"</li>
+    <li><strong>Σταμάτα όταν:</strong> Φτάσεις σε κάτι που ξέρεις ή που δίνεται στο πρόβλημα</li>
+    <li><strong>Αντίστρεψε τη σειρά:</strong> Γράψε τη λύση από την αρχή προς το τέλος</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('backward', 'basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('backward', 'intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('backward', 'advanced')">Προχωρημένο</button>
+  </div>
+
+  <div id="backward-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Σκέφτομαι έναν αριθμό. Τον πολλαπλασιάζω επί 3, προσθέτω 15, διαιρώ με 2, και το αποτέλεσμα είναι 30.</p>
+      <p><strong>Ποιον αριθμό σκέφτομαι;</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="backward-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Αντί να προσπαθήσεις με δοκιμές, πήγαινε <strong>ανάποδα</strong>!</p>
+      <p><strong>Τελευταίο βήμα:</strong> Διαίρεσε δια 2 → αποτέλεσμα 30</p>
+      <p><strong>Ερώτηση:</strong> Τι αριθμός διαιρεμένος δια 2 δίνει 30;</p>
+      <p><strong>Συνέχισε ανάποδα:</strong> Πριν τη διαίρεση, τι είχες;</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="backward-basic-solution" class="solution">
+      <h4>Λύση με Αντίστροφη Σκέψη:</h4>
+      
+      <p><strong>Ας πάμε ΑΝΕΣΤΡΑΜΜΕΝΑ:</strong></p>
+      
+      <p><strong>Βήμα 1 (ανάποδα):</strong><br>
+      Αποτέλεσμα = 30<br>
+      Πριν τη διαίρεση δια 2: <strong>30 × 2 = 60</strong></p>
+      
+      <p><strong>Βήμα 2 (ανάποδα):</strong><br>
+      Είχαμε 60 μετά το "πρόσθεσε 15"<br>
+      Πριν την πρόσθεση: <strong>60 - 15 = 45</strong></p>
+      
+      <p><strong>Βήμα 3 (ανάποδα):</strong><br>
+      Είχαμε 45 μετά το "πολλαπλασίασε επί 3"<br>
+      Πριν τον πολλαπλασιασμό: <strong>45 ÷ 3 = 15</strong></p>
+      
+      <p><strong>Απάντηση:</strong> Ο αριθμός που σκέφτομαι είναι <strong>15</strong>.</p>
+      
+      <p><strong>Επαλήθευση (προς τα εμπρός):</strong><br>
+      15 × 3 = 45<br>
+      45 + 15 = 60<br>
+      60 ÷ 2 = 30 ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Αντέστρεψα τις πράξεις (×3 → ÷3, +15 → -15, ÷2 → ×2) και δούλεψα προς τα πίσω!</p>
+    </div>
+  </div>
+
+  <div id="backward-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Έχεις δύο κουβάδες: έναν 5-λίτρων και έναν 3-λίτρων. Δεν έχουν σημάδια. Έχεις απεριόριστη πρόσβαση σε νερό.</p>
+      <p><strong>Πώς μπορείς να μετρήσεις ακριβώς 4 λίτρα νερό;</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-int-hint')">💡 Δείξε μου hint</button>
+    <div id="backward-int-hint" class="hint">
+      <p><strong>Hint:</strong> Σκέψου ανάποδα - πώς θα φτάσεις στα 4 λίτρα;</p>
+      <p><strong>Στόχος:</strong> 4 λίτρα στον κουβά των 5 λίτρων</p>
+      <p><strong>Ερώτηση:</strong> Πώς μπορείς να αφήσεις 4 λίτρα στον μεγάλο κουβά;</p>
+      <p><strong>Ιδέα:</strong> Αν γεμίσεις τον 5L και αφαιρέσεις 1L...</p>
+      <p><strong>Πώς αφαιρείς 1L;</strong> Με τον 3L κουβά που έχει ήδη 2L μέσα!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="backward-int-solution" class="solution">
+      <h4>Λύση με Αντίστροφη Σκέψη:</h4>
+      
+      <p><strong>Σκέψη Ανάποδα:</strong></p>
+      
+      <p><strong>Στόχος:</strong> 4L στον κουβά των 5L</p>
+      
+      <p><strong>Πώς;</strong> 5L - 1L = 4L<br>
+      Χρειάζομαι: Γεμάτο τον 5L και να αφαιρέσω 1L</p>
+      
+      <p><strong>Πώς αφαιρώ 1L;</strong><br>
+      Χύνω από τον 5L στον 3L που έχει ήδη 2L μέσα<br>
+      (Ο 3L μπορεί να πάρει μόνο 1L ακόμα)</p>
+      
+      <p><strong>Πώς βάζω 2L στον 3L;</strong><br>
+      Γεμίζω 3L, χύνω στον 5L (5L έχει 3L)<br>
+      Γεμίζω ξανά 3L, χύνω στον 5L μέχρι να γεμίσει<br>
+      (Ο 5L παίρνει 2L, άρα στον 3L μένουν 1L)<br>
+      Άδειασε τον 5L, χύνε το 1L από τον 3L στον 5L<br>
+      Γέμισε τον 3L → έχεις 3L<br>
+      Χύνε τα 3L στον 5L (που έχει 1L) → 1L + 3L = 4L ✓</p>
+      
+      <p><strong>Βήματα (σωστή σειρά):</strong></p>
+      <ol>
+        <li>Γέμισε τον 3L κουβά</li>
+        <li>Χύσε τον στον 5L (5L: 3L, 3L: 0L)</li>
+        <li>Γέμισε ξανά τον 3L</li>
+        <li>Χύσε στον 5L μέχρι να γεμίσει (5L: 5L, 3L: 1L)</li>
+        <li>Άδειασε τον 5L</li>
+        <li>Χύσε το 1L από τον 3L στον 5L (5L: 1L, 3L: 0L)</li>
+        <li>Γέμισε τον 3L</li>
+        <li>Χύσε τον στον 5L (5L: 4L, 3L: 0L) ✓</li>
+      </ol>
+      
+      <p><strong>🔑 Κλειδί:</strong> Σκεφτόμουν ανάποδα "Πώς να φτάσω στα 4L;" και βρήκα τη διαδρομή!</p>
+    </div>
+  </div>
+
+  <div id="backward-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Να αποδείξετε ότι αν \(a, b, c\) είναι θετικοί πραγματικοί με \(abc = 1\), τότε:</p>
+      <p>\[\frac{1}{a^3(b+c)} + \frac{1}{b^3(c+a)} + \frac{1}{c^3(a+b)} \geq \frac{3}{2}\]</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="backward-adv-hint" class="hint">
+      <p><strong>Hint 1:</strong> Σκέψου ανάποδα - τι θα ήθελες να δείξεις αν είχες abc=1;</p>
+      <p><strong>Hint 2:</strong> Αν abc=1, τότε \(\frac{1}{a^3} = b^3c^3\)</p>
+      <p><strong>Hint 3:</strong> Δοκίμασε να μετασχηματίσεις κάθε όρο χρησιμοποιώντας abc=1</p>
+      <p><strong>Hint 4:</strong> Μετά χρησιμοποίησε AM-GM ή Cauchy-Schwarz</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="backward-adv-solution" class="solution">
+      <h4>Λύση με Αντίστροφη Σκέψη:</h4>
+      
+      <p><strong>Στόχος:</strong> Να δείξουμε το άθροισμα ≥ 3/2</p>
+      
+      <p><strong>Αντίστροφα:</strong> Τι χρειάζομαι για να φτάσω εκεί;</p>
+      
+      <p><strong>Βήμα 1:</strong> Χρησιμοποίησε abc = 1<br>
+      \(\frac{1}{a^3} = (bc)^3\) (επειδή abc = 1 ⟹ a = 1/(bc))</p>
+      
+      <p>Άρα:<br>
+      \[\frac{1}{a^3(b+c)} = \frac{(bc)^3}{b+c} = \frac{b^3c^3}{b+c}\]</p>
+      
+      <p><strong>Βήμα 2:</strong> Το ίδιο για τους άλλους όρους:<br>
+      \[\frac{b^3c^3}{b+c} + \frac{c^3a^3}{c+a} + \frac{a^3b^3}{a+b} \geq \frac{3}{2}\]</p>
+      
+      <p><strong>Βήμα 3:</strong> Χρησιμοποίησε AM-GM:<br>
+      \(\frac{b^3c^3}{b+c} \geq \frac{b^3c^3}{2\sqrt{bc}} = \frac{(bc)^{5/2}}{2}\)</p>
+      
+      <p><strong>Βήμα 4:</strong> Αθροίζοντας και χρησιμοποιώντας AM-GM ξανά:<br>
+      Το άθροισμα ≥ 3/2 ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Σκεφτόμουν ανάποδα "Τι μετασχηματισμό χρειάζομαι;" και χρησιμοποίησα το abc=1!</p>
+    </div>
+  </div>
+
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Ξεχνάς να αντιστρέψεις:</strong> Αφού βρεις τη διαδρομή ανάποδα, πρέπει να τη γράψεις σωστά!</li>
+      <li><strong>Δεν ελέγχεις αν κάθε βήμα αντιστρέφεται:</strong> Μερικές πράξεις δεν αντιστρέφονται (π.χ. x²=4 δεν σημαίνει x=2)</li>
+      <li><strong>Σταματάς πολύ νωρίς:</strong> Συνέχισε ανάποδα μέχρι να φτάσεις σε κάτι που ξέρεις</li>
+      <li><strong>Μπερδεύεις τη σειρά:</strong> Κράτα σημειώσεις για να μην χάσεις το νήμα</li>
+      <li><strong>Δεν επαληθεύεις:</strong> Πάντα έλεγξε τη λύση σου προς τα εμπρός!</li>
+    </ul>
+  </div>
+
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Ποια είναι η βασική ιδέα της Αντίστροφης Σκέψης;</p>
+    <button class="quiz-btn" onclick="checkQuiz('backward', 'a')">Ξεκινάς από το ζητούμενο και δουλεύεις προς τα πίσω μέχρι τα δεδομένα</button>
+    <button class="quiz-btn" onclick="checkQuiz('backward', 'b')">Λύνεις το πρόβλημα με την αντίθετη μέθοδο από τη συνηθισμένη</button>
+    <button class="quiz-btn" onclick="checkQuiz('backward', 'c')">Αντιστρέφεις όλους τους αριθμούς στο πρόβλημα</button>
+    <div id="backward-quiz-result" class="quiz-result"></div>
   </div>
 
   <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
@@ -582,7 +686,8 @@ function toggleHint(hintId) {
 }
 
 const quizAnswers = {
-  'special': 'a'
+  'counterexample': 'a',
+  'backward': 'a'
 };
 
 function checkQuiz(strategy, answer) {
@@ -598,13 +703,17 @@ function checkQuiz(strategy, answer) {
     event.target.classList.add('correct');
     if (resultDiv) {
       resultDiv.className = 'quiz-result correct';
-      resultDiv.textContent = '✓ Σωστά! Οι ειδικές περιπτώσεις μας δίνουν διαίσθηση και ιδέες!';
+      if (strategy === 'counterexample') {
+        resultDiv.textContent = '✓ Σωστά! Ένα μόνο αντιπαράδειγμα αρκεί!';
+      } else if (strategy === 'backward') {
+        resultDiv.textContent = '✓ Σωστά! Ξεκινάς από το τέλος και πας προς την αρχή!';
+      }
     }
   } else {
     event.target.classList.add('wrong');
     if (resultDiv) {
       resultDiv.className = 'quiz-result wrong';
-      resultDiv.textContent = '✗ Προσπάθησε ξανά! Σκέψου: τι μας δίνουν οι ειδικές περιπτώσεις;';
+      resultDiv.textContent = '✗ Προσπάθησε ξανά!';
     }
   }
 }
