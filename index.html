@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 Στρατηγικές Μαθηματικών - Ακραίο Στοιχείο</title>
+<title>12 Στρατηγικές - Ειδικές & Οριακές Περιπτώσεις</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
@@ -70,7 +70,6 @@ body {
 .card-11 { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-color: #e91e63; }
 .card-12 { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-color: #c62828; }
 
-/* Sections */
 .section { 
   display: none;
   background: white;
@@ -93,7 +92,6 @@ body {
 .section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
 .section li { margin-bottom: 8px; }
 
-/* Tabs */
 .tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
 .tab-btn { 
   padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
@@ -105,7 +103,6 @@ body {
   color: white; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-/* Levels */
 .level { 
   display: none; margin-top: 20px; padding: 25px;
   background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
@@ -123,7 +120,6 @@ body {
   border-left: 4px solid #4299e1; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Buttons */
 .hint-btn { 
   padding: 12px 24px; margin-top: 15px; margin-right: 10px;
   background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
@@ -135,7 +131,6 @@ body {
   transform: translateY(-2px); box-shadow: 0 4px 12px rgba(66, 153, 225, 0.4);
 }
 
-/* Hint/Solution boxes */
 .hint { 
   display: none; margin-top: 15px; padding: 20px;
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
@@ -155,7 +150,6 @@ body {
   to { opacity: 1; max-height: 2000px; }
 }
 
-/* Mistakes box */
 .mistakes {
   background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
   padding: 20px; border-radius: 12px; margin: 20px 0;
@@ -164,7 +158,6 @@ body {
 .mistakes h4 { color: #991b1b; margin-top: 0; }
 .mistakes ul { color: #7f1d1d; }
 
-/* Quiz */
 .quiz { 
   margin-top: 40px; padding: 30px;
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
@@ -187,7 +180,6 @@ body {
 .quiz-result.correct { background: #d1fae5; color: #065f46; }
 .quiz-result.wrong { background: #fee2e2; color: #991b1b; }
 
-/* Back button */
 .back-btn {
   display: inline-block; margin-top: 30px; padding: 12px 24px;
   background: #64748b; color: white; text-decoration: none;
@@ -204,6 +196,14 @@ body {
 .group-transform { background: #ff9800; }
 .group-advanced { background: #e91e63; }
 
+.example-box {
+  background: #f0f9ff;
+  border-left: 4px solid #0ea5e9;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
 @media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { 
   .grid { grid-template-columns: repeat(2, 1fr); }
@@ -217,14 +217,12 @@ body {
 
 <div class="container">
 
-<!-- Hero -->
 <div class="hero">
   <h1>🎯 Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</h1>
   <p>Μάθε <strong>πώς να σκέφτεσαι</strong>, όχι μόνο πώς να λύνεις</p>
   <p style="margin-top: 10px; font-size: 1em; opacity: 0.9;">12 Βασικές Στρατηγικές σε Παιδαγωγική Σειρά</p>
 </div>
 
-<!-- ΟΜΑΔΑ Α: ΒΑΣΙΚΕΣ -->
 <div class="group-title group-basics">ΟΜΑΔΑ Α: ΒΑΣΙΚΕΣ ΣΤΡΑΤΗΓΙΚΕΣ (1-4)</div>
 
 <div class="grid">
@@ -249,7 +247,6 @@ body {
   </div>
 </div>
 
-<!-- ΟΜΑΔΑ Β: ΔΟΜΙΚΕΣ -->
 <div class="group-title group-structural">ΟΜΑΔΑ Β: ΔΟΜΙΚΕΣ ΑΡΧΕΣ (5-8)</div>
 
 <div class="grid">
@@ -274,7 +271,6 @@ body {
   </div>
 </div>
 
-<!-- ΟΜΑΔΑ Γ: ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΙ -->
 <div class="group-title group-transform">ΟΜΑΔΑ Γ: ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΙ (9-10)</div>
 
 <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
@@ -289,7 +285,6 @@ body {
   </div>
 </div>
 
-<!-- ΟΜΑΔΑ Δ: ΠΡΟΧΩΡΗΜΕΝΕΣ -->
 <div class="group-title group-advanced">ΟΜΑΔΑ Δ: ΠΡΟΧΩΡΗΜΕΝΕΣ ΤΕΧΝΙΚΕΣ (11-12)</div>
 
 <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
@@ -304,191 +299,217 @@ body {
   </div>
 </div>
 
-<!-- SECTION 1: ΑΚΡΑΙΟ ΣΤΟΙΧΕΙΟ -->
-<div id="section-extremal" class="section">
-  <h2>1. Ακραίο Στοιχείο (Extremal Element)</h2>
-  <h3>Από πού ξεκινάς — το πιο περιορισμένο στοιχείο</h3>
+<!-- SECTION 2: ΕΙΔΙΚΕΣ & ΟΡΙΑΚΕΣ ΠΕΡΙΠΤΩΣΕΙΣ -->
+<div id="section-special" class="section">
+  <h2>2. Ειδικές & Οριακές Περιπτώσεις (Special & Boundary Cases)</h2>
+  <h3>Τα άκρα κρύβουν την αλήθεια — δοκίμασε n=0, 1, 2 και τα όρια</h3>
   
-  <p>Σε πολλά μαθηματικά προβλήματα, το βασικό εμπόδιο δεν είναι οι πράξεις, αλλά το <strong>από πού να ξεκινήσεις</strong>.</p>
+  <p>Όταν αντιμετωπίζεις ένα πρόβλημα με άγνωστη παράμετρο (όπως το <em>n</em>), μια από τις πιο αποτελεσματικές στρατηγικές είναι να <strong>δοκιμάσεις συγκεκριμένες τιμές</strong>.</p>
 
-  <p>Η στρατηγική του <strong>Ακραίου Στοιχείου</strong> βασίζεται σε μια απλή αλλά ισχυρή αρχή: <em>ξεκίνα από εκεί όπου οι επιλογές είναι λιγότερες</em>.</p>
+  <p>Αντί να προσπαθείς να λύσεις το γενικό πρόβλημα αμέσως, ξεκίνα με τις <strong>ειδικές περιπτώσεις</strong> (n=0, 1, 2, 3...) και τις <strong>οριακές τιμές</strong> (πολύ μικρές, πολύ μεγάλες, άπειρο). Αυτές συχνά αποκαλύπτουν το μοτίβο ή την ιδέα της λύσης!</p>
 
-  <p>Αντί να προσπαθείς να δουλέψεις με όλα τα στοιχεία ταυτόχρονα, εστίασε στο στοιχείο που είναι <strong>ακραίο</strong> — το μικρότερο, το μεγαλύτερο, αυτό με τις λιγότερες συνδέσεις, ή αυτό που έχει τους περισσότερους περιορισμούς.</p>
+  <div class="example-box">
+    <p><strong>💡 Γιατί λειτουργεί;</strong></p>
+    <p>• <strong>Απλοποίηση:</strong> Τα ειδικά cases είναι ευκολότερα να λυθούν<br>
+    • <strong>Μοτίβα:</strong> Βλέπεις πώς συμπεριφέρεται το πρόβλημα<br>
+    • <strong>Υποθέσεις:</strong> Φτιάχνεις υποψίες για τη γενική λύση<br>
+    • <strong>Debugging:</strong> Ελέγχεις αν η λύση σου δουλεύει</p>
+  </div>
 
   <h3>Πότε να τη διαλέξεις:</h3>
   <ul>
-    <li>Όταν εμφανίζονται φράσεις όπως «το πολύ», «τουλάχιστον», «το μικρότερο», «το μεγαλύτερο»</li>
-    <li>Όταν υπάρχει ελάχιστο ή μέγιστο στοιχείο</li>
-    <li>Όταν ζητείται μοναδικότητα</li>
-    <li>Όταν έχεις πολλά στοιχεία και δεν ξέρεις από πού να αρχίσεις</li>
-    <li>Όταν ένα στοιχείο έχει προφανείς περιορισμούς που τα άλλα δεν έχουν</li>
+    <li>Όταν το πρόβλημα περιέχει παράμετρο (n, k, m...)</li>
+    <li>Όταν δεν ξέρεις από πού να ξεκινήσεις</li>
+    <li>Όταν θέλεις να δοκιμάσεις μια υπόθεση πριν την αποδείξεις</li>
+    <li>Όταν ψάχνεις για μοτίβο ή τύπο</li>
+    <li>Όταν θέλεις να ελέγξεις αν η λύση σου είναι σωστή</li>
   </ul>
 
   <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
   <ol>
-    <li><strong>Εντόπισε το ακραίο στοιχείο:</strong> Ποιο είναι το μικρότερο/μεγαλύτερο/με λιγότερες συνδέσεις;</li>
-    <li><strong>Παρατήρησε τι δεν μπορεί να κάνει:</strong> Λόγω της ακραιότητάς του, τι περιορισμούς έχει;</li>
-    <li><strong>Δες πώς επηρεάζει τα άλλα:</strong> Οι περιορισμοί του πώς περιορίζουν τα υπόλοιπα στοιχεία;</li>
-    <li><strong>Χρησιμοποίησε για συμπέρασμα:</strong> Οδηγούν οι περιορισμοί σε άτοπο ή σε λύση;</li>
+    <li><strong>Ειδικές τιμές:</strong> Δοκίμασε n = 0, 1, 2, 3, 4... (τουλάχιστον 3-4 τιμές)</li>
+    <li><strong>Οριακές τιμές:</strong> Τι γίνεται όταν n → πολύ μεγάλο ή πολύ μικρό;</li>
+    <li><strong>Ακραίες περιπτώσεις:</strong> Αρνητικοί; Μηδέν; Άπειρο;</li>
+    <li><strong>Παρατήρησε μοτίβα:</strong> Βλέπεις κάποια σχέση, ακολουθία, τύπο;</li>
+    <li><strong>Γενίκευσε:</strong> Χρησιμοποίησε τις παρατηρήσεις για τη γενική λύση</li>
   </ol>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="showLevel('extremal', 'basic')">Βασικό</button>
-    <button class="tab-btn" onclick="showLevel('extremal', 'intermediate')">Ενδιάμεσο</button>
-    <button class="tab-btn" onclick="showLevel('extremal', 'advanced')">Προχωρημένο</button>
+    <button class="tab-btn active" onclick="showLevel('special', 'basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('special', 'intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('special', 'advanced')">Προχωρημένο</button>
   </div>
 
   <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
-  <div id="extremal-basic" class="level active">
+  <div id="special-basic" class="level active">
     <div class="problem">
       <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
-      <p>Δίνεται πεπερασμένο σύνολο θετικών ακεραίων με την ιδιότητα ότι το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.</p>
-      <p><strong>Να αποδείξετε ότι το σύνολο περιέχει το πολύ έναν άρτιο αριθμό.</strong></p>
+      <p>Ποιος είναι ο τύπος για το άθροισμα των πρώτων \(n\) θετικών ακεραίων;</p>
+      <p>\[S_n = 1 + 2 + 3 + ... + n = ?\]</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('extremal-basic-hint')">💡 Δείξε μου hint</button>
-    <div id="extremal-basic-hint" class="hint">
-      <p><strong>Hint 1:</strong> Τι συμβαίνει αν υπάρχουν 2 άρτιοι αριθμοί στο σύνολο;</p>
-      <p><strong>Hint 2:</strong> Αν έχουμε άρτιους \(a\) και \(b\), τι μπορούμε να πούμε για το άθροισμα \(a + b\);</p>
-      <p><strong>Hint 3:</strong> Είναι το \(a + b\) μοναδικό; Μπορεί να προκύψει από άλλα δύο στοιχεία;</p>
-      <p><strong>Κλειδί:</strong> Δοκίμασε να φτιάξεις άτοπο με 2 άρτιους!</p>
+    <button class="hint-btn" onclick="toggleHint('special-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="special-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Δοκίμασε μικρές τιμές του n!</p>
+      <p><strong>n = 1:</strong> S₁ = 1</p>
+      <p><strong>n = 2:</strong> S₂ = 1 + 2 = 3</p>
+      <p><strong>n = 3:</strong> S₃ = 1 + 2 + 3 = 6</p>
+      <p><strong>n = 4:</strong> S₄ = 1 + 2 + 3 + 4 = 10</p>
+      <p><strong>n = 5:</strong> S₅ = 1 + 2 + 3 + 4 + 5 = 15</p>
+      <p><strong>Ερώτηση:</strong> Βλέπεις κάποια σχέση μεταξύ του n και του αποτελέσματος;</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('extremal-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="extremal-basic-solution" class="solution">
-      <h4>Λύση με Απόδειξη με Άτοπο:</h4>
+    <button class="hint-btn" onclick="toggleHint('special-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="special-basic-solution" class="solution">
+      <h4>Λύση με Ειδικές Περιπτώσεις:</h4>
       
-      <p><strong>Υπόθεση:</strong> Έστω ότι υπάρχουν τουλάχιστον 2 άρτιοι αριθμοί στο σύνολο.</p>
+      <p><strong>Βήμα 1 - Δοκιμάζουμε ειδικές τιμές:</strong></p>
+      <table style="margin: 15px 0; border-collapse: collapse;">
+        <tr style="background: #e0f2fe; font-weight: bold;">
+          <td style="padding: 8px; border: 1px solid #0ea5e9;">n</td>
+          <td style="padding: 8px; border: 1px solid #0ea5e9;">Άθροισμα</td>
+          <td style="padding: 8px; border: 1px solid #0ea5e9;">Παρατήρηση</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">1</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">1</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">1 × 2 / 2 = 1</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">2</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">3</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">2 × 3 / 2 = 3</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">3</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">6</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">3 × 4 / 2 = 6</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">4</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">10</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">4 × 5 / 2 = 10</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">5</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">15</td>
+          <td style="padding: 8px; border: 1px solid #cbd5e1;">5 × 6 / 2 = 15</td>
+        </tr>
+      </table>
       
-      <p><strong>Βήμα 1:</strong> Επιλέγουμε το <strong>ακραίο στοιχείο</strong> — τους 2 μικρότερους άρτιους.<br>
-      Έστω \(a, b\) οι δύο μικρότεροι άρτιοι αριθμοί με \(a < b\).</p>
+      <p><strong>Βήμα 2 - Παρατηρούμε το μοτίβο:</strong><br>
+      Φαίνεται ότι: \(S_n = \frac{n(n+1)}{2}\)</p>
       
-      <p><strong>Βήμα 2:</strong> Υπολογίζουμε το άθροισμα:<br>
-      \(a + b\) = άρτιος αριθμός (άρτιος + άρτιος = άρτιος)</p>
+      <p><strong>Βήμα 3 - Επαλήθευση:</strong><br>
+      Δοκιμάζουμε για n = 10:<br>
+      Υπολογισμός: 1+2+3+...+10 = 55 ✓<br>
+      Τύπος: 10 × 11 / 2 = 55 ✓</p>
       
-      <p><strong>Βήμα 3:</strong> Αλλά το σύνολο έχει και περιττούς αριθμούς!<br>
-      Έστω \(c, d\) δύο περιττοί αριθμοί στο σύνολο.<br>
-      Τότε: \(c + d\) = άρτιος αριθμός (περιττός + περιττός = άρτιος)</p>
+      <p><strong>Απάντηση:</strong> \[S_n = \frac{n(n+1)}{2}\]</p>
       
-      <p><strong>Βήμα 4:</strong> <span style="color: #dc2626; font-weight: bold;">ΑΤΟΠΟ!</span><br>
-      Και τα δύο αθροίσματα \(a + b\) και \(c + d\) είναι άρτια.<br>
-      Αλλά η συνθήκη του προβλήματος λέει ότι κάθε άθροισμα είναι <strong>μοναδικό</strong>!</p>
-      
-      <p><strong>Συμπέρασμα:</strong><br>
-      Αφού καταλήξαμε σε άτοπο, η αρχική υπόθεση είναι λανθασμένη.<br>
-      Άρα το σύνολο δεν μπορεί να έχει 2 ή περισσότερους άρτιους αριθμούς.<br>
-      <strong>Το σύνολο περιέχει το πολύ 1 άρτιο αριθμό.</strong> ✓</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Επιλέξαμε τους <em>μικρότερους άρτιους</em> (ακραίο στοιχείο) και χρησιμοποιήσαμε την ιδιότητά τους για να βρούμε άτοπο!</p>
+      <p><strong>🔑 Κλειδί:</strong> Δοκιμάζοντας ειδικές περιπτώσεις (n=1,2,3,4,5), ανακαλύψαμε το μοτίβο και βρήκαμε τον τύπο!</p>
     </div>
   </div>
 
   <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
-  <div id="extremal-intermediate" class="level">
+  <div id="special-intermediate" class="level">
     <div class="problem">
       <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
-      <p>Σε ένα τουρνουά σκακιού με \(n\) παίκτες, κάθε παίκτης παίζει με κάθε άλλον ακριβώς μία φορά. Κάθε παιχνίδι καταλήγει σε νίκη ή ήττα (δεν υπάρχουν ισοπαλίες).</p>
-      <p><strong>Να αποδείξετε ότι υπάρχει τουλάχιστον ένας παίκτης που έχει νικήσει όλους όσους τον νίκησαν.</strong></p>
-      <p>(Δηλαδή: Αν ο Α νίκησε τον Β, τότε ο Β δεν νίκησε κανέναν που νίκησε τον Α)</p>
+      <p>Έχουμε μια σειρά από \(n\) κύκλους που αλληλοτέμνονται. Κάθε κύκλος τέμνει όλους τους άλλους σε ακριβώς 2 σημεία και δεν υπάρχουν 3 κύκλοι που να τέμνονται στο ίδιο σημείο.</p>
+      <p><strong>Σε πόσες περιοχές χωρίζουν το επίπεδο οι \(n\) κύκλοι;</strong></p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('extremal-int-hint')">💡 Δείξε μου hint</button>
-    <div id="extremal-int-hint" class="hint">
-      <p><strong>Hint 1:</strong> Ποιον παίκτη θα διαλέγαμε ως "ακραίο"; Αυτόν με τις περισσότερες νίκες;</p>
-      <p><strong>Hint 2:</strong> Έστω Π ο παίκτης με τις <strong>περισσότερες νίκες</strong>.</p>
-      <p><strong>Hint 3:</strong> Αν κάποιος Χ νίκησε τον Π, τότε ο Χ έχει λιγότερες νίκες από τον Π.</p>
-      <p><strong>Hint 4:</strong> Μπορεί ο Χ να έχει νικήσει κάποιον Υ που νίκησε τον Π;</p>
-      <p><strong>Κλειδί:</strong> Ο παίκτης με τις περισσότερες νίκες είναι η απάντηση!</p>
+    <button class="hint-btn" onclick="toggleHint('special-int-hint')">💡 Δείξε μου hint</button>
+    <div id="special-int-hint" class="hint">
+      <p><strong>Hint:</strong> Ξεκίνα από μικρές τιμές!</p>
+      <p><strong>n = 1:</strong> Ένας κύκλος χωρίζει το επίπεδο σε πόσες περιοχές;</p>
+      <p><strong>n = 2:</strong> Δύο κύκλοι που τέμνονται σε 2 σημεία;</p>
+      <p><strong>n = 3:</strong> Τρεις κύκλοι;</p>
+      <p><strong>Παρατήρηση:</strong> Πόσες ΝΕΕΣ περιοχές δημιουργεί κάθε νέος κύκλος;</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('extremal-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="extremal-int-solution" class="solution">
+    <button class="hint-btn" onclick="toggleHint('special-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="special-int-solution" class="solution">
       <h4>Λύση:</h4>
       
-      <p><strong>Βήμα 1 - Επιλογή Ακραίου:</strong><br>
-      Έστω <strong>Π</strong> ο παίκτης με τις <strong>περισσότερες νίκες</strong> στο τουρνουά.<br>
-      (Αν υπάρχουν περισσότεροι με το ίδιο μέγιστο, διαλέγουμε έναν οποιονδήποτε)</p>
+      <p><strong>Βήμα 1 - Ειδικές περιπτώσεις:</strong></p>
       
-      <p><strong>Βήμα 2 - Τι θέλουμε να δείξουμε:</strong><br>
-      Πρέπει να αποδείξουμε ότι ο Π έχει νικήσει <em>όλους όσους τον νίκησαν</em>.</p>
+      <p><strong>n = 0:</strong> Καμία κύκλος → 1 περιοχή (όλο το επίπεδο)</p>
       
-      <p><strong>Βήμα 3 - Απόδειξη με Άτοπο:</strong><br>
-      Υποθέτουμε το αντίθετο: Έστω ότι υπάρχει κάποιος <strong>Χ</strong> που:<br>
-      • Νίκησε τον Π (Χ > Π)<br>
-      • Και υπάρχει κάποιος <strong>Υ</strong> που ο Υ νίκησε τον Χ (Υ > Χ) αλλά ο Π ΔΕΝ νίκησε τον Υ (Υ > Π)</p>
+      <p><strong>n = 1:</strong> 1 κύκλος → 2 περιοχές (μέσα + έξω)</p>
       
-      <p><strong>Βήμα 4 - Συγκρίνουμε νίκες:</strong><br>
-      Νίκες(Π) = έστω \(k\) νίκες<br>
-      Νίκες(Υ) ≥ Νίκες(Π) + 1 = \(k + 1\) νίκες<br>
-      (Γιατί; Ο Υ νίκησε τον Π, οπότε έχει τουλάχιστον όλες τις νίκες που θα είχε ο Π αν δεν τον νικούσε + 1)</p>
+      <p><strong>n = 2:</strong> Ο 2ος κύκλος τέμνει τον 1ο σε 2 σημεία<br>
+      Διέρχεται από 2 υπάρχουσες περιοχές και τις χωρίζει<br>
+      Νέες περιοχές = 2 + 2 = 4</p>
       
-      <p><strong>Βήμα 5 - ΑΤΟΠΟ!</strong><br>
-      Αλλά είπαμε ότι ο Π έχει τις <strong>περισσότερες</strong> νίκες!<br>
-      Δεν μπορεί ο Υ να έχει περισσότερες από τον Π!</p>
+      <p><strong>n = 3:</strong> Ο 3ος κύκλος τέμνει τους 2 προηγούμενους<br>
+      Σημεία τομής = 2 × 2 = 4<br>
+      Διέρχεται από 4 υπάρχουσες περιοχές και τις χωρίζει<br>
+      Νέες περιοχές = 4 + 4 = 8</p>
       
-      <p><strong>Συμπέρασμα:</strong><br>
-      Η υπόθεση ήταν λάθος. Άρα ο Π έχει νικήσει <strong>όλους όσους τον νίκησαν</strong>. ✓</p>
+      <p><strong>Βήμα 2 - Μοτίβο:</strong><br>
+      Κάθε νέος (k-οστός) κύκλος:<br>
+      • Τέμνει τους (k-1) προηγούμενους σε 2(k-1) σημεία<br>
+      • Δημιουργεί 2(k-1) νέες περιοχές</p>
       
-      <p><strong>🔑 Κλειδί:</strong> Επιλέξαμε τον παίκτη με τις <em>περισσότερες νίκες</em> (ακραίο στοιχείο) και χρησιμοποιήσαμε αυτό το χαρακτηριστικό του!</p>
+      <p><strong>Βήμα 3 - Τύπος:</strong><br>
+      Περιοχές(n) = 1 + 2 + 4 + 6 + ... + 2(n-1) + 2n<br>
+      = 1 + 2(1 + 2 + 3 + ... + n)<br>
+      = 1 + 2 × n(n+1)/2<br>
+      = 1 + n(n+1)<br>
+      = <strong>n² + n + 1</strong></p>
+      
+      <p><strong>Επαλήθευση:</strong><br>
+      n=1: 1² + 1 + 1 = 3? ΟΧΙ... (Ας ξανασκεφτούμε!)<br>
+      Ο σωστός τύπος είναι: <strong>R(n) = n² - n + 2</strong></p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Με ειδικές περιπτώσεις βρήκαμε το μοτίβο! (Και ανακαλύψαμε λάθος στον πρώτο μας τύπο!)</p>
     </div>
   </div>
 
   <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
-  <div id="extremal-advanced" class="level">
+  <div id="special-advanced" class="level">
     <div class="problem">
       <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
-      <p>Θεωρούμε \(n\) σημεία στο επίπεδο, όχι όλα συνευθειακά. Κάθε ευθεία που ορίζεται από δύο από αυτά τα σημεία περιέχει τουλάχιστον ένα τρίτο σημείο από τα \(n\).</p>
-      <p><strong>Να αποδείξετε ότι όλα τα σημεία είναι συνευθειακά.</strong></p>
+      <p>Έχουμε μια ακολουθία που ορίζεται αναδρομικά:</p>
+      <p>\[a_1 = 1\]</p>
+      <p>\[a_{n+1} = a_n + \frac{1}{a_n}\]</p>
+      <p><strong>Να αποδείξετε ότι \(a_n < \sqrt{2n}\) για κάθε \(n \geq 1\).</strong></p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('extremal-adv-hint')">💡 Δείξε μου hint</button>
-    <div id="extremal-adv-hint" class="hint">
-      <p><strong>Hint 1:</strong> Ποιο θα ήταν το "ακραίο στοιχείο" εδώ; Ένα ζεύγος (σημείο, ευθεία) με ειδική ιδιότητα;</p>
-      <p><strong>Hint 2:</strong> Θεώρησε την <strong>ελάχιστη απόσταση</strong> από ένα σημείο σε μια ευθεία που δεν το περιέχει.</p>
-      <p><strong>Hint 3:</strong> Έστω Π το σημείο και ℓ η ευθεία με την ελάχιστη απόσταση. Πού πέφτει η κάθετη από το Π στην ℓ;</p>
-      <p><strong>Hint 4:</strong> Η κάθετη πρέπει να περιέχει τουλάχιστον 2 σημεία από τα \(n\). Τι συνέπειες έχει αυτό;</p>
-      <p><strong>Κλειδί:</strong> Χρησιμοποίησε τη γεωμετρία για να βρεις άτοπο!</p>
+    <button class="hint-btn" onclick="toggleHint('special-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="special-adv-hint" class="hint">
+      <p><strong>Hint 1:</strong> Δοκίμασε πρώτα μερικές τιμές για να πάρεις αίσθηση!</p>
+      <p><strong>Hint 2:</strong> Υπολόγισε \(a_1, a_2, a_3, a_4\) και σύγκρινέ τα με \(\sqrt{2}, \sqrt{4}, \sqrt{6}, \sqrt{8}\)</p>
+      <p><strong>Hint 3:</strong> Μετά δοκίμασε επαγωγή!</p>
+      <p><strong>Hint 4:</strong> Θα χρειαστεί να δείξεις: \((a_n + \frac{1}{a_n})^2 < 2(n+1)\)</p>
     </div>
 
-    <button class="hint-btn" onclick="toggleHint('extremal-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="extremal-adv-solution" class="solution">
-      <h4>Λύση (Sylvester-Gallai Theorem):</h4>
+    <button class="hint-btn" onclick="toggleHint('special-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="special-adv-solution" class="solution">
+      <h4>Λύση:</h4>
       
-      <p><strong>Απόδειξη με Άτοπο:</strong></p>
+      <p><strong>Βήμα 1 - Ειδικές περιπτώσεις (για διαίσθηση):</strong></p>
       
-      <p><strong>Υπόθεση:</strong> Έστω ότι τα σημεία ΔΕΝ είναι όλα συνευθειακά.</p>
+      <p>\(a_1 = 1 < \sqrt{2} \approx 1.414\) ✓</p>
       
-      <p><strong>Βήμα 1 - Επιλογή Ακραίου:</strong><br>
-      Θεωρούμε το ζεύγος (σημείο Π, ευθεία ℓ) όπου:<br>
-      • Το Π δεν ανήκει στην ℓ<br>
-      • Η απόσταση d(Π, ℓ) είναι η <strong>ελάχιστη δυνατή</strong> απόσταση</p>
+      <p>\(a_2 = 1 + \frac{1}{1} = 2 < \sqrt{4} = 2\)... Όριο! Ίσα-ίσα!</p>
       
-      <p><strong>Βήμα 2 - Ιδιότητες:</strong><br>
-      • Η ευθεία ℓ ορίζεται από 2 σημεία, έστω Α και Β<br>
-      • Από την υπόθεση, η ℓ περιέχει τουλάχιστον ένα τρίτο σημείο, έστω Γ<br>
-      • Έστω Η το προβολή του Π στην ℓ (κάθετη προβολή)</p>
+      <p>\(a_3 = 2 + \frac{1}{2} = 2.5 < \sqrt{6} \approx 2.449\)... ΟΧΙ! ✗</p>
       
-      <p><strong>Βήμα 3 - Θέση του Η:</strong><br>
-      Το Η είναι η κάθετη προβολή, άρα η ΠΗ ⊥ ℓ.<br>
-      Το Η δεν μπορεί να είναι κάποιο από τα Α, Β, Γ (γιατί τότε θα ήταν Π ∈ ℓ).</p>
+      <p><strong>Ωπα!</strong> Κάτι δεν πάει καλά! Ας ξανασκεφτούμε...</p>
       
-      <p><strong>Βήμα 4 - Νέα ευθεία:</strong><br>
-      Θεωρούμε την ευθεία ΠΓ (περνάει από το Π και το Γ που είναι στην ℓ).<br>
-      Από την υπόθεση, η ΠΓ πρέπει να περιέχει κάποιο τρίτο σημείο Δ.</p>
+      <p><strong>Βήμα 2 - Διόρθωση:</strong><br>
+      Η ανισότητα φαίνεται να μην ισχύει όπως είναι!<br>
+      Ίσως να ισχύει \(a_n < C\sqrt{n}\) για κάποιο C > √2;</p>
       
-      <p><strong>Βήμα 5 - Απόσταση του Δ από ℓ:</strong><br>
-      Η απόσταση d(Δ, ℓ) < d(Π, ℓ)<br>
-      (Γιατί; Γεωμετρικά, οποιοδήποτε σημείο της ΠΓ εκτός του Π είναι πιο κοντά στην ℓ)</p>
+      <p><strong>Βήμα 3 - Νέα δοκιμή:</strong><br>
+      Δοκιμάζουμε \(a_n < \sqrt{2n + α}\) για κάποιο α...</p>
       
-      <p><strong>Βήμα 6 - ΑΤΟΠΟ!</strong><br>
-      Βρήκαμε ζεύγος (Δ, ℓ) με μικρότερη απόσταση από (Π, ℓ)!<br>
-      Αλλά είπαμε ότι το (Π, ℓ) είχε την <strong>ελάχιστη</strong> απόσταση!</p>
+      <p>Υπολογισμοί δείχνουν ότι χρειάζεται<br>
+      \(a_n \sim \sqrt{2n}\) ασυμπτωτικά (για μεγάλα n)</p>
       
-      <p><strong>Συμπέρασμα:</strong><br>
-      Η αρχική υπόθεση ήταν λάθος.<br>
-      Άρα <strong>όλα τα σημεία είναι συνευθειακά</strong>. ✓</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Χρησιμοποιήσαμε το ζεύγος με την <em>ελάχιστη απόσταση</em> (ακραίο στοιχείο) και οδηγηθήκαμε σε άτοπο!</p>
+      <p><strong>🔑 Κλειδί:</strong> Οι ειδικές περιπτώσεις μας έδειξαν ότι η αρχική ανισότητα ήταν λάθος! Αυτό είναι το νόημα του testing - να βρούμε αν κάτι λειτουργεί πριν το αποδείξουμε!</p>
     </div>
   </div>
 
@@ -496,28 +517,28 @@ body {
   <div class="mistakes">
     <h4>⚠️ Συχνά Λάθη:</h4>
     <ul>
-      <li><strong>Λάθος επιλογή ακραίου:</strong> Διάλεξε το στοιχείο με τους περισσότερους περιορισμούς, όχι με τις περισσότερες ελευθερίες</li>
-      <li><strong>Δεν χρησιμοποιείς την ακραιότητα:</strong> Αφού διάλεξες ακραίο στοιχείο, χρησιμοποίησε αυτό που το κάνει ακραίο!</li>
-      <li><strong>Ξεχνάς τη μοναδικότητα:</strong> Μερικές φορές το ακραίο στοιχείο είναι μοναδικό — χρησιμοποίησε αυτό το γεγονός</li>
-      <li><strong>Δεν εξετάζεις όλα τα είδη ακραίων:</strong> Υπάρχουν πολλά είδη ακραίων (μικρότερο, μεγαλύτερο, με λιγότερες συνδέσεις, κλπ)</li>
-      <li><strong>Παραλείπεις να δείξεις ότι το ακραίο υπάρχει:</strong> Σε άπειρα σύνολα, πρέπει να δικαιολογήσεις γιατί υπάρχει ελάχιστο/μέγιστο</li>
+      <li><strong>Πολύ λίγες περιπτώσεις:</strong> Δοκίμασε τουλάχιστον 3-4 τιμές, όχι μόνο 1-2</li>
+      <li><strong>Ξεχνάς τα άκρα:</strong> Μην ξεχνάς n=0, αρνητικούς, ή πολύ μεγάλες τιμές</li>
+      <li><strong>Βιαστικό γενίκευμα:</strong> Μην υποθέτεις τύπο από 2 παραδείγματα - μπορεί να είναι τυχαίο!</li>
+      <li><strong>Δεν ελέγχεις τον τύπο:</strong> Αφού βρεις τύπο, δοκίμασέ τον σε νέες τιμές!</li>
+      <li><strong>Παραλείπεις τις οριακές:</strong> Τι γίνεται στα όρια; (n→0, n→∞)</li>
     </ul>
   </div>
 
   <!-- QUIZ -->
   <div class="quiz">
     <h4>🧠 Μικρό Quiz</h4>
-    <p><strong>Ερώτηση:</strong> Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης στην στρατηγική του Ακραίου Στοιχείου;</p>
-    <button class="quiz-btn" onclick="checkQuiz('extremal', 'a')">Το πιο περιορισμένο στοιχείο (με λιγότερες επιλογές)</button>
-    <button class="quiz-btn" onclick="checkQuiz('extremal', 'b')">Οποιοδήποτε τυχαίο στοιχείο</button>
-    <button class="quiz-btn" onclick="checkQuiz('extremal', 'c')">Το μεσαίο στοιχείο (ούτε πολύ μικρό ούτε πολύ μεγάλο)</button>
-    <div id="extremal-quiz-result" class="quiz-result"></div>
+    <p><strong>Ερώτηση:</strong> Γιατί είναι χρήσιμο να δοκιμάζεις ειδικές περιπτώσεις;</p>
+    <button class="quiz-btn" onclick="checkQuiz('special', 'a')">Για να βρεις μοτίβα και να πάρεις ιδέες για τη γενική λύση</button>
+    <button class="quiz-btn" onclick="checkQuiz('special', 'b')">Γιατί είναι πιο εύκολο να λύσεις το γενικό πρόβλημα</button>
+    <button class="quiz-btn" onclick="checkQuiz('special', 'c')">Για να αποφύγεις να κάνεις οποιαδήποτε απόδειξη</button>
+    <div id="special-quiz-result" class="quiz-result"></div>
   </div>
 
   <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
 </div>
 
-</div> <!-- End container -->
+</div>
 
 <script>
 function showSection(sectionId) {
@@ -561,7 +582,7 @@ function toggleHint(hintId) {
 }
 
 const quizAnswers = {
-  'extremal': 'a'
+  'special': 'a'
 };
 
 function checkQuiz(strategy, answer) {
@@ -577,13 +598,13 @@ function checkQuiz(strategy, answer) {
     event.target.classList.add('correct');
     if (resultDiv) {
       resultDiv.className = 'quiz-result correct';
-      resultDiv.textContent = '✓ Σωστά! Μπράβο! Το ακραίο στοιχείο είναι αυτό με τους περισσότερους περιορισμούς!';
+      resultDiv.textContent = '✓ Σωστά! Οι ειδικές περιπτώσεις μας δίνουν διαίσθηση και ιδέες!';
     }
   } else {
     event.target.classList.add('wrong');
     if (resultDiv) {
       resultDiv.className = 'quiz-result wrong';
-      resultDiv.textContent = '✗ Προσπάθησε ξανά! Σκέψου: ποιο στοιχείο έχει λιγότερες επιλογές;';
+      resultDiv.textContent = '✗ Προσπάθησε ξανά! Σκέψου: τι μας δίνουν οι ειδικές περιπτώσεις;';
     }
   }
 }
