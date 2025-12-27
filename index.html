@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 Στρατηγικές Μαθηματικών Προβλημάτων</title>
+<title>12 Στρατηγικές Μαθηματικών - Ακραίο Στοιχείο</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { 
@@ -24,13 +26,8 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   text-align: center;
 }
-.hero h1 { 
-  margin: 0 0 15px 0; 
-  font-size: 2.5em;
-}
-.hero p { 
-  font-size: 1.2em; 
-}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
 
 .grid { 
   display: grid; 
@@ -49,94 +46,171 @@ body {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   border: 3px solid;
   transition: transform 0.3s;
+  cursor: pointer;
 }
 .card:hover { 
   transform: translateY(-5px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
-.card-title {
-  font-size: 1.1em;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
+.card-title { font-size: 1.1em; margin-bottom: 8px; line-height: 1.3; }
+.card-subtitle { font-size: 0.8em; font-style: italic; opacity: 0.7; font-weight: normal; }
 
-.card-subtitle {
-  font-size: 0.8em;
-  font-style: italic;
-  opacity: 0.7;
-  font-weight: normal;
-}
-
-/* Χρώματα ανά ομάδα */
-/* Βασικές (1-4) - Γαλάζια */
+/* Χρώματα */
 .card-1 { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-color: #2196f3; }
 .card-2 { background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%); border-color: #1976d2; }
 .card-3 { background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%); border-color: #1565c0; }
 .card-4 { background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%); border-color: #0d47a1; }
-
-/* Δομικές (5-8) - Πράσινα */
 .card-5 { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-color: #4caf50; }
 .card-6 { background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%); border-color: #388e3c; }
 .card-7 { background: linear-gradient(135deg, #a5d6a7 0%, #81c784 100%); border-color: #2e7d32; }
 .card-8 { background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%); border-color: #1b5e20; }
-
-/* Μετασχηματισμοί (9-10) - Πορτοκαλί */
 .card-9 { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-color: #ff9800; }
 .card-10 { background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%); border-color: #f57c00; }
-
-/* Προχωρημένες (11-12) - Ροζ */
 .card-11 { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-color: #e91e63; }
 .card-12 { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-color: #c62828; }
 
-.info-box {
+/* Sections */
+.section { 
+  display: none;
   background: white;
-  padding: 30px;
-  border-radius: 15px;
-  margin: 20px 0;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.section.active { display: block; animation: fadeIn 0.4s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.info-box h2 {
-  color: #667eea;
-  margin-bottom: 15px;
+.section h2 { color: #667eea; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #764ba2; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+/* Tabs */
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-.info-box ul {
-  margin-left: 20px;
+/* Levels */
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #667eea;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.info-box li {
-  margin-bottom: 8px;
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #4299e1; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+
+/* Buttons */
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(66, 153, 225, 0.4);
+}
+
+/* Hint/Solution boxes */
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+/* Mistakes box */
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+/* Quiz */
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 3px solid #3b82f6; border-radius: 15px;
+}
+.quiz h4 { color: #1e40af; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #3b82f6; background: #eff6ff; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+/* Back button */
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
 
 .group-title {
-  text-align: center;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin: 30px 0 10px;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
+  text-align: center; font-size: 1.3em; font-weight: bold;
+  margin: 30px 0 10px; padding: 10px; border-radius: 10px; color: white;
 }
-
 .group-basics { background: #2196f3; }
 .group-structural { background: #4caf50; }
 .group-transform { background: #ff9800; }
 .group-advanced { background: #e91e63; }
 
-@media (max-width: 1024px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { 
   .grid { grid-template-columns: repeat(2, 1fr); }
   .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
 }
-
-@media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -154,22 +228,22 @@ body {
 <div class="group-title group-basics">ΟΜΑΔΑ Α: ΒΑΣΙΚΕΣ ΣΤΡΑΤΗΓΙΚΕΣ (1-4)</div>
 
 <div class="grid">
-  <div class="card card-1">
+  <div class="card card-1" onclick="showSection('extremal')">
     <div class="card-title">1. Ακραίο Στοιχείο</div>
     <div class="card-subtitle">(Extremal Element)</div>
   </div>
 
-  <div class="card card-2">
+  <div class="card card-2" onclick="showSection('special')">
     <div class="card-title">2. Ειδικές & Οριακές Περιπτώσεις</div>
     <div class="card-subtitle">(Special & Boundary Cases)</div>
   </div>
 
-  <div class="card card-3">
+  <div class="card card-3" onclick="showSection('counterexample')">
     <div class="card-title">3. Αντιπαραδείγματα</div>
     <div class="card-subtitle">(Counterexamples)</div>
   </div>
 
-  <div class="card card-4">
+  <div class="card card-4" onclick="showSection('backward')">
     <div class="card-title">4. Αντίστροφη Σκέψη</div>
     <div class="card-subtitle">(Backward Thinking)</div>
   </div>
@@ -179,22 +253,22 @@ body {
 <div class="group-title group-structural">ΟΜΑΔΑ Β: ΔΟΜΙΚΕΣ ΑΡΧΕΣ (5-8)</div>
 
 <div class="grid">
-  <div class="card card-5">
+  <div class="card card-5" onclick="showSection('symmetry')">
     <div class="card-title">5. Συμμετρία</div>
     <div class="card-subtitle">(Symmetry)</div>
   </div>
 
-  <div class="card card-6">
+  <div class="card card-6" onclick="showSection('invariants')">
     <div class="card-title">6. Αναλλοίωτα</div>
     <div class="card-subtitle">(Invariants)</div>
   </div>
 
-  <div class="card card-7">
+  <div class="card card-7" onclick="showSection('pigeonhole')">
     <div class="card-title">7. Αρχή Περιστερώνα</div>
     <div class="card-subtitle">(Pigeonhole Principle)</div>
   </div>
 
-  <div class="card card-8">
+  <div class="card card-8" onclick="showSection('doublecounting')">
     <div class="card-title">8. Διπλή Καταμέτρηση</div>
     <div class="card-subtitle">(Double Counting)</div>
   </div>
@@ -204,12 +278,12 @@ body {
 <div class="group-title group-transform">ΟΜΑΔΑ Γ: ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΙ (9-10)</div>
 
 <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-  <div class="card card-9">
+  <div class="card card-9" onclick="showSection('reformulation')">
     <div class="card-title">9. Αναδιατύπωση</div>
     <div class="card-subtitle">(Reformulation)</div>
   </div>
 
-  <div class="card card-10">
+  <div class="card card-10" onclick="showSection('auxiliary')">
     <div class="card-title">10. Βοηθητικό Αντικείμενο</div>
     <div class="card-subtitle">(Auxiliary Construction)</div>
   </div>
@@ -219,68 +293,301 @@ body {
 <div class="group-title group-advanced">ΟΜΑΔΑ Δ: ΠΡΟΧΩΡΗΜΕΝΕΣ ΤΕΧΝΙΚΕΣ (11-12)</div>
 
 <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-  <div class="card card-11">
+  <div class="card card-11" onclick="showSection('reverse')">
     <div class="card-title">11. Αντίστροφη Ερώτηση</div>
     <div class="card-subtitle">(Reverse Question)</div>
   </div>
 
-  <div class="card card-12">
+  <div class="card card-12" onclick="showSection('induction')">
     <div class="card-title">12. Μαθηματική Επαγωγή</div>
     <div class="card-subtitle">(Mathematical Induction)</div>
   </div>
 </div>
 
-<!-- Πληροφορίες -->
-<div class="info-box">
-  <h2>📋 Παιδαγωγική Κλιμάκωση</h2>
+<!-- SECTION 1: ΑΚΡΑΙΟ ΣΤΟΙΧΕΙΟ -->
+<div id="section-extremal" class="section">
+  <h2>1. Ακραίο Στοιχείο (Extremal Element)</h2>
+  <h3>Από πού ξεκινάς — το πιο περιορισμένο στοιχείο</h3>
   
-  <h3 style="color: #2196f3; margin-top: 20px;">🔵 Ομάδα Α: Βασικές Στρατηγικές (1-4)</h3>
-  <p>Εύκολες, διαισθητικές, για αρχάριους. Διδάσκουν "από πού να ξεκινήσω" και "πώς να ελέγξω".</p>
+  <p>Σε πολλά μαθηματικά προβλήματα, το βασικό εμπόδιο δεν είναι οι πράξεις, αλλά το <strong>από πού να ξεκινήσεις</strong>.</p>
+
+  <p>Η στρατηγική του <strong>Ακραίου Στοιχείου</strong> βασίζεται σε μια απλή αλλά ισχυρή αρχή: <em>ξεκίνα από εκεί όπου οι επιλογές είναι λιγότερες</em>.</p>
+
+  <p>Αντί να προσπαθείς να δουλέψεις με όλα τα στοιχεία ταυτόχρονα, εστίασε στο στοιχείο που είναι <strong>ακραίο</strong> — το μικρότερο, το μεγαλύτερο, αυτό με τις λιγότερες συνδέσεις, ή αυτό που έχει τους περισσότερους περιορισμούς.</p>
+
+  <h3>Πότε να τη διαλέξεις:</h3>
   <ul>
-    <li><strong>Ακραίο Στοιχείο:</strong> Ξεκίνα από το πιο περιορισμένο</li>
-    <li><strong>Ειδικές Περιπτώσεις:</strong> Δοκίμασε n=0,1,2 και τα άκρα</li>
-    <li><strong>Αντιπαραδείγματα:</strong> Ένα παράδειγμα που σπάει τον κανόνα</li>
-    <li><strong>Αντίστροφη Σκέψη:</strong> Ξεκίνα από το ζητούμενο</li>
+    <li>Όταν εμφανίζονται φράσεις όπως «το πολύ», «τουλάχιστον», «το μικρότερο», «το μεγαλύτερο»</li>
+    <li>Όταν υπάρχει ελάχιστο ή μέγιστο στοιχείο</li>
+    <li>Όταν ζητείται μοναδικότητα</li>
+    <li>Όταν έχεις πολλά στοιχεία και δεν ξέρεις από πού να αρχίσεις</li>
+    <li>Όταν ένα στοιχείο έχει προφανείς περιορισμούς που τα άλλα δεν έχουν</li>
   </ul>
 
-  <h3 style="color: #4caf50; margin-top: 20px;">🟢 Ομάδα Β: Δομικές Αρχές (5-8)</h3>
-  <p>Patterns, συμμετρίες, καταμέτρηση. Εκμεταλλεύσου τη δομή του προβλήματος.</p>
-  <ul>
-    <li><strong>Συμμετρία:</strong> Όταν όλα είναι "ίσα"</li>
-    <li><strong>Αναλλοίωτα:</strong> Βρες τι μένει σταθερό</li>
-    <li><strong>Αρχή Περιστερώνα:</strong> Περισσότερα από θέσεις</li>
-    <li><strong>Διπλή Καταμέτρηση:</strong> Μέτρα με 2 τρόπους</li>
-  </ul>
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Εντόπισε το ακραίο στοιχείο:</strong> Ποιο είναι το μικρότερο/μεγαλύτερο/με λιγότερες συνδέσεις;</li>
+    <li><strong>Παρατήρησε τι δεν μπορεί να κάνει:</strong> Λόγω της ακραιότητάς του, τι περιορισμούς έχει;</li>
+    <li><strong>Δες πώς επηρεάζει τα άλλα:</strong> Οι περιορισμοί του πώς περιορίζουν τα υπόλοιπα στοιχεία;</li>
+    <li><strong>Χρησιμοποίησε για συμπέρασμα:</strong> Οδηγούν οι περιορισμοί σε άτοπο ή σε λύση;</li>
+  </ol>
 
-  <h3 style="color: #ff9800; margin-top: 20px;">🟠 Ομάδα Γ: Μετασχηματισμοί (9-10)</h3>
-  <p>Άλλαξε την αναπαράσταση. Δες το πρόβλημα από άλλη οπτική.</p>
-  <ul>
-    <li><strong>Αναδιατύπωση:</strong> Πες το ίδιο διαφορετικά (Άλγεβρα ↔ Γεωμετρία)</li>
-    <li><strong>Βοηθητικό Αντικείμενο:</strong> Δημιούργησε κάτι νέο που βοηθάει</li>
-  </ul>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('extremal', 'basic')">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('extremal', 'intermediate')">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('extremal', 'advanced')">Προχωρημένο</button>
+  </div>
 
-  <h3 style="color: #e91e63; margin-top: 20px;">🌸 Ομάδα Δ: Προχωρημένες Λογικές (11-12)</h3>
-  <p>Αποδείξεις και προχωρημένη λογική. Για πιο σύνθετα προβλήματα.</p>
-  <ul>
-    <li><strong>Αντίστροφη Ερώτηση:</strong> Απόδειξη με άτοπο</li>
-    <li><strong>Μαθηματική Επαγωγή:</strong> Το ντόμινο των μαθηματικών</li>
-  </ul>
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="extremal-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Δίνεται πεπερασμένο σύνολο θετικών ακεραίων με την ιδιότητα ότι το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.</p>
+      <p><strong>Να αποδείξετε ότι το σύνολο περιέχει το πολύ έναν άρτιο αριθμό.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="extremal-basic-hint" class="hint">
+      <p><strong>Hint 1:</strong> Τι συμβαίνει αν υπάρχουν 2 άρτιοι αριθμοί στο σύνολο;</p>
+      <p><strong>Hint 2:</strong> Αν έχουμε άρτιους \(a\) και \(b\), τι μπορούμε να πούμε για το άθροισμα \(a + b\);</p>
+      <p><strong>Hint 3:</strong> Είναι το \(a + b\) μοναδικό; Μπορεί να προκύψει από άλλα δύο στοιχεία;</p>
+      <p><strong>Κλειδί:</strong> Δοκίμασε να φτιάξεις άτοπο με 2 άρτιους!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="extremal-basic-solution" class="solution">
+      <h4>Λύση με Απόδειξη με Άτοπο:</h4>
+      
+      <p><strong>Υπόθεση:</strong> Έστω ότι υπάρχουν τουλάχιστον 2 άρτιοι αριθμοί στο σύνολο.</p>
+      
+      <p><strong>Βήμα 1:</strong> Επιλέγουμε το <strong>ακραίο στοιχείο</strong> — τους 2 μικρότερους άρτιους.<br>
+      Έστω \(a, b\) οι δύο μικρότεροι άρτιοι αριθμοί με \(a < b\).</p>
+      
+      <p><strong>Βήμα 2:</strong> Υπολογίζουμε το άθροισμα:<br>
+      \(a + b\) = άρτιος αριθμός (άρτιος + άρτιος = άρτιος)</p>
+      
+      <p><strong>Βήμα 3:</strong> Αλλά το σύνολο έχει και περιττούς αριθμούς!<br>
+      Έστω \(c, d\) δύο περιττοί αριθμοί στο σύνολο.<br>
+      Τότε: \(c + d\) = άρτιος αριθμός (περιττός + περιττός = άρτιος)</p>
+      
+      <p><strong>Βήμα 4:</strong> <span style="color: #dc2626; font-weight: bold;">ΑΤΟΠΟ!</span><br>
+      Και τα δύο αθροίσματα \(a + b\) και \(c + d\) είναι άρτια.<br>
+      Αλλά η συνθήκη του προβλήματος λέει ότι κάθε άθροισμα είναι <strong>μοναδικό</strong>!</p>
+      
+      <p><strong>Συμπέρασμα:</strong><br>
+      Αφού καταλήξαμε σε άτοπο, η αρχική υπόθεση είναι λανθασμένη.<br>
+      Άρα το σύνολο δεν μπορεί να έχει 2 ή περισσότερους άρτιους αριθμούς.<br>
+      <strong>Το σύνολο περιέχει το πολύ 1 άρτιο αριθμό.</strong> ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Επιλέξαμε τους <em>μικρότερους άρτιους</em> (ακραίο στοιχείο) και χρησιμοποιήσαμε την ιδιότητά τους για να βρούμε άτοπο!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="extremal-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Σε ένα τουρνουά σκακιού με \(n\) παίκτες, κάθε παίκτης παίζει με κάθε άλλον ακριβώς μία φορά. Κάθε παιχνίδι καταλήγει σε νίκη ή ήττα (δεν υπάρχουν ισοπαλίες).</p>
+      <p><strong>Να αποδείξετε ότι υπάρχει τουλάχιστον ένας παίκτης που έχει νικήσει όλους όσους τον νίκησαν.</strong></p>
+      <p>(Δηλαδή: Αν ο Α νίκησε τον Β, τότε ο Β δεν νίκησε κανέναν που νίκησε τον Α)</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-int-hint')">💡 Δείξε μου hint</button>
+    <div id="extremal-int-hint" class="hint">
+      <p><strong>Hint 1:</strong> Ποιον παίκτη θα διαλέγαμε ως "ακραίο"; Αυτόν με τις περισσότερες νίκες;</p>
+      <p><strong>Hint 2:</strong> Έστω Π ο παίκτης με τις <strong>περισσότερες νίκες</strong>.</p>
+      <p><strong>Hint 3:</strong> Αν κάποιος Χ νίκησε τον Π, τότε ο Χ έχει λιγότερες νίκες από τον Π.</p>
+      <p><strong>Hint 4:</strong> Μπορεί ο Χ να έχει νικήσει κάποιον Υ που νίκησε τον Π;</p>
+      <p><strong>Κλειδί:</strong> Ο παίκτης με τις περισσότερες νίκες είναι η απάντηση!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="extremal-int-solution" class="solution">
+      <h4>Λύση:</h4>
+      
+      <p><strong>Βήμα 1 - Επιλογή Ακραίου:</strong><br>
+      Έστω <strong>Π</strong> ο παίκτης με τις <strong>περισσότερες νίκες</strong> στο τουρνουά.<br>
+      (Αν υπάρχουν περισσότεροι με το ίδιο μέγιστο, διαλέγουμε έναν οποιονδήποτε)</p>
+      
+      <p><strong>Βήμα 2 - Τι θέλουμε να δείξουμε:</strong><br>
+      Πρέπει να αποδείξουμε ότι ο Π έχει νικήσει <em>όλους όσους τον νίκησαν</em>.</p>
+      
+      <p><strong>Βήμα 3 - Απόδειξη με Άτοπο:</strong><br>
+      Υποθέτουμε το αντίθετο: Έστω ότι υπάρχει κάποιος <strong>Χ</strong> που:<br>
+      • Νίκησε τον Π (Χ > Π)<br>
+      • Και υπάρχει κάποιος <strong>Υ</strong> που ο Υ νίκησε τον Χ (Υ > Χ) αλλά ο Π ΔΕΝ νίκησε τον Υ (Υ > Π)</p>
+      
+      <p><strong>Βήμα 4 - Συγκρίνουμε νίκες:</strong><br>
+      Νίκες(Π) = έστω \(k\) νίκες<br>
+      Νίκες(Υ) ≥ Νίκες(Π) + 1 = \(k + 1\) νίκες<br>
+      (Γιατί; Ο Υ νίκησε τον Π, οπότε έχει τουλάχιστον όλες τις νίκες που θα είχε ο Π αν δεν τον νικούσε + 1)</p>
+      
+      <p><strong>Βήμα 5 - ΑΤΟΠΟ!</strong><br>
+      Αλλά είπαμε ότι ο Π έχει τις <strong>περισσότερες</strong> νίκες!<br>
+      Δεν μπορεί ο Υ να έχει περισσότερες από τον Π!</p>
+      
+      <p><strong>Συμπέρασμα:</strong><br>
+      Η υπόθεση ήταν λάθος. Άρα ο Π έχει νικήσει <strong>όλους όσους τον νίκησαν</strong>. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Επιλέξαμε τον παίκτη με τις <em>περισσότερες νίκες</em> (ακραίο στοιχείο) και χρησιμοποιήσαμε αυτό το χαρακτηριστικό του!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="extremal-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Θεωρούμε \(n\) σημεία στο επίπεδο, όχι όλα συνευθειακά. Κάθε ευθεία που ορίζεται από δύο από αυτά τα σημεία περιέχει τουλάχιστον ένα τρίτο σημείο από τα \(n\).</p>
+      <p><strong>Να αποδείξετε ότι όλα τα σημεία είναι συνευθειακά.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="extremal-adv-hint" class="hint">
+      <p><strong>Hint 1:</strong> Ποιο θα ήταν το "ακραίο στοιχείο" εδώ; Ένα ζεύγος (σημείο, ευθεία) με ειδική ιδιότητα;</p>
+      <p><strong>Hint 2:</strong> Θεώρησε την <strong>ελάχιστη απόσταση</strong> από ένα σημείο σε μια ευθεία που δεν το περιέχει.</p>
+      <p><strong>Hint 3:</strong> Έστω Π το σημείο και ℓ η ευθεία με την ελάχιστη απόσταση. Πού πέφτει η κάθετη από το Π στην ℓ;</p>
+      <p><strong>Hint 4:</strong> Η κάθετη πρέπει να περιέχει τουλάχιστον 2 σημεία από τα \(n\). Τι συνέπειες έχει αυτό;</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε τη γεωμετρία για να βρεις άτοπο!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="extremal-adv-solution" class="solution">
+      <h4>Λύση (Sylvester-Gallai Theorem):</h4>
+      
+      <p><strong>Απόδειξη με Άτοπο:</strong></p>
+      
+      <p><strong>Υπόθεση:</strong> Έστω ότι τα σημεία ΔΕΝ είναι όλα συνευθειακά.</p>
+      
+      <p><strong>Βήμα 1 - Επιλογή Ακραίου:</strong><br>
+      Θεωρούμε το ζεύγος (σημείο Π, ευθεία ℓ) όπου:<br>
+      • Το Π δεν ανήκει στην ℓ<br>
+      • Η απόσταση d(Π, ℓ) είναι η <strong>ελάχιστη δυνατή</strong> απόσταση</p>
+      
+      <p><strong>Βήμα 2 - Ιδιότητες:</strong><br>
+      • Η ευθεία ℓ ορίζεται από 2 σημεία, έστω Α και Β<br>
+      • Από την υπόθεση, η ℓ περιέχει τουλάχιστον ένα τρίτο σημείο, έστω Γ<br>
+      • Έστω Η το προβολή του Π στην ℓ (κάθετη προβολή)</p>
+      
+      <p><strong>Βήμα 3 - Θέση του Η:</strong><br>
+      Το Η είναι η κάθετη προβολή, άρα η ΠΗ ⊥ ℓ.<br>
+      Το Η δεν μπορεί να είναι κάποιο από τα Α, Β, Γ (γιατί τότε θα ήταν Π ∈ ℓ).</p>
+      
+      <p><strong>Βήμα 4 - Νέα ευθεία:</strong><br>
+      Θεωρούμε την ευθεία ΠΓ (περνάει από το Π και το Γ που είναι στην ℓ).<br>
+      Από την υπόθεση, η ΠΓ πρέπει να περιέχει κάποιο τρίτο σημείο Δ.</p>
+      
+      <p><strong>Βήμα 5 - Απόσταση του Δ από ℓ:</strong><br>
+      Η απόσταση d(Δ, ℓ) < d(Π, ℓ)<br>
+      (Γιατί; Γεωμετρικά, οποιοδήποτε σημείο της ΠΓ εκτός του Π είναι πιο κοντά στην ℓ)</p>
+      
+      <p><strong>Βήμα 6 - ΑΤΟΠΟ!</strong><br>
+      Βρήκαμε ζεύγος (Δ, ℓ) με μικρότερη απόσταση από (Π, ℓ)!<br>
+      Αλλά είπαμε ότι το (Π, ℓ) είχε την <strong>ελάχιστη</strong> απόσταση!</p>
+      
+      <p><strong>Συμπέρασμα:</strong><br>
+      Η αρχική υπόθεση ήταν λάθος.<br>
+      Άρα <strong>όλα τα σημεία είναι συνευθειακά</strong>. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Χρησιμοποιήσαμε το ζεύγος με την <em>ελάχιστη απόσταση</em> (ακραίο στοιχείο) και οδηγηθήκαμε σε άτοπο!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Λάθος επιλογή ακραίου:</strong> Διάλεξε το στοιχείο με τους περισσότερους περιορισμούς, όχι με τις περισσότερες ελευθερίες</li>
+      <li><strong>Δεν χρησιμοποιείς την ακραιότητα:</strong> Αφού διάλεξες ακραίο στοιχείο, χρησιμοποίησε αυτό που το κάνει ακραίο!</li>
+      <li><strong>Ξεχνάς τη μοναδικότητα:</strong> Μερικές φορές το ακραίο στοιχείο είναι μοναδικό — χρησιμοποίησε αυτό το γεγονός</li>
+      <li><strong>Δεν εξετάζεις όλα τα είδη ακραίων:</strong> Υπάρχουν πολλά είδη ακραίων (μικρότερο, μεγαλύτερο, με λιγότερες συνδέσεις, κλπ)</li>
+      <li><strong>Παραλείπεις να δείξεις ότι το ακραίο υπάρχει:</strong> Σε άπειρα σύνολα, πρέπει να δικαιολογήσεις γιατί υπάρχει ελάχιστο/μέγιστο</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Ποιο στοιχείο είναι συνήθως το σωστό σημείο εκκίνησης στην στρατηγική του Ακραίου Στοιχείου;</p>
+    <button class="quiz-btn" onclick="checkQuiz('extremal', 'a')">Το πιο περιορισμένο στοιχείο (με λιγότερες επιλογές)</button>
+    <button class="quiz-btn" onclick="checkQuiz('extremal', 'b')">Οποιοδήποτε τυχαίο στοιχείο</button>
+    <button class="quiz-btn" onclick="checkQuiz('extremal', 'c')">Το μεσαίο στοιχείο (ούτε πολύ μικρό ούτε πολύ μεγάλο)</button>
+    <div id="extremal-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
 </div>
 
-<div class="info-box" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-  <h2 style="color: white;">🚀 Έτοιμος να ξεκινήσεις;</h2>
-  <p style="margin-top: 10px;">Κάθε στρατηγική περιλαμβάνει:</p>
-  <ul style="list-style: none; margin: 15px 0; padding: 0;">
-    <li>✅ Πότε να τη χρησιμοποιήσεις</li>
-    <li>✅ Βήμα-βήμα σκέψη</li>
-    <li>✅ 3 επίπεδα δυσκολίας</li>
-    <li>✅ Παραδείγματα με λύσεις</li>
-    <li>✅ Συχνά λάθη</li>
-    <li>✅ Quiz για εξάσκηση</li>
-  </ul>
-</div>
+</div> <!-- End container -->
 
-</div>
+<script>
+function showSection(sectionId) {
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(s => s.classList.remove('active'));
+  
+  if (sectionId !== 'home') {
+    const section = document.getElementById('section-' + sectionId);
+    if (section) {
+      section.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function showLevel(strategy, level) {
+  const section = document.getElementById('section-' + strategy);
+  if (!section) return;
+  
+  const tabs = section.querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const levels = section.querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(hintId) {
+  const hint = document.getElementById(hintId);
+  if (hint) {
+    hint.classList.toggle('show');
+  }
+}
+
+const quizAnswers = {
+  'extremal': 'a'
+};
+
+function checkQuiz(strategy, answer) {
+  const correct = quizAnswers[strategy];
+  const resultDiv = document.getElementById(strategy + '-quiz-result');
+  const buttons = event.target.parentElement.querySelectorAll('.quiz-btn');
+  
+  buttons.forEach(btn => {
+    btn.classList.remove('correct', 'wrong');
+  });
+  
+  if (answer === correct) {
+    event.target.classList.add('correct');
+    if (resultDiv) {
+      resultDiv.className = 'quiz-result correct';
+      resultDiv.textContent = '✓ Σωστά! Μπράβο! Το ακραίο στοιχείο είναι αυτό με τους περισσότερους περιορισμούς!';
+    }
+  } else {
+    event.target.classList.add('wrong');
+    if (resultDiv) {
+      resultDiv.className = 'quiz-result wrong';
+      resultDiv.textContent = '✗ Προσπάθησε ξανά! Σκέψου: ποιο στοιχείο έχει λιγότερες επιλογές;';
+    }
+  }
+}
+</script>
 
 </body>
 </html>
