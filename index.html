@@ -556,7 +556,7 @@ body {
 function showSection(sectionId) {
   const sections = document.querySelectorAll('.section');
   sections.forEach(s => s.classList.remove('active'));
-  
+
   if (sectionId !== 'home') {
     const section = document.getElementById('section-' + sectionId);
     if (section) {
@@ -568,59 +568,44 @@ function showSection(sectionId) {
   }
 }
 
-function showLevel(strategy, level) {
+function showLevel(btn, strategy, level) {
   const section = document.getElementById('section-' + strategy);
   if (!section) return;
-  
-  const tabs = section.querySelectorAll('.tab-btn');
-  tabs.forEach(tab => tab.classList.remove('active'));
-  event.target.classList.add('active');
-  
-  const levels = section.querySelectorAll('.level');
-  levels.forEach(l => l.classList.remove('active'));
-  
-  const levelId = strategy + '-' + level;
-  const levelDiv = document.getElementById(levelId);
-  if (levelDiv) {
-    levelDiv.classList.add('active');
-  }
+
+  section.querySelectorAll('.tab-btn')
+    .forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  section.querySelectorAll('.level')
+    .forEach(l => l.classList.remove('active'));
+
+  const target = document.getElementById(strategy + '-' + level);
+  if (target) target.classList.add('active');
 }
 
-function toggleHint(hintId) {
-  const hint = document.getElementById(hintId);
-  if (hint) {
-    hint.classList.toggle('show');
-  }
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
 }
 
-const quizAnswers = {
-  'induction': 'a'
-};
+const quizAnswers = { induction: 'a' };
 
-function checkQuiz(strategy, answer) {
-  const correct = quizAnswers[strategy];
-  const resultDiv = document.getElementById(strategy + '-quiz-result');
-  const buttons = event.target.parentElement.querySelectorAll('.quiz-btn');
-  
-  buttons.forEach(btn => {
-    btn.classList.remove('correct', 'wrong');
-  });
-  
-  if (answer === correct) {
-    event.target.classList.add('correct');
-    if (resultDiv) {
-      resultDiv.className = 'quiz-result correct';
-      resultDiv.textContent = '✓ Σωστά! Βάση → Υπόθεση → Βήμα!';
-    }
+function checkQuiz(btn, strategy, answer) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  const buttons = btn.parentElement.querySelectorAll('.quiz-btn');
+
+  buttons.forEach(b => b.classList.remove('correct', 'wrong'));
+
+  if (answer === quizAnswers[strategy]) {
+    btn.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Βάση → Υπόθεση → Βήμα!';
   } else {
-    event.target.classList.add('wrong');
-    if (resultDiv) {
-      resultDiv.className = 'quiz-result wrong';
-      resultDiv.textContent = '✗ Προσπάθησε ξανά! Ποια είναι η δομή της επαγωγής;';
-    }
+    btn.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά!';
   }
 }
 </script>
 
-</body>
 </html>
