@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3. Αντιπαραδείγματα - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #0e7490; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #155e75; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);
+  color: white; box-shadow: 0 4px 12px rgba(14, 116, 144, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #0e7490;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #0e7490; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #155e75 0%, #164e63 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(14, 116, 144, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 3px solid #0e7490; border-radius: 15px;
+}
+.quiz h4 { color: #155e75; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #0e7490; background: #eff6ff; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #cffafe;
+  border-left: 4px solid #0e7490;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.warning-box {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  color: #78350f;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>3. Αντιπαραδείγματα</h1>
+  <p><em>Counterexamples</em></p>
+</div>
+
+<div class="section">
+  <h2>Αντιπαραδείγματα (Counterexamples)</h2>
+  <h3>Ένα παράδειγμα λέει "ΝΑΙ" - ένα αντιπαράδειγμα λέει "ΟΧΙ"!</h3>
+  
+  <p>Η στρατηγική του <strong>Αντιπαραδείγματος</strong> είναι η πιο άμεση μέθοδος για να <strong>διαψεύσεις</strong> έναν ισχυρισμό. Αντί να προσπαθείς να αποδείξεις γιατί κάτι είναι λάθος, απλά <strong>βρες ένα παράδειγμα</strong> όπου δεν ισχύει!</p>
+
+  <p>Σκέψου το έτσι:</p>
+  <ul>
+    <li><strong>Ισχυρισμός:</strong> "Όλοι οι αριθμοί της μορφής \(n^2 + n + 1\) είναι πρώτοι"</li>
+    <li><strong>Αντιπαράδειγμα:</strong> Για \(n = 4\): \(16 + 4 + 1 = 21 = 3 \times 7\) (σύνθετος!) ✗</li>
+  </ul>
+  <p>Τελείωσες! Ένα παράδειγμα αρκεί για να καταρρίψεις τον ισχυρισμό.</p>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν ο ισχυρισμός λέει <strong>"για όλα"</strong> ή <strong>"πάντα"</strong></li>
+      <li>Όταν υποψιάζεσαι ότι ένας ισχυρισμός είναι <strong>λάθος</strong></li>
+      <li>Όταν σου ζητούν να <strong>διερευνήσεις</strong> αν κάτι ισχύει</li>
+      <li>Όταν θέλεις να <strong>ελέγξεις γρήγορα</strong> μια υπόθεση</li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Κατάλαβε τον ισχυρισμό:</strong> Τι ακριβώς λέει; "Για όλα" ή "υπάρχει";</li>
+    <li><strong>Ψάξε για ύποπτες τιμές:</strong> Ποιες τιμές θα μπορούσαν να καταρρίψουν τον ισχυρισμό;</li>
+    <li><strong>Δοκίμασε ειδικές περιπτώσεις:</strong> Μικροί αριθμοί, μεγάλοι, άρτιοι, περιττοί, αρνητικοί...</li>
+    <li><strong>Επαλήθευσε:</strong> Όταν βρεις αντιπαράδειγμα, ξανα-τσέκαρε το!</li>
+  </ol>
+
+  <div class="warning-box">
+    <p><strong>⚠️ ΠΡΟΣΟΧΗ:</strong> Αν ο ισχυρισμός λέει <strong>"υπάρχει"</strong>, τότε αντιπαράδειγμα <strong>ΔΕΝ αρκεί</strong>! Πρέπει να αποδείξεις ότι δεν υπάρχει <em>κανένα</em> παράδειγμα!</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('counterexample', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('counterexample', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('counterexample', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="counterexample-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Ένας μαθητής ισχυρίζεται: "Αν \(a^2 = b^2\), τότε \(a = b\) για κάθε πραγματικό \(a, b\)."</p>
+      <p><strong>Είναι ο ισχυρισμός σωστός; Αν όχι, δώστε αντιπαράδειγμα.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('counterexample-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="counterexample-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Υπάρχουν <strong>δύο</strong> αριθμοί που έχουν το ίδιο τετράγωνο;</p>
+      <p>Σκέψου: τι συμβαίνει με τους <strong>αρνητικούς</strong> αριθμούς;</p>
+      <p><strong>Κλειδί:</strong> \(3^2 = 9\), αλλά και \((-3)^2 = 9\)!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('counterexample-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="counterexample-basic-solution" class="solution">
+      <h4>Λύση με Αντιπαράδειγμα:</h4>
+      
+      <p><strong>Ο ισχυρισμός είναι ΛΑΘΟΣ!</strong></p>
+      
+      <p><strong>Αντιπαράδειγμα:</strong></p>
+      <p>Έστω \(a = 3\) και \(b = -3\).</p>
+      <p>Τότε: \(a^2 = 9\) και \(b^2 = 9\), άρα \(a^2 = b^2\) ✓</p>
+      <p>Αλλά: \(a = 3 \neq -3 = b\) ✗</p>
+      
+      <p><strong>Συμπέρασμα:</strong> Ο ισχυρισμός είναι ψευδής!</p>
+      
+      <p><strong>Διόρθωση:</strong> Η σωστή πρόταση είναι: "Αν \(a^2 = b^2\), τότε \(a = b\) ή \(a = -b\)".</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Ένα απλό αντιπαράδειγμα αρκεί για να καταρρίψεις τον ισχυρισμό!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="counterexample-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Μια συνάρτηση \(f: \mathbb{R} \to \mathbb{R}\) ικανοποιεί:</p>
+      <p>\[f(x + y) = f(x) + f(y) \quad \text{για κάθε } x, y \in \mathbb{R}\]</p>
+      <p>Ένας μαθητής ισχυρίζεται: "Κάθε τέτοια συνάρτηση έχει τη μορφή \(f(x) = cx\) για κάποια σταθερά \(c\)."</p>
+      <p><strong>Είναι ο ισχυρισμός σωστός; Αν όχι, δώστε αντιπαράδειγμα.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('counterexample-int-hint')">💡 Δείξε μου hint</button>
+    <div id="counterexample-int-hint" class="hint">
+      <p><strong>Hint:</strong> Ο ισχυρισμός είναι σωστός αν η \(f\) είναι <strong>συνεχής</strong>.</p>
+      <p>Μπορείς να σκεφτείς μια <strong>μη συνεχή</strong> συνάρτηση που ικανοποιεί την εξίσωση;</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε το Αξίωμα Επιλογής!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('counterexample-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="counterexample-int-solution" class="solution">
+      <h4>Λύση:</h4>
+      
+      <p><strong>Ο ισχυρισμός είναι ΛΑΘΟΣ!</strong></p>
+      
+      <p><strong>Αντιπαράδειγμα (προχωρημένο):</strong></p>
+      <p>Υπάρχουν <strong>μη συνεχείς</strong> συναρτήσεις που ικανοποιούν την εξίσωση!</p>
+      
+      <p>Για παράδειγμα, μπορούμε να ορίσουμε μια συνάρτηση \(f\) ως εξής:</p>
+      <ul>
+        <li>Θεωρούμε τους πραγματικούς ως διανυσματικό χώρο πάνω από τους ρητούς</li>
+        <li>Επιλέγουμε μια <strong>βάση Hamel</strong> \(B\) (χρησιμοποιώντας το Αξίωμα Επιλογής)</li>
+        <li>Ορίζουμε \(f\) να είναι <strong>διαφορετική</strong> σε δύο διαφορετικά στοιχεία της βάσης</li>
+      </ul>
+      
+      <p>Αυτή η \(f\) ικανοποιεί \(f(x+y) = f(x) + f(y)\), αλλά <strong>ΔΕΝ</strong> έχει τη μορφή \(f(x) = cx\)!</p>
+      
+      <p><strong>Διόρθωση:</strong> Αν προσθέσουμε την υπόθεση ότι η \(f\) είναι <strong>συνεχής</strong>, τότε ο ισχυρισμός γίνεται σωστός!</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η συνέχεια είναι κρίσιμη για τον ισχυρισμό!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="counterexample-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Ένας μαθητής ισχυρίζεται: "Αν ένας γράφος έχει \(n\) κορυφές και κάθε κορυφή έχει βαθμό τουλάχιστον \(\frac{n}{2}\), τότε ο γράφος είναι συνεκτικός."</p>
+      <p><strong>Είναι ο ισχυρισμός σωστός; Αν όχι, δώστε αντιπαράδειγμα.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('counterexample-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="counterexample-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Δοκίμασε με \(n = 4\) κορυφές.</p>
+      <p>Μπορείς να φτιάξεις έναν γράφο όπου κάθε κορυφή έχει βαθμό 2 (= \(\frac{4}{2}\)), αλλά ο γράφος <strong>ΔΕΝ</strong> είναι συνεκτικός;</p>
+      <p><strong>Κλειδί:</strong> Σκέψου δύο <strong>ξεχωριστά</strong> τρίγωνα!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('counterexample-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="counterexample-adv-solution" class="solution">
+      <h4>Λύση:</h4>
+      
+      <p><strong>Ο ισχυρισμός είναι ΛΑΘΟΣ!</strong></p>
+      
+      <p><strong>Αντιπαράδειγμα:</strong></p>
+      <p>Θεωρούμε γράφο με \(n = 4\) κορυφές: \(A, B, C, D\).</p>
+      <p>Ακμές: \(AB, AC, BC, CD\) (δηλαδή ένα τρίγωνο \(ABC\) και μια ακμή \(CD\)).</p>
+      
+      <p><strong>Έλεγχος βαθμού:</strong></p>
+      <ul>
+        <li>\(\deg(A) = 2 \geq \frac{4}{2} = 2\) ✓</li>
+        <li>\(\deg(B) = 2 \geq 2\) ✓</li>
+        <li>\(\deg(C) = 3 \geq 2\) ✓</li>
+        <li>\(\deg(D) = 1 < 2\) ✗</li>
+      </ul>
+      
+      <p>Ωπς! Η \(D\) έχει βαθμό 1 < 2. Ας δοκιμάσουμε κάτι άλλο:</p>
+      
+      <p><strong>Καλύτερο αντιπαράδειγμα:</strong></p>
+      <p>Δύο ξεχωριστά πλήρη γραφήματα \(K_2\) (δηλαδή δύο ακμές \(AB\) και \(CD\)).</p>
+      <ul>
+        <li>Κάθε κορυφή έχει βαθμό 1 = \(\frac{2}{2}\) (όριο για \(n=2\) σε κάθε συνιστώσα)</li>
+        <li>Αλλά ο γράφος <strong>ΔΕΝ</strong> είναι συνεκτικός! ✗</li>
+      </ul>
+      
+      <p><strong>Διόρθωση:</strong> Αν κάθε κορυφή έχει βαθμό <strong>τουλάχιστον \(\lceil \frac{n}{2} \rceil\)</strong>, τότε ο γράφος είναι συνεκτικός (Θεώρημα Dirac)!</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Το αντιπαράδειγμα έδειξε ότι ο ισχυρισμός χρειάζεται διόρθωση!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Μπερδεύεις "για όλα" με "υπάρχει":</strong> Αντιπαράδειγμα καταρρίπτει μόνο "για όλα"!</li>
+      <li><strong>Δεν επαληθεύεις το αντιπαράδειγμά σου:</strong> Ξανα-τσέκαρε ότι όντως παραβιάζει τον ισχυρισμό!</li>
+      <li><strong>Σταματάς μετά από ένα αντιπαράδειγμα:</strong> Μερικές φορές αξίζει να ψάξεις το "απλούστερο" αντιπαράδειγμα!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Ποιον τύπο ισχυρισμού μπορεί να καταρρίψει ένα αντιπαράδειγμα;</p>
+    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'a', this)">"Για κάθε x ισχύει..."</button>
+    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'b', this)">"Υπάρχει x τέτοιο ώστε..."</button>
+    <button class="quiz-btn" onclick="checkQuiz('counterexample', 'c', this)">Και τους δύο</button>
+    <div id="counterexample-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  counterexample: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Αντιπαράδειγμα καταρρίπτει μόνο "για κάθε" ισχυρισμούς!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου τη λογική των ποσοδεικτών...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
