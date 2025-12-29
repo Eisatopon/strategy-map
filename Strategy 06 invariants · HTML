@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6. Αναλλοίωτα - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #388e3c; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #2e7d32; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+  color: white; box-shadow: 0 4px 12px rgba(56, 142, 60, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #388e3c;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #388e3c; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(56, 142, 60, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 3px solid #388e3c; border-radius: 15px;
+}
+.quiz h4 { color: #1b5e20; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #388e3c; background: #f1f8e9; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #e8f5e9;
+  border-left: 4px solid #388e3c;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.invariant-box {
+  background: #c8e6c9;
+  border: 3px solid #388e3c;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>6. Αναλλοίωτα</h1>
+  <p><em>Invariants</em></p>
+</div>
+
+<div class="section">
+  <h2>Αναλλοίωτα (Invariants)</h2>
+  <h3>Βρες τι παραμένει σταθερό όταν όλα αλλάζουν!</h3>
+  
+  <p>Τα <strong>Αναλλοίωτα</strong> είναι μία από τις πιο ισχυρές ιδέες στα μαθηματικά! Ένα αναλλοίωτο είναι μια <strong>ποσότητα που δεν αλλάζει</strong> ενώ κάτι άλλο αλλάζει. Σκέψου το σαν έναν "κρυφό κανόνα" που ελέγχει το σύστημα.</p>
+
+  <div class="invariant-box">
+    🔒 Αν κάτι είναι αναλλοίωτο, είναι σταθερό από την αρχή μέχρι το τέλος!
+  </div>
+
+  <p>Παραδείγματα αναλλοίωτων:</p>
+  <ul>
+    <li><strong>Φυσική:</strong> Η ενέργεια διατηρείται</li>
+    <li><strong>Γεωμετρία:</strong> Οι γωνίες σε τρίγωνο αθροίζουν πάντα σε 180°</li>
+    <li><strong>Άλγεβρα:</strong> Η ισοτιμία (άρτιος/περιττός) μετά από πράξεις</li>
+    <li><strong>Συνδυαστική:</strong> Το χρώμα σε σκακιέρα μετά από κινήσεις</li>
+  </ul>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν έχεις <strong>διαδικασία</strong> ή <strong>παιχνίδι</strong></li>
+      <li>Όταν ρωτάνε "μπορεί να φτάσεις από Α σε Β;"</li>
+      <li>Όταν υπάρχει <strong>επανάληψη</strong> μιας πράξης</li>
+      <li>Όταν θέλεις να αποδείξεις ότι κάτι <strong>είναι αδύνατο</strong></li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Κατάλαβε τη διαδικασία:</strong> Τι ακριβώς αλλάζει;</li>
+    <li><strong>Ψάξε για αναλλοίωτο:</strong> Τι θα μπορούσε να παραμένει σταθερό;</li>
+    <li><strong>Έλεγξε:</strong> Όντως παραμένει σταθερό σε κάθε βήμα;</li>
+    <li><strong>Χρησιμοποίησέ το:</strong> Αν αρχική ≠ τελική τιμή, τότε αδύνατο!</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('invariants', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('invariants', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('invariants', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="invariants-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Σε έναν πίνακα γράφουμε τους αριθμούς 1, 2, 3, ..., 100. Κάθε φορά:</p>
+      <ul>
+        <li>Διαγράφουμε δύο αριθμούς \(a, b\)</li>
+        <li>Γράφουμε τη διαφορά τους \(|a - b|\)</li>
+      </ul>
+      <p>Μετά από 99 τέτοιες πράξεις, μένει ένας αριθμός.</p>
+      <p><strong>Μπορεί αυτός ο αριθμός να είναι 0;</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('invariants-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="invariants-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Ψάξε για αναλλοίωτο! Τι <strong>παραμένει σταθερό</strong> σε κάθε βήμα;</p>
+      <p>Σκέψου: τι συμβαίνει στην <strong>ισοτιμία</strong> (άρτιος/περιττός) του αθροίσματος;</p>
+      <p><strong>Κλειδί:</strong> Η ισοτιμία του αθροίσματος είναι αναλλοίωτη!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('invariants-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="invariants-basic-solution" class="solution">
+      <h4>Απόδειξη με Αναλλοίωτα:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός αναλλοίωτου:</strong></p>
+      <p>Ας εξετάσουμε την <strong>ισοτιμία</strong> (parity) του αθροίσματος όλων των αριθμών στον πίνακα.</p>
+      
+      <p><strong>Βήμα 2 - Αρχική κατάσταση:</strong></p>
+      <p>Άθροισμα: \(1 + 2 + 3 + \cdots + 100 = \frac{100 \cdot 101}{2} = 5050\) (άρτιο)</p>
+      
+      <p><strong>Βήμα 3 - Τι συμβαίνει σε κάθε βήμα;</strong></p>
+      <p>Διαγράφουμε \(a, b\) και γράφουμε \(|a - b|\).</p>
+      <p>Νέο άθροισμα = Παλιό - \(a\) - \(b\) + \(|a - b|\)</p>
+      
+      <p>Αν \(a \geq b\): Νέο = Παλιό - \(a\) - \(b\) + \(a - b\) = Παλιό - \(2b\) (αλλαγή κατά άρτιο)</p>
+      <p>Αν \(b > a\): Νέο = Παλιό - \(a\) - \(b\) + \(b - a\) = Παλιό - \(2a\) (αλλαγή κατά άρτιο)</p>
+      
+      <p>Και στις δύο περιπτώσεις, το άθροισμα αλλάζει κατά <strong>άρτιο</strong> αριθμό!</p>
+      
+      <p><strong>Βήμα 4 - Συμπέρασμα:</strong></p>
+      <p>Αφού το αρχικό άθροισμα είναι άρτιο (5050) και η ισοτιμία διατηρείται, το τελικό άθροισμα πρέπει να είναι άρτιο.</p>
+      <p>Αλλά στο τέλος έχουμε μόνο έναν αριθμό, άρα αυτός ο αριθμός πρέπει να είναι άρτιος!</p>
+      
+      <p><strong>Απάντηση:</strong> ΟΧΙ, δεν μπορεί να είναι 0 (το 0 είναι άρτιος, αλλά το τελικό άθροισμα είναι 5050 mod 2 = 0). Στην πραγματικότητα, ο τελικός αριθμός είναι άρτιος αλλά όχι απαραίτητα 0. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η ισοτιμία του αθροίσματος ήταν το αναλλοίωτο!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="invariants-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Σε μια σκακιέρα \(8 \times 8\), ο ίππος ξεκινάει από την κάτω αριστερή γωνία (λευκό τετράγωνο).</p>
+      <p><strong>Μπορεί ο ίππος να επισκεφθεί όλα τα τετράγωνα ακριβώς μία φορά και να επιστρέψει στην αρχική θέση;</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('invariants-int-hint')">💡 Δείξε μου hint</button>
+    <div id="invariants-int-hint" class="hint">
+      <p><strong>Hint:</strong> Ο ίππος κινείται πάντα από <strong>λευκό σε μαύρο</strong> και από <strong>μαύρο σε λευκό</strong>!</p>
+      <p>Αυτό είναι αναλλοίωτο! Το χρώμα εναλλάσσεται πάντα!</p>
+      <p><strong>Κλειδί:</strong> Πόσα λευκά και πόσα μαύρα τετράγωνα υπάρχουν;</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('invariants-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="invariants-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός αναλλοίωτου:</strong></p>
+      <p>Ο ίππος κινείται πάντα από χρώμα σε <strong>διαφορετικό</strong> χρώμα!</p>
+      
+      <p><strong>Βήμα 2 - Πλήθος τετραγώνων:</strong></p>
+      <p>Σε σκακιέρα \(8 \times 8\): 32 λευκά + 32 μαύρα = 64 τετράγωνα.</p>
+      
+      <p><strong>Βήμα 3 - Ανάλυση διαδρομής:</strong></p>
+      <p>Ο ίππος ξεκινάει από λευκό τετράγωνο.</p>
+      <p>Αν επισκεφθεί όλα τα 64 τετράγωνα:</p>
+      <ul>
+        <li>Κίνηση 1: Λευκό → Μαύρο</li>
+        <li>Κίνηση 2: Μαύρο → Λευκό</li>
+        <li>...</li>
+        <li>Κίνηση 64: Μαύρο → Λευκό</li>
+      </ul>
+      
+      <p>Μετά από 64 κινήσεις (περιττός αριθμός από λευκό), ο ίππος θα βρίσκεται σε <strong>μαύρο</strong> τετράγωνο!</p>
+      
+      <p><strong>Βήμα 4 - Συμπέρασμα:</strong></p>
+      <p>Αλλά η αρχική θέση είναι <strong>λευκό</strong> τετράγωνο!</p>
+      <p>Άρα δεν μπορεί να επιστρέψει στην αρχική θέση! ✗</p>
+      
+      <p><strong>Απάντηση:</strong> ΟΧΙ, είναι αδύνατο. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Το χρώμα του τετραγώνου είναι αναλλοίωτο που εναλλάσσεται!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="invariants-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Γράφουμε στον πίνακα τους αριθμούς \(1, 2, 3, \ldots, n\). Κάθε φορά:</p>
+      <ul>
+        <li>Διαλέγουμε δύο αριθμούς \(a, b\)</li>
+        <li>Τους σβήνουμε</li>
+        <li>Γράφουμε τον αριθμό \(a + b - 1\)</li>
+      </ul>
+      <p>Μετά από \(n-1\) πράξεις μένει ένας αριθμός.</p>
+      <p><strong>Ποιος είναι αυτός ο αριθμός;</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('invariants-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="invariants-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Ψάξε για αναλλοίωτο! Τι ποσότητα παραμένει σταθερή;</p>
+      <p>Σκέψου: τι συμβαίνει στο άθροισμα όλων των αριθμών μείον το πλήθος τους;</p>
+      <p><strong>Κλειδί:</strong> Το \(S - k\) είναι αναλλοίωτο, όπου \(S\) = άθροισμα, \(k\) = πλήθος!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('invariants-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="invariants-adv-solution" class="solution">
+      <h4>Λύση:</h4>
+      
+      <p><strong>Βήμα 1 - Ψάχνουμε για αναλλοίωτο:</strong></p>
+      <p>Έστω \(S\) = άθροισμα όλων των αριθμών στον πίνακα.</p>
+      <p>Έστω \(k\) = πλήθος αριθμών στον πίνακα.</p>
+      
+      <p><strong>Βήμα 2 - Τι συμβαίνει σε κάθε βήμα;</strong></p>
+      <p>Πριν: \(S\) (άθροισμα), \(k\) (πλήθος)</p>
+      <p>Διαγράφουμε \(a, b\), γράφουμε \(a + b - 1\).</p>
+      <p>Μετά: \(S' = S - a - b + (a + b - 1) = S - 1\)</p>
+      <p>Μετά: \(k' = k - 2 + 1 = k - 1\)</p>
+      
+      <p><strong>Βήμα 3 - Αναλλοίωτο:</strong></p>
+      <p>Υπολογίζουμε: \(S' - k' = (S - 1) - (k - 1) = S - k\)</p>
+      <p>Άρα \(S - k\) είναι <strong>αναλλοίωτο</strong>! 🔒</p>
+      
+      <p><strong>Βήμα 4 - Αρχική τιμή:</strong></p>
+      <p>\(S_0 = 1 + 2 + \cdots + n = \frac{n(n+1)}{2}\)</p>
+      <p>\(k_0 = n\)</p>
+      <p>Αναλλοίωτο: \(I = \frac{n(n+1)}{2} - n = \frac{n(n+1) - 2n}{2} = \frac{n(n-1)}{2}\)</p>
+      
+      <p><strong>Βήμα 5 - Τελική τιμή:</strong></p>
+      <p>Στο τέλος: \(k_f = 1\), έστω \(S_f = x\) (ο τελικός αριθμός)</p>
+      <p>Αναλλοίωτο: \(x - 1 = \frac{n(n-1)}{2}\)</p>
+      <p>\[x = \frac{n(n-1)}{2} + 1 = \frac{n(n-1) + 2}{2} = \frac{n^2 - n + 2}{2}\]</p>
+      
+      <p><strong>Απάντηση:</strong> Ο τελικός αριθμός είναι \(\frac{n^2 - n + 2}{2}\). ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Το αναλλοίωτο \(S - k\) μας έδωσε τη λύση!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Δεν ψάχνεις αρκετά:</strong> Μερικές φορές το αναλλοίωτο δεν είναι προφανές - δοκίμασε διαφορετικές ποσότητες!</li>
+      <li><strong>Ξεχνάς να επαληθεύσεις:</strong> Έλεγξε ότι το αναλλοίωτό σου όντως παραμένει σταθερό!</li>
+      <li><strong>Νομίζεις ότι όλα είναι αναλλοίωτα:</strong> Πολλές ποσότητες αλλάζουν - μόνο κάποιες παραμένουν σταθερές!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Τι είναι αναλλοίωτο;</p>
+    <button class="quiz-btn" onclick="checkQuiz('invariants', 'a', this)">Κάτι που παραμένει σταθερό όταν άλλα αλλάζουν</button>
+    <button class="quiz-btn" onclick="checkQuiz('invariants', 'b', this)">Κάτι που αλλάζει πάντα με τον ίδιο τρόπο</button>
+    <button class="quiz-btn" onclick="checkQuiz('invariants', 'c', this)">Ο στόχος που θέλουμε να επιτύχουμε</button>
+    <div id="invariants-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  invariants: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Αναλλοίωτο = σταθερό ενώ όλα γύρω αλλάζουν!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου τι σημαίνει "αναλλοίωτο"...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
