@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2. Ειδικές & Οριακές Περιπτώσεις - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #0891b2; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #0e7490; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  color: white; box-shadow: 0 4px 12px rgba(8, 145, 178, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #0891b2;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #0891b2; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(8, 145, 178, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 3px solid #0891b2; border-radius: 15px;
+}
+.quiz h4 { color: #0e7490; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #0891b2; background: #eff6ff; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #cffafe;
+  border-left: 4px solid #0891b2;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.example-box {
+  background: #e0f2fe;
+  border: 2px solid #0891b2;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>2. Ειδικές & Οριακές Περιπτώσεις</h1>
+  <p><em>Special & Boundary Cases</em></p>
+</div>
+
+<div class="section">
+  <h2>Ειδικές & Οριακές Περιπτώσεις</h2>
+  <h3>Δοκίμασε τα άκρα πρώτα!</h3>
+  
+  <p>Η στρατηγική των <strong>Ειδικών & Οριακών Περιπτώσεων</strong> είναι απλή αλλά εξαιρετικά ισχυρή: πριν επιχειρήσεις τη γενική περίπτωση, <strong>δοκίμασε τα άκρα</strong>!</p>
+
+  <p>Τι είναι "ειδική περίπτωση"; Είναι όταν μία μεταβλητή παίρνει μία <em>ακραία τιμή</em>: \(n = 1\), \(x = 0\), \(k = n\), κλπ. Αυτές οι περιπτώσεις συχνά:</p>
+  <ul>
+    <li>Σου δείχνουν <strong>αν η πρόταση είναι αληθής</strong></li>
+    <li>Σου δίνουν <strong>intuition</strong> για το γιατί</li>
+    <li>Σου προτείνουν <strong>τρόπο απόδειξης</strong></li>
+  </ul>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν το πρόβλημα έχει <strong>παράμετρο</strong> (π.χ. \(n\), \(k\))</li>
+      <li>Όταν ζητείται απόδειξη για "κάθε \(n\)"</li>
+      <li>Όταν δεν ξέρεις από πού να ξεκινήσεις!</li>
+      <li>Όταν η γενική περίπτωση φαίνεται πολύπλοκη</li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Εντόπισε την παράμετρο:</strong> Ποια μεταβλητή μπορεί να πάρει διαφορετικές τιμές;</li>
+    <li><strong>Δοκίμασε \(n = 1\):</strong> Τι συμβαίνει στην απλούστερη περίπτωση;</li>
+    <li><strong>Δοκίμασε \(n = 2\):</strong> Και στην αμέσως επόμενη;</li>
+    <li><strong>Κοίτα το pattern:</strong> Τι παρατηρείς; Πώς αλλάζει;</li>
+    <li><strong>Γενίκευσε:</strong> Τώρα δοκίμασε να αποδείξεις για κάθε \(n\)!</li>
+  </ol>
+
+  <div class="example-box">
+    <p><strong>Παράδειγμα:</strong> "Αποδείξτε ότι \(1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}\) για κάθε \(n \geq 1\)."</p>
+    <p><strong>Ειδικές περιπτώσεις:</strong></p>
+    <ul>
+      <li>\(n = 1\): \(1 = \frac{1 \cdot 2}{2} = 1\) ✓</li>
+      <li>\(n = 2\): \(1 + 2 = 3 = \frac{2 \cdot 3}{2} = 3\) ✓</li>
+      <li>\(n = 3\): \(1 + 2 + 3 = 6 = \frac{3 \cdot 4}{2} = 6\) ✓</li>
+    </ul>
+    <p>Τώρα έχεις <strong>confidence</strong> ότι ο τύπος είναι σωστός!</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('special', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('special', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('special', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="special-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Ένας μαθητής ισχυρίζεται ότι για κάθε θετικό ακέραιο \(n\), ισχύει:</p>
+      <p>\[n^2 + n + 41 \text{ είναι πρώτος αριθμός}\]</p>
+      <p><strong>Ελέγξτε αν η πρόταση είναι αληθής ή ψευδής.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('special-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="special-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Δοκίμασε μερικές <strong>ειδικές τιμές</strong> του \(n\)!</p>
+      <p>Ξεκίνα από \(n = 1, 2, 3, \ldots\) και δες αν βρεις κάποιο \(n\) για το οποίο ο τύπος δίνει <strong>σύνθετο</strong> αριθμό.</p>
+      <p><strong>Κλειδί:</strong> Υπάρχει κάποιο \(n\) που κάνει τον τύπο "ύποπτο";</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('special-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="special-basic-solution" class="solution">
+      <h4>Λύση με Ειδικές Περιπτώσεις:</h4>
+      
+      <p><strong>Βήμα 1 - Δοκιμή μικρών τιμών:</strong></p>
+      <ul>
+        <li>\(n = 1\): \(1 + 1 + 41 = 43\) (πρώτος ✓)</li>
+        <li>\(n = 2\): \(4 + 2 + 41 = 47\) (πρώτος ✓)</li>
+        <li>\(n = 3\): \(9 + 3 + 41 = 53\) (πρώτος ✓)</li>
+        <li>\(n = 10\): \(100 + 10 + 41 = 151\) (πρώτος ✓)</li>
+      </ul>
+      <p>Μέχρι τώρα δουλεύει! Αλλά...</p>
+      
+      <p><strong>Βήμα 2 - Ύποπτη τιμή:</strong></p>
+      <p>Τι συμβαίνει όταν \(n = 41\);</p>
+      <p>\[n^2 + n + 41 = 41^2 + 41 + 41 = 41(41 + 1 + 1) = 41 \cdot 43\]</p>
+      
+      <p>Αυτός ο αριθμός είναι <strong>σύνθετος</strong>! (γινόμενο του 41 και 43) ✗</p>
+      
+      <p><strong>Συμπέρασμα:</strong> Η πρόταση είναι <strong>ψευδής</strong>!</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η "οριακή" τιμή \(n = 41\) αποκάλυψε το λάθος!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="special-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Αποδείξτε ότι για κάθε θετικό ακέραιο \(n\), ο αριθμός:</p>
+      <p>\[n^3 - n\]</p>
+      <p>διαιρείται με το 6.</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('special-int-hint')">💡 Δείξε μου hint</button>
+    <div id="special-int-hint" class="hint">
+      <p><strong>Hint:</strong> Δοκίμασε πρώτα \(n = 1, 2, 3\) για να πάρεις <em>intuition</em>!</p>
+      <p>Μετά σκέψου: πώς μπορείς να <strong>παραγοντοποιήσεις</strong> τον τύπο \(n^3 - n\);</p>
+      <p><strong>Κλειδί:</strong> Αν παραγοντοποιήσεις, θα δεις ότι είναι γινόμενο <strong>τριών διαδοχικών</strong> αριθμών!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('special-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="special-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Ειδικές περιπτώσεις (για intuition):</strong></p>
+      <ul>
+        <li>\(n = 1\): \(1 - 1 = 0\) (διαιρείται με 6 ✓)</li>
+        <li>\(n = 2\): \(8 - 2 = 6\) (διαιρείται με 6 ✓)</li>
+        <li>\(n = 3\): \(27 - 3 = 24 = 6 \cdot 4\) (διαιρείται με 6 ✓)</li>
+        <li>\(n = 4\): \(64 - 4 = 60 = 6 \cdot 10\) (διαιρείται με 6 ✓)</li>
+      </ul>
+      <p>Φαίνεται να δουλεύει!</p>
+      
+      <p><strong>Βήμα 2 - Παραγοντοποίηση:</strong></p>
+      <p>\[n^3 - n = n(n^2 - 1) = n(n-1)(n+1)\]</p>
+      <p>Δηλαδή είναι <strong>γινόμενο τριών διαδοχικών ακεραίων</strong>: \((n-1) \cdot n \cdot (n+1)\)</p>
+      
+      <p><strong>Βήμα 3 - Διαιρετότητα:</strong></p>
+      <ul>
+        <li>Από τρεις διαδοχικούς ακεραίους, <strong>ένας διαιρείται με 2</strong></li>
+        <li>Από τρεις διαδοχικούς ακεραίους, <strong>ένας διαιρείται με 3</strong></li>
+      </ul>
+      <p>Άρα το γινόμενο διαιρείται με \(2 \times 3 = 6\). ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Οι ειδικές περιπτώσεις μας έδειξαν το pattern, η παραγοντοποίηση το απέδειξε!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="special-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Σε έναν πίνακα \(n \times n\) γράφουμε τους αριθμούς \(1, 2, 3, \ldots, n^2\). Αποδείξτε ότι υπάρχουν δύο γειτονικά κελιά (με κοινή πλευρά) των οποίων οι αριθμοί διαφέρουν κατά τουλάχιστον \(n\).</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('special-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="special-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Δοκίμασε πρώτα \(n = 2\) και \(n = 3\) για να δεις τι συμβαίνει!</p>
+      <p>Σκέψου: ποια είναι η <strong>μέγιστη διαφορά</strong> μεταξύ γειτονικών κελιών αν προσπαθήσεις να την ελαχιστοποιήσεις;</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε την Αρχή Περιστερώνα!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('special-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="special-adv-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Ειδική περίπτωση \(n = 2\):</strong></p>
+      <p>Πίνακας \(2 \times 2\) με αριθμούς 1, 2, 3, 4.</p>
+      <p>Η μέγιστη διαφορά είναι \(4 - 1 = 3 \geq 2\). ✓</p>
+      
+      <p><strong>Βήμα 2 - Ειδική περίπτωση \(n = 3\):</strong></p>
+      <p>Πίνακας \(3 \times 3\) με αριθμούς 1, 2, ..., 9.</p>
+      <p>Όποια διάταξη και να διαλέξουμε, θα υπάρχουν γειτονικά με διαφορά \(\geq 3\). ✓</p>
+      
+      <p><strong>Βήμα 3 - Γενική απόδειξη:</strong></p>
+      <p>Θεωρούμε το <strong>μονοπάτι</strong> που ξεκινάει από το κελί με το 1 και καταλήγει στο κελί με το \(n^2\).</p>
+      <p>Αυτό το μονοπάτι έχει μήκος <strong>τουλάχιστον \(n-1\) βήματα</strong> (γιατί πρέπει να διασχίσουμε τουλάχιστον \(n-1\) σειρές ή στήλες).</p>
+      
+      <p>Η συνολική διαφορά είναι: \(n^2 - 1\)</p>
+      <p>Αν κάθε βήμα αύξανε τον αριθμό κατά <strong>το πολύ \(n-1\)</strong>, τότε:</p>
+      <p>Συνολική αύξηση \(\leq (n-1) \times (n-1) = n^2 - 2n + 1 < n^2 - 1\) ✗</p>
+      
+      <p>Άρα κάποιο βήμα πρέπει να έχει διαφορά \(\geq n\). ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Οι ειδικές περιπτώσεις μας έδωσαν intuition, η Αρχή Περιστερώνα την απόδειξη!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Δεν δοκιμάζεις αρκετές περιπτώσεις:</strong> Μια-δύο δεν φτάνουν - δοκίμασε τουλάχιστον 3-4!</li>
+      <li><strong>Νομίζεις ότι οι ειδικές περιπτώσεις είναι "απόδειξη":</strong> Όχι! Είναι μόνο <em>intuition</em> - χρειάζεσαι γενική απόδειξη!</li>
+      <li><strong>Ξεχνάς την οριακή περίπτωση \(n = 0\) ή \(n = 1\):</strong> Αυτές συχνά αποκαλύπτουν bugs!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Γιατί δοκιμάζουμε ειδικές περιπτώσεις;</p>
+    <button class="quiz-btn" onclick="checkQuiz('special', 'a', this)">Για να αποδείξουμε τη γενική περίπτωση</button>
+    <button class="quiz-btn" onclick="checkQuiz('special', 'b', this)">Για να πάρουμε intuition και να ελέγξουμε αν η πρόταση είναι αληθής</button>
+    <button class="quiz-btn" onclick="checkQuiz('special', 'c', this)">Για να αποφύγουμε να σκεφτούμε τη γενική περίπτωση</button>
+    <div id="special-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  special: 'b'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Οι ειδικές περιπτώσεις δίνουν intuition, αλλά χρειάζεται γενική απόδειξη!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου τι μας δίνουν οι ειδικές περιπτώσεις...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
