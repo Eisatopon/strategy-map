@@ -230,7 +230,6 @@ body {
 <div class="hero">
   <h1>🎯 Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</h1>
   <p>Μάθε <strong>πώς να σκέφτεσαι</strong>, όχι μόνο πώς να λύνεις</p>
-  
 </div>
 
 <div class="group-title group-basics">ΟΜΑΔΑ Α: ΒΑΣΙΚΕΣ ΣΤΡΑΤΗΓΙΚΕΣ (1-4)</div>
@@ -534,9 +533,9 @@ body {
   <div class="quiz">
     <h4>🧠 Μικρό Quiz</h4>
     <p><strong>Ερώτηση:</strong> Ποια είναι τα 3 βασικά βήματα της Μαθηματικής Επαγωγής;</p>
-    <button class="quiz-btn" onclick="checkQuiz('induction', 'a')">Βάση, Επαγωγική Υπόθεση, Επαγωγικό Βήμα</button>
-    <button class="quiz-btn" onclick="checkQuiz('induction', 'b')">Αρχή, Μέση, Τέλος</button>
-    <button class="quiz-btn" onclick="checkQuiz('induction', 'c')">Υπόθεση, Απόδειξη, Συμπέρασμα</button>
+    <button class="quiz-btn" onclick="checkQuiz('induction', 'a', this)">Βάση, Επαγωγική Υπόθεση, Επαγωγικό Βήμα</button>
+    <button class="quiz-btn" onclick="checkQuiz('induction', 'b', this)">Αρχή, Μέση, Τέλος</button>
+    <button class="quiz-btn" onclick="checkQuiz('induction', 'c', this)">Υπόθεση, Απόδειξη, Συμπέρασμα</button>
     <div id="induction-quiz-result" class="quiz-result"></div>
   </div>
 
@@ -553,7 +552,12 @@ body {
 </div>
 
 <script>
+// ===== ΔΙΟΡΘΩΜΕΝΕΣ ΣΥΝΑΡΤΗΣΕΙΣ =====
+
 function showSection(sectionId) {
+  console.log('showSection called with:', sectionId);
+  
+  // Κρύψε όλα τα sections
   const sections = document.querySelectorAll('.section');
   sections.forEach(s => s.classList.remove('active'));
 
@@ -562,50 +566,102 @@ function showSection(sectionId) {
     if (section) {
       section.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      console.error('Section not found:', 'section-' + sectionId);
     }
   } else {
+    // Επιστροφή στην αρχική
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 
-function showLevel(btn, strategy, level) {
+// ΔΙΟΡΘΩΜΕΝΗ: Δέχεται 2 παραμέτρους, όχι 3!
+function showLevel(strategy, level) {
+  console.log('showLevel called:', strategy, level);
+  
   const section = document.getElementById('section-' + strategy);
-  if (!section) return;
+  if (!section) {
+    console.error('Section not found for strategy:', strategy);
+    return;
+  }
 
-  section.querySelectorAll('.tab-btn')
-    .forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  // Ενεργοποίηση του σωστού tab button
+  const tabButtons = section.querySelectorAll('.tab-btn');
+  tabButtons.forEach(btn => {
+    btn.classList.remove('active');
+    // Βρες ποιο button έχει το onclick με αυτό το level
+    const onclickAttr = btn.getAttribute('onclick');
+    if (onclickAttr && onclickAttr.includes("'" + level + "'")) {
+      btn.classList.add('active');
+    }
+  });
 
-  section.querySelectorAll('.level')
-    .forEach(l => l.classList.remove('active'));
+  // Κρύψε όλα τα levels
+  const levels = section.querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
 
-  const target = document.getElementById(strategy + '-' + level);
-  if (target) target.classList.add('active');
+  // Εμφάνισε το σωστό level
+  const targetLevel = document.getElementById(strategy + '-' + level);
+  if (targetLevel) {
+    targetLevel.classList.add('active');
+  } else {
+    console.error('Level not found:', strategy + '-' + level);
+  }
 }
 
 function toggleHint(id) {
+  console.log('toggleHint called for:', id);
   const el = document.getElementById(id);
-  if (el) el.classList.toggle('show');
+  if (el) {
+    el.classList.toggle('show');
+  } else {
+    console.error('Hint element not found:', id);
+  }
 }
 
-const quizAnswers = { induction: 'a' };
+// Quiz απαντήσεις
+const quizAnswers = { 
+  induction: 'a' 
+};
 
-function checkQuiz(btn, strategy, answer) {
+// ΔΙΟΡΘΩΜΕΝΗ: Δέχεται το button element ως τρίτη παράμετρο
+function checkQuiz(strategy, answer, buttonElement) {
+  console.log('checkQuiz called:', strategy, answer);
+  
   const result = document.getElementById(strategy + '-quiz-result');
-  const buttons = btn.parentElement.querySelectorAll('.quiz-btn');
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
 
-  buttons.forEach(b => b.classList.remove('correct', 'wrong'));
+  // Καθάρισε όλα τα buttons
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
 
+  // Έλεγξε την απάντηση
   if (answer === quizAnswers[strategy]) {
-    btn.classList.add('correct');
+    buttonElement.classList.add('correct');
     result.className = 'quiz-result correct';
     result.textContent = '✓ Σωστά! Βάση → Υπόθεση → Βήμα!';
   } else {
-    btn.classList.add('wrong');
+    buttonElement.classList.add('wrong');
     result.className = 'quiz-result wrong';
     result.textContent = '✗ Προσπάθησε ξανά!';
   }
 }
+
+// Event listener για debugging
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('✓ DOM loaded successfully');
+  console.log('✓ JavaScript functions ready');
+  
+  // Test όλων των sections
+  const sections = document.querySelectorAll('.section');
+  console.log('Found', sections.length, 'sections');
+  
+  // Test όλων των levels
+  const levels = document.querySelectorAll('.level');
+  console.log('Found', levels.length, 'levels');
+});
 </script>
 
+</body>
 </html>
