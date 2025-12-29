@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. Ακραίο Στοιχείο - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #06b6d4; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #0891b2; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #06b6d4;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #06b6d4; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 3px solid #06b6d4; border-radius: 15px;
+}
+.quiz h4 { color: #0e7490; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #06b6d4; background: #eff6ff; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #cffafe;
+  border-left: 4px solid #06b6d4;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>1. Ακραίο Στοιχείο</h1>
+  <p><em>Extremal Element</em></p>
+</div>
+
+<div class="section">
+  <h2>Ακραίο Στοιχείο (Extremal Element)</h2>
+  <h3>Ξεκίνα από το πιο "περιορισμένο" στοιχείο!</h3>
+  
+  <p>Η στρατηγική του <strong>Ακραίου Στοιχείου</strong> είναι μία από τις πιο ισχυρές τεχνικές στη μαθηματική σκέψη. Η ιδέα είναι απλή: αντί να κοιτάξεις όλα τα στοιχεία ταυτόχρονα, <strong>επίλεξε το πιο "ακραίο"</strong> - το μεγαλύτερο, το μικρότερο, το πρώτο, το τελευταίο, το πιο περιορισμένο.</p>
+
+  <p>Γιατί δουλεύει; Γιατί το ακραίο στοιχείο έχει <em>λιγότερες δυνατότητες</em> από τα υπόλοιπα - και αυτός ο περιορισμός σου δίνει πληροφορία!</p>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν βλέπεις λέξεις όπως: <strong>"ελάχιστο", "μέγιστο", "πρώτο", "τελευταίο"</strong></li>
+      <li>Όταν έχεις πεπερασμένο σύνολο στοιχείων</li>
+      <li>Όταν χρειάζεται απόδειξη προς άτοπο</li>
+      <li>Όταν τα στοιχεία έχουν φυσική διάταξη (μέγεθος, χρόνος)</li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Εντόπισε το ακραίο:</strong> Ποιο στοιχείο είναι το μεγαλύτερο/μικρότερο/πρώτο/τελευταίο;</li>
+    <li><strong>Ρώτα:</strong> Τι δεν μπορεί να κάνει αυτό το στοιχείο;</li>
+    <li><strong>Χρησιμοποίησε τον περιορισμό:</strong> Αυτή η αδυναμία σου δίνει πληροφορία!</li>
+    <li><strong>Επανάλαβε:</strong> Αν χρειάζεται, κοίτα το επόμενο ακραίο στοιχείο</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('extremal', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('extremal', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('extremal', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="extremal-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Δίνεται ένα πεπερασμένο σύνολο θετικών ακεραίων αριθμών τέτοιο ώστε το άθροισμα οποιωνδήποτε δύο διαφορετικών στοιχείων είναι διαφορετικό από το άθροισμα οποιωνδήποτε άλλων δύο.</p>
+      <p><strong>Να αποδείξετε ότι το σύνολο περιέχει το πολύ έναν άρτιο αριθμό.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="extremal-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Ποιο "είδος" αριθμών έχει τον πιο περιοριστικό ρόλο;</p>
+      <p>Σκέψου: Τι συμβαίνει όταν προσθέτεις δύο άρτιους; Και όταν προσθέτεις άρτιο + περιττό;</p>
+      <p><strong>Κλειδί:</strong> Οι άρτιοι είναι το "ακραίο" - δημιουργούν συγκρούσεις μεταξύ τους!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="extremal-basic-solution" class="solution">
+      <h4>Απόδειξη με Ακραίο Στοιχείο:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός του ακραίου:</strong></p>
+      <p>Οι <strong>άρτιοι αριθμοί</strong> είναι το "ακραίο" στοιχείο γιατί:</p>
+      <ul>
+        <li>Άρτιος + Άρτιος = Άρτιος</li>
+        <li>Άρτιος + Περιττός = Περιττός</li>
+        <li>Περιττός + Περιττός = Άρτιος</li>
+      </ul>
+      <p>Οι άρτιοι "συγκρούονται" μεταξύ τους!</p>
+      
+      <p><strong>Βήμα 2 - Υπόθεση προς άτοπο:</strong></p>
+      <p>Έστω ότι υπάρχουν <strong>τουλάχιστον δύο άρτιοι</strong> αριθμοί: \(a, b\) (με \(a \neq b\)).</p>
+      
+      <p><strong>Βήμα 3 - Χρήση του περιορισμού:</strong></p>
+      <p>Τότε: \(a + b = \text{άρτιος}\)</p>
+      <p>Αλλά υπάρχουν και περιττοί στο σύνολο (έστω \(x, y\)):</p>
+      <p>\(x + y = \text{άρτιος}\)</p>
+      
+      <p>Άρα έχουμε <strong>δύο διαφορετικά ζεύγη</strong> που δίνουν άρτιο άθροισμα!</p>
+      <p>Αυτό παραβιάζει την προϋπόθεση (όλα τα αθροίσματα πρέπει να είναι διαφορετικά). ✗</p>
+      
+      <p><strong>Συμπέρασμα:</strong> Το σύνολο περιέχει το πολύ έναν άρτιο. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Επιλέξαμε τους άρτιους ως "ακραίο" και χρησιμοποιήσαμε τον περιορισμό τους!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="extremal-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Σε έναν διαγωνισμό συμμετέχουν \(n\) αθλητές. Κάθε αθλητής αγωνίζεται με κάθε άλλο ακριβώς μία φορά. Δεν υπάρχουν ισοπαλίες. Αποδείξτε ότι οι αθλητές μπορούν να διαταχθούν σε μια σειρά \(A_1, A_2, \ldots, A_n\) έτσι ώστε:</p>
+      <p>\[A_1 \text{ νίκησε τον } A_2, \quad A_2 \text{ νίκησε τον } A_3, \quad \ldots, \quad A_{n-1} \text{ νίκησε τον } A_n\]</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-int-hint')">💡 Δείξε μου hint</button>
+    <div id="extremal-int-hint" class="hint">
+      <p><strong>Hint:</strong> Ποιος αθλητής είναι το "ακραίο" στοιχείο;</p>
+      <p>Σκέψου: Ποιος έχει τις <strong>περισσότερες νίκες</strong>;</p>
+      <p><strong>Στρατηγική:</strong> Ξεκίνα από τον αθλητή με τις περισσότερες νίκες και χτίσε τη σειρά!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="extremal-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός ακραίου:</strong></p>
+      <p>Έστω \(A_1\) ο αθλητής με τις <strong>περισσότερες νίκες</strong>.</p>
+      
+      <p><strong>Βήμα 2 - Κατασκευή σειράς:</strong></p>
+      <p>Από τους υπόλοιπους \(n-1\) αθλητές που <strong>ηττήθηκαν</strong> από τον \(A_1\), επιλέγουμε τον \(A_2\) με τις περισσότερες νίκες.</p>
+      
+      <p><strong>Βήμα 3 - Επαγωγική διαδικασία:</strong></p>
+      <p>Συνεχίζουμε έτσι: κάθε φορά επιλέγουμε τον αθλητή με τις περισσότερες νίκες από τους εναπομείναντες που ηττήθηκαν από τον προηγούμενο.</p>
+      
+      <p><strong>Βήμα 4 - Επαλήθευση:</strong></p>
+      <p>Κάθε \(A_i\) νίκησε όλους τους \(A_j\) με \(j > i\) (γιατί ο \(A_i\) είχε περισσότερες νίκες από τους υπόλοιπους ηττημένους του).</p>
+      
+      <p>Άρα: \(A_1 \to A_2 \to A_3 \to \cdots \to A_n\) ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Το "ακραίο" (αυτός με τις περισσότερες νίκες) μας έδωσε τον τρόπο κατασκευής!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="extremal-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Δίνονται \(n\) σημεία στο επίπεδο, όχι όλα συνευθειακά. Αποδείξτε ότι υπάρχει ευθεία που διέρχεται από ακριβώς δύο από αυτά τα σημεία.</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="extremal-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Ποια ευθεία (που ορίζεται από δύο σημεία) είναι "ακραία";</p>
+      <p>Σκέψου: Ποια ευθεία έχει την <strong>ελάχιστη απόσταση</strong> από κάποιο τρίτο σημείο;</p>
+      <p><strong>Κλειδί:</strong> Κοίτα την ευθεία με το ελάχιστο "πλήθος σημείων κοντά της"!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('extremal-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="extremal-adv-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός ακραίου:</strong></p>
+      <p>Θεωρούμε <strong>όλες τις ευθείες</strong> που ορίζονται από ζεύγη σημείων.</p>
+      <p>Για κάθε τέτοια ευθεία \(\ell\) και κάθε σημείο \(P\) εκτός της \(\ell\), υπολογίζουμε την απόσταση \(d(P, \ell)\).</p>
+      
+      <p><strong>Βήμα 2 - Επιλογή ελάχιστης απόστασης:</strong></p>
+      <p>Έστω \(\ell_{AB}\) η ευθεία που ορίζεται από σημεία \(A, B\) και έστω \(C\) το σημείο με την <strong>ελάχιστη απόσταση</strong> από την \(\ell_{AB}\) (μεταξύ όλων των σημείων εκτός της \(\ell_{AB}\)).</p>
+      
+      <p><strong>Βήμα 3 - Απόδειξη ότι μόνο A, B βρίσκονται στην \(\ell_{AB}\):</strong></p>
+      <p>Υποθέτουμε προς άτοπο ότι υπάρχει τρίτο σημείο \(D\) στην \(\ell_{AB}\).</p>
+      
+      <p>Τότε η απόσταση \(d(C, \ell_{AD})\) θα ήταν <strong>μικρότερη</strong> από \(d(C, \ell_{AB})\) (γιατί το \(C\) είναι πιο κοντά στο τμήμα \(AD\) παρά στο \(AB\)).</p>
+      
+      <p>Αυτό αντιφάσκει με την επιλογή της \(\ell_{AB}\) ως ευθείας με ελάχιστη απόσταση! ✗</p>
+      
+      <p><strong>Συμπέρασμα:</strong> Η \(\ell_{AB}\) διέρχεται από ακριβώς δύο σημεία. ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η "ακραία" ευθεία (με ελάχιστη απόσταση) μας έδωσε τη λύση!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Δεν εντοπίζεις το σωστό ακραίο:</strong> Μερικές φορές το "μέγιστο" δεν είναι το καλύτερο - δοκίμασε "ελάχιστο" ή "πρώτο"!</li>
+      <li><strong>Ξεχνάς να χρησιμοποιήσεις τον περιορισμό:</strong> Το ακραίο στοιχείο σου δίνει πληροφορία - μην την αγνοήσεις!</li>
+      <li><strong>Δεν κάνεις απόδειξη προς άτοπο:</strong> Πολλές φορές χρειάζεται να υποθέσεις κάτι και να βρεις αντίφαση!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Ποιο από τα παρακάτω είναι "ακραίο" στοιχείο σε ένα σύνολο θετικών ακεραίων;</p>
+    <button class="quiz-btn" onclick="checkQuiz('extremal', 'a', this)">Ο μεγαλύτερος αριθμός</button>
+    <button class="quiz-btn" onclick="checkQuiz('extremal', 'b', this)">Ο μέσος αριθμός</button>
+    <button class="quiz-btn" onclick="checkQuiz('extremal', 'c', this)">Ο αριθμός που εμφανίζεται συχνότερα</button>
+    <div id="extremal-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const section = document.getElementById('section-' + strategy);
+  if (!section) {
+    // For standalone pages, find the parent container
+    const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    buttonElement.classList.add('active');
+    
+    const levels = buttonElement.closest('.section').querySelectorAll('.level');
+    levels.forEach(l => l.classList.remove('active'));
+    
+    const levelId = strategy + '-' + level;
+    const levelDiv = document.getElementById(levelId);
+    if (levelDiv) {
+      levelDiv.classList.add('active');
+    }
+    return;
+  }
+  
+  const tabs = section.querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = section.querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  extremal: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Ο μεγαλύτερος (ή μικρότερος) είναι το πιο "ακραίο" στοιχείο!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου τι σημαίνει "ακραίο"...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
