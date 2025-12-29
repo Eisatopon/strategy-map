@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8. Διπλή Καταμέτρηση - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #66bb6a 0%, #388e3c 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #66bb6a; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #388e3c; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #66bb6a 0%, #388e3c 100%);
+  color: white; box-shadow: 0 4px 12px rgba(102, 187, 106, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #66bb6a;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #66bb6a; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #66bb6a 0%, #388e3c 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 187, 106, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 3px solid #66bb6a; border-radius: 15px;
+}
+.quiz h4 { color: #2e7d32; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #66bb6a; background: #f1f8e9; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #e8f5e9;
+  border-left: 4px solid #66bb6a;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.double-box {
+  background: #c8e6c9;
+  border: 3px solid #66bb6a;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>8. Διπλή Καταμέτρηση</h1>
+  <p><em>Double Counting</em></p>
+</div>
+
+<div class="section">
+  <h2>Διπλή Καταμέτρηση (Double Counting)</h2>
+  <h3>Μέτρησε το ίδιο πράγμα με δύο τρόπους!</h3>
+  
+  <p>Η <strong>Διπλή Καταμέτρηση</strong> είναι μια πανέξυπνη τεχνική: μετράς την <strong>ίδια ποσότητα με δύο διαφορετικούς τρόπους</strong>, και μετά εξισώνεις τα αποτελέσματα! Αυτό σου δίνει μια σχέση που συχνά είναι πολύ χρήσιμη.</p>
+
+  <div class="double-box">
+    🔢 Μέτρηση από τη μία πλευρά = Μέτρηση από την άλλη πλευρά
+  </div>
+
+  <p>Κλασικό παράδειγμα: Σε ένα πάρτι, κάθε άτομο χειραψιάστηκε με κάποια άλλα άτομα. Το σύνολο των χειραψιών μπορεί να μετρηθεί:</p>
+  <ul>
+    <li><strong>Από τα άτομα:</strong> Άθροισμα των χειραψιών κάθε ατόμου</li>
+    <li><strong>Από τις χειραψίες:</strong> Πλήθος ζευγαριών που χειράψιαστηκαν</li>
+  </ul>
+  <p>Και τα δύο μετρούν το ίδιο πράγμα!</p>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν θέλεις να <strong>συσχετίσεις δύο ποσότητες</strong></li>
+      <li>Όταν έχεις <strong>γράφο</strong> ή <strong>σχέση</strong> μεταξύ στοιχείων</li>
+      <li>Όταν ρωτάνε για <strong>άθροισμα</strong> ή <strong>πλήθος</strong></li>
+      <li>Σε προβλήματα <strong>συνδυαστικής</strong> και <strong>θεωρίας γράφων</strong></li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Εντόπισε την ποσότητα:</strong> Τι ακριβώς θα μετρήσεις;</li>
+    <li><strong>Τρόπος 1:</strong> Μέτρησε από τη μία πλευρά (π.χ. άτομα)</li>
+    <li><strong>Τρόπος 2:</strong> Μέτρησε από την άλλη πλευρά (π.χ. χειραψίες)</li>
+    <li><strong>Εξίσωση:</strong> Τρόπος 1 = Τρόπος 2</li>
+    <li><strong>Συμπέρασμα:</strong> Χρησιμοποίησε την εξίσωση για να λύσεις το πρόβλημα!</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('doublecounting', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('doublecounting', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('doublecounting', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="doublecounting-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Σε ένα πάρτι με \(n\) άτομα, κάθε άτομο χειράψιαστηκε με κάποια άλλα. Έστω \(d_i\) ο αριθμός χειραψιών του \(i\)-οστού ατόμου.</p>
+      <p><strong>Αποδείξτε ότι το άθροισμα \(d_1 + d_2 + \cdots + d_n\) είναι άρτιος αριθμός.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('doublecounting-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="doublecounting-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Μέτρησε τις χειραψίες με δύο τρόπους!</p>
+      <p><strong>Τρόπος 1:</strong> Από τα άτομα - κάθε άτομο συνεισφέρει \(d_i\) χειραψίες</p>
+      <p><strong>Τρόπος 2:</strong> Από τις χειραψίες - κάθε χειραψία μετράει <strong>2 φορές</strong> (μία για κάθε άτομο)!</p>
+      <p><strong>Κλειδί:</strong> Άθροισμα = 2 × (πλήθος χειραψιών)</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('doublecounting-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="doublecounting-basic-solution" class="solution">
+      <h4>Απόδειξη με Διπλή Καταμέτρηση:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός ποσότητας:</strong></p>
+      <p>Θα μετρήσουμε το <strong>συνολικό πλήθος χειραψιών</strong>.</p>
+      
+      <p><strong>Βήμα 2 - Τρόπος 1 (από τα άτομα):</strong></p>
+      <p>Κάθε άτομο \(i\) έκανε \(d_i\) χειραψίες.</p>
+      <p>Άθροισμα: \(d_1 + d_2 + \cdots + d_n\)</p>
+      
+      <p><strong>Βήμα 3 - Τρόπος 2 (από τις χειραψίες):</strong></p>
+      <p>Κάθε χειραψία αφορά <strong>ακριβώς 2 άτομα</strong>.</p>
+      <p>Άρα κάθε χειραψία μετράται <strong>2 φορές</strong> στο άθροισμα (μία για κάθε άτομο)!</p>
+      <p>Αν υπάρχουν \(H\) χειραψίες συνολικά, τότε το άθροισμα = \(2H\).</p>
+      
+      <p><strong>Βήμα 4 - Εξίσωση:</strong></p>
+      <p>\[d_1 + d_2 + \cdots + d_n = 2H\]</p>
+      
+      <p><strong>Συμπέρασμα:</strong> Το άθροισμα είναι άρτιος αριθμός (γιατί είναι \(2H\))! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Μετρήσαμε το ίδιο πράγμα με δύο τρόπους και εξισώσαμε!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="doublecounting-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Σε ένα τουρνουά, \(n\) ομάδες παίζουν μεταξύ τους. Κάθε παιχνίδι έχει νικητή (δεν υπάρχουν ισοπαλίες). Έστω \(w_i\) ο αριθμός νικών της \(i\)-οστής ομάδας και \(l_i\) ο αριθμός ηττών της.</p>
+      <p><strong>Αποδείξτε ότι:</strong> \(w_1^2 + w_2^2 + \cdots + w_n^2 = l_1^2 + l_2^2 + \cdots + l_n^2\)</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('doublecounting-int-hint')">💡 Δείξε μου hint</button>
+    <div id="doublecounting-int-hint" class="hint">
+      <p><strong>Hint:</strong> Μέτρησε το πλήθος <strong>ζευγαριών παιχνιδιών</strong> που η ομάδα \(i\) νίκησε την ομάδα \(j\)!</p>
+      <p><strong>Τρόπος 1:</strong> Για κάθε νικήτρια ομάδα, μέτρα τα ζεύγη (παιχνίδι, ηττημένος)</p>
+      <p><strong>Τρόπος 2:</strong> Για κάθε ηττημένη ομάδα, μέτρα τα ζεύγη (παιχνίδι, νικητής)</p>
+      <p><strong>Κλειδί:</strong> Και οι δύο τρόποι μετρούν το ίδιο πλήθος ζευγαριών!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('doublecounting-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="doublecounting-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός ποσότητας:</strong></p>
+      <p>Θα μετρήσουμε τα <strong>τριάδες (ομάδα \(i\), ομάδα \(j\), παιχνίδι)</strong> όπου η \(i\) νίκησε την \(j\) σε κάποιο παιχνίδι.</p>
+      
+      <p><strong>Βήμα 2 - Τρόπος 1 (από τις νίκες):</strong></p>
+      <p>Για κάθε νίκη της ομάδας \(i\), υπάρχουν \(w_i\) τέτοιες τριάδες.</p>
+      <p>Αλλά για κάθε νίκη, η \(i\) αντιμετώπισε μία ηττημένη ομάδα, οπότε υπάρχουν \(w_i\) τριάδες.</p>
+      <p>Άθροισμα: \(\sum w_i \cdot w_i = \sum w_i^2\)</p>
+      
+      <p>Όχι, αυτό δεν είναι σωστό. Ας το ξανασκεφτούμε!</p>
+      
+      <p><strong>Σωστή προσέγγιση - Μέτρηση ζευγαριών παιχνιδιών:</strong></p>
+      <p>Θεωρούμε <strong>ταξινομημένα ζεύγη (νίκη, ήττα)</strong>.</p>
+      
+      <p><strong>Τρόπος 1:</strong> Για κάθε ομάδα \(i\) που κέρδισε \(w_i\) παιχνίδια, το πλήθος ζευγαριών "διαδοχικών" νικών είναι \(\binom{w_i}{2} = \frac{w_i(w_i-1)}{2}\).</p>
+      
+      <p>Συνολικά: \(\sum \binom{w_i}{2}\)</p>
+      
+      <p><strong>Τρόπος 2:</strong> Για κάθε ομάδα \(j\) που έχασε \(l_j\) παιχνίδια, το πλήθος ζευγαριών "διαδοχικών" ηττών είναι \(\binom{l_j}{2}\).</p>
+      
+      <p>Συνολικά: \(\sum \binom{l_j}{2}\)</p>
+      
+      <p>Άρα: \(\sum w_i(w_i-1) = \sum l_j(l_j-1)\)</p>
+      <p>Και επειδή \(\sum w_i = \sum l_j\) (συνολικές νίκες = συνολικές ήττες):</p>
+      <p>\[\sum w_i^2 = \sum l_j^2\] ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Μετρήσαμε ζεύγη παιχνιδιών με δύο διαφορετικούς τρόπους!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="doublecounting-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Δίνεται γράφος με \(n\) κορυφές. Έστω \(d_i\) ο βαθμός της κορυφής \(i\) και \(e\) το πλήθος των ακμών.</p>
+      <p><strong>Αποδείξτε ότι:</strong> \(\sum_{i=1}^{n} d_i = 2e\)</p>
+      <p>Επίσης, αποδείξτε ότι το πλήθος των κορυφών με <strong>περιττό βαθμό</strong> είναι άρτιο.</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('doublecounting-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="doublecounting-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Μέτρησε τα <strong>"άκρα" των ακμών</strong>!</p>
+      <p><strong>Τρόπος 1:</strong> Από τις κορυφές - κάθε κορυφή έχει \(d_i\) άκρα</p>
+      <p><strong>Τρόπος 2:</strong> Από τις ακμές - κάθε ακμή έχει ακριβώς 2 άκρα</p>
+      <p><strong>Κλειδί:</strong> Για το δεύτερο ερώτημα, χρησιμοποίησε ισοτιμία mod 2!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('doublecounting-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="doublecounting-adv-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Μέρος 1: \(\sum d_i = 2e\)</strong></p>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός ποσότητας:</strong></p>
+      <p>Θα μετρήσουμε το πλήθος των <strong>"άκρων" των ακμών</strong> (incidences).</p>
+      
+      <p><strong>Βήμα 2 - Τρόπος 1 (από τις κορυφές):</strong></p>
+      <p>Κάθε κορυφή \(i\) με βαθμό \(d_i\) συνεισφέρει \(d_i\) άκρα.</p>
+      <p>Συνολικά: \(\sum_{i=1}^{n} d_i\)</p>
+      
+      <p><strong>Βήμα 3 - Τρόπος 2 (από τις ακμές):</strong></p>
+      <p>Κάθε ακμή συνδέει <strong>ακριβώς 2 κορυφές</strong>, άρα έχει 2 άκρα.</p>
+      <p>Συνολικά: \(2e\)</p>
+      
+      <p><strong>Βήμα 4 - Εξίσωση:</strong></p>
+      <p>\[\sum_{i=1}^{n} d_i = 2e\] ✓</p>
+      
+      <p><strong>Μέρος 2: Πλήθος κορυφών με περιττό βαθμό είναι άρτιο</strong></p>
+      
+      <p><strong>Απόδειξη:</strong></p>
+      <p>Έστω \(O\) = πλήθος κορυφών με περιττό βαθμό, \(E\) = πλήθος κορυφών με άρτιο βαθμό.</p>
+      
+      <p>Από το Μέρος 1: \(\sum d_i = 2e\) (άρτιο)</p>
+      
+      <p>Χωρίζουμε το άθροισμα:</p>
+      <p>\[\sum_{\text{άρτιο } d_i} d_i + \sum_{\text{περιττό } d_i} d_i = 2e\]</p>
+      
+      <p>Το πρώτο άθροισμα είναι άρτιο (άθροισμα άρτιων).</p>
+      <p>Άρα το δεύτερο άθροισμα πρέπει να είναι άρτιο!</p>
+      
+      <p>Αλλά το δεύτερο άθροισμα είναι άθροισμα \(O\) περιττών αριθμών.</p>
+      <p>Άθροισμα περιττών αριθμών είναι άρτιο ⟺ το πλήθος τους είναι άρτιο!</p>
+      
+      <p>Άρα \(O\) είναι άρτιος! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η διπλή καταμέτρηση συν ισοτιμία mod 2 έδωσε το αποτέλεσμα!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Μετράς διαφορετικά πράγματα:</strong> Βεβαιώσου ότι και οι δύο τρόποι μετρούν <strong>ακριβώς</strong> την ίδια ποσότητα!</li>
+      <li><strong>Ξεχνάς το "διπλό":</strong> Προσοχή σε περιπτώσεις όπου κάθε στοιχείο μετράει 2 φορές!</li>
+      <li><strong>Δεν ορίζεις καθαρά την ποσότητα:</strong> Πρώτα ξεκαθάρισε τι ακριβώς μετράς!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Γιατί λέγεται "Διπλή" καταμέτρηση;</p>
+    <button class="quiz-btn" onclick="checkQuiz('doublecounting', 'a', this)">Γιατί μετράμε την ίδια ποσότητα με δύο διαφορετικούς τρόπους</button>
+    <button class="quiz-btn" onclick="checkQuiz('doublecounting', 'b', this)">Γιατί πάντα το αποτέλεσμα διπλασιάζεται</button>
+    <button class="quiz-btn" onclick="checkQuiz('doublecounting', 'c', this)">Γιατί χρειάζεται να μετρήσεις δύο φορές για να είσαι σίγουρος</button>
+    <div id="doublecounting-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  doublecounting: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Μετράμε το ίδιο με δύο διαφορετικούς τρόπους και εξισώνουμε!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου γιατί το ονομάζουμε "διπλή"...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
