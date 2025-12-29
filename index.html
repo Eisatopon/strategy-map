@@ -173,6 +173,7 @@ body {
 .quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
 
 .quiz-result { 
+  display: none;
   margin-top: 20px; font-weight: bold; font-size: 1.2em;
   padding: 15px; border-radius: 10px;
 }
@@ -347,9 +348,9 @@ body {
   </ol>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="showLevel('induction', 'basic')">Βασικό</button>
-    <button class="tab-btn" onclick="showLevel('induction', 'intermediate')">Ενδιάμεσο</button>
-    <button class="tab-btn" onclick="showLevel('induction', 'advanced')">Προχωρημένο</button>
+    <button class="tab-btn active" onclick="showLevel('induction', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('induction', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('induction', 'advanced', this)">Προχωρημένο</button>
   </div>
 
   <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
@@ -575,8 +576,8 @@ function showSection(sectionId) {
   }
 }
 
-// ΔΙΟΡΘΩΜΕΝΗ: Δέχεται 2 παραμέτρους, όχι 3!
-function showLevel(strategy, level) {
+// ΔΙΟΡΘΩΜΕΝΗ: Δέχεται 3 παραμέτρους με το button element!
+function showLevel(strategy, level, buttonElement) {
   console.log('showLevel called:', strategy, level);
   
   const section = document.getElementById('section-' + strategy);
@@ -587,14 +588,12 @@ function showLevel(strategy, level) {
 
   // Ενεργοποίηση του σωστού tab button
   const tabButtons = section.querySelectorAll('.tab-btn');
-  tabButtons.forEach(btn => {
-    btn.classList.remove('active');
-    // Βρες ποιο button έχει το onclick με αυτό το level
-    const onclickAttr = btn.getAttribute('onclick');
-    if (onclickAttr && onclickAttr.includes("'" + level + "'")) {
-      btn.classList.add('active');
-    }
-  });
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  
+  // Ενεργοποίησε το button που πατήθηκε
+  if (buttonElement) {
+    buttonElement.classList.add('active');
+  }
 
   // Κρύψε όλα τα levels
   const levels = section.querySelectorAll('.level');
@@ -627,9 +626,21 @@ const quizAnswers = {
 // ΔΙΟΡΘΩΜΕΝΗ: Δέχεται το button element ως τρίτη παράμετρο
 function checkQuiz(strategy, answer, buttonElement) {
   console.log('checkQuiz called:', strategy, answer);
+  console.log('Button element:', buttonElement);
   
   const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) {
+    console.error('Result element not found:', strategy + '-quiz-result');
+    return;
+  }
+  
+  if (!buttonElement) {
+    console.error('Button element is null!');
+    return;
+  }
+  
   const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  console.log('Found', buttons.length, 'quiz buttons');
 
   // Καθάρισε όλα τα buttons
   buttons.forEach(b => {
@@ -641,10 +652,12 @@ function checkQuiz(strategy, answer, buttonElement) {
     buttonElement.classList.add('correct');
     result.className = 'quiz-result correct';
     result.textContent = '✓ Σωστά! Βάση → Υπόθεση → Βήμα!';
+    result.style.display = 'block';
   } else {
     buttonElement.classList.add('wrong');
     result.className = 'quiz-result wrong';
     result.textContent = '✗ Προσπάθησε ξανά!';
+    result.style.display = 'block';
   }
 }
 
