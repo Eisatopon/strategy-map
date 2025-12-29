@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4. Αντίστροφη Σκέψη - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #06b6d4; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #0891b2; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #06b6d4;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #06b6d4; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 3px solid #06b6d4; border-radius: 15px;
+}
+.quiz h4 { color: #0e7490; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #06b6d4; background: #eff6ff; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #cffafe;
+  border-left: 4px solid #06b6d4;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.arrow-box {
+  background: #e0f2fe;
+  border: 2px dashed #06b6d4;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #0e7490;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>4. Αντίστροφη Σκέψη</h1>
+  <p><em>Backward Thinking</em></p>
+</div>
+
+<div class="section">
+  <h2>Αντίστροφη Σκέψη (Backward Thinking)</h2>
+  <h3>Ξεκίνα από τον στόχο - δούλεψε προς τα πίσω!</h3>
+  
+  <p>Η στρατηγική της <strong>Αντίστροφης Σκέψης</strong> είναι σαν να λύνεις έναν λαβύρινθο από την έξοδο προς την είσοδο! Αντί να ξεκινήσεις από τα δεδομένα και να προσπαθείς να φτάσεις στο συμπέρασμα, <strong>ξεκινάς από το συμπέρασμα</strong> και ρωτάς: "Τι πρέπει να ισχύει για να είναι αυτό αλήθεια;"</p>
+
+  <div class="arrow-box">
+    ❌ Κανονική σκέψη: Δεδομένα → ? → ? → Στόχος<br>
+    ✅ Αντίστροφη: Στόχος ← ? ← ? ← Δεδομένα
+  </div>
+
+  <p>Γιατί δουλεύει; Γιατί συχνά ο <strong>στόχος</strong> σου δίνει περισσότερη δομή από τα δεδομένα!</p>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν ο στόχος είναι <strong>πιο συγκεκριμένος</strong> από τα δεδομένα</li>
+      <li>Όταν δεν ξέρεις τι να κάνεις με τα δεδομένα</li>
+      <li>Όταν ο στόχος έχει <strong>ειδική μορφή</strong> (π.χ. ισότητα, διαιρετότητα)</li>
+      <li>Σε προβλήματα <strong>κατασκευής</strong> (βρες τρόπο να...)</li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Γράψε τον στόχο:</strong> Τι ακριβώς πρέπει να αποδείξεις;</li>
+    <li><strong>Ρώτα:</strong> "Τι θα με έφερνε εδώ;" - Ποια συνθήκη θα έκανε τον στόχο αληθή;</li>
+    <li><strong>Δουλέψε προς τα πίσω:</strong> Κάθε βήμα, ρώτα "Τι χρειάζομαι για αυτό;"</li>
+    <li><strong>Σύνδεσε με τα δεδομένα:</strong> Όταν φτάσεις σε κάτι που ξέρεις, τέλος!</li>
+    <li><strong>Αντίστρεψε τη σειρά:</strong> Γράψε την απόδειξη από τα δεδομένα προς τον στόχο</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('backward', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('backward', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('backward', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="backward-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Δίνονται θετικοί αριθμοί \(a, b, c\) με \(a + b + c = 1\).</p>
+      <p><strong>Αποδείξτε ότι:</strong> \(\frac{1}{a} + \frac{1}{b} + \frac{1}{c} \geq 9\)</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="backward-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Ξεκίνα από τον στόχο! Θέλεις \(\frac{1}{a} + \frac{1}{b} + \frac{1}{c} \geq 9\).</p>
+      <p>Σκέψου: τι ανισότητα συνδέει <strong>αθροίσματα</strong> με <strong>αθροίσματα αντιστρόφων</strong>;</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε την Ανισότητα Cauchy-Schwarz ή AM-HM!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="backward-basic-solution" class="solution">
+      <h4>Απόδειξη με Αντίστροφη Σκέψη:</h4>
+      
+      <p><strong>Βήμα 1 - Ξεκινάμε από τον στόχο:</strong></p>
+      <p>Θέλουμε: \(\frac{1}{a} + \frac{1}{b} + \frac{1}{c} \geq 9\)</p>
+      
+      <p><strong>Βήμα 2 - Ρωτάμε "τι θα με έφερνε εδώ;"</strong></p>
+      <p>Από την ανισότητα AM-HM ξέρουμε ότι:</p>
+      <p>\[\frac{a + b + c}{3} \geq \frac{3}{\frac{1}{a} + \frac{1}{b} + \frac{1}{c}}\]</p>
+      
+      <p><strong>Βήμα 3 - Χρησιμοποιούμε το δεδομένο:</strong></p>
+      <p>Αφού \(a + b + c = 1\):</p>
+      <p>\[\frac{1}{3} \geq \frac{3}{\frac{1}{a} + \frac{1}{b} + \frac{1}{c}}\]</p>
+      
+      <p><strong>Βήμα 4 - Αντιστρέφουμε:</strong></p>
+      <p>\[\frac{1}{a} + \frac{1}{b} + \frac{1}{c} \geq \frac{3}{\frac{1}{3}} = 9\]</p>
+      
+      <p>Ακριβώς ο στόχος μας! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Ξεκινήσαμε από τον στόχο και βρήκαμε τη σωστή ανισότητα!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="backward-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Θέλουμε να κατασκευάσουμε ένα τετράγωνο μήκους πλευράς \(\sqrt{5}\) χρησιμοποιώντας μόνο κανόνα και διαβήτη.</p>
+      <p><strong>Πώς μπορούμε να το κάνουμε;</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-int-hint')">💡 Δείξε μου hint</button>
+    <div id="backward-int-hint" class="hint">
+      <p><strong>Hint:</strong> Ξεκίνα από τον στόχο - θέλεις μήκος \(\sqrt{5}\).</p>
+      <p>Σκέψου: ποιο <strong>ορθογώνιο τρίγωνο</strong> έχει υποτείνουσα \(\sqrt{5}\);</p>
+      <p><strong>Κλειδί:</strong> \(\sqrt{5} = \sqrt{1^2 + 2^2}\)! Κατασκεύασε τρίγωνο με πλευρές 1 και 2!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="backward-int-solution" class="solution">
+      <h4>Κατασκευή με Αντίστροφη Σκέψη:</h4>
+      
+      <p><strong>Βήμα 1 - Στόχος:</strong></p>
+      <p>Θέλουμε πλευρά \(\sqrt{5}\).</p>
+      
+      <p><strong>Βήμα 2 - Αντίστροφη σκέψη:</strong></p>
+      <p>"Πώς μπορώ να πάρω \(\sqrt{5}\);"</p>
+      <p>Από Πυθαγόρειο: αν έχω ορθογώνιο τρίγωνο με πλευρές \(a, b\), η υποτείνουσα είναι \(\sqrt{a^2 + b^2}\).</p>
+      
+      <p><strong>Βήμα 3 - Παραγοντοποίηση:</strong></p>
+      <p>\(\sqrt{5} = \sqrt{1^2 + 2^2}\)</p>
+      <p>Άρα χρειάζομαι ορθογώνιο τρίγωνο με πλευρές 1 και 2!</p>
+      
+      <p><strong>Βήμα 4 - Κατασκευή (από δεδομένα προς στόχο):</strong></p>
+      <ol>
+        <li>Χάραξε ευθύγραμμο τμήμα \(AB\) μήκους 1 (μονάδα)</li>
+        <li>Στο \(B\), χάραξε κάθετη και σημείωσε σημείο \(C\) με \(BC = 2\)</li>
+        <li>Η υποτείνουσα \(AC = \sqrt{1^2 + 2^2} = \sqrt{5}\)</li>
+        <li>Χρησιμοποίησε το \(AC\) ως πλευρά του τετραγώνου!</li>
+      </ol>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αντίστροφη σκέψη μας έδειξε τι να κατασκευάσουμε!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="backward-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Αποδείξτε ότι για κάθε θετικό ακέραιο \(n\), ο αριθμός:</p>
+      <p>\[2^{2^n} + 1\]</p>
+      <p>έχει τουλάχιστον \(n\) διαφορετικούς πρώτους διαιρέτες.</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="backward-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Ξεκίνα από τον στόχο - θέλεις να δείξεις ότι \(2^{2^n} + 1\) έχει \(n\) πρώτους διαιρέτες.</p>
+      <p>Σκέψου: πώς συνδέονται οι αριθμοί \(2^{2^k} + 1\) για διαφορετικά \(k\);</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε επαγωγή και παραγοντοποίηση \(x^{2^n} - 1\)!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('backward-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="backward-adv-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Στόχος:</strong></p>
+      <p>Δείξε ότι \(F_n = 2^{2^n} + 1\) έχει τουλάχιστον \(n\) πρώτους διαιρέτες.</p>
+      
+      <p><strong>Βήμα 2 - Αντίστροφη σκέψη:</strong></p>
+      <p>"Πώς μπορώ να βρω πρώτους διαιρέτες;"</p>
+      <p>Αν δείξω ότι \(\gcd(F_i, F_j) = 1\) για \(i \neq j\), τότε κάθε \(F_k\) συνεισφέρει νέους πρώτους!</p>
+      
+      <p><strong>Βήμα 3 - Βασικό Λήμμα:</strong></p>
+      <p>Ισχυρισμός: \(F_m\) διαιρεί \(2^{2^n} - 1\) όταν \(m < n\).</p>
+      <p>Απόδειξη: \(2^{2^n} - 1 = (2^{2^m})^{2^{n-m}} - 1\), που διαιρείται από \(2^{2^m} - 1\), που διαιρείται από \(F_m - 2 = 2^{2^m} - 1\).</p>
+      
+      <p><strong>Βήμα 4 - Συμπέρασμα:</strong></p>
+      <p>Αφού \(F_m \mid 2^{2^n} - 1\) και \(2^{2^n} - 1 = (2^{2^n} + 1) - 2 = F_n - 2\):</p>
+      <p>Αν \(p \mid F_m\) και \(p \mid F_n\), τότε \(p \mid (F_n - (2^{2^n} - 1)) = 2\).</p>
+      <p>Αλλά \(F_n\) είναι περιττός, άρα \(\gcd(F_m, F_n) = 1\)! ✓</p>
+      
+      <p>Επομένως, κάθε \(F_0, F_1, \ldots, F_{n-1}\) συνεισφέρει τουλάχιστον έναν νέο πρώτο στο \(F_n\)!</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αντίστροφη σκέψη μας οδήγησε στο κρίσιμο λήμμα!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Ξεχνάς να αντιστρέψεις τη σειρά:</strong> Η τελική απόδειξη πρέπει να πάει από δεδομένα → στόχο!</li>
+      <li><strong>Μπερδεύεις "αν και μόνο αν":</strong> Προσοχή! Κάθε βήμα πρέπει να είναι αντιστρέψιμο!</li>
+      <li><strong>Δεν ελέγχεις την αντιστρεψιμότητα:</strong> Μερικά βήματα λειτουργούν μόνο προς μία κατεύθυνση!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Πότε είναι χρήσιμη η αντίστροφη σκέψη;</p>
+    <button class="quiz-btn" onclick="checkQuiz('backward', 'a', this)">Όταν ο στόχος είναι πιο συγκεκριμένος από τα δεδομένα</button>
+    <button class="quiz-btn" onclick="checkQuiz('backward', 'b', this)">Όταν τα δεδομένα είναι πολύ σαφή</button>
+    <button class="quiz-btn" onclick="checkQuiz('backward', 'c', this)">Μόνο σε γεωμετρικά προβλήματα</button>
+    <div id="backward-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  backward: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Όταν ο στόχος δίνει δομή, ξεκινάμε από εκεί!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου πότε βοηθάει να δουλεύεις προς τα πίσω...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
