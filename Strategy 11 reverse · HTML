@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11. Αντίστροφη Ερώτηση - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #e65100; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #bf360c; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+  color: white; box-shadow: 0 4px 12px rgba(230, 81, 0, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #e65100;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #e65100; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #bf360c 0%, #a72f0c 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(230, 81, 0, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #ffccbc 0%, #ffab91 100%);
+  border: 3px solid #e65100; border-radius: 15px;
+}
+.quiz h4 { color: #bf360c; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #e65100; background: #fff3e0; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #fff3e0;
+  border-left: 4px solid #e65100;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.reverse-box {
+  background: #ffab91;
+  border: 3px solid #e65100;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #bf360c;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>11. Αντίστροφη Ερώτηση</h1>
+  <p><em>Reverse Question</em></p>
+</div>
+
+<div class="section">
+  <h2>Αντίστροφη Ερώτηση (Reverse Question)</h2>
+  <h3>Μη ρωτάς "Γιατί ΝΑΙ;" - Ρώτα "Γιατί ΟΧΙ;"</h3>
+  
+  <p>Η στρατηγική της <strong>Αντίστροφης Ερώτησης</strong> είναι όταν αντί να αποδείξεις κάτι απευθείας, <strong>αποδεικνύεις το αντίθετο</strong>! Ή αντί να ψάξεις "Πώς να το κάνω;", ρωτάς "Πότε δεν μπορώ να το κάνω;"</p>
+
+  <div class="reverse-box">
+    🔄 Ερώτηση: "Γιατί X;" → Αντίστροφη: "Γιατί όχι ¬X;"
+  </div>
+
+  <p>Τύποι αντίστροφης ερώτησης:</p>
+  <ul>
+    <li><strong>Απόδειξη με άτοπο:</strong> Αντί "Απόδειξε A", ρώτα "Τι συμβαίνει αν ¬A;"</li>
+    <li><strong>Αντίθετη κατασκευή:</strong> Αντί "Φτιάξε X", ρώτα "Πότε δεν μπορώ να φτιάξω X;"</li>
+    <li><strong>Αντίθεση:</strong> Αντί "Αν A τότε B", απόδειξε "Αν ¬B τότε ¬A"</li>
+    <li><strong>Συμπλήρωμα:</strong> Αντί "Μέτρα τα X", μέτρα "Πόσα δεν είναι X;"</li>
+  </ul>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν η άμεση απόδειξη είναι <strong>δύσκολη</strong></li>
+      <li>Όταν το <strong>αντίθετο</strong> είναι πιο εύκολο να αναλύσεις</li>
+      <li>Όταν ψάχνεις για <strong>εγγύηση ύπαρξης</strong> ή αδυναμίας</li>
+      <li>Όταν η ερώτηση "Γιατί ΟΧΙ;" δίνει περισσότερη δομή</li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Κατάλαβε την ερώτηση:</strong> Τι ακριβώς ζητάει;</li>
+    <li><strong>Αντίστρεψε:</strong> Ποια είναι η αντίθετη ερώτηση;</li>
+    <li><strong>Απάντησε στην αντίστροφη:</strong> Είναι πιο εύκολη;</li>
+    <li><strong>Μετάφρασε πίσω:</strong> Από την απάντηση της αντίστροφης, βρες την αρχική απάντηση</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('reverse', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('reverse', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('reverse', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="reverse-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Αποδείξτε ότι το \(\sqrt{2}\) είναι άρρητος.</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reverse-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="reverse-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Αντί "Απόδειξε ότι είναι άρρητος", ρώτα "Τι συμβαίνει αν είναι ρητός;"</p>
+      <p>Υπόθεσε ότι \(\sqrt{2} = \frac{p}{q}\) όπου \(p, q\) ακέραιοι με \(\gcd(p,q) = 1\).</p>
+      <p><strong>Κλειδί:</strong> Αυτό θα οδηγήσει σε άτοπο!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reverse-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="reverse-basic-solution" class="solution">
+      <h4>Απόδειξη με Άτοπο (Αντίστροφη Ερώτηση):</h4>
+      
+      <p><strong>Βήμα 1 - Αντίστροφη ερώτηση:</strong></p>
+      <p>Αντί "Γιατί είναι άρρητος;", ρωτάμε "Τι συμβαίνει αν είναι ρητός;"</p>
+      
+      <p><strong>Βήμα 2 - Υπόθεση:</strong></p>
+      <p>Έστω ότι το \(\sqrt{2}\) είναι <strong>ρητός</strong>.</p>
+      <p>Τότε: \(\sqrt{2} = \frac{p}{q}\) όπου \(p, q\) ακέραιοι με \(\gcd(p, q) = 1\) (ανάγωγο κλάσμα).</p>
+      
+      <p><strong>Βήμα 3 - Τετραγωνισμός:</strong></p>
+      <p>\[2 = \frac{p^2}{q^2}\]</p>
+      <p>\[2q^2 = p^2\]</p>
+      
+      <p><strong>Βήμα 4 - Συμπέρασμα:</strong></p>
+      <p>Άρα \(p^2\) είναι άρτιος → \(p\) είναι άρτιος (αν \(p\) ήταν περιττός, το \(p^2\) θα ήταν περιττό).</p>
+      <p>Έστω \(p = 2k\). Τότε: \(2q^2 = (2k)^2 = 4k^2\)</p>
+      <p>\[q^2 = 2k^2\]</p>
+      
+      <p>Άρα \(q^2\) είναι άρτιος → \(q\) είναι άρτιος!</p>
+      
+      <p><strong>Βήμα 5 - Άτοπο:</strong></p>
+      <p>Και τα δύο \(p, q\) είναι άρτια → \(\gcd(p, q) \geq 2\) ✗</p>
+      <p>Αντίφαση με την υπόθεση ότι \(\gcd(p, q) = 1\)!</p>
+      
+      <p><strong>Συμπέρασμα:</strong> Άρα το \(\sqrt{2}\) είναι <strong>άρρητος</strong>! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αντίστροφη ερώτηση "Τι αν ήταν ρητός;" μας έδωσε την απόδειξη!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="reverse-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Σε ένα πάρτι με \(n\) άτομα, αποδείξτε ότι υπάρχουν τουλάχιστον 2 άτομα που γνωρίζουν τον ίδιο αριθμό ατόμων.</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reverse-int-hint')">💡 Δείξε μου hint</button>
+    <div id="reverse-int-hint" class="hint">
+      <p><strong>Hint:</strong> Αντίστροφη ερώτηση: "Μπορούν όλα τα άτομα να γνωρίζουν διαφορετικό αριθμό ατόμων;"</p>
+      <p>Οι δυνατές τιμές είναι: 0, 1, 2, ..., \(n-1\) (συνολικά \(n\) τιμές).</p>
+      <p><strong>Κλειδί:</strong> Αλλά οι τιμές 0 και \(n-1\) δεν μπορούν να συνυπάρχουν!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reverse-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="reverse-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Αντίστροφη ερώτηση:</strong></p>
+      <p>Αντί "Γιατί υπάρχουν 2 με τον ίδιο αριθμό;", ρωτάμε: "Μπορούν όλα να έχουν διαφορετικό αριθμό;"</p>
+      
+      <p><strong>Βήμα 2 - Δυνατές τιμές:</strong></p>
+      <p>Κάθε άτομο μπορεί να γνωρίζει από 0 έως \(n-1\) άτομα.</p>
+      <p>Δυνατές τιμές: \(\{0, 1, 2, \ldots, n-1\}\) (συνολικά \(n\) τιμές).</p>
+      
+      <p><strong>Βήμα 3 - Παρατήρηση:</strong></p>
+      <p>Αν κάποιος γνωρίζει <strong>0 άτομα</strong>, τότε κανένας δεν γνωρίζει \(n-1\) άτομα (γιατί αυτός δεν γνωρίζει κανέναν!).</p>
+      <p>Αν κάποιος γνωρίζει <strong>\(n-1\) άτομα</strong>, τότε κανένας δεν γνωρίζει 0 άτομα (γιατί όλοι γνωρίζουν αυτόν!).</p>
+      
+      <p><strong>Βήμα 4 - Άτοπο:</strong></p>
+      <p>Άρα οι τιμές 0 και \(n-1\) <strong>δεν μπορούν να συνυπάρχουν</strong>!</p>
+      <p>Άρα έχουμε το πολύ \(n-1\) διαθέσιμες τιμές για \(n\) άτομα.</p>
+      
+      <p><strong>Βήμα 5 - Αρχή Περιστερώνα:</strong></p>
+      <p>\(n\) άτομα, \(n-1\) τιμές → Τουλάχιστον 2 άτομα έχουν την ίδια τιμή! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αντίστροφη ερώτηση μας έδειξε ότι δεν μπορούν όλοι να έχουν διαφορετικό!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="reverse-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Αποδείξτε ότι υπάρχουν άπειροι πρώτοι αριθμοί (Θεώρημα Ευκλείδη).</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reverse-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="reverse-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Αντίστροφη ερώτηση: "Τι συμβαίνει αν υπάρχουν <strong>πεπερασμένοι</strong> πρώτοι;"</p>
+      <p>Έστω \(p_1, p_2, \ldots, p_n\) όλοι οι πρώτοι.</p>
+      <p><strong>Κλειδί:</strong> Κατασκεύασε τον αριθμό \(N = p_1 \cdot p_2 \cdot \ldots \cdot p_n + 1\)!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reverse-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="reverse-adv-solution" class="solution">
+      <h4>Απόδειξη του Ευκλείδη:</h4>
+      
+      <p><strong>Βήμα 1 - Αντίστροφη ερώτηση:</strong></p>
+      <p>Αντί "Γιατί υπάρχουν άπειροι πρώτοι;", ρωτάμε: "Τι συμβαίνει αν υπάρχουν <strong>πεπερασμένοι</strong> πρώτοι;"</p>
+      
+      <p><strong>Βήμα 2 - Υπόθεση:</strong></p>
+      <p>Έστω ότι υπάρχουν μόνο \(n\) πρώτοι αριθμοί: \(p_1, p_2, p_3, \ldots, p_n\).</p>
+      
+      <p><strong>Βήμα 3 - Κατασκευή:</strong></p>
+      <p>Θεωρούμε τον αριθμό:</p>
+      <p>\[N = p_1 \cdot p_2 \cdot p_3 \cdot \ldots \cdot p_n + 1\]</p>
+      
+      <p><strong>Βήμα 4 - Ανάλυση:</strong></p>
+      <p>Ο \(N\) είναι μεγαλύτερος από κάθε \(p_i\), άρα αν είναι πρώτος, έχουμε βρει έναν νέο!</p>
+      <p>Αν ο \(N\) είναι σύνθετος, τότε διαιρείται από κάποιον πρώτο \(p\).</p>
+      
+      <p><strong>Βήμα 5 - Άτοπο:</strong></p>
+      <p>Αλλά αν \(p = p_i\) για κάποιο \(i\), τότε:</p>
+      <p>\(p_i \mid N\) και \(p_i \mid (p_1 \cdot p_2 \cdot \ldots \cdot p_n)\)</p>
+      <p>Άρα \(p_i \mid (N - p_1 \cdot p_2 \cdot \ldots \cdot p_n) = 1\) ✗</p>
+      
+      <p>Άτοπο! Κανένας από τους \(p_1, \ldots, p_n\) δεν διαιρεί τον \(N\)!</p>
+      <p>Άρα ο \(N\) είναι πρώτος ή διαιρείται από έναν νέο πρώτο που δεν είναι στη λίστα!</p>
+      
+      <p><strong>Συμπέρασμα:</strong> Αντίφαση! Άρα υπάρχουν <strong>άπειροι πρώτοι</strong>! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αντίστροφη ερώτηση "Τι αν ήταν πεπερασμένοι;" μας έδωσε την κλασική απόδειξη!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Δεν αντιστρέφεις σωστά:</strong> Βεβαιώσου ότι η αντίστροφη ερώτηση είναι πραγματικά αντίθετη!</li>
+      <li><strong>Ξεχνάς το άτοπο:</strong> Στην απόδειξη με άτοπο, πρέπει να βρεις αντίφαση!</li>
+      <li><strong>Η αντίστροφη είναι πιο δύσκολη:</strong> Μερικές φορές η αντίστροφη δεν βοηθάει - δοκίμασε άλλη στρατηγική!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Πότε χρησιμοποιούμε αντίστροφη ερώτηση;</p>
+    <button class="quiz-btn" onclick="checkQuiz('reverse', 'a', this)">Όταν η άμεση απόδειξη είναι δύσκολη και το αντίθετο πιο εύκολο</button>
+    <button class="quiz-btn" onclick="checkQuiz('reverse', 'b', this)">Πάντα - είναι πιο έξυπνο</button>
+    <button class="quiz-btn" onclick="checkQuiz('reverse', 'c', this)">Μόνο όταν ζητάει απόδειξη με άτοπο</button>
+    <div id="reverse-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  reverse: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Όταν "Γιατί ΟΧΙ;" είναι ευκολότερο από "Γιατί ΝΑΙ;"!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου πότε βοηθάει να αντιστρέψεις...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
