@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 Στρατηγικές - Μαθηματική Επαγωγή</title>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<title>Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { 
@@ -29,6 +27,17 @@ body {
 .hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
 .hero p { font-size: 1.2em; }
 
+.intro {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.intro h2 { color: #1e40af; margin-bottom: 15px; }
+.intro ul { margin-left: 25px; color: #2d3748; }
+.intro li { margin-bottom: 10px; }
+
 .grid { 
   display: grid; 
   grid-template-columns: repeat(4, 1fr); 
@@ -45,8 +54,11 @@ body {
   font-size: 1em;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   border: 3px solid;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
 }
 .card:hover { 
   transform: translateY(-5px);
@@ -69,124 +81,6 @@ body {
 .card-11 { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-color: #e91e63; }
 .card-12 { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-color: #c62828; }
 
-.section { 
-  display: none;
-  background: white;
-  border-radius: 20px; 
-  padding: 40px; 
-  margin: 30px 0;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-.section.active { display: block; animation: fadeIn 0.4s; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.section h2 { color: #667eea; margin-bottom: 10px; font-size: 2em; }
-.section h3 { color: #764ba2; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
-.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
-.section p { margin-bottom: 15px; color: #2d3748; }
-.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
-.section li { margin-bottom: 8px; }
-
-.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
-.tab-btn { 
-  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
-  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
-}
-.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
-.tab-btn.active { 
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-  color: white; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.level { 
-  display: none; margin-top: 20px; padding: 25px;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-  border-radius: 15px; border-left: 5px solid #667eea;
-}
-.level.active { display: block; animation: slideIn 0.3s; }
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-.problem {
-  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
-  border-left: 4px solid #4299e1; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.hint-btn { 
-  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
-  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
-  color: white; border: none; border-radius: 10px; cursor: pointer;
-  font-size: 1em; font-weight: 600; transition: all 0.3s;
-}
-.hint-btn:hover { 
-  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
-  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(66, 153, 225, 0.4);
-}
-
-.hint { 
-  display: none; margin-top: 15px; padding: 20px;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
-}
-.hint.show { display: block; animation: expandDown 0.3s; }
-
-.solution {
-  display: none; margin-top: 15px; padding: 20px;
-  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
-}
-.solution.show { display: block; animation: expandDown 0.3s; }
-
-@keyframes expandDown {
-  from { opacity: 0; max-height: 0; }
-  to { opacity: 1; max-height: 2000px; }
-}
-
-.mistakes {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-  padding: 20px; border-radius: 12px; margin: 20px 0;
-  border-left: 5px solid #ef4444;
-}
-.mistakes h4 { color: #991b1b; margin-top: 0; }
-.mistakes ul { color: #7f1d1d; }
-
-.quiz { 
-  margin-top: 40px; padding: 30px;
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  border: 3px solid #3b82f6; border-radius: 15px;
-}
-.quiz h4 { color: #1e40af; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
-.quiz-btn { 
-  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
-  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
-  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
-}
-.quiz-btn:hover { border-color: #3b82f6; background: #eff6ff; transform: translateY(-2px); }
-.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
-.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
-
-.quiz-result { 
-  display: none;
-  margin-top: 20px; font-weight: bold; font-size: 1.2em;
-  padding: 15px; border-radius: 10px;
-}
-.quiz-result.correct { background: #d1fae5; color: #065f46; }
-.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
-
-.back-btn {
-  display: inline-block; margin-top: 30px; padding: 12px 24px;
-  background: #64748b; color: white; text-decoration: none;
-  border-radius: 10px; font-weight: 600; transition: all 0.3s;
-}
-.back-btn:hover { background: #475569; transform: translateX(-5px); }
-
 .group-title {
   text-align: center; font-size: 1.3em; font-weight: bold;
   margin: 30px 0 10px; padding: 10px; border-radius: 10px; color: white;
@@ -196,30 +90,17 @@ body {
 .group-transform { background: #ff9800; }
 .group-advanced { background: #e91e63; }
 
-.induction-box {
-  background: #fee2e2;
-  border-left: 4px solid #dc2626;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 8px;
-}
-
-.congrats {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border: 3px solid #f59e0b;
-  border-radius: 15px;
-  padding: 30px;
-  margin: 30px 0;
+footer {
   text-align: center;
+  color: #666;
+  margin-top: 60px;
+  padding: 20px;
 }
-.congrats h3 { color: #92400e; margin-bottom: 15px; font-size: 1.8em; }
-.congrats p { color: #78350f; font-size: 1.1em; }
 
 @media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { 
   .grid { grid-template-columns: repeat(2, 1fr); }
   .hero h1 { font-size: 1.8em; }
-  .section { padding: 25px; }
 }
 @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
 </style>
@@ -233,448 +114,98 @@ body {
   <p>Μάθε <strong>πώς να σκέφτεσαι</strong>, όχι μόνο πώς να λύνεις</p>
 </div>
 
+<div class="intro">
+  <h2>🧭 Πώς χρησιμοποιείς τον Χάρτη:</h2>
+  <ol>
+    <li><strong>Διάλεξε μία στρατηγική</strong> από τις 12 παρακάτω</li>
+    <li>Διάβασε πώς δουλεύει</li>
+    <li>Λύσε τα προβλήματά της</li>
+    <li>Μάθε <strong>πώς να σκέφτεσαι</strong> με αυτή τη στρατηγική!</li>
+  </ol>
+</div>
+
 <div class="group-title group-basics">ΟΜΑΔΑ Α: ΒΑΣΙΚΕΣ ΣΤΡΑΤΗΓΙΚΕΣ (1-4)</div>
 
 <div class="grid">
-  <div class="card card-1" onclick="showSection('extremal')">
+  <a href="strategy-01-extremal.html" class="card card-1">
     <div class="card-title">1. Ακραίο Στοιχείο</div>
     <div class="card-subtitle">(Extremal Element)</div>
-  </div>
+  </a>
 
-  <div class="card card-2" onclick="showSection('special')">
+  <a href="strategy-02-special.html" class="card card-2">
     <div class="card-title">2. Ειδικές & Οριακές Περιπτώσεις</div>
     <div class="card-subtitle">(Special & Boundary Cases)</div>
-  </div>
+  </a>
 
-  <div class="card card-3" onclick="showSection('counterexample')">
+  <a href="strategy-03-counterexample.html" class="card card-3">
     <div class="card-title">3. Αντιπαραδείγματα</div>
     <div class="card-subtitle">(Counterexamples)</div>
-  </div>
+  </a>
 
-  <div class="card card-4" onclick="showSection('backward')">
+  <a href="strategy-04-backward.html" class="card card-4">
     <div class="card-title">4. Αντίστροφη Σκέψη</div>
     <div class="card-subtitle">(Backward Thinking)</div>
-  </div>
+  </a>
 </div>
 
 <div class="group-title group-structural">ΟΜΑΔΑ Β: ΔΟΜΙΚΕΣ ΑΡΧΕΣ (5-8)</div>
 
 <div class="grid">
-  <div class="card card-5" onclick="showSection('symmetry')">
+  <a href="strategy-05-symmetry.html" class="card card-5">
     <div class="card-title">5. Συμμετρία</div>
     <div class="card-subtitle">(Symmetry)</div>
-  </div>
+  </a>
 
-  <div class="card card-6" onclick="showSection('invariants')">
+  <a href="strategy-06-invariants.html" class="card card-6">
     <div class="card-title">6. Αναλλοίωτα</div>
     <div class="card-subtitle">(Invariants)</div>
-  </div>
+  </a>
 
-  <div class="card card-7" onclick="showSection('pigeonhole')">
+  <a href="strategy-07-pigeonhole.html" class="card card-7">
     <div class="card-title">7. Αρχή Περιστερώνα</div>
     <div class="card-subtitle">(Pigeonhole Principle)</div>
-  </div>
+  </a>
 
-  <div class="card card-8" onclick="showSection('doublecounting')">
+  <a href="strategy-08-doublecounting.html" class="card card-8">
     <div class="card-title">8. Διπλή Καταμέτρηση</div>
     <div class="card-subtitle">(Double Counting)</div>
-  </div>
+  </a>
 </div>
 
 <div class="group-title group-transform">ΟΜΑΔΑ Γ: ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΙ (9-10)</div>
 
 <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-  <div class="card card-9" onclick="showSection('reformulation')">
+  <a href="strategy-09-reformulation.html" class="card card-9">
     <div class="card-title">9. Αναδιατύπωση</div>
     <div class="card-subtitle">(Reformulation)</div>
-  </div>
+  </a>
 
-  <div class="card card-10" onclick="showSection('auxiliary')">
+  <a href="strategy-10-auxiliary.html" class="card card-10">
     <div class="card-title">10. Βοηθητικό Αντικείμενο</div>
     <div class="card-subtitle">(Auxiliary Construction)</div>
-  </div>
+  </a>
 </div>
 
 <div class="group-title group-advanced">ΟΜΑΔΑ Δ: ΠΡΟΧΩΡΗΜΕΝΕΣ ΤΕΧΝΙΚΕΣ (11-12)</div>
 
 <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-  <div class="card card-11" onclick="showSection('reverse')">
+  <a href="strategy-11-reverse.html" class="card card-11">
     <div class="card-title">11. Αντίστροφη Ερώτηση</div>
     <div class="card-subtitle">(Reverse Question)</div>
-  </div>
+  </a>
 
-  <div class="card card-12" onclick="showSection('induction')">
+  <a href="strategy-12-induction.html" class="card card-12">
     <div class="card-title">12. Μαθηματική Επαγωγή</div>
     <div class="card-subtitle">(Mathematical Induction)</div>
-  </div>
+  </a>
 </div>
 
-<!-- SECTION 12: ΜΑΘΗΜΑΤΙΚΗ ΕΠΑΓΩΓΗ -->
-<div id="section-induction" class="section">
-  <h2>12. Μαθηματική Επαγωγή (Mathematical Induction)</h2>
-  <h3>Η σκάλα του άπειρου: Ένα βήμα τη φορά!</h3>
-  
-  <p>Η <strong>Μαθηματική Επαγωγή</strong> είναι μία από τις πιο ισχυρές και κομψές μεθόδους απόδειξης. Σου επιτρέπει να αποδείξεις ότι κάτι ισχύει για <strong>άπειρα πολλές</strong> περιπτώσεις — με μόνο δύο βήματα!</p>
-
-  <p>Η ιδέα είναι σαν σκάλα: <em>αν μπορείς να ανεβείς στο πρώτο σκαλοπάτι, και αν από κάθε σκαλοπάτι μπορείς να ανεβείς στο επόμενο, τότε μπορείς να ανεβείς όσο ψηλά θέλεις!</em></p>
-
-  <div class="induction-box">
-    <p><strong>🪜 Η Αρχή της Μαθηματικής Επαγωγής:</strong></p>
-    <p>Για να αποδείξεις ότι μια πρόταση P(n) ισχύει για κάθε φυσικό n ≥ n₀:</p>
-    <ol style="margin: 10px 0 0 20px;">
-      <li><strong>Βάση Επαγωγής:</strong> Δείξε ότι P(n₀) ισχύει</li>
-      <li><strong>Επαγωγική Υπόθεση:</strong> Υπόθεσε ότι P(k) ισχύει για κάποιο k ≥ n₀</li>
-      <li><strong>Επαγωγικό Βήμα:</strong> Χρησιμοποιώντας την υπόθεση, δείξε ότι P(k+1) ισχύει</li>
-      <li><strong>Συμπέρασμα:</strong> Από την αρχή επαγωγής, P(n) ισχύει για κάθε n ≥ n₀</li>
-    </ol>
-  </div>
-
-  <h3>Πότε να τη διαλέξεις:</h3>
-  <ul>
-    <li>Όταν η πρόταση αφορά "για κάθε φυσικό n", "για όλα τα n ≥ ..."</li>
-    <li>Σε τύπους με άθροισμα 1+2+...+n</li>
-    <li>Σε αναδρομικά ορισμένες ακολουθίες</li>
-    <li>Σε διαιρετότητες που εξαρτώνται από n</li>
-    <li>Όταν βλέπεις δομή που "χτίζεται" βήμα-βήμα</li>
-  </ul>
-
-  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
-  <ol>
-    <li><strong>Κατανόησε την πρόταση P(n):</strong> Τι ακριβώς πρέπει να ισχύει;</li>
-    <li><strong>Βάση (n=n₀):</strong> Έλεγξε την πρόταση για την αρχική τιμή</li>
-    <li><strong>Υπόθεση (n=k):</strong> "Έστω ότι P(k) ισχύει"</li>
-    <li><strong>Βήμα (n=k+1):</strong> Χρησιμοποίησε P(k) για να δείξεις P(k+1)</li>
-    <li><strong>Ολοκλήρωση:</strong> Άρα P(n) ισχύει για κάθε n!</li>
-  </ol>
-
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showLevel('induction', 'basic', this)">Βασικό</button>
-    <button class="tab-btn" onclick="showLevel('induction', 'intermediate', this)">Ενδιάμεσο</button>
-    <button class="tab-btn" onclick="showLevel('induction', 'advanced', this)">Προχωρημένο</button>
-  </div>
-
-  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
-  <div id="induction-basic" class="level active">
-    <div class="problem">
-      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
-      <p>Να αποδείξετε με επαγωγή ότι για κάθε φυσικό n ≥ 1:</p>
-      <p>\[1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}\]</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('induction-basic-hint')">💡 Δείξε μου hint</button>
-    <div id="induction-basic-hint" class="hint">
-      <p><strong>Hint:</strong> Ακολούθησε τα 3 βήματα!</p>
-      <p><strong>Βάση:</strong> Δοκίμασε για n=1</p>
-      <p><strong>Υπόθεση:</strong> Υπόθεσε ότι ισχύει για n=k</p>
-      <p><strong>Βήμα:</strong> Δείξε για n=k+1:<br>
-      1+2+...+k+(k+1) = ?<br>
-      Χρησιμοποίησε την υπόθεση!</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('induction-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="induction-basic-solution" class="solution">
-      <h4>Απόδειξη με Επαγωγή:</h4>
-      
-      <p><strong>Πρόταση P(n):</strong> \(1 + 2 + \cdots + n = \frac{n(n+1)}{2}\)</p>
-      
-      <p><strong>Βήμα 1 - Βάση Επαγωγής (n=1):</strong></p>
-      <p>Αριστερά: 1<br>
-      Δεξιά: \(\frac{1(1+1)}{2} = \frac{2}{2} = 1\)</p>
-      <p>Αριστερά = Δεξιά ✓<br>
-      Άρα P(1) ισχύει.</p>
-      
-      <p><strong>Βήμα 2 - Επαγωγική Υπόθεση:</strong></p>
-      <p>Υποθέτουμε ότι η P(k) ισχύει για κάποιο k ≥ 1:<br>
-      \[1 + 2 + \cdots + k = \frac{k(k+1)}{2}\]</p>
-      
-      <p><strong>Βήμα 3 - Επαγωγικό Βήμα (n=k+1):</strong></p>
-      <p>Θέλουμε να δείξουμε:<br>
-      \[1 + 2 + \cdots + k + (k+1) = \frac{(k+1)(k+2)}{2}\]</p>
-      
-      <p>Αριστερό μέλος:<br>
-      \(1 + 2 + \cdots + k + (k+1)\)<br>
-      = \(\left[\frac{k(k+1)}{2}\right] + (k+1)\) (χρησιμοποιήσαμε την υπόθεση!)<br>
-      = \(\frac{k(k+1)}{2} + \frac{2(k+1)}{2}\)<br>
-      = \(\frac{k(k+1) + 2(k+1)}{2}\)<br>
-      = \(\frac{(k+1)(k+2)}{2}\) ✓</p>
-      
-      <p><strong>Συμπέρασμα:</strong><br>
-      Από την αρχή της μαθηματικής επαγωγής, η πρόταση P(n) ισχύει για κάθε n ≥ 1. ✓</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Χρησιμοποιήσαμε την επαγωγική υπόθεση για να δείξουμε το επόμενο βήμα!</p>
-    </div>
-  </div>
-
-  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
-  <div id="induction-intermediate" class="level">
-    <div class="problem">
-      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
-      <p>Να αποδείξετε ότι για κάθε φυσικό n ≥ 1:</p>
-      <p>\[1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)(2n+1)}{6}\]</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('induction-int-hint')">💡 Δείξε μου hint</button>
-    <div id="induction-int-hint" class="hint">
-      <p><strong>Hint:</strong> Ίδια μέθοδος - 3 βήματα!</p>
-      <p><strong>Βάση:</strong> n=1 → 1² = 1·2·3/6 = 1 ✓</p>
-      <p><strong>Υπόθεση:</strong> Ισχύει για k</p>
-      <p><strong>Βήμα:</strong> Πρόσθεσε (k+1)² και απλοποίησε!</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('induction-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="induction-int-solution" class="solution">
-      <h4>Απόδειξη:</h4>
-      
-      <p><strong>Βάση (n=1):</strong><br>
-      1² = 1<br>
-      \(\frac{1·2·3}{6} = 1\) ✓</p>
-      
-      <p><strong>Επαγωγική Υπόθεση:</strong><br>
-      \[1^2 + 2^2 + \cdots + k^2 = \frac{k(k+1)(2k+1)}{6}\]</p>
-      
-      <p><strong>Επαγωγικό Βήμα (n=k+1):</strong></p>
-      
-      <p>Θέλουμε:<br>
-      \[1^2 + 2^2 + \cdots + k^2 + (k+1)^2 = \frac{(k+1)(k+2)(2k+3)}{6}\]</p>
-      
-      <p>Αριστερό μέλος:<br>
-      \(\frac{k(k+1)(2k+1)}{6} + (k+1)^2\)</p>
-      
-      <p>Κοινός παρονομαστής:<br>
-      \(= \frac{k(k+1)(2k+1) + 6(k+1)^2}{6}\)<br>
-      \(= \frac{(k+1)[k(2k+1) + 6(k+1)]}{6}\)<br>
-      \(= \frac{(k+1)[2k^2 + k + 6k + 6]}{6}\)<br>
-      \(= \frac{(k+1)[2k^2 + 7k + 6]}{6}\)<br>
-      \(= \frac{(k+1)(k+2)(2k+3)}{6}\) ✓</p>
-      
-      <p>(Παραγοντοποίηση: 2k²+7k+6 = (k+2)(2k+3))</p>
-      
-      <p><strong>Συμπέρασμα:</strong> Ισχύει για κάθε n ≥ 1. ✓</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Η επαγωγή λειτουργεί και για πιο περίπλοκους τύπους!</p>
-    </div>
-  </div>
-
-  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
-  <div id="induction-advanced" class="level">
-    <div class="problem">
-      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
-      <p>Να αποδείξετε ότι για κάθε φυσικό n ≥ 1:</p>
-      <p>\[3^n > 2^n + n^2\]</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('induction-adv-hint')">💡 Δείξε μου hint</button>
-    <div id="induction-adv-hint" class="hint">
-      <p><strong>Hint:</strong> Ανισότητα - πρόσεχε στο επαγωγικό βήμα!</p>
-      <p><strong>Βάση:</strong> n=1 → 3 > 2+1 → 3>3? ΟΧΙ! Δοκίμασε n=2</p>
-      <p><strong>Βήμα:</strong> Από 3^k > 2^k + k², δείξε 3^(k+1) > 2^(k+1) + (k+1)²</p>
-      <p><strong>Τεχνική:</strong> 3^(k+1) = 3·3^k > 3(2^k + k²)</p>
-    </div>
-
-    <button class="hint-btn" onclick="toggleHint('induction-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
-    <div id="induction-adv-solution" class="solution">
-      <h4>Απόδειξη:</h4>
-      
-      <p><strong>Βάση:</strong> Ελέγχουμε για n=1:<br>
-      3¹ = 3, αλλά 2¹ + 1² = 3<br>
-      3 > 3? ΟΧΙ! ✗</p>
-      
-      <p>Για n=2:<br>
-      3² = 9, και 2² + 2² = 8<br>
-      9 > 8 ✓</p>
-      
-      <p>Άρα η βάση είναι n₀ = 2.</p>
-      
-      <p><strong>Επαγωγική Υπόθεση:</strong><br>
-      \[3^k > 2^k + k^2\] για κάποιο k ≥ 2</p>
-      
-      <p><strong>Επαγωγικό Βήμα (n=k+1):</strong></p>
-      
-      <p>Θέλουμε: \(3^{k+1} > 2^{k+1} + (k+1)^2\)</p>
-      
-      <p>Αριστερό μέλος:<br>
-      \(3^{k+1} = 3 \cdot 3^k\)<br>
-      \(> 3(2^k + k^2)\) (επαγωγική υπόθεση)<br>
-      \(= 3 \cdot 2^k + 3k^2\)</p>
-      
-      <p>Αρκεί να δείξουμε:<br>
-      \(3 \cdot 2^k + 3k^2 > 2 \cdot 2^k + (k+1)^2\)<br>
-      \(2^k + 3k^2 > (k+1)^2\)<br>
-      \(2^k + 3k^2 > k^2 + 2k + 1\)<br>
-      \(2^k + 2k^2 > 2k + 1\)</p>
-      
-      <p>Για k ≥ 2:<br>
-      • 2^k ≥ 4<br>
-      • 2k² ≥ 8<br>
-      • Άθροισμα ≥ 12</p>
-      
-      <p>Ενώ 2k + 1 ≤ 5 για k=2.</p>
-      
-      <p>Άρα ισχύει! ✓</p>
-      
-      <p><strong>Συμπέρασμα:</strong> \(3^n > 2^n + n^2\) για κάθε n ≥ 2. ✓</p>
-      
-      <p><strong>🔑 Κλειδί:</strong> Στις ανισότητες, πολλαπλασιάζουμε την υπόθεση και απλοποιούμε!</p>
-    </div>
-  </div>
-
-  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
-  <div class="mistakes">
-    <h4>⚠️ Συχνά Λάθη:</h4>
-    <ul>
-      <li><strong>Ξεχνάς τη βάση:</strong> Πρέπει ΠΑΝΤΑ να ελέγξεις την αρχική περίπτωση!</li>
-      <li><strong>Δεν χρησιμοποιείς την υπόθεση:</strong> Στο επαγωγικό βήμα ΠΡΕΠΕΙ να χρησιμοποιήσεις P(k)</li>
-      <li><strong>Υποθέτεις το ζητούμενο:</strong> Μην υποθέσεις P(k+1) - αυτό θέλεις να αποδείξεις!</li>
-      <li><strong>Λάθος βάση:</strong> Μερικές φορές η πρόταση ισχύει από n₀ > 1</li>
-      <li><strong>Ατελής απόδειξη:</strong> Πρέπει να ολοκληρώσεις και τα 3 βήματα!</li>
-    </ul>
-  </div>
-
-  <!-- QUIZ -->
-  <div class="quiz">
-    <h4>🧠 Μικρό Quiz</h4>
-    <p><strong>Ερώτηση:</strong> Ποια είναι τα 3 βασικά βήματα της Μαθηματικής Επαγωγής;</p>
-    <button class="quiz-btn" onclick="checkQuiz('induction', 'a', this)">Βάση, Επαγωγική Υπόθεση, Επαγωγικό Βήμα</button>
-    <button class="quiz-btn" onclick="checkQuiz('induction', 'b', this)">Αρχή, Μέση, Τέλος</button>
-    <button class="quiz-btn" onclick="checkQuiz('induction', 'c', this)">Υπόθεση, Απόδειξη, Συμπέρασμα</button>
-    <div id="induction-quiz-result" class="quiz-result"></div>
-  </div>
-
-  <div class="congrats">
-    <h3>🎉 Συγχαρητήρια! 🎉</h3>
-    <p>Ολοκλήρωσες και τις 12 στρατηγικές!</p>
-    <p style="margin-top: 15px;">Τώρα έχεις έναν πλήρη <strong>χάρτη</strong> για την επίλυση μαθηματικών προβλημάτων!</p>
-    <p style="margin-top: 10px; font-size: 1em;">Μην ξεχνάς: Η τέχνη δεν είναι να τις ξέρεις όλες,<br>αλλά να ξέρεις <strong>ποια</strong> να διαλέξεις <strong>πότε</strong>!</p>
-  </div>
-
-  <a href="#" class="back-btn" onclick="showSection('home'); return false;">← Επιστροφή στη Λίστα Στρατηγικών</a>
-</div>
+<footer>
+  <p><strong>Χάρτης Στρατηγικών Λύσης</strong> | 12 Στρατηγικές · 36 Προβλήματα · Μία Μεθοδολογία</p>
+  <p style="margin-top: 10px; font-size: 0.9em;">Μαθαίνουμε πώς να σκεφτόμαστε, όχι τι να απομνημονεύουμε</p>
+</footer>
 
 </div>
-
-<script>
-// ===== ΔΙΟΡΘΩΜΕΝΕΣ ΣΥΝΑΡΤΗΣΕΙΣ =====
-
-function showSection(sectionId) {
-  console.log('showSection called with:', sectionId);
-  
-  // Κρύψε όλα τα sections
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(s => s.classList.remove('active'));
-
-  if (sectionId !== 'home') {
-    const section = document.getElementById('section-' + sectionId);
-    if (section) {
-      section.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      console.error('Section not found:', 'section-' + sectionId);
-    }
-  } else {
-    // Επιστροφή στην αρχική
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}
-
-// ΔΙΟΡΘΩΜΕΝΗ: Δέχεται 3 παραμέτρους με το button element!
-function showLevel(strategy, level, buttonElement) {
-  console.log('showLevel called:', strategy, level);
-  
-  const section = document.getElementById('section-' + strategy);
-  if (!section) {
-    console.error('Section not found for strategy:', strategy);
-    return;
-  }
-
-  // Ενεργοποίηση του σωστού tab button
-  const tabButtons = section.querySelectorAll('.tab-btn');
-  tabButtons.forEach(btn => btn.classList.remove('active'));
-  
-  // Ενεργοποίησε το button που πατήθηκε
-  if (buttonElement) {
-    buttonElement.classList.add('active');
-  }
-
-  // Κρύψε όλα τα levels
-  const levels = section.querySelectorAll('.level');
-  levels.forEach(l => l.classList.remove('active'));
-
-  // Εμφάνισε το σωστό level
-  const targetLevel = document.getElementById(strategy + '-' + level);
-  if (targetLevel) {
-    targetLevel.classList.add('active');
-  } else {
-    console.error('Level not found:', strategy + '-' + level);
-  }
-}
-
-function toggleHint(id) {
-  console.log('toggleHint called for:', id);
-  const el = document.getElementById(id);
-  if (el) {
-    el.classList.toggle('show');
-  } else {
-    console.error('Hint element not found:', id);
-  }
-}
-
-// Quiz απαντήσεις
-const quizAnswers = { 
-  induction: 'a' 
-};
-
-// ΔΙΟΡΘΩΜΕΝΗ: Δέχεται το button element ως τρίτη παράμετρο
-function checkQuiz(strategy, answer, buttonElement) {
-  console.log('checkQuiz called:', strategy, answer);
-  console.log('Button element:', buttonElement);
-  
-  const result = document.getElementById(strategy + '-quiz-result');
-  if (!result) {
-    console.error('Result element not found:', strategy + '-quiz-result');
-    return;
-  }
-  
-  if (!buttonElement) {
-    console.error('Button element is null!');
-    return;
-  }
-  
-  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
-  console.log('Found', buttons.length, 'quiz buttons');
-
-  // Καθάρισε όλα τα buttons
-  buttons.forEach(b => {
-    b.classList.remove('correct', 'wrong');
-  });
-
-  // Έλεγξε την απάντηση
-  if (answer === quizAnswers[strategy]) {
-    buttonElement.classList.add('correct');
-    result.className = 'quiz-result correct';
-    result.textContent = '✓ Σωστά! Βάση → Υπόθεση → Βήμα!';
-    result.style.display = 'block';
-  } else {
-    buttonElement.classList.add('wrong');
-    result.className = 'quiz-result wrong';
-    result.textContent = '✗ Προσπάθησε ξανά!';
-    result.style.display = 'block';
-  }
-}
-
-// Event listener για debugging
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('✓ DOM loaded successfully');
-  console.log('✓ JavaScript functions ready');
-  
-  // Test όλων των sections
-  const sections = document.querySelectorAll('.section');
-  console.log('Found', sections.length, 'sections');
-  
-  // Test όλων των levels
-  const levels = document.querySelectorAll('.level');
-  console.log('Found', levels.length, 'levels');
-});
-</script>
 
 </body>
 </html>
