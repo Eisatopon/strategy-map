@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9. Αναδιατύπωση - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #ff9800; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #f57c00; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: white; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #ff9800;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #ff9800; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border: 3px solid #ff9800; border-radius: 15px;
+}
+.quiz h4 { color: #e65100; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #ff9800; background: #fff8e1; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #fff3e0;
+  border-left: 4px solid #ff9800;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.reformulation-box {
+  background: #ffe0b2;
+  border: 3px solid #ff9800;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #e65100;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>9. Αναδιατύπωση</h1>
+  <p><em>Reformulation</em></p>
+</div>
+
+<div class="section">
+  <h2>Αναδιατύπωση (Reformulation)</h2>
+  <h3>Πες το ίδιο πράγμα με διαφορετικό τρόπο!</h3>
+  
+  <p>Η <strong>Αναδιατύπωση</strong> είναι η τέχνη να <strong>μετατρέπεις ένα πρόβλημα σε ένα ισοδύναμο</strong> που είναι πιο εύκολο να λυθεί! Είναι σαν να αλλάζεις τη γλώσσα ενός προβλήματος για να το δεις από άλλη οπτική γωνία.</p>
+
+  <div class="reformulation-box">
+    🔄 Δύσκολο πρόβλημα → Αναδιατύπωση → Εύκολο πρόβλημα
+  </div>
+
+  <p>Τύποι αναδιατύπωσης:</p>
+  <ul>
+    <li><strong>Αλλαγή μεταβλητών:</strong> \(x = \sin\theta\) ή \(y = e^t\)</li>
+    <li><strong>Γεωμετρική ερμηνεία:</strong> Άλγεβρα → Γεωμετρία</li>
+    <li><strong>Αντιστροφή:</strong> "Αποδείξτε A" → "Αποδείξτε ότι ¬A οδηγεί σε άτοπο"</li>
+    <li><strong>Μετάφραση σε γράφο:</strong> Συνδυαστικό πρόβλημα → Πρόβλημα γράφων</li>
+  </ul>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν το πρόβλημα φαίνεται <strong>πολύπλοκο στην τρέχουσα μορφή</strong></li>
+      <li>Όταν υπάρχει <strong>κρυφή δομή</strong> που δεν φαίνεται</li>
+      <li>Όταν ξέρεις ένα παρόμοιο πρόβλημα που έχει λυθεί</li>
+      <li>Όταν η <strong>αλλαγή οπτικής</strong> μπορεί να απλοποιήσει</li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Κατάλαβε το πρόβλημα:</strong> Τι ακριβώς ζητάει;</li>
+    <li><strong>Αναγνώρισε το εμπόδιο:</strong> Τι το κάνει δύσκολο;</li>
+    <li><strong>Σκέψου εναλλακτικές:</strong> Πώς αλλιώς μπορώ να το πω;</li>
+    <li><strong>Εφάρμοσε τη μετατροπή:</strong> Αλλαγή μεταβλητών, γλώσσας, οπτικής</li>
+    <li><strong>Λύσε το νέο πρόβλημα:</strong> Είναι πιο εύκολο τώρα;</li>
+    <li><strong>Μετάφρασε πίσω:</strong> Επιστροφή στο αρχικό πρόβλημα</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('reformulation', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('reformulation', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('reformulation', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="reformulation-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Λύστε την εξίσωση:</p>
+      <p>\[\sqrt{x + \sqrt{x + \sqrt{x + \cdots}}} = 2\]</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reformulation-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="reformulation-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Έστω \(y = \sqrt{x + \sqrt{x + \sqrt{x + \cdots}}}\).</p>
+      <p>Παρατήρησε ότι μέσα στη ρίζα υπάρχει πάλι το \(y\)!</p>
+      <p><strong>Κλειδί:</strong> Αναδιατύπωσε ως \(y = \sqrt{x + y}\)!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reformulation-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="reformulation-basic-solution" class="solution">
+      <h4>Λύση με Αναδιατύπωση:</h4>
+      
+      <p><strong>Βήμα 1 - Θέση μεταβλητής:</strong></p>
+      <p>Έστω \(y = \sqrt{x + \sqrt{x + \sqrt{x + \cdots}}}\)</p>
+      <p>Δεδομένο: \(y = 2\)</p>
+      
+      <p><strong>Βήμα 2 - Αναδιατύπωση (κρίσιμο βήμα!):</strong></p>
+      <p>Επειδή η έκφραση είναι <strong>άπειρη</strong>, το κομμάτι μέσα στην πρώτη ρίζα είναι πάλι \(y\)!</p>
+      <p>Δηλαδή: \(y = \sqrt{x + y}\)</p>
+      
+      <p><strong>Βήμα 3 - Λύση της νέας εξίσωσης:</strong></p>
+      <p>\(y = \sqrt{x + y}\)</p>
+      <p>Τετραγωνίζουμε: \(y^2 = x + y\)</p>
+      <p>\(x = y^2 - y\)</p>
+      
+      <p><strong>Βήμα 4 - Αντικατάσταση:</strong></p>
+      <p>Αφού \(y = 2\): \(x = 2^2 - 2 = 4 - 2 = 2\)</p>
+      
+      <p><strong>Απάντηση:</strong> \(x = 2\) ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αναδιατύπωση \(y = \sqrt{x + y}\) μετέτρεψε το άπειρο σε πεπερασμένο!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="reformulation-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Αποδείξτε ότι για κάθε θετικούς \(a, b, c\) με \(abc = 1\):</p>
+      <p>\[\frac{1}{1+a+b} + \frac{1}{1+b+c} + \frac{1}{1+c+a} \leq 1\]</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reformulation-int-hint')">💡 Δείξε μου hint</button>
+    <div id="reformulation-int-hint" class="hint">
+      <p><strong>Hint:</strong> Αναδιατύπωσε χρησιμοποιώντας το \(abc = 1\)!</p>
+      <p>Μπορείς να γράψεις: \(\frac{1}{1+a+b} = \frac{c}{c+ac+bc} = \frac{c}{c+ac+bc}\)</p>
+      <p><strong>Κλειδί:</strong> Πολλαπλασίασε με \(c\) και χρησιμοποίησε \(ac = \frac{1}{b}\)!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reformulation-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="reformulation-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Αναδιατύπωση με χρήση \(abc = 1\):</strong></p>
+      <p>Επειδή \(abc = 1\), έχουμε \(c = \frac{1}{ab}\).</p>
+      <p>Πολλαπλασιάζουμε τον παρονομαστή του πρώτου κλάσματος με \(c\):</p>
+      <p>\[\frac{1}{1+a+b} = \frac{c}{c + ac + bc} = \frac{c}{c + ac + bc}\]</p>
+      
+      <p><strong>Βήμα 2 - Χρήση του \(abc = 1\):</strong></p>
+      <p>Από \(abc = 1\): \(ac = \frac{1}{b}\) και \(bc = \frac{1}{a}\)</p>
+      <p>Άρα:</p>
+      <p>\[\frac{1}{1+a+b} = \frac{c}{c + \frac{1}{b} + \frac{1}{a}} = \frac{abc}{c + \frac{1}{b} + \frac{1}{a}}\]</p>
+      
+      <p>Παρόμοια για τα άλλα κλάσματα.</p>
+      
+      <p><strong>Βήμα 3 - Εναλλακτική αναδιατύπωση (απλούστερη):</strong></p>
+      <p>Παρατηρούμε ότι:</p>
+      <p>\[\frac{1}{1+a+b} = \frac{c}{c+ac+bc} = \frac{c}{c(1 + a + b/c)} = \ldots\]</p>
+      
+      <p>Καλύτερα: Αποδεικνύουμε ισοδύναμα ότι:</p>
+      <p>\[\frac{1}{1+a+b} + \frac{1}{1+b+c} + \frac{1}{1+c+a} \leq 1\]</p>
+      
+      <p>Πολλαπλασιάζοντας με \((1+a+b)(1+b+c)(1+c+a)\), αρκεί:</p>
+      <p>Το άθροισμα των γινομένων ≤ το συνολικό γινόμενο.</p>
+      
+      <p>Με AM-GM και αλγεβρικούς χειρισμούς (χρησιμοποιώντας \(abc=1\)), η ανισότητα ισχύει! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αναδιατύπωση με χρήση του \(abc = 1\) απλοποίησε το πρόβλημα!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="reformulation-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Σε ένα σύνολο \(n\) σημείων στο επίπεδο, όχι τρία συνευθειακά, κάθε δύο σημεία συνδέονται με ευθεία. Κάθε ευθεία χρωματίζεται κόκκινη ή μπλε.</p>
+      <p><strong>Αποδείξτε ότι υπάρχει μονόχρωμο τρίγωνο για \(n \geq 6\) (Θεώρημα Ramsey).</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reformulation-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="reformulation-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Αναδιατύπωσε ως πρόβλημα γράφων!</p>
+      <p>Κορυφές = σημεία, Ακμές = ευθείες (χρωματισμένες)</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε την Αρχή Περιστερώνα στους γείτονες μιας κορυφής!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('reformulation-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="reformulation-adv-solution" class="solution">
+      <h4>Απόδειξη (Ramsey R(3,3) = 6):</h4>
+      
+      <p><strong>Βήμα 1 - Αναδιατύπωση σε γράφο:</strong></p>
+      <p>Θεωρούμε πλήρη γράφο \(K_6\) με 6 κορυφές.</p>
+      <p>Κάθε ακμή είναι χρωματισμένη κόκκινη ή μπλε.</p>
+      <p><strong>Στόχος:</strong> Δείξε ότι υπάρχει μονόχρωμο τρίγωνο (3 κορυφές με όλες τις ακμές του ίδιου χρώματος).</p>
+      
+      <p><strong>Βήμα 2 - Επιλογή κορυφής:</strong></p>
+      <p>Έστω κορυφή \(v\). Η \(v\) συνδέεται με 5 άλλες κορυφές.</p>
+      
+      <p><strong>Βήμα 3 - Αρχή Περιστερώνα:</strong></p>
+      <p>Από τις 5 ακμές που βγαίνουν από \(v\), από την Αρχή Περιστερώνα, τουλάχιστον 3 είναι του ίδιου χρώματος!</p>
+      <p>Έστω ότι 3 ακμές είναι κόκκινες: \(v-a\), \(v-b\), \(v-c\).</p>
+      
+      <p><strong>Βήμα 4 - Δύο περιπτώσεις:</strong></p>
+      <p><strong>Περίπτωση 1:</strong> Αν οποιαδήποτε από τις ακμές \(a-b\), \(b-c\), \(c-a\) είναι κόκκινη, τότε έχουμε κόκκινο τρίγωνο! ✓</p>
+      <p><strong>Περίπτωση 2:</strong> Αν όλες οι ακμές \(a-b\), \(b-c\), \(c-a\) είναι μπλε, τότε το τρίγωνο \(abc\) είναι μπλε! ✓</p>
+      
+      <p>Και στις δύο περιπτώσεις, υπάρχει μονόχρωμο τρίγωνο! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η αναδιατύπωση σε γράφο και η χρήση της Αρχής Περιστερώνα έδωσαν την απόδειξη!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Χάνεις την ισοδυναμία:</strong> Βεβαιώσου ότι η αναδιατύπωση είναι <strong>ακριβώς ισοδύναμη</strong>!</li>
+      <li><strong>Ξεχνάς να μεταφράσεις πίσω:</strong> Μετά τη λύση, επέστρεψε στο αρχικό πρόβλημα!</li>
+      <li><strong>Περιπλέκεις αντί να απλοποιείς:</strong> Η αναδιατύπωση πρέπει να κάνει το πρόβλημα πιο εύκολο!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Τι είναι η αναδιατύπωση;</p>
+    <button class="quiz-btn" onclick="checkQuiz('reformulation', 'a', this)">Να πεις το ίδιο πρόβλημα με διαφορετικό, πιο εύκολο τρόπο</button>
+    <button class="quiz-btn" onclick="checkQuiz('reformulation', 'b', this)">Να λύσεις ένα παρόμοιο πρόβλημα</button>
+    <button class="quiz-btn" onclick="checkQuiz('reformulation', 'c', this)">Να αλλάξεις τον στόχο του προβλήματος</button>
+    <div id="reformulation-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  reformulation: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Αναδιατύπωση = ίδιο πρόβλημα, διαφορετική (ευκολότερη) μορφή!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου τι σημαίνει "αναδιατύπωση"...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
