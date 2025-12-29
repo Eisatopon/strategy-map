@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5. Συμμετρία - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #4caf50; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #388e3c; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  color: white; box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #4caf50;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #4caf50; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 3px solid #4caf50; border-radius: 15px;
+}
+.quiz h4 { color: #2e7d32; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #4caf50; background: #f1f8e9; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.symmetry-box {
+  background: #f1f8e9;
+  border: 2px solid #4caf50;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>5. Συμμετρία</h1>
+  <p><em>Symmetry</em></p>
+</div>
+
+<div class="section">
+  <h2>Συμμετρία (Symmetry)</h2>
+  <h3>Αν κάτι μοιάζει το ίδιο από παντού, χρησιμοποίησέ το!</h3>
+  
+  <p>Η <strong>Συμμετρία</strong> είναι μία από τις πιο όμορφες και ισχυρές ιδέες στα μαθηματικά! Όταν ένα πρόβλημα έχει συμμετρία, σημαίνει ότι κάποιες μεταβλητές ή στοιχεία <strong>"παίζουν τον ίδιο ρόλο"</strong>. Αυτή η συμμετρία συχνά απλοποιεί το πρόβλημα δραματικά!</p>
+
+  <div class="symmetry-box">
+    🔄 Αν το \(x\), \(y\), \(z\) παίζουν τον ίδιο ρόλο → Η λύση πρέπει να είναι συμμετρική!
+  </div>
+
+  <p>Τύποι συμμετρίας:</p>
+  <ul>
+    <li><strong>Αλγεβρική:</strong> Αν αντικαταστήσεις \(x \leftrightarrow y\), το πρόβλημα παραμένει το ίδιο</li>
+    <li><strong>Γεωμετρική:</strong> Περιστροφή, αντανάκλαση, μετατόπιση</li>
+    <li><strong>Κυκλική:</strong> \(a_1, a_2, a_3, \ldots, a_n\) και μετά πάλι \(a_1\)</li>
+  </ul>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν οι μεταβλητές <strong>εμφανίζονται με τον ίδιο τρόπο</strong></li>
+      <li>Όταν η εκφώνηση <strong>δεν αλλάζει</strong> αν εναλλάξεις τα γράμματα</li>
+      <li>Σε γεωμετρικά σχήματα με <strong>κανονική δομή</strong></li>
+      <li>Όταν υπάρχει <strong>περιοδικότητα</strong></li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Εντόπισε τη συμμετρία:</strong> Ποια στοιχεία παίζουν τον ίδιο ρόλο;</li>
+    <li><strong>Έλεγξε αντικατάσταση:</strong> Αν ανταλλάξεις \(x\) και \(y\), τι αλλάζει;</li>
+    <li><strong>Χρησιμοποίησε τη συμμετρία:</strong> Η λύση πρέπει να σέβεται τη συμμετρία!</li>
+    <li><strong>WLOG (Without Loss Of Generality):</strong> Υπόθεσε \(x \leq y \leq z\) για απλοποίηση!</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('symmetry', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('symmetry', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('symmetry', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="symmetry-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Βρείτε το μέγιστο της συνάρτησης:</p>
+      <p>\[f(x, y, z) = xy + yz + zx\]</p>
+      <p>όταν \(x, y, z\) είναι θετικοί αριθμοί με \(x + y + z = 1\).</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('symmetry-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="symmetry-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Παρατήρησε τη συμμετρία! Τα \(x, y, z\) παίζουν τον <strong>ίδιο ρόλο</strong>.</p>
+      <p>Άρα το μέγιστο πρέπει να επιτυγχάνεται όταν \(x = y = z\)!</p>
+      <p><strong>Κλειδί:</strong> Αφού \(x + y + z = 1\) και \(x = y = z\), τότε \(x = y = z = \frac{1}{3}\)!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('symmetry-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="symmetry-basic-solution" class="solution">
+      <h4>Λύση με Συμμετρία:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός συμμετρίας:</strong></p>
+      <p>Η συνάρτηση \(f(x, y, z) = xy + yz + zx\) είναι <strong>συμμετρική</strong> στα \(x, y, z\).</p>
+      <p>Αν αντικαταστήσεις \(x \leftrightarrow y\), η \(f\) παραμένει η ίδια!</p>
+      
+      <p><strong>Βήμα 2 - Χρήση συμμετρίας:</strong></p>
+      <p>Επειδή η \(f\) και ο περιορισμός \(x + y + z = 1\) είναι συμμετρικά, το μέγιστο πρέπει να επιτυγχάνεται σε <strong>συμμετρικό σημείο</strong>!</p>
+      <p>Δηλαδή: \(x = y = z\).</p>
+      
+      <p><strong>Βήμα 3 - Υπολογισμός:</strong></p>
+      <p>Από \(x + y + z = 1\) με \(x = y = z\): \(3x = 1\), άρα \(x = y = z = \frac{1}{3}\).</p>
+      
+      <p><strong>Βήμα 4 - Τιμή μεγίστου:</strong></p>
+      <p>\[f\left(\frac{1}{3}, \frac{1}{3}, \frac{1}{3}\right) = 3 \cdot \frac{1}{3} \cdot \frac{1}{3} = \frac{1}{3}\]</p>
+      
+      <p><strong>Απάντηση:</strong> Μέγιστο = \(\frac{1}{3}\) ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η συμμετρία μας έδειξε το σημείο του μεγίστου!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="symmetry-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Σε κύκλο κάθονται \(n\) άτομα. Κάθε άτομο έχει έναν αριθμό. Κάθε φορά, κάθε άτομο αντικαθιστά τον αριθμό του με τον <strong>μέσο όρο</strong> των αριθμών των δύο γειτόνων του.</p>
+      <p><strong>Αποδείξτε ότι μετά από αρκετά βήματα, όλοι οι αριθμοί γίνονται ίσοι.</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('symmetry-int-hint')">💡 Δείξε μου hint</button>
+    <div id="symmetry-int-hint" class="hint">
+      <p><strong>Hint:</strong> Υπάρχει <strong>κυκλική συμμετρία</strong>!</p>
+      <p>Σκέψου: τι παραμένει σταθερό σε κάθε βήμα;</p>
+      <p><strong>Κλειδί:</strong> Το <strong>άθροισμα</strong> των αριθμών είναι αναλλοίωτο!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('symmetry-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="symmetry-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Εντοπισμός συμμετρίας:</strong></p>
+      <p>Η διαδικασία έχει <strong>κυκλική συμμετρία</strong> - κάθε άτομο εφαρμόζει τον ίδιο κανόνα.</p>
+      
+      <p><strong>Βήμα 2 - Αναλλοίωτο:</strong></p>
+      <p>Το άθροισμα \(S = a_1 + a_2 + \cdots + a_n\) <strong>παραμένει σταθερό</strong> σε κάθε βήμα!</p>
+      <p>Απόδειξη: Κάθε νέο \(a_i' = \frac{a_{i-1} + a_{i+1}}{2}\), άρα το άθροισμα δεν αλλάζει.</p>
+      
+      <p><strong>Βήμα 3 - Σύγκλιση:</strong></p>
+      <p>Έστω \(M = \max\{a_i\}\) και \(m = \min\{a_i\}\) σε κάθε βήμα.</p>
+      <p>Παρατηρούμε ότι:</p>
+      <ul>
+        <li>Αν \(a_i = M\), τότε \(a_i' \leq M\)</li>
+        <li>Αν \(a_i = m\), τότε \(a_i' \geq m\)</li>
+        <li>Η διαφορά \(M - m\) <strong>μειώνεται</strong> σε κάθε βήμα!</li>
+      </ul>
+      
+      <p><strong>Βήμα 4 - Όριο:</strong></p>
+      <p>Καθώς \(M - m \to 0\), όλοι οι αριθμοί συγκλίνουν στο \(\frac{S}{n}\). ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η κυκλική συμμετρία και το αναλλοίωτο άθροισμα έδειξαν τη σύγκλιση!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="symmetry-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Δίνεται κανονικό πολύγωνο με \(n\) πλευρές. Χρωματίζουμε κάθε κορυφή με ένα από τα χρώματα κόκκινο, μπλε, πράσινο. Δύο χρωματισμοί θεωρούνται <strong>ίδιοι</strong> αν ο ένας προκύπτει από τον άλλο με περιστροφή.</p>
+      <p><strong>Πόσοι διαφορετικοί χρωματισμοί υπάρχουν;</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('symmetry-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="symmetry-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Αυτό είναι το <strong>Λήμμα Burnside</strong>!</p>
+      <p>Η απάντηση είναι: \(\frac{1}{n}\) × (άθροισμα χρωματισμών που παραμένουν ίδιοι σε κάθε περιστροφή)</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε τη συμμετρία των περιστροφών!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('symmetry-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="symmetry-adv-solution" class="solution">
+      <h4>Λύση με Λήμμα Burnside:</h4>
+      
+      <p><strong>Βήμα 1 - Συμμετρίες:</strong></p>
+      <p>Το κανονικό \(n\)-γωνο έχει \(n\) περιστροφές: \(0°, \frac{360°}{n}, \frac{2 \cdot 360°}{n}, \ldots\)</p>
+      
+      <p><strong>Βήμα 2 - Λήμμα Burnside:</strong></p>
+      <p>Αριθμός διαφορετικών χρωματισμών = \(\frac{1}{n} \sum_{i=0}^{n-1} f(r_i)\)</p>
+      <p>όπου \(f(r_i)\) = πλήθος χρωματισμών που παραμένουν ίδιοι με περιστροφή \(r_i\).</p>
+      
+      <p><strong>Βήμα 3 - Υπολογισμός για κάθε περιστροφή:</strong></p>
+      <ul>
+        <li><strong>Περιστροφή 0°:</strong> Όλοι οι \(3^n\) χρωματισμοί παραμένουν ίδιοι.</li>
+        <li><strong>Περιστροφή \(\frac{360°}{n}\):</strong> Ένας χρωματισμός παραμένει ίδιος αν έχει περίοδο που διαιρεί το \(n\).</li>
+      </ul>
+      
+      <p><strong>Βήμα 4 - Γενικός τύπος:</strong></p>
+      <p>Για περιστροφή κατά \(k\) θέσεις, χρειάζεται ο χρωματισμός να έχει περίοδο \(\gcd(k, n)\).</p>
+      <p>Άρα: \(f(r_k) = 3^{\gcd(k, n)}\)</p>
+      
+      <p><strong>Τελικός τύπος:</strong></p>
+      <p>\[\text{Αριθμός} = \frac{1}{n} \sum_{k=0}^{n-1} 3^{\gcd(k, n)}\]</p>
+      
+      <p><strong>Παράδειγμα (\(n = 3\)):</strong></p>
+      <p>\[\frac{1}{3}(3^3 + 3^1 + 3^1) = \frac{27 + 3 + 3}{3} = 11\]</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η περιστροφική συμμετρία μας έδωσε τον τρόπο μέτρησης!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Δεν αναγνωρίζεις τη συμμετρία:</strong> Κοίτα προσεκτικά - συχνά κρύβεται!</li>
+      <li><strong>Υποθέτεις συμμετρία όπου δεν υπάρχει:</strong> Έλεγξε αν η εκφώνηση όντως είναι συμμετρική!</li>
+      <li><strong>WLOG χωρίς δικαίωση:</strong> Μην πεις "WLOG \(x \leq y\)" αν δεν υπάρχει συμμετρία!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Πότε μπορούμε να χρησιμοποιήσουμε συμμετρία;</p>
+    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'a', this)">Όταν οι μεταβλητές εμφανίζονται με τον ίδιο τρόπο</button>
+    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'b', this)">Μόνο σε γεωμετρικά προβλήματα</button>
+    <button class="quiz-btn" onclick="checkQuiz('symmetry', 'c', this)">Πάντα - κάθε πρόβλημα έχει συμμετρία</button>
+    <div id="symmetry-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  symmetry: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Η συμμετρία υπάρχει όταν οι μεταβλητές παίζουν τον ίδιο ρόλο!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου πότε τα στοιχεία είναι "ισοδύναμα"...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
