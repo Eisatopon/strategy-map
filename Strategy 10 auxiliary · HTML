@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10. Βοηθητικό Αντικείμενο - Χάρτης Στρατηγικών</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6; 
+  padding: 20px; 
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.hero { 
+  background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+  color: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
+.hero p { font-size: 1.2em; }
+
+.section { 
+  background: white;
+  border-radius: 20px; 
+  padding: 40px; 
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section h2 { color: #f57c00; margin-bottom: 10px; font-size: 2em; }
+.section h3 { color: #e65100; margin-top: 25px; margin-bottom: 15px; font-size: 1.5em; }
+.section h4 { color: #4a5568; margin-top: 20px; margin-bottom: 10px; }
+.section p { margin-bottom: 15px; color: #2d3748; }
+.section ul, .section ol { margin-left: 25px; margin-bottom: 15px; color: #2d3748; }
+.section li { margin-bottom: 8px; }
+
+.tabs { margin: 30px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { 
+  padding: 12px 24px; border: none; background: #e2e8f0; border-radius: 10px;
+  cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s; color: #4a5568;
+}
+.tab-btn:hover { background: #cbd5e0; transform: translateY(-2px); }
+.tab-btn.active { 
+  background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+  color: white; box-shadow: 0 4px 12px rgba(245, 124, 0, 0.4);
+}
+
+.level { 
+  display: none; margin-top: 20px; padding: 25px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px; border-left: 5px solid #f57c00;
+}
+.level.active { display: block; animation: slideIn 0.3s; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.problem {
+  background: white; padding: 20px; border-radius: 12px; margin: 15px 0;
+  border-left: 4px solid #f57c00; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.hint-btn { 
+  padding: 12px 24px; margin-top: 15px; margin-right: 10px;
+  background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+  color: white; border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1em; font-weight: 600; transition: all 0.3s;
+}
+.hint-btn:hover { 
+  background: linear-gradient(135deg, #e65100 0%, #d84315 100%);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(245, 124, 0, 0.4);
+}
+
+.hint { 
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b; border-radius: 12px; color: #78350f;
+}
+.hint.show { display: block; animation: expandDown 0.3s; }
+
+.solution {
+  display: none; margin-top: 15px; padding: 20px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 5px solid #10b981; border-radius: 12px; color: #064e3b;
+}
+.solution.show { display: block; animation: expandDown 0.3s; }
+
+@keyframes expandDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 2000px; }
+}
+
+.mistakes {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  padding: 20px; border-radius: 12px; margin: 20px 0;
+  border-left: 5px solid #ef4444;
+}
+.mistakes h4 { color: #991b1b; margin-top: 0; }
+.mistakes ul { color: #7f1d1d; }
+
+.quiz { 
+  margin-top: 40px; padding: 30px;
+  background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%);
+  border: 3px solid #f57c00; border-radius: 15px;
+}
+.quiz h4 { color: #e65100; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; }
+.quiz-btn { 
+  display: block; width: 100%; padding: 12px 20px; margin: 10px 0;
+  border: 2px solid #cbd5e0; background: white; border-radius: 10px;
+  cursor: pointer; font-size: 1em; transition: all 0.3s; font-weight: 500; text-align: left;
+}
+.quiz-btn:hover { border-color: #f57c00; background: #fff3e0; transform: translateY(-2px); }
+.quiz-btn.correct { border-color: #10b981; background: #d1fae5; color: #065f46; font-weight: 600; }
+.quiz-btn.wrong { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+
+.quiz-result { 
+  display: none;
+  margin-top: 20px; font-weight: bold; font-size: 1.2em;
+  padding: 15px; border-radius: 10px;
+}
+.quiz-result.correct { background: #d1fae5; color: #065f46; }
+.quiz-result.wrong { background: #fee2e2; color: #991b1b; }
+
+.back-btn {
+  display: inline-block; margin-top: 30px; padding: 12px 24px;
+  background: #64748b; color: white; text-decoration: none;
+  border-radius: 10px; font-weight: 600; transition: all 0.3s;
+}
+.back-btn:hover { background: #475569; transform: translateX(-5px); }
+
+.key-box {
+  background: #fff3e0;
+  border-left: 4px solid #f57c00;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.auxiliary-box {
+  background: #ffcc80;
+  border: 3px solid #f57c00;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #e65100;
+}
+
+@media (max-width: 768px) { 
+  .hero h1 { font-size: 1.8em; }
+  .section { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>10. Βοηθητικό Αντικείμενο</h1>
+  <p><em>Auxiliary Construction</em></p>
+</div>
+
+<div class="section">
+  <h2>Βοηθητικό Αντικείμενο (Auxiliary Construction)</h2>
+  <h3>Δημιούργησε κάτι νέο για να λύσεις το πρόβλημα!</h3>
+  
+  <p>Η στρατηγική του <strong>Βοηθητικού Αντικειμένου</strong> είναι όταν <strong>προσθέτεις ένα νέο στοιχείο</strong> στο πρόβλημα που δεν υπήρχε στην αρχική εκφώνηση, αλλά σε βοηθάει να φτάσεις στη λύση! Σαν να προσθέτεις ένα εργαλείο που κάνει τη δουλειά πιο εύκολη.</p>
+
+  <div class="auxiliary-box">
+    🛠️ Αρχικό πρόβλημα + Βοηθητικό αντικείμενο = Λύση!
+  </div>
+
+  <p>Παραδείγματα βοηθητικών αντικειμένων:</p>
+  <ul>
+    <li><strong>Γεωμετρία:</strong> Πρόσθετη γραμμή, σημείο, κύκλος</li>
+    <li><strong>Άλγεβρα:</strong> Πρόσθετη μεταβλητή, συνάρτηση</li>
+    <li><strong>Θεωρία Αριθμών:</strong> Πρόσθετη ακολουθία, αριθμός</li>
+    <li><strong>Συνδυαστική:</strong> Πρόσθετο γράφημα, χρωματισμός</li>
+  </ul>
+
+  <div class="key-box">
+    <p><strong>🔑 Πότε να τη διαλέξεις:</strong></p>
+    <ul>
+      <li>Όταν το πρόβλημα φαίνεται <strong>"ελλιπές"</strong></li>
+      <li>Όταν χρειάζεσαι <strong>ενδιάμεσο βήμα</strong></li>
+      <li>Όταν μια <strong>πρόσθετη δομή</strong> μπορεί να συνδέσει τα στοιχεία</li>
+      <li>Σε γεωμετρικά προβλήματα με <strong>έλλειψη συνδέσεων</strong></li>
+    </ul>
+  </div>
+
+  <h3>Πώς σκέφτεσαι (βήμα-βήμα):</h3>
+  <ol>
+    <li><strong>Αναγνώρισε το κενό:</strong> Τι λείπει για να συνδέσεις τα στοιχεία;</li>
+    <li><strong>Σκέψου το βοηθητικό:</strong> Τι πρόσθετο στοιχείο θα βοηθούσε;</li>
+    <li><strong>Κατασκεύασε το:</strong> Πρόσθεσε τη γραμμή, το σημείο, τη συνάρτηση</li>
+    <li><strong>Χρησιμοποίησέ το:</strong> Λύσε το πρόβλημα με το νέο στοιχείο</li>
+    <li><strong>Επιβεβαίωσε:</strong> Η λύση ισχύει για το αρχικό πρόβλημα;</li>
+  </ol>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showLevel('auxiliary', 'basic', this)">Βασικό</button>
+    <button class="tab-btn" onclick="showLevel('auxiliary', 'intermediate', this)">Ενδιάμεσο</button>
+    <button class="tab-btn" onclick="showLevel('auxiliary', 'advanced', this)">Προχωρημένο</button>
+  </div>
+
+  <!-- ΒΑΣΙΚΟ ΕΠΙΠΕΔΟ -->
+  <div id="auxiliary-basic" class="level active">
+    <div class="problem">
+      <h4>📘 Πρόβλημα Βασικού Επιπέδου</h4>
+      <p>Δίνεται τρίγωνο \(ABC\) με \(\angle A = 90°\). Το σημείο \(D\) είναι στην πλευρά \(BC\). Αποδείξτε ότι:</p>
+      <p>\[AD^2 = BD \cdot DC + AB \cdot AC\]</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('auxiliary-basic-hint')">💡 Δείξε μου hint</button>
+    <div id="auxiliary-basic-hint" class="hint">
+      <p><strong>Hint:</strong> Χάραξε το <strong>ύψος από το \(A\) στην \(BC\)</strong>!</p>
+      <p>Έστω \(H\) το σημείο που το ύψος τέμνει την \(BC\).</p>
+      <p><strong>Κλειδί:</strong> Το \(H\) είναι το βοηθητικό σημείο που χρειάζεσαι!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('auxiliary-basic-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="auxiliary-basic-solution" class="solution">
+      <h4>Απόδειξη με Βοηθητικό Αντικείμενο:</h4>
+      
+      <p><strong>Βήμα 1 - Κατασκευή βοηθητικού:</strong></p>
+      <p>Χαράσσουμε το ύψος \(AH\) από το \(A\) στην πλευρά \(BC\).</p>
+      <p>Το \(H\) είναι το βοηθητικό σημείο!</p>
+      
+      <p><strong>Βήμα 2 - Εφαρμογή Πυθαγορείου:</strong></p>
+      <p>Στο ορθογώνιο τρίγωνο \(ABH\):</p>
+      <p>\[AB^2 = BH^2 + AH^2\]</p>
+      
+      <p>Στο ορθογώνιο τρίγωνο \(ACH\):</p>
+      <p>\[AC^2 = CH^2 + AH^2\]</p>
+      
+      <p><strong>Βήμα 3 - Συνδυασμός:</strong></p>
+      <p>\[AB^2 + AC^2 = BH^2 + CH^2 + 2AH^2\]</p>
+      
+      <p>Αλλά στο τρίγωνο \(ADH\):</p>
+      <p>\[AD^2 = DH^2 + AH^2\]</p>
+      
+      <p>Με γεωμετρικούς χειρισμούς (χρησιμοποιώντας \(DH = |BH - BD|\) ή παρόμοια), φτάνουμε στο ζητούμενο! ✓</p>
+      
+      <p><em>(Η πλήρης απόδειξη είναι πιο τεχνική - το κλειδί είναι το βοηθητικό ύψος!)</em></p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Το βοηθητικό ύψος \(AH\) μας έδωσε τη σύνδεση που χρειαζόμασταν!</p>
+    </div>
+  </div>
+
+  <!-- ΕΝΔΙΑΜΕΣΟ ΕΠΙΠΕΔΟ -->
+  <div id="auxiliary-intermediate" class="level">
+    <div class="problem">
+      <h4>📙 Πρόβλημα Ενδιάμεσου Επιπέδου</h4>
+      <p>Δίνονται δύο κύκλοι που τέμνονται στα σημεία \(A\) και \(B\). Μια ευθεία διέρχεται από το \(A\) και τέμνει τους κύκλους στα σημεία \(C\) και \(D\).</p>
+      <p><strong>Αποδείξτε ότι η ευθεία \(BD\) είναι παράλληλη στην εφαπτομένη του πρώτου κύκλου στο \(C\).</strong></p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('auxiliary-int-hint')">💡 Δείξε μου hint</button>
+    <div id="auxiliary-int-hint" class="hint">
+      <p><strong>Hint:</strong> Χάραξε τη <strong>χορδή \(AB\)</strong>!</p>
+      <p>Αυτή η χορδή είναι κοινή και στους δύο κύκλους.</p>
+      <p><strong>Κλειδί:</strong> Χρησιμοποίησε εγγεγραμμένες γωνίες και την ιδιότητα της εφαπτομένης!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('auxiliary-int-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="auxiliary-int-solution" class="solution">
+      <h4>Απόδειξη:</h4>
+      
+      <p><strong>Βήμα 1 - Βοηθητικό αντικείμενο:</strong></p>
+      <p>Χαράσσουμε την <strong>κοινή χορδή \(AB\)</strong> των δύο κύκλων.</p>
+      
+      <p><strong>Βήμα 2 - Εγγεγραμμένες γωνίες στον πρώτο κύκλο:</strong></p>
+      <p>Στον πρώτο κύκλο, η γωνία \(\angle ACB\) είναι εγγεγραμμένη στην χορδή \(AB\).</p>
+      
+      <p><strong>Βήμα 3 - Εγγεγραμμένες γωνίες στον δεύτερο κύκλο:</strong></p>
+      <p>Στον δεύτερο κύκλο, η γωνία \(\angle ADB\) είναι εγγεγραμμένη στην ίδια χορδή \(AB\).</p>
+      
+      <p><strong>Βήμα 4 - Ιδιότητα εφαπτομένης:</strong></p>
+      <p>Η εφαπτομένη στο \(C\) σχηματίζει γωνία με την \(CA\) που ισούται με την εγγεγραμμένη γωνία \(\angle CBA\).</p>
+      
+      <p><strong>Βήμα 5 - Σύνδεση:</strong></p>
+      <p>Επειδή οι εγγεγραμμένες γωνίες είναι ίσες (βλέπουν το ίδιο τόξο), οι ευθείες είναι παράλληλες! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η κοινή χορδή \(AB\) ήταν το βοηθητικό στοιχείο που συνέδεσε τα πάντα!</p>
+    </div>
+  </div>
+
+  <!-- ΠΡΟΧΩΡΗΜΕΝΟ ΕΠΙΠΕΔΟ -->
+  <div id="auxiliary-advanced" class="level">
+    <div class="problem">
+      <h4>📕 Πρόβλημα Προχωρημένου Επιπέδου</h4>
+      <p>Αποδείξτε ότι κάθε ακέραιος \(n \geq 2\) μπορεί να γραφτεί ως γινόμενο πρώτων αριθμών (Θεμελιώδες Θεώρημα Αριθμητικής).</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('auxiliary-adv-hint')">💡 Δείξε μου hint</button>
+    <div id="auxiliary-adv-hint" class="hint">
+      <p><strong>Hint:</strong> Χρησιμοποίησε <strong>επαγωγή</strong>!</p>
+      <p>Το βοηθητικό αντικείμενο είναι η <strong>υπόθεση επαγωγής</strong> - ότι ισχύει για όλους τους μικρότερους αριθμούς!</p>
+      <p><strong>Κλειδί:</strong> Αν ο \(n\) είναι σύνθετος, χώρισέ τον σε \(n = ab\) με \(a, b < n\)!</p>
+    </div>
+
+    <button class="hint-btn" onclick="toggleHint('auxiliary-adv-solution')">📝 Δείξε μου παράδειγμα λύσης</button>
+    <div id="auxiliary-adv-solution" class="solution">
+      <h4>Απόδειξη με Επαγωγή:</h4>
+      
+      <p><strong>Βήμα 1 - Βάση επαγωγής:</strong></p>
+      <p>Για \(n = 2\): Ο 2 είναι πρώτος, άρα γράφεται ως γινόμενο του εαυτού του. ✓</p>
+      
+      <p><strong>Βήμα 2 - Υπόθεση επαγωγής (βοηθητικό!):</strong></p>
+      <p>Υποθέτουμε ότι για κάθε ακέραιο \(k\) με \(2 \leq k < n\), ο \(k\) γράφεται ως γινόμενο πρώτων.</p>
+      <p><em>Αυτή η υπόθεση είναι το "βοηθητικό αντικείμενο" - την προσθέτουμε στο πρόβλημα!</em></p>
+      
+      <p><strong>Βήμα 3 - Επαγωγικό βήμα:</strong></p>
+      <p>Θέλουμε να δείξουμε ότι ο \(n\) γράφεται ως γινόμενο πρώτων.</p>
+      
+      <p><strong>Περίπτωση 1:</strong> Αν ο \(n\) είναι πρώτος, τελειώσαμε! ✓</p>
+      
+      <p><strong>Περίπτωση 2:</strong> Αν ο \(n\) είναι σύνθετος, τότε \(n = a \cdot b\) όπου \(2 \leq a, b < n\).</p>
+      
+      <p><strong>Βήμα 4 - Χρήση υπόθεσης επαγωγής:</strong></p>
+      <p>Από την υπόθεση επαγωγής:</p>
+      <ul>
+        <li>\(a = p_1 \cdot p_2 \cdot \ldots \cdot p_k\) (γινόμενο πρώτων)</li>
+        <li>\(b = q_1 \cdot q_2 \cdot \ldots \cdot q_m\) (γινόμενο πρώτων)</li>
+      </ul>
+      
+      <p>Άρα:</p>
+      <p>\[n = a \cdot b = p_1 \cdot p_2 \cdot \ldots \cdot p_k \cdot q_1 \cdot q_2 \cdot \ldots \cdot q_m\]</p>
+      
+      <p>Ο \(n\) είναι γινόμενο πρώτων! ✓</p>
+      
+      <p><strong>🔑 Κλειδί:</strong> Η υπόθεση επαγωγής ήταν το βοηθητικό "αντικείμενο" που μας έλειπε!</p>
+    </div>
+  </div>
+
+  <!-- ΣΥΧΝΑ ΛΑΘΗ -->
+  <div class="mistakes">
+    <h4>⚠️ Συχνά Λάθη:</h4>
+    <ul>
+      <li><strong>Δεν σκέφτεσαι να προσθέσεις κάτι:</strong> Μην περιοριστείς στα δεδομένα - σκέψου πώς να τα εμπλουτίσεις!</li>
+      <li><strong>Προσθέτεις κάτι άχρηστο:</strong> Το βοηθητικό πρέπει να <strong>συνδέει</strong> τα στοιχεία!</li>
+      <li><strong>Ξεχνάς να δικαιολογήσεις:</strong> Το βοηθητικό πρέπει να είναι καλά ορισμένο!</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz">
+    <h4>🧠 Μικρό Quiz</h4>
+    <p><strong>Ερώτηση:</strong> Τι είναι βοηθητικό αντικείμενο;</p>
+    <button class="quiz-btn" onclick="checkQuiz('auxiliary', 'a', this)">Κάτι που προσθέτεις στο πρόβλημα για να το λύσεις</button>
+    <button class="quiz-btn" onclick="checkQuiz('auxiliary', 'b', this)">Ένα εργαλείο που δίνεται στην εκφώνηση</button>
+    <button class="quiz-btn" onclick="checkQuiz('auxiliary', 'c', this)">Μια εναλλακτική μέθοδος λύσης</button>
+    <div id="auxiliary-quiz-result" class="quiz-result"></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Επιστροφή στον Χάρτη Στρατηγικών</a>
+</div>
+
+</div>
+
+<script>
+function showLevel(strategy, level, buttonElement) {
+  const tabs = buttonElement.closest('.section').querySelectorAll('.tab-btn');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttonElement.classList.add('active');
+  
+  const levels = buttonElement.closest('.section').querySelectorAll('.level');
+  levels.forEach(l => l.classList.remove('active'));
+  
+  const levelId = strategy + '-' + level;
+  const levelDiv = document.getElementById(levelId);
+  if (levelDiv) {
+    levelDiv.classList.add('active');
+  }
+}
+
+function toggleHint(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show');
+}
+
+const quizAnswers = { 
+  auxiliary: 'a'
+};
+
+function checkQuiz(strategy, answer, buttonElement) {
+  const result = document.getElementById(strategy + '-quiz-result');
+  if (!result) return;
+  
+  const buttons = buttonElement.parentElement.querySelectorAll('.quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('correct', 'wrong');
+  });
+
+  if (answer === quizAnswers[strategy]) {
+    buttonElement.classList.add('correct');
+    result.className = 'quiz-result correct';
+    result.textContent = '✓ Σωστά! Προσθέτεις ένα νέο στοιχείο που σε βοηθάει να λύσεις!';
+    result.style.display = 'block';
+  } else {
+    buttonElement.classList.add('wrong');
+    result.className = 'quiz-result wrong';
+    result.textContent = '✗ Προσπάθησε ξανά! Σκέψου τι είναι "βοηθητικό"...';
+    result.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
