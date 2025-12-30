@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="socialGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    
+    <pattern id="grid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.05"/>
+    </pattern>
+    
+    <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="3" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#socialGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Large decorative circles -->
+  <circle cx="200" cy="315" r="150" fill="#ffffff" opacity="0.03"/>
+  <circle cx="1000" cy="315" r="180" fill="#ffffff" opacity="0.03"/>
+  <circle cx="600" cy="100" r="120" fill="#ffffff" opacity="0.04"/>
+  <circle cx="600" cy="530" r="100" fill="#ffffff" opacity="0.04"/>
+  
+  <!-- Central icon - large compass -->
+  <g transform="translate(600, 315)">
+    <!-- Outer rings -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#fbbf24" stroke-width="4" opacity="0.6"/>
+    <circle cx="0" cy="0" r="85" fill="none" stroke="#fbbf24" stroke-width="2" opacity="0.4"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#60a5fa" stroke-width="1" opacity="0.3"/>
+    
+    <!-- Compass points -->
+    <path d="M 0,-75 L 15,-45 L 0,-55 L -15,-45 Z" fill="#fbbf24" filter="url(#textShadow)"/>
+    <path d="M 75,0 L 45,15 L 55,0 L 45,-15 Z" fill="#60a5fa" opacity="0.7"/>
+    <path d="M 0,75 L 15,45 L 0,55 L -15,45 Z" fill="#60a5fa" opacity="0.7"/>
+    <path d="M -75,0 L -45,15 L -55,0 L -45,-15 Z" fill="#60a5fa" opacity="0.7"/>
+    
+    <!-- Center -->
+    <circle cx="0" cy="0" r="12" fill="#fbbf24" filter="url(#textShadow)"/>
+    
+    <!-- Small decorative elements -->
+    <circle cx="0" cy="-95" r="3" fill="#ffffff" opacity="0.5"/>
+    <circle cx="95" cy="0" r="3" fill="#ffffff" opacity="0.5"/>
+    <circle cx="0" cy="95" r="3" fill="#ffffff" opacity="0.5"/>
+    <circle cx="-95" cy="0" r="3" fill="#ffffff" opacity="0.5"/>
+  </g>
+  
+  <!-- Title - centered -->
+  <text x="600" y="165" font-family="'Segoe UI', Arial" font-size="68" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#textShadow)">
+    Χάρτης Στρατηγικών
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="470" font-family="'Segoe UI', Arial" font-size="38" font-weight="300" fill="#e0e7ff" text-anchor="middle">
+    Επίλυσης Μαθηματικών Προβλημάτων
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="520" font-family="'Segoe UI', Arial" font-size="24" font-style="italic" fill="#fbbf24" text-anchor="middle">
+    Μάθε πώς να σκέφτεσαι, όχι μόνο πώς να λύνεις
+  </text>
+  
+  <!-- Mathematical symbols decoration -->
+  <text x="150" y="250" font-family="Arial" font-size="48" fill="#ffffff" opacity="0.08">∑</text>
+  <text x="1050" y="250" font-family="Arial" font-size="48" fill="#ffffff" opacity="0.08">∫</text>
+  <text x="100" y="450" font-family="Arial" font-size="40" fill="#ffffff" opacity="0.06">π</text>
+  <text x="1100" y="450" font-family="Arial" font-size="40" fill="#ffffff" opacity="0.06">∞</text>
+</svg>
