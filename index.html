@@ -4,208 +4,446 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</title>
+<meta name="description" content="12 στρατηγικές σκέψης για μαθηματικά προβλήματα σε 4 γραμμές. Μάθε πώς να σκέφτεσαι, όχι μόνο πώς να λύνεις. Γράψε τι βλέπεις στο πρόβλημα και βρες τη στρατηγική.">
+<meta name="theme-color" content="#f3f6f9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23d62828'/%3E%3Ctext x='32' y='45' font-size='40' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='white'%3Ee%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { 
-  font-family: 'Segoe UI', Arial, sans-serif; 
-  line-height: 1.6; 
-  padding: 20px; 
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  min-height: 100vh;
-}
-.container { max-width: 1200px; margin: 0 auto; }
+/* ==========================================================
+   Tokens
+   ========================================================== */
+:root {
+    color-scheme: light;
 
-.hero { 
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-  color: white;
-  border-radius: 20px; 
-  padding: 40px; 
-  margin-bottom: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  text-align: center;
-}
-.hero h1 { margin: 0 0 15px 0; font-size: 2.5em; }
-.hero p { font-size: 1.2em; }
+    --paper: #f3f6f9;
+    --surface: #ffffff;
+    --ink: #14202b;
+    --muted: #4d5d6b;
+    --rule: #cfd9e2;
+    --rule-strong: #9fb0bf;
+    --focus: #1f5fd6;
 
-.intro {
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.intro h2 { color: #1e40af; margin-bottom: 15px; }
-.intro ul { margin-left: 25px; color: #2d3748; }
-.intro li { margin-bottom: 10px; }
+    /* Οι τέσσερις γραμμές του χάρτη (ίδια χρώματα με τις σελίδες των στρατηγικών) */
+    --la: #0b8fae;  --la-ink: #0a5b70;  --la-tint: #e0f4f8;
+    --lb: #3a9a48;  --lb-ink: #23682e;  --lb-tint: #e5f3e7;
+    --lc: #ef8a12;  --lc-ink: #935000;  --lc-tint: #fdeed9;
+    --ld: #d6303a;  --ld-ink: #96181f;  --ld-tint: #fbe3e5;
 
-.grid { 
-  display: grid; 
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 20px; 
-  margin: 30px 0; 
+    --sans: 'Manrope', system-ui, 'Segoe UI', Roboto, sans-serif;
+    --dot: 60px;
 }
+.l-a { --c: var(--la); --c-ink: var(--la-ink); --c-tint: var(--la-tint); }
+.l-b { --c: var(--lb); --c-ink: var(--lb-ink); --c-tint: var(--lb-tint); }
+.l-c { --c: var(--lc); --c-ink: var(--lc-ink); --c-tint: var(--lc-tint); }
+.l-d { --c: var(--ld); --c-ink: var(--ld-ink); --c-tint: var(--ld-tint); }
 
-.card { 
-  background: white;
-  border-radius: 16px; 
-  padding: 25px; 
-  text-align: center; 
-  font-weight: 600;
-  font-size: 1em;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  border: 3px solid;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
-  color: inherit;
+/* ==========================================================
+   Base
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background-color: var(--paper);
+    /* χαρτί χάρτη: αχνό πλέγμα */
+    background-image:
+        linear-gradient(rgba(20, 32, 43, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 32, 43, .045) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
-.card:hover { 
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+h1, h2, h3, p, ol, ul { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--surface); color: var(--ink); padding: 10px 16px; border-radius: 4px; font-weight: 700; text-decoration: none; }
+.skip:focus { top: 12px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+svg.i { width: 1em; height: 1em; flex: none; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ==========================================================
+   Κορυφή και hero
+   ========================================================== */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 6px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 700; }
+.logo { width: 30px; height: 30px; border-radius: 50%; background: #d62828; color: #fff; display: inline-grid; place-items: center; font: 700 1.3rem/1 Georgia, serif; padding-bottom: 3px; }
+.top a.nav { color: var(--muted); font-weight: 600; font-size: .92rem; text-underline-offset: 4px; }
+.top a.nav:hover { color: var(--ink); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: end; padding-top: 44px; padding-bottom: 40px; }
+.hero h1 { font-weight: 800; font-size: clamp(2.6rem, 6.6vw, 5.2rem); line-height: 1.02; letter-spacing: -.025em; }
+.hero h1 span { display: block; margin-top: 14px; font-weight: 500; font-size: clamp(1.1rem, 2.2vw, 1.55rem); letter-spacing: 0; line-height: 1.35; color: var(--muted); }
+.lede { margin-top: 22px; max-width: 46ch; font-size: 1.12rem; color: var(--ink); }
+.lede strong { font-weight: 800; }
+
+.steps { display: grid; gap: 0; counter-reset: st; border-left: 3px solid var(--ink); }
+.steps li { position: relative; padding: 10px 0 10px 22px; font-weight: 600; counter-increment: st; }
+.steps li::before {
+    content: counter(st);
+    position: absolute; left: -15px; top: 50%; transform: translateY(-50%);
+    width: 27px; height: 27px; border-radius: 50%; background: var(--ink); color: #fff;
+    display: grid; place-items: center; font-size: .82rem; font-weight: 800;
 }
+.steps-title { font-size: .92rem; font-weight: 700; color: var(--muted); margin-bottom: 12px; }
 
-.card-title { font-size: 1.1em; margin-bottom: 8px; line-height: 1.3; }
-.card-subtitle { font-size: 0.8em; font-style: italic; opacity: 0.7; font-weight: normal; }
+/* ==========================================================
+   Αναζήτηση ένδειξης
+   ========================================================== */
+.finder { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 24px 26px; }
+.finder h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+.finder .sub { margin-top: 2px; color: var(--muted); font-size: .96rem; }
+.f-row { display: flex; gap: 8px; margin-top: 16px; }
+.searchbox { position: relative; flex: 1; }
+.searchbox svg.i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 1.1rem; }
+.searchbox input { width: 100%; height: 50px; padding: 0 14px 0 42px; border: 2px solid var(--rule-strong); border-radius: 4px; background: var(--surface); font-size: 1.02rem; }
+.searchbox input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(20, 32, 43, .14); }
+.searchbox input::-webkit-search-cancel-button { display: none; }
+.searchbox input::placeholder { color: #71828f; }
+.btn { appearance: none; min-height: 50px; padding: 0 18px; border: 2px solid var(--ink); border-radius: 4px; background: var(--surface); font-weight: 700; font-size: .95rem; cursor: pointer; }
+.btn:hover { background: var(--ink); color: #fff; }
+.btn[hidden] { display: none; }
+.eg { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; font-size: .9rem; color: var(--muted); }
+.eg button { appearance: none; border: 1px solid var(--rule-strong); border-radius: 999px; background: var(--surface); padding: 4px 13px; font-weight: 600; font-size: .9rem; cursor: pointer; }
+.eg button:hover { border-color: var(--ink); background: var(--ink); color: #fff; }
 
-.card-1 { background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%); border-color: #06b6d4; }
-.card-2 { background: linear-gradient(135deg, #a5f3fc 0%, #67e8f9 100%); border-color: #0891b2; }
-.card-3 { background: linear-gradient(135deg, #67e8f9 0%, #22d3ee 100%); border-color: #0e7490; }
-.card-4 { background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%); border-color: #0e7490; }
-.card-5 { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-color: #4caf50; }
-.card-6 { background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%); border-color: #388e3c; }
-.card-7 { background: linear-gradient(135deg, #a5d6a7 0%, #81c784 100%); border-color: #2e7d32; }
-.card-8 { background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%); border-color: #1b5e20; }
-.card-9 { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-color: #ff9800; }
-.card-10 { background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%); border-color: #f57c00; }
-.card-11 { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-color: #e91e63; }
-.card-12 { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-color: #c62828; }
+.found { margin-top: 18px; display: grid; gap: 8px; }
+.found[hidden] { display: none; }
+.found-count { font-size: .92rem; font-weight: 700; color: var(--muted); }
+.hit { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; padding: 12px 14px; border: 1px solid var(--rule); border-left: 6px solid var(--c); border-radius: 3px; background: var(--surface); color: inherit; text-decoration: none; }
+.hit:hover { background: var(--c-tint); }
+.hit .rn { width: 40px; height: 40px; border-radius: 50%; background: var(--c); color: #fff; display: grid; place-items: center; font-weight: 800; }
+.hit strong { display: block; font-size: 1.02rem; }
+.hit .why { display: block; font-size: .9rem; color: var(--muted); }
+.none { padding: 14px 16px; border: 1px dashed var(--rule-strong); border-radius: 3px; color: var(--muted); font-size: .95rem; }
 
-.group-title {
-  text-align: center; font-size: 1.3em; font-weight: bold;
-  margin: 30px 0 10px; padding: 10px; border-radius: 10px; color: white;
+/* ==========================================================
+   Ο χάρτης
+   ========================================================== */
+.map { padding-top: 56px; padding-bottom: 72px; }
+.map-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; margin-bottom: 8px; }
+.map-head h2 { font-size: 1.9rem; font-weight: 800; letter-spacing: -.02em; }
+.map-head p { color: var(--muted); font-size: .96rem; }
+
+.line { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; padding: 26px 0; border-top: 2px solid var(--rule); }
+.line-head { display: flex; gap: 14px; align-items: flex-start; }
+.badge { flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--c); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 1.5rem; }
+.line-head h3 { font-size: 1.12rem; font-weight: 800; line-height: 1.25; color: var(--c-ink); }
+.line-head p { margin-top: 4px; font-size: .9rem; line-height: 1.45; color: var(--muted); }
+
+.stations { --n: 4; position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); width: calc(var(--n) / 4 * 100%); }
+.stations::before {
+    content: ""; position: absolute; z-index: 0;
+    top: calc(var(--dot) / 2 - 5px);
+    left: calc(50% / var(--n)); right: calc(50% / var(--n));
+    height: 10px; border-radius: 5px; background: var(--c);
+    transform-origin: left center; animation: draw .8s cubic-bezier(.3, .7, .2, 1) both;
 }
-.group-basics { background: #06b6d4; }
-.group-structural { background: #4caf50; }
-.group-transform { background: #ff9800; }
-.group-advanced { background: #e91e63; }
-
-footer {
-  text-align: center;
-  color: #666;
-  margin-top: 60px;
-  padding: 20px;
+.station { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 8px; text-align: center; text-decoration: none; color: inherit; }
+.dot {
+    width: var(--dot); height: var(--dot); border-radius: 50%; background: var(--surface);
+    border: 8px solid var(--c); color: var(--c-ink);
+    display: grid; place-items: center; font-weight: 800; font-size: 1.25rem; line-height: 1;
+    transition: transform .15s, background-color .15s, color .15s;
+    animation: pop .5s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(.35s + var(--i) * .12s);
 }
+.lab { display: block; }
+.name { display: block; font-weight: 800; font-size: 1rem; line-height: 1.3; }
+.en { display: block; margin-top: 2px; font-size: .84rem; font-style: italic; color: var(--muted); }
+.station:hover .dot, .station:focus-visible .dot { background: var(--c); color: #fff; transform: scale(1.1); }
+.station:hover .name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--c); }
 
-@media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 768px) { 
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .hero h1 { font-size: 1.8em; }
+.station.dim .dot { border-color: #c9d4dd; color: #93a3b0; }
+.station.dim .lab { opacity: .38; }
+.station.on .dot { background: var(--c); color: #fff; transform: scale(1.14); box-shadow: 0 0 0 5px var(--c-tint); }
+
+@keyframes draw { from { transform: scaleX(0); } }
+@keyframes pop { from { transform: scale(.3); opacity: 0; } }
+
+/* ==========================================================
+   Υποσέλιδο
+   ========================================================== */
+.foot { border-top: 2px solid var(--ink); }
+.foot .wrap { padding-top: 24px; padding-bottom: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: .92rem; color: var(--muted); }
+.foot strong { color: var(--ink); }
+.foot a { color: var(--ink); font-weight: 600; text-underline-offset: 3px; }
+
+/* ==========================================================
+   Κινητά
+   ========================================================== */
+@media (max-width: 900px) {
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 30px; }
+    .line { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .stations { width: 100%; grid-template-columns: minmax(0, 1fr); grid-auto-rows: 84px; }
+    .stations::before {
+        left: calc(var(--dot) / 2 - 5px); right: auto; width: 10px; height: auto;
+        top: 42px; bottom: 42px; transform-origin: center top; animation-name: drawv;
+    }
+    .station { flex-direction: row; align-items: center; justify-content: flex-start; gap: 18px; text-align: left; padding: 0; height: 84px; }
+    @keyframes drawv { from { transform: scaleY(0); } }
 }
-@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .finder { padding: 18px 16px; }
+    .f-row { flex-direction: column; }
+    .btn { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .stations::before, .dot { animation: none; }
+    * { transition: none !important; }
+}
 </style>
 </head>
+
 <body>
+<a class="skip" href="#map">Μετάβαση στον χάρτη</a>
 
-<div class="container">
+<header class="wrap top">
+    <a class="brand" href="https://eisatopon.gr" target="_top" aria-label="eisatopon.gr"><span class="logo" aria-hidden="true">e</span><span>eisatopon.gr</span></a>
+    <a class="nav" href="landing-page.html">Παρουσίαση</a>
+</header>
 
-<div class="hero">
-  <h1>🎯 Χάρτης Στρατηγικών Επίλυσης Μαθηματικών Προβλημάτων</h1>
-  <p>Μάθε <strong>πώς να σκέφτεσαι</strong>, όχι μόνο πώς να λύνεις</p>
-</div>
+<main>
+    <section class="wrap hero" aria-labelledby="title">
+        <div>
+            <h1 id="title">Χάρτης Στρατηγικών<span>Επίλυσης Μαθηματικών Προβλημάτων</span></h1>
+            <p class="lede">Μάθε <strong>πώς να σκέφτεσαι</strong>, όχι μόνο πώς να λύνεις. Δώδεκα στρατηγικές σε τέσσερις γραμμές: διάλεξε σταθμό και ξεκίνα τη διαδρομή.</p>
+        </div>
+        <div>
+            <p class="steps-title" id="stepsTitle">Πώς χρησιμοποιείς τον Χάρτη</p>
+            <ol class="steps" aria-labelledby="stepsTitle">
+                <li>Διάλεξε μία στρατηγική από τις 12</li>
+                <li>Διάβασε πώς δουλεύει</li>
+                <li>Λύσε τα προβλήματά της</li>
+                <li>Μάθε να σκέφτεσαι με αυτή τη στρατηγική</li>
+            </ol>
+        </div>
+    </section>
 
-<div class="intro">
-  <h2>🧭 Πώς χρησιμοποιείς τον Χάρτη:</h2>
-  <ol>
-    <li><strong>Διάλεξε μία στρατηγική</strong> από τις 12 παρακάτω</li>
-    <li>Διάβασε πώς δουλεύει</li>
-    <li>Λύσε τα προβλήματά της</li>
-    <li>Μάθε <strong>πώς να σκέφτεσαι</strong> με αυτή τη στρατηγική!</li>
-  </ol>
-</div>
+    <section class="wrap" aria-labelledby="finderTitle">
+        <div class="finder">
+            <h2 id="finderTitle">Δεν ξέρεις από πού να ξεκινήσεις;</h2>
+            <p class="sub">Γράψε τι βλέπεις στο πρόβλημα και ο χάρτης θα φωτίσει τις στρατηγικές που ταιριάζουν.</p>
+            <div class="f-row">
+                <div class="searchbox">
+                    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                    <label class="sr-only" for="q">Τι βλέπεις στο πρόβλημα;</label>
+                    <input type="search" id="q" placeholder="Δοκίμασε: ελάχιστο, τουλάχιστον, άθροισμα…" autocomplete="off">
+                </div>
+                <button type="button" class="btn" id="reset" hidden>Καθαρισμός</button>
+            </div>
+            <div class="eg" id="eg"><span>Ενδείξεις:</span></div>
+            <div class="found" id="found" hidden></div>
+            <p class="sr-only" id="status" role="status"></p>
+        </div>
+    </section>
 
-<div class="group-title group-basics">ΟΜΑΔΑ Α: ΒΑΣΙΚΕΣ ΣΤΡΑΤΗΓΙΚΕΣ (1-4)</div>
+    <section class="wrap map" id="map" tabindex="-1" aria-labelledby="mapTitle">
+        <div class="map-head">
+            <h2 id="mapTitle">Ο Χάρτης</h2>
+            <p>Πάτησε έναν σταθμό για να ανοίξεις τη στρατηγική.</p>
+        </div>
 
-<div class="grid">
-  <a href="strategy-01-extremal.html" class="card card-1">
-    <div class="card-title">1. Ακραίο Στοιχείο</div>
-    <div class="card-subtitle">(Extremal Element)</div>
-  </a>
+    <section class="line l-a" aria-labelledby="h-a">
+      <header class="line-head">
+        <span class="badge" aria-hidden="true">Α</span>
+        <div>
+          <h3 id="h-a">Βασικές στρατηγικές</h3>
+          <p>Η αφετηρία: ιδέες που δουλεύουν σχεδόν παντού.</p>
+        </div>
+      </header>
+      <ol class="stations" style="--n:4">
+        <li style="--i:0">
+          <a class="station" href="strategy-01-extremal.html" data-n="1" aria-label="Στρατηγική 1: Ακραίο Στοιχείο, Extremal Element">
+            <span class="dot" aria-hidden="true">1</span>
+            <span class="lab"><span class="name">Ακραίο Στοιχείο</span><span class="en">Extremal Element</span></span>
+          </a>
+        </li>
+        <li style="--i:1">
+          <a class="station" href="strategy-02-special.html" data-n="2" aria-label="Στρατηγική 2: Ειδικές &amp; Οριακές Περιπτώσεις, Special &amp; Boundary Cases">
+            <span class="dot" aria-hidden="true">2</span>
+            <span class="lab"><span class="name">Ειδικές &amp; Οριακές Περιπτώσεις</span><span class="en">Special &amp; Boundary Cases</span></span>
+          </a>
+        </li>
+        <li style="--i:2">
+          <a class="station" href="strategy-03-counterexample.html" data-n="3" aria-label="Στρατηγική 3: Αντιπαραδείγματα, Counterexamples">
+            <span class="dot" aria-hidden="true">3</span>
+            <span class="lab"><span class="name">Αντιπαραδείγματα</span><span class="en">Counterexamples</span></span>
+          </a>
+        </li>
+        <li style="--i:3">
+          <a class="station" href="strategy-04-backward.html" data-n="4" aria-label="Στρατηγική 4: Αντίστροφη Σκέψη, Backward Thinking">
+            <span class="dot" aria-hidden="true">4</span>
+            <span class="lab"><span class="name">Αντίστροφη Σκέψη</span><span class="en">Backward Thinking</span></span>
+          </a>
+        </li>
+      </ol>
+    </section>
+    <section class="line l-b" aria-labelledby="h-b">
+      <header class="line-head">
+        <span class="badge" aria-hidden="true">Β</span>
+        <div>
+          <h3 id="h-b">Δομικές αρχές</h3>
+          <p>Αναγνωρίζεις τη δομή που κρύβει το πρόβλημα.</p>
+        </div>
+      </header>
+      <ol class="stations" style="--n:4">
+        <li style="--i:0">
+          <a class="station" href="strategy-05-symmetry.html" data-n="5" aria-label="Στρατηγική 5: Συμμετρία, Symmetry">
+            <span class="dot" aria-hidden="true">5</span>
+            <span class="lab"><span class="name">Συμμετρία</span><span class="en">Symmetry</span></span>
+          </a>
+        </li>
+        <li style="--i:1">
+          <a class="station" href="strategy-06-invariants.html" data-n="6" aria-label="Στρατηγική 6: Αναλλοίωτα, Invariants">
+            <span class="dot" aria-hidden="true">6</span>
+            <span class="lab"><span class="name">Αναλλοίωτα</span><span class="en">Invariants</span></span>
+          </a>
+        </li>
+        <li style="--i:2">
+          <a class="station" href="strategy-07-pigeonhole.html" data-n="7" aria-label="Στρατηγική 7: Αρχή Περιστερώνα, Pigeonhole Principle">
+            <span class="dot" aria-hidden="true">7</span>
+            <span class="lab"><span class="name">Αρχή Περιστερώνα</span><span class="en">Pigeonhole Principle</span></span>
+          </a>
+        </li>
+        <li style="--i:3">
+          <a class="station" href="strategy-08-doublecounting.html" data-n="8" aria-label="Στρατηγική 8: Διπλή Καταμέτρηση, Double Counting">
+            <span class="dot" aria-hidden="true">8</span>
+            <span class="lab"><span class="name">Διπλή Καταμέτρηση</span><span class="en">Double Counting</span></span>
+          </a>
+        </li>
+      </ol>
+    </section>
+    <section class="line l-c" aria-labelledby="h-c">
+      <header class="line-head">
+        <span class="badge" aria-hidden="true">Γ</span>
+        <div>
+          <h3 id="h-c">Μετασχηματισμοί</h3>
+          <p>Αλλάζεις τη μορφή του προβλήματος, ώστε να λυθεί.</p>
+        </div>
+      </header>
+      <ol class="stations" style="--n:2">
+        <li style="--i:0">
+          <a class="station" href="strategy-09-reformulation.html" data-n="9" aria-label="Στρατηγική 9: Αναδιατύπωση, Reformulation">
+            <span class="dot" aria-hidden="true">9</span>
+            <span class="lab"><span class="name">Αναδιατύπωση</span><span class="en">Reformulation</span></span>
+          </a>
+        </li>
+        <li style="--i:1">
+          <a class="station" href="strategy-10-auxiliary.html" data-n="10" aria-label="Στρατηγική 10: Βοηθητικό Αντικείμενο, Auxiliary Construction">
+            <span class="dot" aria-hidden="true">10</span>
+            <span class="lab"><span class="name">Βοηθητικό Αντικείμενο</span><span class="en">Auxiliary Construction</span></span>
+          </a>
+        </li>
+      </ol>
+    </section>
+    <section class="line l-d" aria-labelledby="h-d">
+      <header class="line-head">
+        <span class="badge" aria-hidden="true">Δ</span>
+        <div>
+          <h3 id="h-d">Προχωρημένες τεχνικές</h3>
+          <p>Για τις δύσκολες αποδείξεις.</p>
+        </div>
+      </header>
+      <ol class="stations" style="--n:2">
+        <li style="--i:0">
+          <a class="station" href="strategy-11-reverse.html" data-n="11" aria-label="Στρατηγική 11: Αντίστροφη Ερώτηση, Reverse Question">
+            <span class="dot" aria-hidden="true">11</span>
+            <span class="lab"><span class="name">Αντίστροφη Ερώτηση</span><span class="en">Reverse Question</span></span>
+          </a>
+        </li>
+        <li style="--i:1">
+          <a class="station" href="strategy-12-induction.html" data-n="12" aria-label="Στρατηγική 12: Μαθηματική Επαγωγή, Mathematical Induction">
+            <span class="dot" aria-hidden="true">12</span>
+            <span class="lab"><span class="name">Μαθηματική Επαγωγή</span><span class="en">Mathematical Induction</span></span>
+          </a>
+        </li>
+      </ol>
+    </section>
 
-  <a href="strategy-02-special.html" class="card card-2">
-    <div class="card-title">2. Ειδικές & Οριακές Περιπτώσεις</div>
-    <div class="card-subtitle">(Special & Boundary Cases)</div>
-  </a>
+    </section>
+</main>
 
-  <a href="strategy-03-counterexample.html" class="card card-3">
-    <div class="card-title">3. Αντιπαραδείγματα</div>
-    <div class="card-subtitle">(Counterexamples)</div>
-  </a>
-
-  <a href="strategy-04-backward.html" class="card card-4">
-    <div class="card-title">4. Αντίστροφη Σκέψη</div>
-    <div class="card-subtitle">(Backward Thinking)</div>
-  </a>
-</div>
-
-<div class="group-title group-structural">ΟΜΑΔΑ Β: ΔΟΜΙΚΕΣ ΑΡΧΕΣ (5-8)</div>
-
-<div class="grid">
-  <a href="strategy-05-symmetry.html" class="card card-5">
-    <div class="card-title">5. Συμμετρία</div>
-    <div class="card-subtitle">(Symmetry)</div>
-  </a>
-
-  <a href="strategy-06-invariants.html" class="card card-6">
-    <div class="card-title">6. Αναλλοίωτα</div>
-    <div class="card-subtitle">(Invariants)</div>
-  </a>
-
-  <a href="strategy-07-pigeonhole.html" class="card card-7">
-    <div class="card-title">7. Αρχή Περιστερώνα</div>
-    <div class="card-subtitle">(Pigeonhole Principle)</div>
-  </a>
-
-  <a href="strategy-08-doublecounting.html" class="card card-8">
-    <div class="card-title">8. Διπλή Καταμέτρηση</div>
-    <div class="card-subtitle">(Double Counting)</div>
-  </a>
-</div>
-
-<div class="group-title group-transform">ΟΜΑΔΑ Γ: ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΙ (9-10)</div>
-
-<div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-  <a href="strategy-09-reformulation.html" class="card card-9">
-    <div class="card-title">9. Αναδιατύπωση</div>
-    <div class="card-subtitle">(Reformulation)</div>
-  </a>
-
-  <a href="strategy-10-auxiliary.html" class="card card-10">
-    <div class="card-title">10. Βοηθητικό Αντικείμενο</div>
-    <div class="card-subtitle">(Auxiliary Construction)</div>
-  </a>
-</div>
-
-<div class="group-title group-advanced">ΟΜΑΔΑ Δ: ΠΡΟΧΩΡΗΜΕΝΕΣ ΤΕΧΝΙΚΕΣ (11-12)</div>
-
-<div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-  <a href="strategy-11-reverse.html" class="card card-11">
-    <div class="card-title">11. Αντίστροφη Ερώτηση</div>
-    <div class="card-subtitle">(Reverse Question)</div>
-  </a>
-
-  <a href="strategy-12-induction.html" class="card card-12">
-    <div class="card-title">12. Μαθηματική Επαγωγή</div>
-    <div class="card-subtitle">(Mathematical Induction)</div>
-  </a>
-</div>
-
-<footer>
-  <p><strong>Χάρτης Στρατηγικών Λύσης</strong></p>
-  <p style="margin-top: 10px; font-size: 0.9em;">Μαθαίνουμε πώς να σκεφτόμαστε, όχι τι να απομνημονεύουμε</p>
+<footer class="foot">
+    <div class="wrap">
+        <span><strong>Χάρτης Στρατηγικών Λύσης.</strong> Μαθαίνουμε πώς να σκεφτόμαστε, όχι τι να απομνημονεύουμε.</span>
+        <a href="landing-page.html">Παρουσίαση του Χάρτη</a>
+    </div>
 </footer>
 
-</div>
+<script>
+(() => {
+'use strict';
 
+const S = [{"n": 1, "href": "strategy-01-extremal.html", "name": "Ακραίο Στοιχείο", "en": "Extremal Element", "line": "a", "clues": ["Όταν βλέπεις λέξεις όπως: «ελάχιστο», «μέγιστο», «πρώτο», «τελευταίο»", "Όταν έχεις πεπερασμένο σύνολο στοιχείων", "Όταν χρειάζεται απόδειξη προς άτοπο", "Όταν τα στοιχεία έχουν φυσική διάταξη (μέγεθος, χρόνος)"]}, {"n": 2, "href": "strategy-02-special.html", "name": "Ειδικές & Οριακές Περιπτώσεις", "en": "Special & Boundary Cases", "line": "a", "clues": ["Όταν το πρόβλημα έχει παράμετρο (π.χ. n, k)", "Όταν ζητείται απόδειξη για «κάθε n»", "Όταν δεν ξέρεις από πού να ξεκινήσεις!", "Όταν η γενική περίπτωση φαίνεται πολύπλοκη"]}, {"n": 3, "href": "strategy-03-counterexample.html", "name": "Αντιπαραδείγματα", "en": "Counterexamples", "line": "a", "clues": ["Όταν ο ισχυρισμός λέει «για όλα» ή «πάντα»", "Όταν υποψιάζεσαι ότι ένας ισχυρισμός είναι λάθος", "Όταν σου ζητούν να διερευνήσεις αν κάτι ισχύει", "Όταν θέλεις να ελέγξεις γρήγορα μια υπόθεση"]}, {"n": 4, "href": "strategy-04-backward.html", "name": "Αντίστροφη Σκέψη", "en": "Backward Thinking", "line": "a", "clues": ["Όταν ο στόχος είναι πιο συγκεκριμένος από τα δεδομένα", "Όταν δεν ξέρεις τι να κάνεις με τα δεδομένα", "Όταν ο στόχος έχει ειδική μορφή (π.χ. ισότητα, διαιρετότητα)", "Σε προβλήματα κατασκευής (βρες τρόπο να…)"]}, {"n": 5, "href": "strategy-05-symmetry.html", "name": "Συμμετρία", "en": "Symmetry", "line": "b", "clues": ["Όταν οι μεταβλητές εμφανίζονται με τον ίδιο τρόπο", "Όταν η εκφώνηση δεν αλλάζει αν εναλλάξεις τα γράμματα", "Σε γεωμετρικά σχήματα με κανονική δομή", "Όταν υπάρχει περιοδικότητα"]}, {"n": 6, "href": "strategy-06-invariants.html", "name": "Αναλλοίωτα", "en": "Invariants", "line": "b", "clues": ["Όταν έχεις διαδικασία ή παιχνίδι", "Όταν ρωτάνε «μπορεί να φτάσεις από Α σε Β;»", "Όταν υπάρχει επανάληψη μιας πράξης", "Όταν θέλεις να αποδείξεις ότι κάτι είναι αδύνατο"]}, {"n": 7, "href": "strategy-07-pigeonhole.html", "name": "Αρχή Περιστερώνα", "en": "Pigeonhole Principle", "line": "b", "clues": ["Όταν λέει «τουλάχιστον» ή «υπάρχουν»", "Όταν έχεις περισσότερα αντικείμενα από κατηγορίες", "Όταν ψάχνεις για εγγύηση ύπαρξης", "Σε προβλήματα μέτρησης και συνδυαστικής"]}, {"n": 8, "href": "strategy-08-doublecounting.html", "name": "Διπλή Καταμέτρηση", "en": "Double Counting", "line": "b", "clues": ["Όταν θέλεις να συσχετίσεις δύο ποσότητες", "Όταν έχεις γράφο ή σχέση μεταξύ στοιχείων", "Όταν ρωτάνε για άθροισμα ή πλήθος", "Σε προβλήματα συνδυαστικής και θεωρίας γράφων"]}, {"n": 9, "href": "strategy-09-reformulation.html", "name": "Αναδιατύπωση", "en": "Reformulation", "line": "c", "clues": ["Όταν το πρόβλημα φαίνεται πολύπλοκο στην τρέχουσα μορφή", "Όταν υπάρχει κρυφή δομή που δεν φαίνεται", "Όταν ξέρεις ένα παρόμοιο πρόβλημα που έχει λυθεί", "Όταν η αλλαγή οπτικής μπορεί να απλοποιήσει"]}, {"n": 10, "href": "strategy-10-auxiliary.html", "name": "Βοηθητικό Αντικείμενο", "en": "Auxiliary Construction", "line": "c", "clues": ["Όταν το πρόβλημα φαίνεται «ελλιπές»", "Όταν χρειάζεσαι ενδιάμεσο βήμα", "Όταν μια πρόσθετη δομή μπορεί να συνδέσει τα στοιχεία", "Σε γεωμετρικά προβλήματα με έλλειψη συνδέσεων"]}, {"n": 11, "href": "strategy-11-reverse.html", "name": "Αντίστροφη Ερώτηση", "en": "Reverse Question", "line": "d", "clues": ["Όταν η άμεση απόδειξη είναι δύσκολη", "Όταν το αντίθετο είναι πιο εύκολο να αναλύσεις", "Όταν ψάχνεις για εγγύηση ύπαρξης ή αδυναμίας", "Όταν η ερώτηση «Γιατί ΟΧΙ;» δίνει περισσότερη δομή"]}, {"n": 12, "href": "strategy-12-induction.html", "name": "Μαθηματική Επαγωγή", "en": "Mathematical Induction", "line": "d", "clues": ["Όταν η πρόταση αφορά «για κάθε φυσικό n», «για όλα τα n ≥ …»", "Σε τύπους με άθροισμα 1+2+…+n", "Σε αναδρομικά ορισμένες ακολουθίες", "Σε διαιρετότητες που εξαρτώνται από n", "Όταν βλέπεις δομή που «χτίζεται» βήμα-βήμα"]}];
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ς/g, 'σ');
+const LINE = { a: 'l-a', b: 'l-b', c: 'l-c', d: 'l-d' };
+
+const idx = S.map(s => ({ s, all: norm([s.name, s.en, ...s.clues].join(' ')), clues: s.clues.map(c => ({ c, n: norm(c) })) }));
+
+const input = $('#q'), found = $('#found'), reset = $('#reset'), status = $('#status');
+
+function run() {
+    const terms = norm(input.value).split(/\s+/).filter(Boolean);
+    reset.hidden = terms.length === 0;
+    const stations = $$('.station');
+
+    if (!terms.length) {
+        stations.forEach(el => el.classList.remove('dim', 'on'));
+        found.hidden = true; found.innerHTML = ''; status.textContent = '';
+        return;
+    }
+
+    const hits = idx.filter(x => terms.every(t => x.all.includes(t))).map(x => {
+        let why = x.clues.filter(c => terms.every(t => c.n.includes(t))).map(c => c.c);
+        if (!why.length) why = x.clues.filter(c => terms.some(t => c.n.includes(t))).map(c => c.c);
+        return { s: x.s, why: why.slice(0, 2) };
+    });
+
+    const set = new Set(hits.map(h => h.s.n));
+    stations.forEach(el => {
+        const on = set.has(+el.dataset.n);
+        el.classList.toggle('on', on);
+        el.classList.toggle('dim', !on);
+    });
+
+    found.hidden = false;
+    if (!hits.length) {
+        found.innerHTML = '<p class="none">Καμία ένδειξη δεν ταιριάζει. Δοκίμασε μία λέξη από την εκφώνηση, π.χ. «άθροισμα» ή «τουλάχιστον».</p>';
+        status.textContent = 'Δεν βρέθηκε στρατηγική.';
+        return;
+    }
+    found.innerHTML = `<p class="found-count">${hits.length === 1 ? '1 στρατηγική ταιριάζει' : hits.length + ' στρατηγικές ταιριάζουν'}</p>` +
+        hits.map(h => `
+        <a class="hit ${LINE[h.s.line]}" href="${esc(h.s.href)}">
+            <span class="rn" aria-hidden="true">${h.s.n}</span>
+            <span><strong>${esc(h.s.name)}</strong>${h.why.map(w => `<span class="why">${esc(w)}</span>`).join('')}</span>
+        </a>`).join('');
+    status.textContent = hits.length === 1 ? 'Βρέθηκε 1 στρατηγική.' : `Βρέθηκαν ${hits.length} στρατηγικές.`;
+}
+
+let t = null;
+input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(run, 120); });
+reset.addEventListener('click', () => { input.value = ''; run(); input.focus(); });
+
+['ελάχιστο', 'τουλάχιστον', 'αδύνατο', 'άθροισμα', 'ακολουθίες', 'γεωμετρικά'].forEach(w => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = w;
+    b.addEventListener('click', () => { input.value = w; run(); });
+    $('#eg').appendChild(b);
+});
+})();
+</script>
 </body>
 </html>
