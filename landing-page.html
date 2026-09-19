@@ -125,6 +125,11 @@ svg.i { width: 1em; height: 1em; flex: none; stroke: currentColor; fill: none; s
 .foot strong { color: var(--ink); font-size: 1.02rem; }
 .foot a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
 
+/* όταν η σελίδα εμφανίζεται μέσα σε ανάρτηση (iframe) */
+.embedded .top { display: none; }
+.embedded .hero { padding-top: 32px; }
+.embedded .skip { display: none; }
+
 @media (max-width: 900px) {
     .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 36px; padding-bottom: 48px; }
     .anatomy-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -236,6 +241,31 @@ svg.i { width: 1em; height: 1em; flex: none; stroke: currentColor; fill: none; s
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Όταν η σελίδα είναι ενσωματωμένη σε ανάρτηση: ανοίγει τους συνδέσμους σε νέα καρτέλα
+// και ενημερώνει τη γονική σελίδα για το ύψος της, ώστε το iframe να μην έχει δική του μπάρα κύλισης.
+(function () {
+    if (window.self === window.top) return;
+    document.documentElement.classList.add('embedded');
+    document.querySelectorAll('a[href]').forEach(function (a) {
+        var h = a.getAttribute('href');
+        if (h.charAt(0) !== '#') a.target = '_blank';
+    });
+    function send() {
+        parent.postMessage({ strategyMapHeight: Math.ceil(document.body.getBoundingClientRect().height) }, '*');
+    }
+    window.addEventListener('load', send);
+    window.addEventListener('resize', send);
+    if (window.ResizeObserver) new ResizeObserver(send).observe(document.body);
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var el = document.querySelector(a.getAttribute('href'));
+            if (!el) return;
+            e.preventDefault();
+            parent.postMessage({ strategyMapScrollTo: Math.round(el.getBoundingClientRect().top + window.scrollY) }, '*');
+        });
+    });
+})();
 </script>
 </body>
 </html>
